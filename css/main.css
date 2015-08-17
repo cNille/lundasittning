@@ -9,12 +9,47 @@ body {
   background-image: url("../images/table.jpg");
   min-height: 100vw;
   min-height: 100vh; }
+  body .header {
+    height: 55px;
+    width: 100%;
+    z-index: 1000;
+    background-color: black;
+    -moz-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); }
+    body .header .header-button {
+      position: fixed;
+      z-index: 9000;
+      right: 0px;
+      top: 0px;
+      padding: 0;
+      width: 2.5em;
+      height: 2.25em;
+      border: none;
+      text-indent: 2.5em;
+      font-size: 1.5em;
+      color: transparent;
+      background: transparent;
+      outline: none; }
+    body .header .header-button::before {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      bottom: 0.5em;
+      left: 0.5em;
+      background: linear-gradient(#FFFFFF 20%, transparent 20%, transparent 40%, #FFFFFF 40%, #FFFFFF 60%, transparent 60%, transparent 80%, #FFFFFF 80%);
+      content: ''; }
+    body .header .header-button:hover {
+      cursor: hand;
+      cursor: pointer;
+      opacity: 0.6; }
   body .content {
     margin-top: 60px;
     max-width: 850px;
     width: 90%;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    padding-bottom: 50px; }
     body .content .title {
       height: 100px;
       width: 90%;
@@ -24,20 +59,33 @@ body {
       text-align: center;
       font-size: 40px;
       color: white; }
-    body .content .event_grid {
+    body .content .event-grid {
       margin-left: auto;
       margin-right: auto;
       width: 90%; }
-      body .content .event_grid .event_window {
-        background-color: white;
+      body .content .event-grid .event-window {
+        background-color: #FFFFEA;
         margin-left: 10px;
         margin-top: 10px;
         display: inline-block;
         width: 150px;
-        height: 150px; }
-        body .content .event_grid .event_window .event_window_date {
-          font-size: 30px; }
-        body .content .event_grid .event_window .event_window_spots {
-          font-size: 12px; }
+        height: 150px;
+        -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-align: center; }
+        body .content .event-grid .event-window .event-window-date {
+          margin-top: 10px;
+          font-size: 45px; }
+        body .content .event-grid .event-window .event-window-spots {
+          margin-top: 10px; }
+        body .content .event-grid .event-window .event-window-button {
+          margin-top: 15px; }
+          body .content .event-grid .event-window .event-window-button a {
+            text-decoration: none;
+            color: black;
+            font-style: italic; }
+          body .content .event-grid .event-window .event-window-button a:hover {
+            text-decoration: underline; }
 
 /*# sourceMappingURL=main.css.map */

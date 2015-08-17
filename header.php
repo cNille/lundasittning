@@ -9,7 +9,6 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 	<body>
-		<div id="header"> <!-- style missing -->
-			<div id="menu-button">
-			</div>
+		<div class="header">
+			<button class="header-button" id="open-button">Open Menu</button>
 		</div>
