@@ -12,7 +12,7 @@ create table users (
 	userTelephone	varchar(15),
 	userType		varchar(20),
 	primary key(userId),
-	foreign key (userType) references usertype(userType),
+	foreign key (userType) references usertype(userType)
 );
 
 create table usertype (
