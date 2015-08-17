@@ -122,6 +122,6 @@ create table event (
 	primary key(eventText)
 );
 
-set FOREIGN_KEY_CHECKS = 0;
+set FOREIGN_KEY_CHECKS = 1;
 
 
