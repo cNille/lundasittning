@@ -1,3 +1,43 @@
-
+body {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/table.jpg");
+  min-height: 100vw;
+  min-height: 100vh; }
+  body .content {
+    margin-top: 60px;
+    max-width: 850px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto; }
+    body .content .title {
+      height: 100px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 40px;
+      color: white; }
+    body .content .event_grid {
+      margin-left: auto;
+      margin-right: auto;
+      width: 90%; }
+      body .content .event_grid .event_window {
+        background-color: white;
+        margin-left: 10px;
+        margin-top: 10px;
+        display: inline-block;
+        width: 150px;
+        height: 150px; }
+        body .content .event_grid .event_window .event_window_date {
+          font-size: 30px; }
+        body .content .event_grid .event_window .event_window_spots {
+          font-size: 12px; }
 
 /*# sourceMappingURL=main.css.map */
