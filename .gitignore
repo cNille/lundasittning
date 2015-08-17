@@ -1,2 +1,5 @@
 .DS_Store
 dbconfig.php
+
+.sass-cache/
+css/main.css.map
