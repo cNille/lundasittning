@@ -103,10 +103,12 @@ body{
 				box-shadow: 2px 2px 4px rgba(0,0,0,.5);
 				
 				text-align: center;
+				
+				position: relative;
 		
 				.event-window-date{
 					margin-top: 10px;
-					font-size: 45px;
+					font-size: 25px;
 				}
 				.event-window-spots{
 					margin-top: 10px;
@@ -121,6 +123,12 @@ body{
 					a:hover {
 						text-decoration: underline;
 					}
+				}
+				.event-remove-button{
+					position: absolute;
+					right: 0px;
+					bottom: 0px;
+					border: none;
 				}
 			}
 		}

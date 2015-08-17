@@ -73,10 +73,11 @@ body {
         -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        text-align: center; }
+        text-align: center;
+        position: relative; }
         body .content .event-grid .event-window .event-window-date {
           margin-top: 10px;
-          font-size: 45px; }
+          font-size: 25px; }
         body .content .event-grid .event-window .event-window-spots {
           margin-top: 10px; }
         body .content .event-grid .event-window .event-window-button {
@@ -87,5 +88,10 @@ body {
             font-style: italic; }
           body .content .event-grid .event-window .event-window-button a:hover {
             text-decoration: underline; }
+        body .content .event-grid .event-window .event-remove-button {
+          position: absolute;
+          right: 0px;
+          bottom: 0px;
+          border: none; }
 
 /*# sourceMappingURL=main.css.map */
