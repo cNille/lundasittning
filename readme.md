@@ -6,8 +6,8 @@
 sudo sass --watch scss:css
 ```
 
-# Hur man dansar
+# Kopiera saker till MAMP
 
 ```
-wiggle a little bit left
+../../Applications/MAMP/Library/bin/mysql -u root -p sittning < ~/Desktop/Websites/NILLEFRANZTEST/sittning/sqlQueries/init.sql
 ```
