@@ -3,6 +3,18 @@
 set FOREIGN_KEY_CHECKS = 0;
 
 drop table if exists users;
+drop table if exists usertype;
+drop table if exists foodpref;
+drop table if exists userFood;
+drop table if exists restaurant;
+drop table if exists sitting;
+drop table if exists sittingforeman;
+drop table if exists party;
+drop table if exists partytype;
+drop table if exists partyuser;
+drop table if exists partyguest;
+drop table if exists log;
+drop table if exists event;
 
 create table users (
 	userId			integer auto_increment,
@@ -109,4 +121,7 @@ create table event (
 	eventText		varchar(50),
 	primary key(eventText)
 );
+
+set FOREIGN_KEY_CHECKS = 0;
+
 
