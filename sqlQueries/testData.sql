@@ -20,7 +20,7 @@ insert into foodpref values
     ('Vegan'),
     ('Nötter');
 
-insert into userFood values
+insert into userfood values
     (1, 'Laktos'),
     (2, 'Nötter');
 

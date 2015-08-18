@@ -5,7 +5,7 @@ set FOREIGN_KEY_CHECKS = 0;
 drop table if exists users;
 drop table if exists usertype;
 drop table if exists foodpref;
-drop table if exists userFood;
+drop table if exists userfood;
 drop table if exists restaurant;
 drop table if exists sitting;
 drop table if exists sittingforeman;
@@ -38,7 +38,7 @@ create table foodpref (
 	primary key(foodPref)
 );
 
-create table userFood (
+create table userfood (
 	userId			integer,
 	foodPref		varchar(20),
 	primary key(userId,foodPref),
