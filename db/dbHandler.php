@@ -1,6 +1,7 @@
 <?php
 	require_once 'dbconfig.php'; 
 	require_once 'database.php';
+	
 	class DatabaseHandler{
 		private $db;
 
@@ -20,7 +21,7 @@
 		}
 
 		/** 
-		  * Here goes all the methods for retrieving and updating data.
+		  * Here are all the methods for retrieving and updating data.
 		**/
 
 		public function addSitting($sittDate) {

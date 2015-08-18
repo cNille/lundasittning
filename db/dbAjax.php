@@ -1,8 +1,8 @@
 <?php
-	require_once 'dbHandler.php'; 
- 
+	require_once 'dbHandler.php';
 	
 	if(isset($_POST['action']) && !empty($_POST['action'])) {
+		
 	    $action = $_POST['action'];
 	    switch($action) {
 	        case 'addSitting' : addSitting();break;
