@@ -7,10 +7,7 @@ $("#event-creator-initiate").click(function(){
 	$("#event-creator").append( "<button id='confirm'>Y</button>");
 	
 	$("#reject").click(function(){
-		$('#newDate').remove();
-		$('#reject').remove();
-		$('#confirm').remove();
-		document.getElementById("event-creator-initiate").style.display = "block";
+		resetCreation();
 	});
 
 	$("#confirm").click(function(){
@@ -41,17 +38,16 @@ $("#event-creator-initiate").click(function(){
 		var payDate = new Date(realDate);
 		payDate.setDate(payDate.getDate() - 10);
 		payDate = formatDate(payDate);
-		
-		$(".event-window:nth-last-child(2)").clone().insertBefore("#event-creator");
-		$(".event-window:nth-last-child(2)").attr("id",realDate);
-		$(".event-window:nth-last-child(2)").find(".event-window-date").html(date);
 
 		$.ajax({
 			type: 'POST',
 			url: 'db/dbAjax.php',
 			data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate,
 			success: function(data){
-				// If you want, alert whatever your PHP script outputs
+				$(".event-window:nth-last-child(2)").clone().insertBefore("#event-creator");
+				$(".event-window:nth-last-child(2)").attr("id",realDate);
+				$(".event-window:nth-last-child(2)").find(".event-window-date").html(date);
+				resetCreation()
 			}
 		});
 	});
@@ -67,4 +63,11 @@ function formatDate(date) {
     if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-');
+}
+
+function resetCreation(){
+	$('#newDate').remove();
+	$('#reject').remove();
+	$('#confirm').remove();
+	document.getElementById("event-creator-initiate").style.display = "block";
 }
