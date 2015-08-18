@@ -25,7 +25,7 @@
 		echo '4';
 		if(isset($_POST['date']) && !empty($_POST['date'])) {
 			echo '5';
-			$dbHandler->deleteSitting($_POST['date']);
+			$this->dbHandler->deleteSitting($_POST['date']);
 		}
 	}
 	
