@@ -4,13 +4,33 @@
 .sidenav{
 	position: fixed;
 	height: 100vh;
-	width: 300px;
+	width: $sideNavWidth;
 	top: 0;
-	right: -300px;
+	right: -$sideNavWidth;
 	background-color: white;
 	@include easy-trans(0.3s);
 
 	&.active{
 		right: 0;
 	}
+}
+
+.shadow{
+	position: fixed;
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	top:0;
+	left:0;
+	visibility: hidden;
+
+	background-color: black;
+	opacity: 0.0;
+	@include easy-trans(0.3s);
+
+	&.active{
+		visibility: visible;
+		opacity: 0.5;
+	}
+
 }

@@ -1,6 +1,7 @@
 	
 
 
+	<div class='shadow'></div>
 	<div class="sidenav">
 		<h1>Menu</h1>
 		<ul>
