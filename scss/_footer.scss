@@ -1,0 +1,27 @@
+
+
+
+.fb-login{
+	width: 150px;
+	height: 30px;
+	position: absolute;
+	display: block;
+	bottom: 20px;
+	right: 50px;
+	opacity: 0.6;
+	@include easy-trans(0.3s);
+
+	&:hover{
+		opacity: 1.0;
+		cursor: pointer;
+	}
+
+	img{
+		width: 30px;
+		height: 30px;
+		vertical-align: middle;
+	}
+	span{
+		color: white;
+	}
+}

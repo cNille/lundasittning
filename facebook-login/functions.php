@@ -1,4 +1,5 @@
 <?php
+echo 'DBERR';
 require 'dbconfig.php';
 function checkuser($fuid,$ffname,$femail){
     	$check = mysql_query("select * from Users where Fuid='$fuid'");
