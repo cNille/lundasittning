@@ -34,8 +34,13 @@ $("#event-creator-initiate").click(function(){
 			var realDate = "2015-" + arr[1] + "-" + arr[0];
 		}
 		
-		var preldate = date('Y-m-d', strtotime(realDate. ' - 14 days'));
-		var paydate = date('Y-m-d', strtotime(realDate. ' - 10 days'));
+		var prelDate = new Date(realDate);
+		prelDate.setDate(prelDate.getDate() - 14);
+		prelDate = formatDate(prelDate);
+		
+		var payDate = new Date(realDate);
+		payDate.setDate(payDate.getDate() - 10);
+		payDate = formatDate(payDate);
 		
 		$(".event-window:nth-last-child(2)").clone().insertBefore("#event-creator");
 		$(".event-window:nth-last-child(2)").attr("id",realDate);
@@ -44,10 +49,22 @@ $("#event-creator-initiate").click(function(){
 		$.ajax({
 			type: 'POST',
 			url: 'db/dbAjax.php',
-			data: 'action=addSitting&date=' + realDate + '&preldate=' + preldate + '&paydate=' + paydate,
+			data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate,
 			success: function(data){
 				// If you want, alert whatever your PHP script outputs
 			}
 		});
 	});
 });
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
