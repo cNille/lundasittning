@@ -14,7 +14,7 @@
 
 	function addSitting($dbHandler){
 		if(isset($_POST['date']) && !empty($_POST['date'])) {
-			$dbHandler->addSitting($_POST['date']);
+			$dbHandler->addSitting($_POST['date'], $_POST['preldate'], $_POST['paydate']);
 		}
 	}
 	
