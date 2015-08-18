@@ -36,9 +36,9 @@
     		return $result[0]; 
 		}
 
-		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant) {
-		    $sql = "INSERT INTO sitting (sittDate, sittPrelDeadline, sittPayDeadline, resName) VALUES (?, ?, ?, ?);";
-    		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadlinel, $restaurant));
+		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant, $spots) {
+		    $sql = "INSERT INTO sitting (sittDate, sittPrelDeadline, sittPayDeadline, resName, spotsLeft) VALUES (?, ?, ?, ?, ?);";
+    		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadlinel, $restaurant, $spots));
     		return $result[0]; 
 		}
 
@@ -51,7 +51,7 @@
 		public function getSittings() {
 			$sql = "SELECT * FROM sitting ORDER BY sittDate";
 			$result = $this->db->executeQuery($sql, array());
-			return $result; 
+			return $this->arrarrSitting($result); // Structure: [ {'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'} ]
 		}
 
 		public function getSitting($sittDate) {
@@ -70,6 +70,12 @@
 			$sql = "SELECT * FROM restaurant WHERE resName=?";
 			$result = $this->db->executeQuery($sql, array($name));
 			return $this->arrToRes($result[0]);  // Structure: { 'name', 'email', 'openhours', 'deposit', 'price', 'size', 'summary' }
+		}
+
+		public function getResSize($name){
+			$sql = "SELECT resSize FROM restaurant WHERE resName=?";
+			$result = $this->db->executeQuery($sql, array($name));
+			return $result[0][0];
 		}
 		
 
