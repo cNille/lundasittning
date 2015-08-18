@@ -1,9 +1,16 @@
 
+
+
 .sidenav{
 	position: fixed;
 	height: 100vh;
 	width: 300px;
+	top: 0;
 	right: -300px;
-	background-colore: white;
+	background-color: white;
+	@include easy-trans(0.3s);
 
+	&.active{
+		right: 0;
+	}
 }

@@ -13,8 +13,15 @@ body {
     position: fixed;
     height: 100vh;
     width: 300px;
+    top: 0;
     right: -300px;
-    background-colore: white; }
+    background-color: white;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+    body .sidenav.active {
+      right: 0; }
   body .header {
     height: 55px;
     width: 100%;
@@ -36,7 +43,11 @@ body {
       font-size: 1.5em;
       color: transparent;
       background: transparent;
-      outline: none; }
+      outline: none;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
     body .header .header-button::before {
       position: absolute;
       top: 0.5em;

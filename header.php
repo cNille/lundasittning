@@ -11,5 +11,8 @@ session_start();
 	</head>
 	<body>
 		<div class="header">
-			<button class="header-button" id="open-button">Open Menu</button>
+			<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>
 		</div>
+
+
+		
