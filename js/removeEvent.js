@@ -3,8 +3,8 @@ $(".event-remove-button").click(function(){
 
 	$.ajax({
 		type: 'POST',
-		url: 'scripts/removeEvent.php',
-		data: 'date=' + temp,
+		url: 'db/dbAjax.php',
+		data: 'action=removeSitting&date=' + temp,
 		success: function(data){
 			alert(data);
 			// If you want, alert whatever your PHP script outputs
