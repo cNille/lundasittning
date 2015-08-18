@@ -106,6 +106,15 @@ body {
         line-height: 30px; }
     body .fb-login a {
       color: white; }
+  body .single-sitting {
+    background-color: white;
+    width: 100%;
+    min-height: 200px; }
+    body .single-sitting .left {
+      padding: 20px;
+      width: 50%; }
+      body .single-sitting .left table {
+        text-align: center; }
   body .content {
     margin-top: 60px;
     max-width: 850px;
@@ -127,7 +136,7 @@ body {
       margin-right: auto;
       width: 90%; }
       body .content .event-grid .event-window {
-        background-color: #FFFFEA;
+        background-color: white;
         margin-left: 10px;
         margin-top: 10px;
         float: left;
