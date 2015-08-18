@@ -17,7 +17,7 @@
 			foreach($sittings as $row => $s) {
 				$date = date('j/n', strtotime($s[0]));
 				?>
-				<div class="event-window" id="<?php echo $date; ?>">
+				<div class="event-window" id="<?php echo $s[0]; ?>">
 					<div class="event-window-date">
 						<?php echo $date; ?>
 					</div>
@@ -30,6 +30,9 @@
 					<button class="event-remove-button">Remove</button>
 				</div>
 		<?php } ?>
+			<div class="event-window" id="event-creator">
+				<p id="event-creator-initiate"> + </p>
+			</div>
 	</div>
 </div>
 

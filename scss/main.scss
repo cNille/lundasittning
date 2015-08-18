@@ -86,7 +86,7 @@ body{
 				margin-left: 10px;
 				margin-top: 10px;
 				
-				display: inline-block;
+				float: left;
 				width: 150px;
 				height: 150px;
 				
@@ -118,10 +118,47 @@ body{
 				}
 				.event-remove-button{
 					position: absolute;
-					right: 0px;
-					bottom: 0px;
+					right: -20px;
+					bottom: -5px;
 					border: none;
 				}
+			}
+			
+			#event-creator{
+				p {
+					padding: 0;
+					margin: 0;
+					height: 150px;
+					line-height: 140px;
+					font-size: 100px;
+					
+					-webkit-touch-callout: none;
+					-webkit-user-select: none;
+					-khtml-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none;
+					user-select: none;
+				}
+				input {
+					padding: 0;
+					margin: 0;
+					border: 0;
+					background: transparent;
+					outline: none;
+					
+					width: 150px;
+					height: 120px;
+					line-height: 80px;
+					font-size: 30px;
+					
+					text-align: center;
+				}
+				p:hover{
+					cursor: pointer;
+				}
+			}
+			
+			&:hover{
 			}
 		}
 	}

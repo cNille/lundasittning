@@ -101,7 +101,7 @@ body {
         background-color: #FFFFEA;
         margin-left: 10px;
         margin-top: 10px;
-        display: inline-block;
+        float: left;
         width: 150px;
         height: 150px;
         -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -124,8 +124,33 @@ body {
             text-decoration: underline; }
         body .content .event-grid .event-window .event-remove-button {
           position: absolute;
-          right: 0px;
-          bottom: 0px;
+          right: -20px;
+          bottom: -5px;
           border: none; }
+      body .content .event-grid #event-creator p {
+        padding: 0;
+        margin: 0;
+        height: 150px;
+        line-height: 140px;
+        font-size: 100px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none; }
+      body .content .event-grid #event-creator input {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        background: transparent;
+        outline: none;
+        width: 150px;
+        height: 120px;
+        line-height: 80px;
+        font-size: 30px;
+        text-align: center; }
+      body .content .event-grid #event-creator p:hover {
+        cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */
