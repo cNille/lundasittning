@@ -1,17 +1,27 @@
 -- Sets in testdata to the tables
-
 start transaction;
+
+insert into restaurant(resName, resPrice, resSize, resSummary) values
+    ('Nilles nation', 140, 90, 'EN UPPLEVELSE!'),
+    ('Franz nation', 240, 120, 'EN UPPLEVELSE!'),
+    ('Malins nation', 40, 50, 'EN UPPLEVELSE!');
 
 insert into usertype values
     ('Quratel'),
     ('Sittningsförman'),
-    ('Förman'),
-    ('Vanlig');
+    ('Förman');
 
-insert into users(userName, userEmail, userTelephone, userType) values
-    ('Nille', 'c@shapeapp.se', '0708342311', 'Quratel'),
-    ('Franz', 'franzmail123@gmail.com', '0708123456', 'Sittningsförman'),
-    ('Malin', 'cnilsson_92@hotmail.com', '0708123456', 'Förman');
+insert into users(userName, userEmail, userTelephone) values
+    ('Nille', 'c@shapeapp.se', '0708342311'),
+    ('Franz', 'franzmail123@gmail.com', '0708123456'),
+    ('Malin', 'cnilsson_92@hotmail.com', '0708123456');
+
+insert into restaurantuser values
+    (1, 'Nilles nation', 'Quratel'),
+    (2, 'Nilles nation', 'Förman'),
+    (3, 'Nilles nation', 'Sittningsförman'),
+    (1, 'Franz nation', 'Förman'),
+    (1, 'Malins nation', 'Quratel');
 
 insert into foodpref values
     ('Laktos'),
@@ -23,9 +33,6 @@ insert into foodpref values
 insert into userfood values
     (1, 'Laktos'),
     (2, 'Nötter');
-
-insert into restaurant(resName, resPrice, resSize, resSummary) values
-    ('Nilles nation', 140, 90, 'EN UPPLEVELSE!');
 
 insert into sitting (sittDate, sittAppetiser, sittMain, sittDesert) values
     ('2015-09-04', 'Pannkakor', 'Pizza', 'Glass'),
@@ -47,12 +54,10 @@ insert into party (partyName, sittingDate, partyType, partyInterest) values
     ('FRANZ BDAY', '2015-09-04', 'Sluten', 40),
     ('MALIN BDAY', '2015-09-11', 'Öppen', 40);
 
-
 insert into partycreator values
     (1,1),
     (2,2),
     (3,3);
-
 
 insert into partyguest (partyId, userId, userPayed) values
     (1,1,0),
@@ -77,9 +82,7 @@ insert into log (userId, eventText, date) values
     (3, 'User created', CURDATE()),
     (1, 'Sitting created', CURDATE()),
     (2, 'Sitting created', CURDATE()),
-    (3, 'Sitting created', CURDATE())
-    ;
-
+    (3, 'Sitting created', CURDATE());
 
 commit;
 

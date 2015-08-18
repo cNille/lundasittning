@@ -7,6 +7,7 @@ drop table if exists usertype;
 drop table if exists foodpref;
 drop table if exists userfood;
 drop table if exists restaurant;
+drop table if exists restaurantuser;
 drop table if exists sitting;
 drop table if exists sittingforeman;
 drop table if exists party;
@@ -16,22 +17,43 @@ drop table if exists partyguest;
 drop table if exists log;
 drop table if exists event;
 
+create table restaurant (
+	resName			varchar(30),
+	resEmail		varchar(30),
+	resHours		tinytext,
+	resDeposit		integer,
+	resPrice		integer,
+	resSize			integer,
+	resSummary		tinytext,
+	primary key(resName)
+);
+
 create table users (
 	userId			integer auto_increment,
 	facebookId		integer,
 	userName		varchar(30),
 	userEmail		varchar(30),
 	userTelephone	varchar(15),
-	userType		varchar(20),
 	userOther		varchar(20),
-	primary key(userId),
-	foreign key (userType) references usertype(userType)
+	active			tinyint(1),
+	primary key(userId)
 );
 
 create table usertype (
 	userType		varchar(20),
 	primary key(userType)
 );
+
+create table restaurantuser (
+	userId		integer,
+	resName		varchar(30),
+	userType	varchar(20),
+	primary key (userId, resName),
+	foreign key (userId) references users(userId),
+	foreign key (userType) references usertype(userType),
+	foreign key (resName) references restaurant(resName)
+);
+
 
 create table foodpref (
 	foodPref		varchar(20),
@@ -46,17 +68,6 @@ create table userfood (
 	foreign key (foodPref) references foodpref(foodPref)
 );
 
-create table restaurant (
-	resName			varchar(30),
-	resEmail		varchar(30),
-	resHours		tinytext,
-	resDeposit		integer,
-	resPrice		integer,
-	resSize			integer,
-	resSummary		tinytext,
-	primary key(resName)
-);
-
 create table sitting (
 	sittDate			date not null unique,
 	sittAppetiser		varchar(50),
@@ -64,7 +75,10 @@ create table sitting (
 	sittDesert			varchar(50),
 	sittPrelDeadline	date,
 	sittPayDeadline		date,
-	primary key(sittDate)
+	active				tinyint(1),
+	resName				varchar(30),
+	primary key(sittDate),
+	foreign key(resName) references restaurant(resName)
 );
 
 create table sittingforeman (
@@ -115,9 +129,11 @@ create table log (
 	userId			integer,
 	eventText		varchar(50),
 	date			date,
+	resName			varchar(30),
 	primary key(logId),
 	foreign key (userId) references users(userId),
-	foreign key (eventText) references event(eventText)
+	foreign key (eventText) references event(eventText),
+	foreign key(resName) references restaurant(resName)
 );
 
 create table event (
@@ -126,5 +142,7 @@ create table event (
 );
 
 set FOREIGN_KEY_CHECKS = 1;
+
+
 
 
