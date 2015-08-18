@@ -1,20 +1,15 @@
 <?php 
 	include 'header.php';
- 	require_once 'dbconfig.php'; 
- 	require_once 'database.php';
- 	$db = new Database(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-	$db->openConnection();
+ 	include 'db/dbHandler.php';
+ 	
+ 	$dbHandler = new DatabaseHandler();
 
-	if(!$db->isConnected()) {
-		header("Location: cannotConnect.php");
-		exit();
-	}
-			
-	$sittings = $db->getSittings();
-	
-	
-	$db->closeConnection();
+	$dbHandler->connect();
 
+	$sittings = $dbHandler->getSittings();
+	
+	$dbHandler->disconnect();
+	
  ?>
 
 <div class="content">

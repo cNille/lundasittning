@@ -71,7 +71,7 @@ class Database {
    *           * @param $param Array with parameters 
    *             * @return The result set
    *               */
-  private function executeQuery($query, $param = null) {
+  public function executeQuery($query, $param = null) {
     try {
       $stmt = $this->conn->prepare($query);
       $stmt->execute($param);
@@ -90,7 +90,7 @@ class Database {
    *           * @param $param Array with parameters 
    *             * @return The number of affected rows
    *               */
-  private function executeUpdate($query, $param = null) {
+  public function executeUpdate($query, $param = null) {
     try{
       $stmt = $this->conn->prepare($query);
       $stmt->execute($param);
@@ -109,22 +109,11 @@ class Database {
    *             * @return true if the user exists, false otherwise.
    *               */
 
-/* Useless function to see if there are any users in db. */
-public function userExists() {
-    $sql = "select * from users";
-    $result = $this->executeQuery($sql, array());
-    return count($result) == 1; 
-  }
-  
-public function getSittings() {
-	$sql = "SELECT * FROM sitting ORDER BY sittDate";
-	$result = $this->executeQuery($sql, array());
-	return $result; 
-  }
+
 
   
 
-  /**
+  /*
   public function userExists($userId) {
     $sql = "select roomName from users where userName = ?";
     $result = $this->executeQuery($sql, array($userId));
