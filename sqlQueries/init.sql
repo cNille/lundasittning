@@ -30,12 +30,12 @@ create table restaurant (
 
 create table users (
 	userId			integer auto_increment,
-	facebookId		integer,
+	facebookId		varchar(30) UNIQUE,
 	userName		varchar(30),
 	userEmail		varchar(30),
 	userTelephone	varchar(15),
 	userOther		varchar(20),
-	active			tinyint(1),
+	active			tinyint(1) DEFAULT 1,
 	primary key(userId)
 );
 
@@ -75,7 +75,7 @@ create table sitting (
 	sittDesert			varchar(50),
 	sittPrelDeadline	date,
 	sittPayDeadline		date,
-	active				tinyint(1),
+	active				tinyint(1) DEFAULT 1,
 	resName				varchar(30),
 	primary key(sittDate),
 	foreign key(resName) references restaurant(resName)

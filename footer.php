@@ -1,27 +1,18 @@
 	
 
-	<div class="fb-login">
-		<img src="images/FB-logga.png" />
-		<span>Logga in</span>
-	</div>
 
-
-	<?php if ($_SESSION['FBID']): ?>      <!--  After user login  -->
-		<div class="container">
-		<div class="hero-unit">
-		  <h1>Hello <?php echo $_SESSION['USERNAME']; ?></h1>
-		  <p>Welcome to "facebook login" tutorial</p>
-		  </div>
-		<div class="span4">
-		 <ul class="nav nav-list">
-		<li class="nav-header">Image</li>
-		 <li><img src="https://graph.facebook.com/<?php echo $_SESSION['USERNAME']; ?>/picture"></li>
-		<li class="nav-header">Facebook ID</li>
-		<li><?php echo  $_SESSION['FBID']; ?></li>
-		<li class="nav-header">Facebook fullname</li>
-		<li><?php echo $_SESSION['FULLNAME']; ?></li>
-		<div><a href="facebook-login/logout.php">Logout</a></div>
-		</ul></div></div>
+	<?php if ($loggedIn): ?> 
+		<div class="fb-login">
+			<img src="https://graph.facebook.com/<?php echo $fbid; ?>/picture" />
+			<span><?php echo $fbFullname; ?></span>
+			<br />
+			<a href="facebook-login/logout.php">Logga ut</a>
+		</div>
+	<?php else : ?>
+		<div class="fb-login">
+			<img src="images/FB-logga.png" />
+			<span class="login">Logga in</span>
+		</div>
 	<?php endif; ?>
 
 	<div class='shadow'></div>
