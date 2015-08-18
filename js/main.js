@@ -8,6 +8,8 @@
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
+
+ /*
 (function() {
 
 	var bodyEl = document.body,
@@ -48,3 +50,23 @@
 	init();
 
 })();
+*/
+
+function toggleSide(){
+	var right = parseInt($('.sidenav').css('right'));
+	var width = parseInt($('.sidenav').css('width'));
+	$('.sidenav').css('right', Math.abs(right) - width);
+	$('.header-button').css('margin-right', Math.abs(right));
+}
+
+
+
+
+
+
+
+
+
+
+
+

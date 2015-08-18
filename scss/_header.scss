@@ -1,0 +1,47 @@
+
+
+.header {
+		height: 55px;
+		width: 100%;
+		z-index: 1000;
+		
+		background-color: black;
+		
+		-moz-box-shadow: 0px 4px 10px rgba(0,0,0,.5);
+		-webkit-box-shadow: 0px 4px 10px rgba(0,0,0,.5);
+		box-shadow: 0px 4px 10px rgba(0,0,0,.5);
+		
+		.header-button {
+			position: fixed;
+			z-index: 9000;
+			right: 0px;
+			top: 0px;
+			padding: 0;
+			width: 2.5em;
+			height: 2.25em;
+			border: none;
+			text-indent: 2.5em;
+			font-size: 1.5em;
+			color: transparent;
+			background: transparent;
+			outline: none;
+				@include easy-trans(0.3s);
+
+		}
+		
+		.header-button::before {
+			position: absolute;
+			top: 0.5em;
+			right: 0.5em;
+			bottom: 0.5em;
+			left: 0.5em;
+			background: linear-gradient(#FFFFFF 20%, transparent 20%, transparent 40%, #FFFFFF 40%, #FFFFFF 60%, transparent 60%, transparent 80%, #FFFFFF 80%);
+			content: '';
+		}
+		
+		.header-button:hover {
+			cursor: hand;
+			cursor: pointer;
+			opacity: 0.6;
+		}
+	}
