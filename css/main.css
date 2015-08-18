@@ -135,5 +135,24 @@ body {
         text-align: center; }
       body .content .event-grid #event-creator p:hover {
         cursor: pointer; }
+      body .content .event-grid #event-creator button {
+        position: absolute;
+        bottom: 10px;
+        border: none;
+        width: 25px;
+        height: 25px;
+        color: transparent; }
+      body .content .event-grid #event-creator button:focus {
+        outline: none; }
+      body .content .event-grid #event-creator button:hover {
+        cursor: pointer; }
+      body .content .event-grid #event-creator #reject {
+        background: url("../images/reject.png") no-repeat;
+        background-size: 100% 100%;
+        left: 10px; }
+      body .content .event-grid #event-creator #confirm {
+        background: url("../images/confirm.png") no-repeat;
+        background-size: 100% 100%;
+        right: 10px; }
 
 /*# sourceMappingURL=main.css.map */

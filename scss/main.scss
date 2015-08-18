@@ -155,6 +155,31 @@ body{
 				p:hover{
 					cursor: pointer;
 				}
+				button{
+					position: absolute;
+					bottom: 10px;
+					border: none;
+					width: 25px;
+					height: 25px;
+					color: transparent;
+				}
+				button:focus {
+					outline: none;
+				}
+				button:hover {
+					cursor: pointer;
+				}
+				#reject{
+					background: url('../images/reject.png') no-repeat;
+					background-size: 100% 100%;
+					left: 10px;
+				}
+				#confirm{
+					background: url('../images/confirm.png') no-repeat;
+					background-size: 100% 100%;
+					right: 10px;
+				}
+				
 			}
 			
 			&:hover{
