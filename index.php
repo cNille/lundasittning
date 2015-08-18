@@ -13,6 +13,7 @@
 			
 	$exists = $db->userExists();
 	
+	
 	$db->closeConnection();
 
 
