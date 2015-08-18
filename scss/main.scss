@@ -16,6 +16,9 @@ body{
 	min-height: 100vw;
 	min-height: 100vh;
 	
+	@import 'sidenav';
+
+	
 	.header {
 		height: 55px;
 		width: 100%;

@@ -9,6 +9,12 @@ body {
   background-image: url("../images/table.jpg");
   min-height: 100vw;
   min-height: 100vh; }
+  body .sidenav {
+    position: fixed;
+    height: 100vh;
+    width: 300px;
+    right: -300px;
+    background-colore: white; }
   body .header {
     height: 55px;
     width: 100%;
