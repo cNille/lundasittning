@@ -2,7 +2,6 @@
 
 
 .fb-login{
-	width: 150px;
 	height: 30px;
 	position: absolute;
 	display: block;
@@ -10,6 +9,8 @@
 	right: 50px;
 	opacity: 0.6;
 	@include easy-trans(0.3s);
+	font-size: 13px;
+	text-align: right;
 
 	&:hover{
 		opacity: 1.0;
@@ -17,11 +18,22 @@
 	}
 
 	img{
+		position: absolute;
+		right: -35px;
+		top: 0;
 		width: 30px;
 		height: 30px;
 		vertical-align: middle;
 	}
 	span{
+		color: white;
+
+		&.login{
+			line-height: 30px;
+		}
+	}
+
+	a{
 		color: white;
 	}
 }

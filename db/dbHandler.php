@@ -24,6 +24,19 @@
 		  * Here are all the methods for retrieving and updating data.
 		**/
 
+		public function fbidExists($fbid){
+			$sql = "SELECT userName FROM users WHERE facebookId=?";
+			$result = $this->db->executeQuery($sql, array($fbid));
+			echo $fbid;
+			return count($result) == 1;
+		}
+
+		public function createUser($fbid, $fullname) {
+		    $sql = "INSERT INTO users (facebookId, userName) VALUES (?,?);";
+    		$result = $this->db->executeUpdate($sql, array($fbid, $fullname));
+    		return $result[0]; 
+		}
+
 		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline) {
 		    $sql = "INSERT INTO sitting (sittDate, sittPrelDeadline, sittPayDeadline) VALUES (?, ?, ?);";
     		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadline));
