@@ -31,7 +31,7 @@
 		}
 
 		public function deleteSitting($sittDate){
-		  	$sql = "DELETE FROM sitting WHERE sittDate=?;";
+			$sql = "UPDATE sitting SET active = 0 WHERE sittDate=?;";
 		    $result = $this->db->executeUpdate($sql, array($sittDate));
 		    return count($result) == 1;  
 		}
