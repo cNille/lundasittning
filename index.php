@@ -14,14 +14,14 @@
 	<div class="event-grid">
 		<?php 
 			foreach($sittings as $row => $s) {
-				$date = date('j/n', strtotime($s[0]));
+				$date = date('j/n', strtotime($s->date));
 				?>
-				<div class="event-window" id="<?php echo $s[0]; ?>">
+				<div class="event-window" id="<?php echo $s->date; ?>">
 					<div class="event-window-date">
 						<?php echo $date; ?>
 					</div>
 					<div class="event-window-spots">
-						Antal platser: 200
+						Antal platser: <?php echo $s->spotsLeft;?>
 					</div>
 					<div class="event-window-button">
 						<a href="#"> Se mer </a>
