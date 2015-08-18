@@ -52,6 +52,7 @@ body{
 	@import 'sidenav';
 	@import 'header';
 	@import 'footer';
+	@import 'singlesitting';
 		
 	.content {
 		margin-top: $headerHeight + 10px;
@@ -83,7 +84,7 @@ body{
 			width: 90%;
 	
 			.event-window{
-				background-color: #FFFFEA;
+				background-color: white;
 				margin-left: 10px;
 				margin-top: 10px;
 				
