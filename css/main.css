@@ -12,9 +12,9 @@ body {
   body .sidenav {
     position: fixed;
     height: 100vh;
-    width: 300px;
+    width: 250px;
     top: 0;
-    right: -300px;
+    right: -250px;
     background-color: white;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -22,6 +22,23 @@ body {
     transition: all 0.3s ease-in-out; }
     body .sidenav.active {
       right: 0; }
+  body .shadow {
+    position: fixed;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    background-color: black;
+    opacity: 0.0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+    body .shadow.active {
+      visibility: visible;
+      opacity: 0.5; }
   body .header {
     height: 55px;
     width: 100%;
