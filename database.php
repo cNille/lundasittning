@@ -115,6 +115,12 @@ public function userExists() {
     $result = $this->executeQuery($sql, array());
     return count($result) == 1; 
   }
+  
+public function getSittings() {
+	$sql = "SELECT * FROM sitting ORDER BY sittDate";
+	$result = $this->executeQuery($sql, array());
+	return $result; 
+  }
 
   
 

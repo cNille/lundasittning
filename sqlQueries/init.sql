@@ -23,6 +23,7 @@ create table users (
 	userEmail		varchar(30),
 	userTelephone	varchar(15),
 	userType		varchar(20),
+	userOther		varchar(20),
 	primary key(userId),
 	foreign key (userType) references usertype(userType)
 );
