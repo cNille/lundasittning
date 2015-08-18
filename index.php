@@ -1,23 +1,8 @@
 <?php 
-	include 'header.php';
- 	include 'db/dbHandler.php';
-
-	$loggedIn = false;
-	if($_SESSION['FBID'] && $_SESSION['FBID'] != null){
-		$loggedIn = true;
-		$fbid = $_SESSION['FBID'];
-		$fbFullname = $_SESSION['FULLNAME'];
-		$fbUsername = $_SESSION['USERNAME'];
-	}
+	require_once 'header.php';
 
  	$dbHandler = new DatabaseHandler();
 	$sittings = $dbHandler->getSittings();
-
-	$userExists = $dbHandler->fbidExists($fbid);
-	echo $userExists;
-	if(loggedIn && !$userExists && $fbid != null){
-		$dbHandler->createUser($fbid, $fbFullname);
-	}
 	$dbHandler->disconnect();
 	
  ?>
