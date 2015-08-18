@@ -3,11 +3,7 @@
  	include 'db/dbHandler.php';
  	
  	$dbHandler = new DatabaseHandler();
-
-	$dbHandler->connect();
-
 	$sittings = $dbHandler->getSittings();
-	
 	$dbHandler->disconnect();
 	
  ?>

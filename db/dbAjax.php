@@ -11,17 +11,16 @@
 	}
 
 	$dbHandler = new DatabaseHandler();
-	$dbHandler.connect();
 
 	function addSitting(){
 		if(isset($_POST['date']) && !empty($_POST['date'])) {
-			$dbHandler.addSitting($_POST['date']);
+			$dbHandler->addSitting($_POST['date']);
 		}
 	}
 	
 	function removeSitting(){
 		if(isset($_POST['date']) && !empty($_POST['date'])) {
-			$dbHandler.deleteSitting($_POST['date']);
+			$dbHandler->deleteSitting($_POST['date']);
 		}
 	}
 	

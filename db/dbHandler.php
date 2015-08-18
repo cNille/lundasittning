@@ -6,6 +6,7 @@
 
 		public function __construct() {
 			$this->db = new Database(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+			$this->connect();
 		}
 		public function connect(){
 			$this->db->openConnection();
