@@ -37,14 +37,14 @@
     		return $result[0]; 
 		}
 
-		public function addSitting($sittDate) {
-		    $sql = "INSERT INTO sitting (sittDate) VALUES (?);";
-    		$result = $this->db->executeUpdate($sql, array($sittDate));
+		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline) {
+		    $sql = "INSERT INTO sitting (sittDate, sittPrelDeadline, sittPayDeadline) VALUES (?, ?, ?);";
+    		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadline));
     		return $result[0]; 
 		}
 
 		public function deleteSitting($sittDate){
-			$sql = "UPDATE sitting SET active = 0 WHERE sittDate=?;";
+		$sql = "UPDATE sitting SET active = 0 WHERE sittDate=?;";
 		    $result = $this->db->executeUpdate($sql, array($sittDate));
 		    return count($result) == 1;  
 		}
