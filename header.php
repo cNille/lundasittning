@@ -1,5 +1,25 @@
 <?php
-session_start(); 
+	
+	session_start(); 
+	require_once 'db/dbHandler.php';
+
+	$loggedIn = false;
+	if($_SESSION['FBID'] && $_SESSION['FBID'] != null){
+		$loggedIn = true;
+		$fbid = $_SESSION['FBID'];
+		$fbFullname = $_SESSION['FULLNAME'];
+		$fbUsername = $_SESSION['USERNAME'];
+	}
+		
+	$dbHandler = new DatabaseHandler();	
+	$restaurant = $dbHandler->getRestaurant('Nilles nation');
+	
+	$userExists = $dbHandler->fbidExists($fbid);
+	if(loggedIn && !$userExists && $fbid != null){
+		$dbHandler->createUser($fbid, $fbFullname);
+	}
+	$dbHandler->disconnect();
+		
 ?>
 <!doctype html>
 
@@ -11,6 +31,11 @@ session_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	</head>
 	<body>
+		<script>
+			var RESTAURANT_NAME = '<?php echo $restaurant->name ?>';
+		</script>
+
+
 		<div class="header">
 			<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>
 		</div>
