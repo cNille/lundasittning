@@ -34,11 +34,11 @@ insert into userfood values
     (1, 'Laktos'),
     (2, 'Nötter');
 
-insert into sitting (sittDate, sittAppetiser, sittMain, sittDesert) values
-    ('2015-09-04', 'Pannkakor', 'Pizza', 'Glass'),
-    ('2015-09-11', 'Pannkakor', 'Pizza', 'Glass'),
-    ('2015-09-18', 'Pannkakor', 'Pizza', 'Glass'),
-    ('2015-09-25', 'Pannkakor', 'Pizza', 'Glass');
+insert into sitting (sittDate, sittAppetiser, sittMain, sittDesert, resName, spotsLeft) values
+    ('2015-09-04', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 80),
+    ('2015-09-11', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 80),
+    ('2015-09-18', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 80),
+    ('2015-09-25', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 80);
 
 insert into sittingforeman values
     ('2015-09-04', 1),
