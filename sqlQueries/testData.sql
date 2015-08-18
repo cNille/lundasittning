@@ -2,97 +2,83 @@
 
 start transaction;
 
-insert into users values
-    ('')
-    ;
-
-
 insert into usertype values
-    ('')
-    ;
+    ('Quratel'),
+    ('Sittningsförman'),
+    ('Förman'),
+    ('Vanlig');
+
+insert into users(userName, userEmail, userTelephone, userType) values
+    ('Nille', 'c@shapeapp.se', '0708342311', 'Quratel'),
+    ('Franz', 'franzmail123@gmail.com', '0708123456', 'Sittningsförman'),
+    ('Malin', 'cnilsson_92@hotmail.com', '0708123456', 'Förman');
 
 insert into foodpref values
-    ('')
-    ;
+    ('Laktos'),
+    ('Gluten'),
+    ('Vegatarian'),
+    ('Vegan'),
+    ('Nötter');
 
 insert into userFood values
-    ('')
-    ;
+    (1, 'Laktos'),
+    (2, 'Nötter');
 
-insert into restaurant values
-    ('')
-    ;
+insert into restaurant(resName, resPrice, resSize, resSummary) values
+    ('Nilles nation', 140, 90, 'EN UPPLEVELSE!');
 
-insert into sitting values
-    ('')
-    ;
+insert into sitting (sittDate, sittAppetiser, sittMain, sittDesert) values
+    ('2015-09-04', 'Pannkakor', 'Pizza', 'Glass'),
+    ('2015-09-11', 'Pannkakor', 'Pizza', 'Glass'),
+    ('2015-09-18', 'Pannkakor', 'Pizza', 'Glass'),
+    ('2015-09-25', 'Pannkakor', 'Pizza', 'Glass');
 
 insert into sittingforeman values
-    ('')
-    ;
-
-insert into party values
-    ('')
-    ;
+    ('2015-09-04', 1),
+    ('2015-09-11', 2),
+    ('2015-09-18', 3);
 
 insert into partytype values
-    ('')
-    ;
+    ('Sluten'),
+    ('Öppen');
 
-insert into partyuser values
-    ('')
-    ;
+insert into party (partyName, sittingDate, partyType, partyInterest) values
+    ('NILLE BDAY', '2015-09-04', 'Öppen', 40),
+    ('FRANZ BDAY', '2015-09-04', 'Sluten', 40),
+    ('MALIN BDAY', '2015-09-11', 'Öppen', 40);
 
 
-insert into partyguest values
-    ('')
-    ;
+insert into partycreator values
+    (1,1),
+    (2,2),
+    (3,3);
 
-insert into log values
-    ('')
-    ;
+
+insert into partyguest (partyId, userId, userPayed) values
+    (1,1,0),
+    (2,1,1),
+    (3,1,0),
+    (1,2,0),
+    (2,2,1),
+    (3,2,0),
+    (1,3,0),
+    (2,3,1),
+    (3,3,0);
 
 insert into event values
-    ('')
+    ('User created'),
+    ('Sitting created'),
+    ('Sitting deleted'),
+    ('User Payed');
+
+insert into log (userId, eventText, date) values
+    (1, 'User created', CURDATE()),
+    (2, 'User created', CURDATE()),
+    (3, 'User created', CURDATE()),
+    (1, 'Sitting created', CURDATE()),
+    (2, 'Sitting created', CURDATE()),
+    (3, 'Sitting created', CURDATE())
     ;
-
-
-
-insert into severity values
-    ('small'),
-    ('medium'),
-    ('large');
-
-insert into status values
-    ('new'),
-    ('ongoing'),
-    ('done');
-
-insert into usertype values
-    ('inhouse'),
-    ('admin'),
-    ('nation');
-
-insert into roomtype values
-    ('1S'),
-    ('1N'),
-    ('2S'),
-    ('2N'),
-    ('3S'),
-    ('3N'),
-    ('nationrooms'),
-    ('public');
-
-insert into rooms values
-    ('121', '1S', 1),
-    ('122', '1S', 1),
-    ('123', '1S', 1),
-    ('124', '1S', 1),
-    ('125', '1S', 1),
-    ('126', '1S', 1),
-    ('127', '1S', 1),
-    ('128', '1S
-
 
 
 commit;
