@@ -5,33 +5,23 @@ $("#event-creator-initiate").click(function(){
 	
 	$("#event-creator").append( "<button id='reject'>X</button>");
 	$("#event-creator").append( "<button id='confirm'>Y</button>");
-});
+	
+	$("#reject").click(function(){
+		$('#newDate').remove();
+		$('#reject').remove();
+		$('#confirm').remove();
+		document.getElementById("event-creator-initiate").style.display = "block";
+	});
 
-$("#reject").click(function(){
-	alert("lol");
-	// $('#newDate').remove();
-// 	$('#reject').remove();
-// 	$('#confirm').remove();
-// 	document.getElementById("event-creator-initiate").style.display = "block";
-});
+	$("#confirm").click(function(){
 
-$("#confirm").click(function(){
-	var temp = addEvent(this, "event-window");
-
-	$.ajax({
-		type: 'POST',
-		url: 'db/dbAjax.php',
-		data: 'action=addSitting&date=' + temp,
-		success: function(data){
-			// If you want, alert whatever your PHP script outputs
-		}
+		$.ajax({
+			type: 'POST',
+			url: 'db/dbAjax.php',
+			data: 'action=addSitting&date=' + temp,
+			success: function(data){
+				// If you want, alert whatever your PHP script outputs
+			}
+		});
 	});
 });
-
-
-            	
-function addEvent (el, cls) {
-    while ((el = el.parentElement) && !el.classList.contains(cls));
-    el.style.display = "none";
-    return el.id;
-}
