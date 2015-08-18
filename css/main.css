@@ -77,6 +77,27 @@ body {
       cursor: hand;
       cursor: pointer;
       opacity: 0.6; }
+  body .fb-login {
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    display: block;
+    bottom: 20px;
+    right: 50px;
+    opacity: 0.6;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+    body .fb-login:hover {
+      opacity: 1.0;
+      cursor: pointer; }
+    body .fb-login img {
+      width: 30px;
+      height: 30px;
+      vertical-align: middle; }
+    body .fb-login span {
+      color: white; }
   body .content {
     margin-top: 60px;
     max-width: 850px;
