@@ -1,8 +1,9 @@
 <?php
 	require_once 'dbconfig.php'; 
 	require_once 'database.php';
+	require_once 'dataConverter.php';
 	
-	class DatabaseHandler{
+	class DatabaseHandler extends DataConverter {
 		private $db;
 
 		public function __construct() {
@@ -20,14 +21,12 @@
 			$this->db->closeConnection();
 		}
 
-		/** 
-		  * Here are all the methods for retrieving and updating data.
-		**/
+		// Here are all the methods for retrieving and updating data.
+		// ======================================================
 
 		public function fbidExists($fbid){
 			$sql = "SELECT userName FROM users WHERE facebookId=?";
 			$result = $this->db->executeQuery($sql, array($fbid));
-			echo $fbid;
 			return count($result) == 1;
 		}
 
@@ -37,9 +36,9 @@
     		return $result[0]; 
 		}
 
-		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline) {
-		    $sql = "INSERT INTO sitting (sittDate, sittPrelDeadline, sittPayDeadline) VALUES (?, ?, ?);";
-    		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadline));
+		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant) {
+		    $sql = "INSERT INTO sitting (sittDate, sittPrelDeadline, sittPayDeadline, resName) VALUES (?, ?, ?, ?);";
+    		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadlinel, $restaurant));
     		return $result[0]; 
 		}
 
@@ -54,6 +53,25 @@
 			$result = $this->db->executeQuery($sql, array());
 			return $result; 
 		}
+
+		public function getSitting($sittDate) {
+			$sql = "SELECT * FROM sitting WHERE sittDate=?";
+			$result = $this->db->executeQuery($sql, array($sittDate));
+			return $this->arrToSitting($result[0]);  // Structure: {'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
+		}
+
+		public function getParties($sittDate) {
+			$sql = "SELECT * FROM party WHERE sittingDate=?";
+			$result = $this->db->executeQuery($sql, array($sittDate));
+			return $this->arrarrParty($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
+		}
+
+		public function getRestaurant($name){
+			$sql = "SELECT * FROM restaurant WHERE resName=?";
+			$result = $this->db->executeQuery($sql, array($name));
+			return $this->arrToRes($result[0]);  // Structure: { 'name', 'email', 'openhours', 'deposit', 'price', 'size', 'summary' }
+		}
+		
 
 	}
 ?>
