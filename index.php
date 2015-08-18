@@ -1,5 +1,22 @@
-<?php include 'header.php'; ?>
-<?php include 'dbconfig.php'; ?>
+<?php 
+	include 'header.php';
+ 	require_once 'dbconfig.php'; 
+ 	require_once 'database.php'; 
+
+ 	$db = new Database(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+	$db->openConnection();
+	
+	if(!$db->isConnected()) {
+		header("Location: cannotConnect.php");
+		exit();
+	}
+			
+	$exists = $db->userExists();
+	
+	$db->closeConnection();
+
+
+ ?>
 
 <div class="content">
 	<div class="title">
@@ -7,6 +24,13 @@
 	</div>
 	<div class="event-grid">
 		<?php 
+			if($exists){
+				echo 'yes'; 
+			} else {
+				echo 'no';
+			}
+	
+			/*
 			$result = mysql_query("SELECT * FROM sitting ORDER BY sittDate");
 	
 			while($row = mysql_fetch_assoc($result)) {
@@ -24,7 +48,7 @@
 				</div>
 				<button class="event-remove-button">Remove</button>
 			</div>
-		<?php } ?>
+		<?php }*/ ?>
 	</div>
 </div>
 
