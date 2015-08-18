@@ -22,7 +22,8 @@ class DataConverter{
 			'main' => $arr[2],
 			'desert' => $arr[3],
 			'prelDay' => $arr[4],
-			'payDay' => $arr[5]
+			'payDay' => $arr[5],
+			'spotsLeft' => $arr[8]
 		];
 		return $s;
 	}
@@ -47,6 +48,15 @@ class DataConverter{
 			$parties[] = $party;
 		}
 		return $parties;
+	}
+
+	function arrarrSitting($arr){
+		$sittings = array();
+		foreach ($arr as $key => $s) {
+			$sitt = $this->arrToSitting($s);
+			$sittings[] = $sitt;
+		}
+		return $sittings;
 	}
 }
 ?>
