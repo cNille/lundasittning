@@ -11,7 +11,7 @@ drop table if exists sitting;
 drop table if exists sittingforeman;
 drop table if exists party;
 drop table if exists partytype;
-drop table if exists partyuser;
+drop table if exists partycreator;
 drop table if exists partyguest;
 drop table if exists log;
 drop table if exists event;
@@ -78,11 +78,13 @@ create table party (
 	partyId			integer auto_increment,
 	partyName		varchar(30),
 	partyType		varchar(20),
+	sittingDate		date NOT NULL,
 	partyInterest	integer,
-	partyPrel		integer,
-	partyPayed		integer,
+	partyPrel		integer DEFAULT 0,
+	partyPayed		integer DEFAULT 0,
 	primary key(partyId),
-	foreign key(partyType) references partytype(partyType)
+	foreign key(partyType) references partytype(partyType),
+	foreign key(sittingDate) references sitting(sittDate)
 );
 
 create table partytype (
@@ -90,7 +92,7 @@ create table partytype (
 	primary key(partyType)
 );
 
-create table partyuser (
+create table partycreator (
 	partyId			integer,
 	userId			integer,
 	primary key(partyId,userId),
@@ -101,7 +103,7 @@ create table partyuser (
 create table partyguest (
 	partyId			integer,
 	userId			integer,
-	userPayed		tinyint(1),
+	userPayed		tinyint(1) DEFAULT 0,
 	primary key(partyId,userId),
 	foreign key (partyId) references party(partyId),
 	foreign key (userId) references users(userId)
