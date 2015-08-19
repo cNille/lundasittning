@@ -4,6 +4,10 @@
 	require_once 'db/dbHandler.php';
 	 
 	$loggedIn = false;
+	
+	$dbHandler = new DatabaseHandler();	
+	$restaurant = $dbHandler->getRestaurant('Malins nation'); // Variable determines nation
+	
 	if($_SESSION['FBID'] && $_SESSION['FBID'] != null){
 		$loggedIn = true;
 		$fbid = $_SESSION['FBID'];
@@ -11,9 +15,23 @@
 		$fbUsername = $_SESSION['USERNAME'];
 		$fbEmail = $_SESSION['EMAIL'] == NULL ? " " : $_SESSION['EMAIL'];
 	}
-		
-	$dbHandler = new DatabaseHandler();	
-	$restaurant = $dbHandler->getRestaurant('Malins nation'); // Change variable to change nation
+	
+	switch ($dbHandler->getAccessLevel($fbid, $restaurant->name)){
+		case SuperAdmin: 
+			$accessLevel = 10;
+			break;
+		case Quratel:
+			$accessLevel = 5;
+			break;
+		case Sittningsförman:
+			$accessLevel = 3;
+			break;
+		case Förman:
+			$accessLevel = 2;
+			break;
+		default:
+			$accessLevel = 1;
+	}
 	
 	$userExists = $dbHandler->fbidExists($fbid);
 	if($loggedIn && !$userExists && $fbid != null){
@@ -21,24 +39,6 @@
 	}
 	else if($userExists){
 		$dbHandler->updateFbUser($fbFullname, $fbEmail, $fbid);
-		switch ($dbHandler->getAccessLevel($fbid, $restaurant->name)){
-			case SuperAdmin: 
-				$accessLevel = 10;
-				break;
-			case Quratel:
-				$accessLevel = 5;
-				break;
-			case Sittningsförman:
-				$accessLevel = 3;
-				break;
-			case Förman:
-				$accessLevel = 2;
-				break;
-			default:
-				$accessLevel = 1;
-		}
-		echo $accessLevel;
-		echo $dbHandler->getAccessLevel($fbid, $restaurant->name);
 	}
 	$dbHandler->disconnect();
 		
