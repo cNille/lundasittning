@@ -2,7 +2,7 @@
 	
 	session_start(); 
 	require_once 'db/dbHandler.php';
-
+	 
 	$loggedIn = false;
 	if($_SESSION['FBID'] && $_SESSION['FBID'] != null){
 		$loggedIn = true;
@@ -13,7 +13,7 @@
 	}
 		
 	$dbHandler = new DatabaseHandler();	
-	$restaurant = $dbHandler->getRestaurant('Nilles nation'); // Change variable to change nation
+	$restaurant = $dbHandler->getRestaurant('Malins nation'); // Change variable to change nation
 	
 	$userExists = $dbHandler->fbidExists($fbid);
 	if($loggedIn && !$userExists && $fbid != null){
@@ -21,6 +21,23 @@
 	}
 	else if($userExists){
 		$dbHandler->updateFbUser($fbFullname, $fbEmail, $fbid);
+		switch ($dbHandler->getAccessLevel($fbid, $restaurant->name)){
+			case SuperAdmin: 
+				$accessLevel = 10;
+				break;
+			case Quratel:
+				$accessLevel = 5;
+				break;
+			case Sittningsförman:
+				$accessLevel = 3;
+				break;
+			case Förman:
+				$accessLevel = 2;
+				break;
+			default:
+				$accessLevel = 1;
+		}
+		echo $accessLevel;
 		echo $dbHandler->getAccessLevel($fbid, $restaurant->name);
 	}
 	$dbHandler->disconnect();
@@ -34,6 +51,7 @@
 		<link rel="stylesheet" type="text/css" href="css/main.css" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	</head>
 	<body>
 		<script>
