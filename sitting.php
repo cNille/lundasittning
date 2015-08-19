@@ -18,19 +18,22 @@
 				<table>
 					<tr>
 						<th>Sällskap</th>
-						<th>Antal</th>
+						<th>Gäster</th>
 					</tr>
 					<?php 
+						$spotsLeft = $restaurant->size;
 						foreach ($parties as $key => $p) {
+							$spotsLeft = $spotsLeft - $p->prel - $p->payed;
 							?>
 								<tr>
-									<td><?php echo $p->name?></td>
-									<td><?php echo $p->prel?></td>
+									<td><?php echo $p->name; ?></td>
+									<td><?php echo $p->prel + $p->payed; ?></td>
 								</tr>
 							<?php
 						}
 					?>
 				</table>
+				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span>
 		</div>
 		
 		<div class="right">
