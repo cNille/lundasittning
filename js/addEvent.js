@@ -1,6 +1,6 @@
 $("#event-creator-initiate").click(function(){
 	document.getElementById("event-creator-initiate").style.display = "none";
-	$("#event-creator").append( "<input type='text' name='date' id='newDate' placeholder='DD/MM' minlength='3' maxlength='5' autocomplete='off' >");
+	$("#event-creator").append( "<input type='text' name='date' id='newDate' placeholder='DD/MM' minlength='3' maxlength='5' autocomplete='off' onkeydown='if (event.keyCode == 13) { fakeClick(); }'>");
 	document.getElementById("newDate").focus();
 	
 	$("#event-creator").append( "<button id='reject'>X</button>");
@@ -12,7 +12,15 @@ $("#event-creator-initiate").click(function(){
 
 	$("#confirm").click(function(){
 		var date = document.getElementById("newDate").value;
+		if(!(date.indexOf("/") > -1)){
+			return;
+		}
 		var arr = date.split('/');
+		
+		if(arr[0] > 31 || arr[0] < 1 || arr[1] > 12 || arr[1] < 1){
+			alert("Lol");
+			return;
+		}
 		
 		var currentDate = new Date();
 		var monthNumber = currentDate.getMonth();
@@ -71,4 +79,8 @@ function resetCreation(){
 	$('#reject').remove();
 	$('#confirm').remove();
 	document.getElementById("event-creator-initiate").style.display = "block";
+}
+
+function fakeClick(){
+	$('#confirm').trigger('click');
 }
