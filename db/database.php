@@ -101,6 +101,10 @@ class Database {
     }
   }
 
+  public function getLastId(){
+    return $this->conn->lastInsertId();
+  }
+
   /**
    *    * Check if a user with the specified user id exists in the database.
    *       * Queries the Users database table.
