@@ -30,10 +30,16 @@
 			return count($result) == 1;
 		}
 
-		public function createUser($fbid, $fullname) {
-		    $sql = "INSERT INTO users (facebookId, userName) VALUES (?,?);";
-    		$result = $this->db->executeUpdate($sql, array($fbid, $fullname));
+		public function createUser($fbid, $fullname, $email) {
+		    $sql = "INSERT INTO users (facebookId, userName, userEmail) VALUES (?,?,?);";
+    		$result = $this->db->executeUpdate($sql, array($fbid, $fullname, $email));
     		return $result[0]; 
+		}
+		
+		public function updateFbUser($fullname, $email, $fbid) {
+		    $sql = "UPDATE users SET userName=?, userEmail=? WHERE facebookId = ?;";
+    		$result = $this->db->executeUpdate($sql, array($fullname, $email, $fbid));
+    		return $result[0];
 		}
 
 		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant, $spots) {

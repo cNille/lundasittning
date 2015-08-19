@@ -9,14 +9,18 @@
 		$fbid = $_SESSION['FBID'];
 		$fbFullname = $_SESSION['FULLNAME'];
 		$fbUsername = $_SESSION['USERNAME'];
+		$fbEmail = $_SESSION['EMAIL'] == NULL ? " " : $_SESSION['EMAIL'];
 	}
 		
 	$dbHandler = new DatabaseHandler();	
 	$restaurant = $dbHandler->getRestaurant('Nilles nation');
 	
 	$userExists = $dbHandler->fbidExists($fbid);
-	if(loggedIn && !$userExists && $fbid != null){
-		$dbHandler->createUser($fbid, $fbFullname);
+	if($loggedIn && !$userExists && $fbid != null){
+		$dbHandler->createUser($fbid, $fbFullname, $fbEmail);
+	}
+	else if($userExists){
+		$dbHandler->updateFbUser($fbFullname, $fbEmail, $fbid);
 	}
 	$dbHandler->disconnect();
 		
