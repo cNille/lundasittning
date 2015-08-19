@@ -5,7 +5,7 @@
 	$parties = $dbHandler->getParties($_GET['sittId']);
 	$foreman = $dbHandler->getSittingForeman($_GET['sittId']);
 	$dbHandler->disconnect();
-
+	echo 'Hej: ' . $foreman[0][0];
  ?>
 
 <div class="content">
@@ -62,7 +62,11 @@
 		
 		<div class="right">
 			<label>Förmän</label>
-			<span><?php  ?></span>
+			<span><?php 
+				foreach ($foreman as $key => $f) {
+					echo '<li>' . $f[0] . '</li>';
+				}
+			?></span>
 		</div>
 
 	</div>

@@ -73,9 +73,9 @@
 		}
 
 		public function getSittingForeman($sittId) {
-			$sql = "SELECT * FROM sittingforeman WHERE sittId=?";
+			$sql = "SELECT userName FROM sittingforeman, users WHERE sittingforeman.userId = users.userId AND sittingforeman.sittId=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
-			return $this->arrToSitting($result[0]);  // Structure: {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
+			return $result; 
 		}
 
 		public function getParties($sittId) {
