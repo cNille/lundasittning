@@ -1,9 +1,9 @@
 <?php 
 	require_once 'header.php';
  	$dbHandler = new DatabaseHandler();
-	$restaurant = $dbHandler->getRestaurant('Nilles nation');
-	$sitting = $dbHandler->getSitting($_GET['sittDate']);
-	$parties = $dbHandler->getParties($_GET['sittDate']);
+	$sitting = $dbHandler->getSitting($_GET['sittId']);
+	$parties = $dbHandler->getParties($_GET['sittId']);
+	$foreman = $dbHandler->getSittingForeman($_GET['sittId']);
 	$dbHandler->disconnect();
 
  ?>
@@ -14,7 +14,7 @@
 	</div>
 	<div class="single-sitting">
 		<div class="left">
-				<h1>Välkomna!</h1>
+				<h3>Anmälda sällskap</h3>
 				<table>
 					<tr>
 						<th>Sällskap</th>
@@ -33,10 +33,36 @@
 						}
 					?>
 				</table>
-				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span>
+				<h3>Intresserade sällskap</h3>
+				<table>
+					<tr>
+						<th>Sällskap</th>
+						<th>Gäster</th>
+					</tr>
+					<?php 
+						$spotsLeft = $restaurant->size;
+						foreach ($parties as $key => $p) {
+							$prelSpots = $p->prel + $p->payed;
+
+							if($prelSpots == 0){
+							?>
+								<tr>
+									<td><?php echo $p->name; ?></td>
+									<td><?php echo $p->prel + $p->payed; ?></td>
+								</tr>
+							<?php
+							}
+						}
+					?>
+				</table>
+				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
+				<label>Preliminär deadline: </label><span><?php echo $sitting->prelDay; ?></span><br />
+				<label>Preliminär deadline: </label><span><?php echo $sitting->payDay; ?></span>
 		</div>
 		
 		<div class="right">
+			<label>Förmän</label>
+			<span><?php  ?></span>
 		</div>
 
 	</div>
