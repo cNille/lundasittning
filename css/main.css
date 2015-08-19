@@ -165,6 +165,16 @@ body {
           right: -20px;
           bottom: -5px;
           border: none; }
+      body .content .event-grid .event-window.created {
+        transition: all 0.4s ease-out;
+        opacity: 0;
+        width: 0px; }
+      body .content .event-grid .event-window.created.show {
+        opacity: 1;
+        width: 150px; }
+      body .content .event-grid .event-window.remove {
+        opacity: 0;
+        width: 0px; }
       body .content .event-grid #event-creator p {
         padding: 0;
         margin: 0;

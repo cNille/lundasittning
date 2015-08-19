@@ -126,6 +126,20 @@ body{
 				}
 			}
 			
+			.event-window.created{
+			  transition: all 0.4s ease-out;
+			  opacity: 0;
+			  width: 0px;
+			}
+			.event-window.created.show {
+			  opacity: 1;
+			  width: 150px;
+			}
+			.event-window.remove {
+			  opacity: 0;
+			  width: 0px;
+			}
+			
 			#event-creator{
 				p {
 					padding: 0;
@@ -182,9 +196,7 @@ body{
 					background-size: 100% 100%;
 					right: 10px;
 				}
-				
 			}
-			
 			&:hover{
 			}
 		}

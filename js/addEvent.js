@@ -18,7 +18,6 @@ $("#event-creator-initiate").click(function(){
 		var arr = date.split('/');
 		
 		if(arr[0] > 31 || arr[0] < 1 || arr[1] > 12 || arr[1] < 1){
-			alert("Lol");
 			return;
 		}
 		
@@ -53,11 +52,14 @@ $("#event-creator-initiate").click(function(){
 			data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate+ '&resName=' + RESTAURANT_NAME + '&resSize=' + RESTAURANT_SIZE,
 			success: function(sittId){
 				var sittIdFin = sittId.replace(/[^0-9]/, '');
+				$(".event-window:nth-last-child(2)").removeClass("created show");
 				$(".event-window:nth-last-child(2)").clone().insertBefore("#event-creator");
+				$(".event-window:nth-last-child(2)").addClass("created");
 				$(".event-window:nth-last-child(2)").attr("id",sittIdFin);
 				$(".event-window:nth-last-child(2)").find(".event-window-date").html(date);
 				$(".event-window:nth-last-child(2)").find(".event-window-spots").html('Antal platser: ' +RESTAURANT_SIZE);
 				resetCreation()
+				$(".event-window:nth-last-child(2)").addClass("show");
 			}
 		});
 	});

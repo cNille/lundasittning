@@ -41,18 +41,18 @@ insert into sitting (sittDate, sittAppetiser, sittMain, sittDesert, resName, spo
     ('2015-09-25', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 80);
 
 insert into sittingforeman values
-    ('2015-09-04', 1),
-    ('2015-09-11', 2),
-    ('2015-09-18', 3);
+    (1, 1),
+    (2, 2),
+    (3, 3);
 
 insert into partytype values
     ('Sluten'),
     ('Öppen');
 
-insert into party (partyName, sittingDate, partyType, partyInterest, partyPrel, partyPayed) values
-    ('NILLE BDAY', '2015-09-04', 'Öppen', 40, 10, 5),
-    ('FRANZ BDAY', '2015-09-04', 'Sluten', 40, 3, 20),
-    ('MALIN BDAY', '2015-09-11', 'Öppen', 40, 23, 10);
+insert into party (partyName, sittId, partyType, partyInterest, partyPrel, partyPayed) values
+    ('NILLE BDAY', 1, 'Öppen', 40, 10, 5),
+    ('FRANZ BDAY', 2, 'Sluten', 40, 3, 20),
+    ('MALIN BDAY', 3, 'Öppen', 40, 23, 10);
 
 insert into partycreator values
     (1,1),

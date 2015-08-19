@@ -70,7 +70,7 @@ create table userfood (
 
 create table sitting (
 	sittId 				integer auto_increment,
-	sittDate			date not null unique,
+	sittDate			date not null,
 	sittAppetiser		varchar(50),
 	sittMain			varchar(50),
 	sittDesert			varchar(50),
@@ -84,10 +84,10 @@ create table sitting (
 );
 
 create table sittingforeman (
-	sittDate			date,
+	sittId				integer,
 	userId				integer,
-	primary key(sittDate,userId),
-	foreign key (sittDate) references sitting(sittDate),
+	primary key(sittId,userId),
+	foreign key (sittId) references sitting(sittId),
 	foreign key (userId) references users(userId)
 );
 
@@ -95,13 +95,13 @@ create table party (
 	partyId			integer auto_increment,
 	partyName		varchar(30),
 	partyType		varchar(20),
-	sittingDate		date NOT NULL,
+	sittId			integer NOT NULL,
 	partyInterest	integer,
 	partyPrel		integer DEFAULT 0,
 	partyPayed		integer DEFAULT 0,
 	primary key(partyId),
 	foreign key(partyType) references partytype(partyType),
-	foreign key(sittingDate) references sitting(sittDate)
+	foreign key(sittId) references sitting(sittId)
 );
 
 create table partytype (
