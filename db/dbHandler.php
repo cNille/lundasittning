@@ -41,6 +41,12 @@
     		$result = $this->db->executeUpdate($sql, array($fullname, $email, $fbid));
     		return $result[0];
 		}
+		
+		public function getAccessLevel($fbid, $restaurantName) {
+		    $sql = "SELECT userType FROM restaurantuser JOIN users ON restaurantuser.userId = users.userId WHERE facebookId=? AND resName=?";
+    		$result = $this->db->executeQuery($sql, array($fbid,$restaurantName));
+    		return $result[0];
+		}
 
 		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant, $spots) {
 		    $sql = "INSERT INTO sitting (sittDate, sittPrelDeadline, sittPayDeadline, resName, spotsLeft) VALUES (?, ?, ?, ?, ?);";

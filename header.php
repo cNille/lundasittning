@@ -13,7 +13,7 @@
 	}
 		
 	$dbHandler = new DatabaseHandler();	
-	$restaurant = $dbHandler->getRestaurant('Nilles nation');
+	$restaurant = $dbHandler->getRestaurant('Franz nation'); // Change variable to change nation
 	
 	$userExists = $dbHandler->fbidExists($fbid);
 	if($loggedIn && !$userExists && $fbid != null){
@@ -21,6 +21,7 @@
 	}
 	else if($userExists){
 		$dbHandler->updateFbUser($fbFullname, $fbEmail, $fbid);
+		echo $dbHandler->getAccessLevel($fbid, $restaurant);
 	}
 	$dbHandler->disconnect();
 		
