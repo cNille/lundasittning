@@ -69,6 +69,7 @@ create table userfood (
 );
 
 create table sitting (
+	sittId 				integer auto_increment,
 	sittDate			date not null unique,
 	sittAppetiser		varchar(50),
 	sittMain			varchar(50),
@@ -78,7 +79,7 @@ create table sitting (
 	active				tinyint(1) DEFAULT 1,
 	resName				varchar(30),
 	spotsLeft			tinyint(1) DEFAULT 0,
-	primary key(sittDate),
+	primary key(sittId),
 	foreign key(resName) references restaurant(resName)
 );
 
