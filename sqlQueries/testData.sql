@@ -49,10 +49,10 @@ insert into partytype values
     ('Sluten'),
     ('Öppen');
 
-insert into party (partyName, sittingDate, partyType, partyInterest) values
-    ('NILLE BDAY', '2015-09-04', 'Öppen', 40),
-    ('FRANZ BDAY', '2015-09-04', 'Sluten', 40),
-    ('MALIN BDAY', '2015-09-11', 'Öppen', 40);
+insert into party (partyName, sittingDate, partyType, partyInterest, partyPrel, partyPayed) values
+    ('NILLE BDAY', '2015-09-04', 'Öppen', 40, 10, 5),
+    ('FRANZ BDAY', '2015-09-04', 'Sluten', 40, 3, 20),
+    ('MALIN BDAY', '2015-09-11', 'Öppen', 40, 23, 10);
 
 insert into partycreator values
     (1,1),
