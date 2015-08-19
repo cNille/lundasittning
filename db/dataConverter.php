@@ -17,13 +17,14 @@ class DataConverter{
 
 	 function arrToSitting($arr){
 		$s = (object)[ // Init a sitting object.
-			'date' => $arr[0],
-			'appetiser' => $arr[1],
-			'main' => $arr[2],
-			'desert' => $arr[3],
-			'prelDay' => $arr[4],
-			'payDay' => $arr[5],
-			'spotsLeft' => $arr[8]
+			'id' => $arr[0],
+			'date' => $arr[1],
+			'appetiser' => $arr[2],
+			'main' => $arr[3],
+			'desert' => $arr[4],
+			'prelDay' => $arr[5],
+			'payDay' => $arr[6],
+			'spotsLeft' => $arr[9]
 		];
 		return $s;
 	}
