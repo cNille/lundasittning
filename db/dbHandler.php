@@ -39,17 +39,17 @@
 		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant, $spots) {
 		    $sql = "INSERT INTO sitting (sittDate, sittPrelDeadline, sittPayDeadline, resName, spotsLeft) VALUES (?, ?, ?, ?, ?);";
     		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadlinel, $restaurant, $spots));
-    		return $result[0]; 
+    		return $this->db->getLastId(); 
 		}
 
-		public function deleteSitting($sittDate){
-		$sql = "UPDATE sitting SET active = 0 WHERE sittDate=?;";
-		    $result = $this->db->executeUpdate($sql, array($sittDate));
+		public function deleteSitting($sittId){
+			$sql = "UPDATE sitting SET active = 0 WHERE sittId=?;";
+		    $result = $this->db->executeUpdate($sql, array($sittId));
 		    return count($result) == 1;  
 		}
 		  
 		public function getSittings() {
-			$sql = "SELECT * FROM sitting ORDER BY sittDate";
+			$sql = "SELECT * FROM sitting WHERE active = 1 ORDER BY sittDate";
 			$result = $this->db->executeQuery($sql, array());
 			return $this->arrarrSitting($result); // Structure: [ {'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'} ]
 		}

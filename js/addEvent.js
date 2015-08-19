@@ -42,12 +42,12 @@ $("#event-creator-initiate").click(function(){
 		$.ajax({
 			type: 'POST',
 			url: 'db/dbAjax.php',
-			data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate+ '&resName=' + RESTAURANT_NAME,
-			success: function(data){
-				alert(data);
+			data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate+ '&resName=' + RESTAURANT_NAME + '&resSize=' + RESTAURANT_SIZE,
+			success: function(sittId){
 				$(".event-window:nth-last-child(2)").clone().insertBefore("#event-creator");
-				$(".event-window:nth-last-child(2)").attr("id",realDate);
+				$(".event-window:nth-last-child(2)").attr("id",sittId);
 				$(".event-window:nth-last-child(2)").find(".event-window-date").html(date);
+				$(".event-window:nth-last-child(2)").find(".event-window-spots").html('Antal platser: ' +RESTAURANT_SIZE);
 				resetCreation()
 			}
 		});

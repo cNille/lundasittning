@@ -4,9 +4,9 @@ $(".event-remove-button").click(function(){
 	$.ajax({
 		type: 'POST',
 		url: 'db/dbAjax.php',
-		data: 'action=removeSitting&date=' + temp,
+		data: 'action=removeSitting&id=' + temp,
 		success: function(data){
-			alert(data);
+			$('#' + temp).remove();
 			// If you want, alert whatever your PHP script outputs
 		}
 	});
@@ -14,6 +14,5 @@ $(".event-remove-button").click(function(){
             	
 function removeEvent (el, cls) {
     while ((el = el.parentElement) && !el.classList.contains(cls));
-    el.style.display = "none";
     return el.id;
 }

@@ -14,14 +14,13 @@
 
 	function addSitting($dbHandler){
 		if(isset($_POST['date']) && !empty($_POST['date'])) {
-			$spots = $dbHandler->getResSize($_POST['resName']);
-			$dbHandler->addSitting($_POST['date'], $_POST['preldate'], $_POST['paydate'], $_POST['resName'], $spots);
+			echo $dbHandler->addSitting($_POST['date'], $_POST['preldate'], $_POST['paydate'], $_POST['resName'], $_POST['resSize']);
 		}
 	}
 	
 	function removeSitting($dbHandler){
-		if(isset($_POST['date']) && !empty($_POST['date'])) {
-			$dbHandler->deleteSitting($_POST['date']);
+		if(isset($_POST['id']) && !empty($_POST['id'])) {
+			$dbHandler->deleteSitting($_POST['id']);
 		}
 	}
 ?>
