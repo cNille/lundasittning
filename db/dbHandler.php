@@ -45,7 +45,7 @@
 		public function getAccessLevel($fbid, $restaurantName) {
 		    $sql = "SELECT userType FROM restaurantuser JOIN users ON restaurantuser.userId = users.userId WHERE facebookId=? AND resName=?";
     		$result = $this->db->executeQuery($sql, array($fbid,$restaurantName));
-    		return $result[0];
+    		return $result[0][0];
 		}
 
 		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant, $spots) {

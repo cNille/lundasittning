@@ -21,7 +21,7 @@
 	}
 	else if($userExists){
 		$dbHandler->updateFbUser($fbFullname, $fbEmail, $fbid);
-		echo $dbHandler->getAccessLevel($fbid, $restaurant);
+		echo $dbHandler->getAccessLevel($fbid, $restaurant->name);
 	}
 	$dbHandler->disconnect();
 		
