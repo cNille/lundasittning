@@ -13,7 +13,7 @@
 	}
 		
 	$dbHandler = new DatabaseHandler();	
-	$restaurant = $dbHandler->getRestaurant('Franz nation'); // Change variable to change nation
+	$restaurant = $dbHandler->getRestaurant('Nilles nation'); // Change variable to change nation
 	
 	$userExists = $dbHandler->fbidExists($fbid);
 	if($loggedIn && !$userExists && $fbid != null){
