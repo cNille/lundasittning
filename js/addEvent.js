@@ -52,8 +52,9 @@ $("#event-creator-initiate").click(function(){
 			url: 'db/dbAjax.php',
 			data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate+ '&resName=' + RESTAURANT_NAME + '&resSize=' + RESTAURANT_SIZE,
 			success: function(sittId){
+				var sittIdFin = sittId.replace(/[^0-9]/, '');
 				$(".event-window:nth-last-child(2)").clone().insertBefore("#event-creator");
-				$(".event-window:nth-last-child(2)").attr("id",sittId);
+				$(".event-window:nth-last-child(2)").attr("id",sittIdFin);
 				$(".event-window:nth-last-child(2)").find(".event-window-date").html(date);
 				$(".event-window:nth-last-child(2)").find(".event-window-spots").html('Antal platser: ' +RESTAURANT_SIZE);
 				resetCreation()

@@ -1,4 +1,4 @@
-$(".event-remove-button").click(function(){
+$('body').on('click', '.event-remove-button', function() {
 	var temp = removeEvent(this, "event-window");
 
 	$.ajax({
