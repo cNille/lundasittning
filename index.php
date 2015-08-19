@@ -24,7 +24,7 @@
 						Antal platser: <?php echo $s->spotsLeft;?>
 					</div>
 					<div class="event-window-button">
-						<a href="./sitting.php?sittDate=<?php echo $s->date; ?>"> Se mer </a>
+						<a href="./sitting.php?sittId=<?php echo $s->id; ?>"> Se mer </a>
 					</div>
 					<button class="event-remove-button">Remove</button>
 				</div>

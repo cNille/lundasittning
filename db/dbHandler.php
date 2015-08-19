@@ -63,18 +63,24 @@
 		public function getSittings() {
 			$sql = "SELECT * FROM sitting WHERE active = 1 ORDER BY sittDate";
 			$result = $this->db->executeQuery($sql, array());
-			return $this->arrarrSitting($result); // Structure: [ {'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'} ]
+			return $this->arrarrSitting($result); // Structure: [ {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'} ]
 		}
 
-		public function getSitting($sittDate) {
-			$sql = "SELECT * FROM sitting WHERE sittDate=?";
-			$result = $this->db->executeQuery($sql, array($sittDate));
-			return $this->arrToSitting($result[0]);  // Structure: {'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
+		public function getSitting($sittId) {
+			$sql = "SELECT * FROM sitting WHERE sittId=?";
+			$result = $this->db->executeQuery($sql, array($sittId));
+			return $this->arrToSitting($result[0]);  // Structure: {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
 		}
 
-		public function getParties($sittDate) {
-			$sql = "SELECT * FROM party WHERE sittingDate=?";
-			$result = $this->db->executeQuery($sql, array($sittDate));
+		public function getSittingForeman($sittId) {
+			$sql = "SELECT * FROM sittingforeman WHERE sittId=?";
+			$result = $this->db->executeQuery($sql, array($sittId));
+			return $this->arrToSitting($result[0]);  // Structure: {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
+		}
+
+		public function getParties($sittId) {
+			$sql = "SELECT * FROM party WHERE sittId=?";
+			$result = $this->db->executeQuery($sql, array($sittId));
 			return $this->arrarrParty($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
 		}
 
