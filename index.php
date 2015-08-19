@@ -26,12 +26,16 @@
 					<div class="event-window-button">
 						<a href="./sitting.php?sittDate=<?php echo $s->date; ?>"> Se mer </a>
 					</div>
-					<button class="event-remove-button">Remove</button>
+					<?php if($accessLevel >= 5){ ?>
+						<button class="event-remove-button">Remove</button>
+					<?php } ?>
 				</div>
 		<?php } ?>
-			<div class="event-window" id="event-creator">
-				<p id="event-creator-initiate"> + </p>
-			</div>
+			<?php if($accessLevel >= 5){ ?>
+				<div class="event-window" id="event-creator">
+					<p id="event-creator-initiate"> + </p>
+				</div>
+			<?php } ?>
 	</div>
 </div>
 
