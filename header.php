@@ -33,6 +33,7 @@
 	<body>
 		<script>
 			var RESTAURANT_NAME = '<?php echo $restaurant->name ?>';
+			var RESTAURANT_SIZE = '<?php echo $restaurant->size ?>';
 		</script>
 
 
