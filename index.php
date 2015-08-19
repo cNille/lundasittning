@@ -16,7 +16,7 @@
 			foreach($sittings as $row => $s) {
 				$date = date('j/n', strtotime($s->date));
 				?>
-				<div class="event-window" id="<?php echo $s->date; ?>">
+				<div class="event-window" id="<?php echo $s->id; ?>">
 					<div class="event-window-date">
 						<?php echo $date; ?>
 					</div>
