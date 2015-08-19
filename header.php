@@ -21,7 +21,21 @@
 	}
 	else if($userExists){
 		$dbHandler->updateFbUser($fbFullname, $fbEmail, $fbid);
-		echo $dbHandler->getAccessLevel($fbid, $restaurant->name);
+		switch ($dbHandler->getAccessLevel($fbid, $restaurant->name)){
+			case SuperAdmin: 
+				blabla;
+				break;
+			case Quratel:
+				blabla;
+				break;
+			case Sittningsförman:
+				blabla;
+				break;
+			case Förman:
+				blabla;
+				break;
+			default:
+		}
 	}
 	$dbHandler->disconnect();
 		

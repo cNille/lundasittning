@@ -4,23 +4,35 @@ start transaction;
 insert into restaurant(resName, resPrice, resSize, resSummary) values
     ('Nilles nation', 140, 90, 'EN UPPLEVELSE!'),
     ('Franz nation', 240, 120, 'EN UPPLEVELSE!'),
-    ('Malins nation', 40, 50, 'EN UPPLEVELSE!');
+    ('Malins nation', 40, 50, 'EN UPPLEVELSE!'),
+    ('Jennifers nation', 40, 50, 'EN UPPLEVELSE!');
 
 insert into usertype values
+	('SuperAdmin'),
     ('Quratel'),
     ('Sittningsförman'),
     ('Förman');
 
-insert into users(userName, userEmail, userTelephone) values
-    ('Nille', 'c@shapeapp.se', '0708342311'),
-    ('Franz', 'franzmail123@gmail.com', '0708123456'),
-    ('Malin', 'cnilsson_92@hotmail.com', '0708123456');
+insert into users(userName, facebookId, userEmail, userTelephone) values
+    ('Nille', '1', 'c@shapeapp.se', '0708342311'),
+    ('Franz', '2', 'franzmail123@gmail.com', '0708123456'),
+    ('Malin', '3', 'cnilsson_92@hotmail.com', '0708123456'),
+    ('Franz Lang', '10204701878293819', 'cnilsson_92@hotmail.com', '0708123456'),
+    ('Christopher Nilsson', '10153551242685859', 'cnilsson_92@hotmail.com', '0708123456');
 
 insert into restaurantuser values
     (1, 'Nilles nation', 'Quratel'),
     (2, 'Nilles nation', 'Förman'),
     (3, 'Nilles nation', 'Sittningsförman'),
     (1, 'Franz nation', 'Förman'),
+    (4, 'Nilles nation', 'SuperAdmin'),
+    (4, 'Franz nation', 'Quratel'),
+    (4, 'Malins nation', 'Förman'),
+    (4, 'Jennifers nation', 'Sittningsförman'),
+    (5, 'Nilles nation', 'SuperAdmin'),
+    (5, 'Franz nation', 'Quratel'),
+    (5, 'Malins nation', 'Förman'),
+    (5, 'Jennifers nation', 'Sittningsförman'),
     (1, 'Malins nation', 'Quratel');
 
 insert into foodpref values
