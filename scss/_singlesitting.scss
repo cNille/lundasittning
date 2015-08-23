@@ -2,16 +2,29 @@
 
 
 .single-sitting{
+	position: relative;
+	display: table;
 	background-color: white;
 	width: 100%;
 	min-height: 200px;	
 
-	.left{
-		padding: 20px;
-		width: 50%;
+	.side{
+		position: relative;
+		display: table-cell;
 
-		table{
-			text-align: center;
+		&.left{
+
+			padding: 20px;
+			width: 50%;
+
+			table{
+				text-align: center;
+			}
+		}
+
+		&.right{
+
+
 		}
 	}
 }
