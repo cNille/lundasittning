@@ -6,7 +6,7 @@
 	$loggedIn = false;
 	
 	$dbHandler = new DatabaseHandler();	
-	$restaurant = $dbHandler->getRestaurant('Malins nation'); // Variable determines nation
+	$restaurant = $dbHandler->getRestaurant('Nilles nation'); // Variable determines nation
 	
 	if($_SESSION['FBID'] && $_SESSION['FBID'] != null){
 		$loggedIn = true;
