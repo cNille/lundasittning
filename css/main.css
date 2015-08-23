@@ -115,9 +115,16 @@ body {
       width: 50%; }
       body .single-sitting .left table {
         text-align: center; }
+  body .userSettings {
+    background-color: white;
+    width: 100%;
+    min-height: 200px; }
+    body .userSettings .left {
+      padding: 20px;
+      width: 50%; }
   body .content {
     margin-top: 60px;
-    max-width: 850px;
+    max-width: 712px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -147,26 +154,32 @@ body {
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         text-align: center;
         position: relative; }
-        body .content .event-grid .event-window .event-window-date {
-          margin-top: 10px;
-          font-size: 25px; }
-        body .content .event-grid .event-window .event-window-spots {
-          margin-top: 10px; }
-        body .content .event-grid .event-window .event-window-button {
-          margin-top: 15px; }
-          body .content .event-grid .event-window .event-window-button a {
-            text-decoration: none;
-            color: black;
-            font-style: italic; }
-          body .content .event-grid .event-window .event-window-button a:hover {
-            text-decoration: underline; }
-        body .content .event-grid .event-window .event-remove-button {
-          position: absolute;
-          right: -20px;
-          bottom: -5px;
-          border: none; }
+        body .content .event-grid .event-window .width {
+          width: 150px;
+          overflow: hidden; }
+          body .content .event-grid .event-window .width .event-window-date {
+            margin-top: 10px;
+            font-size: 25px; }
+          body .content .event-grid .event-window .width .event-window-spots {
+            margin-top: 10px; }
+          body .content .event-grid .event-window .width .event-window-button {
+            margin-top: 15px; }
+            body .content .event-grid .event-window .width .event-window-button a {
+              text-decoration: none;
+              color: black;
+              font-style: italic; }
+            body .content .event-grid .event-window .width .event-window-button a:hover {
+              text-decoration: underline; }
+          body .content .event-grid .event-window .width .event-remove-button {
+            position: absolute;
+            right: -20px;
+            bottom: -5px;
+            border: none; }
       body .content .event-grid .event-window.created {
-        transition: all 0.4s ease-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         opacity: 0;
         width: 0px; }
       body .content .event-grid .event-window.created.show {

@@ -4,7 +4,7 @@
 // Sizes
 // =================
 $headerHeight: 50px;
-$contentWidth: 850px;
+$contentWidth: 712px;
 $sideNavWidth: 250px;
 
 
@@ -53,6 +53,7 @@ body{
 	@import 'header';
 	@import 'footer';
 	@import 'singlesitting';
+	@import 'usersettings';
 		
 	.content {
 		margin-top: $headerHeight + 10px;
@@ -99,35 +100,40 @@ body{
 				text-align: center;
 				
 				position: relative;
+				
+				.width{
+					width: 150px;
+					overflow: hidden;
 		
-				.event-window-date{
-					margin-top: 10px;
-					font-size: 25px;
-				}
-				.event-window-spots{
-					margin-top: 10px;
-				}
-				.event-window-button{
-					margin-top: 15px;
-					a {
-						text-decoration: none;
-						color: black;
-						font-style: italic;
+					.event-window-date{
+						margin-top: 10px;
+						font-size: 25px;
 					}
-					a:hover {
-						text-decoration: underline;
+					.event-window-spots{
+						margin-top: 10px;
 					}
-				}
-				.event-remove-button{
-					position: absolute;
-					right: -20px;
-					bottom: -5px;
-					border: none;
+					.event-window-button{
+						margin-top: 15px;
+						a {
+							text-decoration: none;
+							color: black;
+							font-style: italic;
+						}
+						a:hover {
+							text-decoration: underline;
+						}
+					}
+					.event-remove-button{
+						position: absolute;
+						right: -20px;
+						bottom: -5px;
+						border: none;
+					}
 				}
 			}
 			
 			.event-window.created{
-			  transition: all 0.4s ease-out;
+			  @include easy-trans (0.3s);
 			  opacity: 0;
 			  width: 0px;
 			}
@@ -141,6 +147,7 @@ body{
 			}
 			
 			#event-creator{
+				
 				p {
 					padding: 0;
 					margin: 0;
