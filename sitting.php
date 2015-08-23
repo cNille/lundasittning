@@ -5,7 +5,6 @@
 	$parties = $dbHandler->getParties($_GET['sittId']);
 	$foreman = $dbHandler->getSittingForeman($_GET['sittId']);
 	$dbHandler->disconnect();
-	echo 'Hej: ' . $foreman[0][0];
  ?>
 
 <div class="content">
@@ -13,7 +12,7 @@
 		Sittning <?php echo $sitting->date; ?>
 	</div>
 	<div class="single-sitting">
-		<div class="left">
+		<div class="left side">
 				<h3>Anmälda sällskap</h3>
 				<table>
 					<tr>
@@ -60,7 +59,7 @@
 				<label>Preliminär deadline: </label><span><?php echo $sitting->payDay; ?></span>
 		</div>
 		
-		<div class="right">
+		<div class="right side">
 			<label>Förmän</label>
 			<span><?php 
 				foreach ($foreman as $key => $f) {
