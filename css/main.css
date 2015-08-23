@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -107,14 +109,19 @@ body {
     body .fb-login a {
       color: white; }
   body .single-sitting {
+    position: relative;
+    display: table;
     background-color: white;
     width: 100%;
     min-height: 200px; }
-    body .single-sitting .left {
-      padding: 20px;
-      width: 50%; }
-      body .single-sitting .left table {
-        text-align: center; }
+    body .single-sitting .side {
+      position: relative;
+      display: table-cell; }
+      body .single-sitting .side.left {
+        padding: 20px;
+        width: 50%; }
+        body .single-sitting .side.left table {
+          text-align: center; }
   body .userSettings {
     background-color: white;
     width: 100%;
