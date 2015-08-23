@@ -12,9 +12,12 @@
 		$loggedIn = true;
 		$fbid = $_SESSION['FBID'];
 		$fbFullname = $_SESSION['FULLNAME'];
-		$fbUsername = $_SESSION['USERNAME'];
+		$fbGender = $_SESSION['GENDER'];
 		$fbEmail = $_SESSION['EMAIL'] == NULL ? " " : $_SESSION['EMAIL'];
 	}
+	
+	echo $fbGender;
+	echo $fbFullname;
 	
 	switch ($dbHandler->getAccessLevel($fbid, $restaurant->name)){
 		case SuperAdmin: 
