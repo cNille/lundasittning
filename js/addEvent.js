@@ -56,6 +56,7 @@ $("#event-creator-initiate").click(function(){
 				$(".event-window:nth-last-child(2)").clone().insertBefore("#event-creator");
 				$(".event-window:nth-last-child(2)").addClass("created");
 				$(".event-window:nth-last-child(2)").attr("id",sittIdFin);
+				$(".event-window:nth-last-child(2)").attr("style","block");
 				$(".event-window:nth-last-child(2)").find(".event-window-date").html(date);
 				$(".event-window:nth-last-child(2)").find(".event-window-spots").html('Antal platser: ' +RESTAURANT_SIZE);
 				resetCreation()
