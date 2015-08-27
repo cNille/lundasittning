@@ -120,8 +120,13 @@ body {
       body .single-sitting .side.left {
         padding: 20px;
         width: 50%; }
+        body .single-sitting .side.left h3 {
+          margin: 0;
+          font-size: 60px;
+          font-weight: 100; }
         body .single-sitting .side.left table {
-          text-align: center; }
+          text-align: center;
+          margin-top: 15px; }
   body .userSettings {
     background-color: white;
     width: 100%;

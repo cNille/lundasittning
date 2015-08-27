@@ -5,24 +5,42 @@
 	$parties = $dbHandler->getParties($_GET['sittId']);
 	$foreman = $dbHandler->getSittingForeman($_GET['sittId']);
 	$dbHandler->disconnect();
+
+	function datePrettify($date){
+		$arr = explode('-', $date);
+		$prettyDate = str_replace('0', '', $arr[2]) . "/" . str_replace('0', '', $arr[1]);
+		return $prettyDate;
+	}
+
+	$spotsLeft = $restaurant->size;
+	$hasInterestedParties = false;
+	foreach ($parties as $key => $p) {
+		$spotsLeft = $spotsLeft - $p->prel - $p->payed;
+		if($p->prel + $p->payed == 0){
+			$hasInterestedParties = true;
+		}
+	}
+
  ?>
 
 <div class="content">
 	<div class="title">
-		Sittning <?php echo $sitting->date; ?>
+		Sittning
 	</div>
 	<div class="single-sitting">
 		<div class="left side">
-				<h3>Anmälda sällskap</h3>
+				<h3><?php echo datePrettify($sitting->date); ?></h3>
+				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
+				<label>Preliminär deadline: </label><span><?php echo $sitting->prelDay; ?></span><br />
+				<label>Preliminär deadline: </label><span><?php echo $sitting->payDay; ?></span>
+	
 				<table>
 					<tr>
-						<th>Sällskap</th>
+						<th>Anmälda sällskap</th>
 						<th>Gäster</th>
 					</tr>
 					<?php 
-						$spotsLeft = $restaurant->size;
 						foreach ($parties as $key => $p) {
-							$spotsLeft = $spotsLeft - $p->prel - $p->payed;
 							?>
 								<tr>
 									<td><?php echo $p->name; ?></td>
@@ -32,10 +50,10 @@
 						}
 					?>
 				</table>
-				<h3>Intresserade sällskap</h3>
+				<?php if($hasInterestedParties) : ?>
 				<table>
 					<tr>
-						<th>Sällskap</th>
+						<th>Intresserade Sällskap</th>
 						<th>Gäster</th>
 					</tr>
 					<?php 
@@ -54,9 +72,7 @@
 						}
 					?>
 				</table>
-				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
-				<label>Preliminär deadline: </label><span><?php echo $sitting->prelDay; ?></span><br />
-				<label>Preliminär deadline: </label><span><?php echo $sitting->payDay; ?></span>
+				<?php endif; ?>
 		</div>
 		
 		<div class="right side">

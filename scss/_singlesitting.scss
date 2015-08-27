@@ -14,11 +14,18 @@
 
 		&.left{
 
+			h3{
+			    margin: 0;
+    			font-size: 60px;
+    			font-weight: 100;
+			}
+
 			padding: 20px;
 			width: 50%;
 
 			table{
 				text-align: center;
+				margin-top: 15px;
 			}
 		}
 
