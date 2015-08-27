@@ -89,7 +89,7 @@ body {
       opacity: 0.6; }
   body .fb-login {
     height: 30px;
-    position: absolute;
+    position: fixed;
     display: block;
     bottom: 20px;
     right: 50px;
