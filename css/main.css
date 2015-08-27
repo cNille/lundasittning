@@ -173,6 +173,17 @@ body {
     min-height: 200px;
     padding: 0px 70px;
     box-sizing: border-box; }
+    body .interest-content h2 {
+      font-weight: 100;
+      font-size: 50px;
+      margin-bottom: 0px; }
+    body .interest-content p {
+      margin-top: 0; }
+    body .interest-content form {
+      margin: 25px 0; }
+    body .interest-content span {
+      display: block;
+      margin-bottom: 10px; }
   body .content {
     margin-top: 60px;
     max-width: 712px;

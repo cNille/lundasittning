@@ -42,6 +42,12 @@
 	}
 	$dbHandler->disconnect();
 		
+
+	function datePrettify($date){
+		$arr = explode('-', $date);
+		$prettyDate = str_replace('0', '', $arr[2]) . "/" . str_replace('0', '', $arr[1]);
+		return $prettyDate;
+	}
 ?>
 <!doctype html>
 

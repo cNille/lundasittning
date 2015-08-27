@@ -41,6 +41,12 @@
     		$result = $this->db->executeUpdate($sql, array($fullname, $email, $fbid));
     		return $result[0];
 		}
+
+		public function getUser($fbid) {
+		    $sql = "SELECT * FROM users WHERE facebookId = ?;";
+    		$result = $this->db->executeQuery($sql, array($fbid));
+    		return $result[0];
+		}
 		
 		public function getAccessLevel($fbid, $restaurantName) {
 		    $sql = "SELECT userType FROM restaurantuser JOIN users ON restaurantuser.userId = users.userId WHERE facebookId=? AND resName=?";

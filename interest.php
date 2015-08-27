@@ -2,19 +2,22 @@
 	require_once 'header.php';
  	$dbHandler = new DatabaseHandler();
 	$sitting = $dbHandler->getSitting($_GET['sittId']);
+	$user = $dbHandler->getUser($fbid);
 	$dbHandler->disconnect();
 
+	$userName = $user[2];
+	$userEmail = $user[3];
+	$userTelephone = $user[4];
  ?>
 
 
 <div class="content">
 	<div class="title">Intresseanmälan</div>
-
 	<div class="interest-content">
-		<p>
-			För att enklast lägga en beställning gör såhär;
-		</p>
+		<h2>Sittning <?php echo datePrettify($sitting->date);?></h2>
+		<p>För att lägga en anmälan gör såhär</p> 
 		<ol>
+			<li>Bekräfta ifyllda fält och fyll i resterande fält.</li>
 			<li>Ladda ner sittningsmallen.</li>
 			<li>Fyll i den och spara som en tab-separerad-fil (med ändelsen '.tsv')</li>
 			<li>Ladda upp filen och tryck på klar.</li>
@@ -22,6 +25,18 @@
 		</ol>
 		<a href='./files/SittningsMall.xlsx' target="_blank">Ladda ner mall</a>
 
+
+		<form>
+			Bokare <br />
+			<span><?php echo $userName; ?></span>
+			Datum <br />
+			<span><?php echo $sitting->date; ?></span>
+			Epost <br />
+			<span><input type="text" name="email" value="<?php echo $userEmail; ?>"></span>
+			Telefonnummer <br />
+			<span><input type="text" name="phone" value="<?php echo $userTelephone; ?>"></span>
+
+		</form>
 
 		<style>
 		  #byte_content {
@@ -32,11 +47,13 @@
 		  }
 		  #byte_range { margin-top: 5px; }
 		</style>
-		<h3>Välj fil</h3>
-		<input type="file" id="files" name="file" /> 
-		<span class="readBytesButtons" style="display: block; padding-top:30px;">
-		  <button>Klar</button>
-		</span>
+		<p>
+			Välj fil med gästlista
+			<input type="file" id="files" name="file" /> 
+			<span class="readBytesButtons" style="display: block; padding-top:30px;">
+			  <button>Skicka anmälan</button>
+			</span>
+		</p>
 		<div id="byte_content"></div>
 		<h2>Gästlista</h2>
 		<table class="generatedTable">

@@ -6,12 +6,6 @@
 	$foreman = $dbHandler->getSittingForeman($_GET['sittId']);
 	$dbHandler->disconnect();
 
-	function datePrettify($date){
-		$arr = explode('-', $date);
-		$prettyDate = str_replace('0', '', $arr[2]) . "/" . str_replace('0', '', $arr[1]);
-		return $prettyDate;
-	}
-
 	$spotsLeft = $restaurant->size;
 	$hasInterestedParties = false;
 	foreach ($parties as $key => $p) {
@@ -20,7 +14,6 @@
 			$hasInterestedParties = true;
 		}
 	}
-
  ?>
 
 <div class="content">
@@ -87,7 +80,7 @@
 			<span class="mitten"><?php echo $sitting->desert; ?></span>
 		</div>
 	</div>
-	<div class="button">
+	<div class="button"  onclick="location.href='interest.php?sittId=<?php echo $sitting->id ?>';">
 		<span>+ Lägg intresseanmälan</span>
 	</div>
 </div>
