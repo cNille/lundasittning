@@ -31,6 +31,24 @@
 
 		&.right{
 
+			label{
+				display: block;
+				margin-top: 10px;
+				text-align: center;
+				font-size: 13px;
+			}
+
+			h4{
+				display: block;
+				text-align: center;
+				margin-bottom: 0px;
+			}
+
+			span{
+				text-align: center;
+				display: block;
+				margin-bottom: 15px;
+			}
 
 		}
 	}

@@ -79,9 +79,17 @@
 			<label>Förmän</label>
 			<span><?php 
 				foreach ($foreman as $key => $f) {
-					echo '<li>' . $f[0] . '</li>';
+					echo  $f[0] . '<br />';
 				}
 			?></span>
+			<h4>Meny</h4>
+			<label class="mitten">Förrätt</label>
+			<span class="mitten"><?php echo $sitting->appetiser; ?></span>
+			<label class="mitten">Huvudrätt</label>
+			<span class="mitten"><?php echo $sitting->main; ?></span>
+			<label class="mitten">Efterrätt</label>
+			<span class="mitten"><?php echo $sitting->desert; ?></span>
+
 		</div>
 
 	</div>

@@ -54,7 +54,10 @@ insert into sitting (sittDate, sittAppetiser, sittMain, sittDesert, resName, spo
 
 insert into sittingforeman values
     (1, 1),
+    (1, 2),
+    (2, 1),
     (2, 2),
+    (3, 1),
     (3, 3);
 
 insert into partytype values

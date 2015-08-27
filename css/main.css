@@ -127,6 +127,19 @@ body {
         body .single-sitting .side.left table {
           text-align: center;
           margin-top: 15px; }
+      body .single-sitting .side.right label {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 13px; }
+      body .single-sitting .side.right h4 {
+        display: block;
+        text-align: center;
+        margin-bottom: 0px; }
+      body .single-sitting .side.right span {
+        text-align: center;
+        display: block;
+        margin-bottom: 15px; }
   body .userSettings {
     background-color: white;
     width: 100%;
