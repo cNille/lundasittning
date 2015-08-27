@@ -4,19 +4,16 @@
 	$sitting = $dbHandler->getSitting($_GET['sittId']);
 	$user = $dbHandler->getUser($fbid);
 	$dbHandler->disconnect();
-
 	$userName = $user[2];
 	$userEmail = $user[3];
 	$userTelephone = $user[4];
  ?>
-
-
 <div class="content">
 	<div class="title">Intresseanmälan</div>
 	<div class="interest-content">
 		<h2>Sittning <?php echo datePrettify($sitting->date);?></h2>
 		<p>För att lägga en anmälan gör såhär</p> 
-		<ol
+		<ol>
 			<li>Bekräfta ifyllda fält och fyll i resterande fält.</li>
 			<li>Ladda ner sittningsmallen.</li>
 			<li>Fyll i gästlistan och spara som en tab-separerad-fil eller komma-sepererad-fil (med ändelsen '.tsv' eller '.csv')</li>
@@ -24,8 +21,6 @@
 			<li>Mail kommer att skickas till nationen och en bekräftelse med mer info till dig</li>
 		</ol>
 		<a href='./files/SittningsMall.xlsx' target="_blank">Ladda ner mall</a>
-
-
 		<form>
 			Bokare <br />
 			<span><?php echo $userName; ?></span>
@@ -35,18 +30,7 @@
 			<span><input type="text" name="email" value="<?php echo $userEmail; ?>"></span>
 			Telefonnummer *<br />
 			<span><input type="text" name="phone" value="<?php echo $userTelephone; ?>"></span>
-
 		</form>
-
-		<style>
-		  #byte_content {
-		    margin: 5px 0;
-		    max-height: 100px;
-		    overflow-y: auto;
-		    overflow-x: hidden;
-		  }
-		  #byte_range { margin-top: 5px; }
-		</style>
 		<p>
 			Välj fil med gästlista
 			<input type="file" id="files" name="file" /> 
@@ -60,15 +44,10 @@
 		</table>		
 	</div>
 </div>
-
-
 <script>
 	var guestList;
 	var seperator;
-
-	String.prototype.endsWith = function(suffix) {
-	    return this.indexOf(suffix, this.length - suffix.length) !== -1;
-	};
+	String.prototype.endsWith = function(suffix) { return this.indexOf(suffix, this.length - suffix.length) !== -1; };
 
 	//Adds a eventlistener for when the button is pressed.
 	document.querySelector('.readBytesButtons').addEventListener('click', function(evt) {
@@ -82,14 +61,12 @@
 	
 	//Load data from file.
 	function readData(opt_startByte, opt_stopByte) {
-		
 		var files = document.getElementById('files').files;
 		if (!files.length) {
 		  alert('Please select a file!');
 		  return;
 		}
 		var file = files[0];
-
 		if(file.name.endsWith(".tsv")){
 			seperator = '\t';
 		} else if(file.name.endsWith(".csv")){
@@ -98,7 +75,6 @@
 			alert('Wrong format!');
 		  	return;
 		}
-
 		var reader = new FileReader();
 		// If we use onloadend, we need to check the readyState.
 		reader.onloadend = function(evt) {
@@ -129,7 +105,7 @@
 			}
 		}
 	}
-
+	
 	// Temp function. Fills up a table on page with guestlist.
 	function fillTable(){
 		$('.generatedTable').empty();
