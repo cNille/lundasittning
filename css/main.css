@@ -113,7 +113,9 @@ body {
     display: table;
     background-color: white;
     width: 100%;
-    min-height: 200px; }
+    min-height: 200px;
+    padding: 0px 70px;
+    box-sizing: border-box; }
     body .single-sitting .side {
       position: relative;
       display: table-cell; }
@@ -140,6 +142,20 @@ body {
         text-align: center;
         display: block;
         margin-bottom: 15px; }
+  body div.button {
+    display: block;
+    background-color: white;
+    padding: 25px;
+    margin-top: 15px;
+    text-align: center;
+    opacity: 0.7;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+    body div.button:hover {
+      opacity: 1.0;
+      cursor: pointer; }
   body .userSettings {
     background-color: white;
     width: 100%;

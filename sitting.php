@@ -24,16 +24,13 @@
  ?>
 
 <div class="content">
-	<div class="title">
-		Sittning
-	</div>
+	<div class="title">Sittning</div>
 	<div class="single-sitting">
 		<div class="left side">
 				<h3><?php echo datePrettify($sitting->date); ?></h3>
 				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
 				<label>Preliminär deadline: </label><span><?php echo $sitting->prelDay; ?></span><br />
 				<label>Preliminär deadline: </label><span><?php echo $sitting->payDay; ?></span>
-	
 				<table>
 					<tr>
 						<th>Anmälda sällskap</th>
@@ -74,7 +71,6 @@
 				</table>
 				<?php endif; ?>
 		</div>
-		
 		<div class="right side">
 			<label>Förmän</label>
 			<span><?php 
@@ -89,9 +85,10 @@
 			<span class="mitten"><?php echo $sitting->main; ?></span>
 			<label class="mitten">Efterrätt</label>
 			<span class="mitten"><?php echo $sitting->desert; ?></span>
-
 		</div>
-
+	</div>
+	<div class="button">
+		<span>+ Lägg intresseanmälan</span>
 	</div>
 </div>
 
