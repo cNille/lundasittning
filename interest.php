@@ -72,7 +72,7 @@
 		} else if(file.name.endsWith(".csv")){
 			seperator = ';';
 		} else {
-			alert('Wrong format!');
+			alert('Fel format! Ska sluta på .tsv eller .csv');
 		  	return;
 		}
 		var reader = new FileReader();
