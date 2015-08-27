@@ -44,7 +44,6 @@ body {
   body .header {
     height: 55px;
     width: 100%;
-    z-index: 1000;
     position: fixed;
     top: 0;
     background-color: black;

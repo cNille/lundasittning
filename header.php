@@ -67,9 +67,3 @@
 		</script>
 
 
-		<div class="header">
-			<a href="index.php">Sittning @ <?php echo $restaurant->name; ?></a>
-			<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>
-		</div>
-
-
