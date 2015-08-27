@@ -31,9 +31,9 @@
 			<span><?php echo $userName; ?></span>
 			Datum <br />
 			<span><?php echo $sitting->date; ?></span>
-			Epost <br />
+			Epost *<br />
 			<span><input type="text" name="email" value="<?php echo $userEmail; ?>"></span>
-			Telefonnummer <br />
+			Telefonnummer *<br />
 			<span><input type="text" name="phone" value="<?php echo $userTelephone; ?>"></span>
 
 		</form>
