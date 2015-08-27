@@ -53,10 +53,12 @@ div.button{
 	text-align: center;
 	opacity: 0.7;
 	@include easy-trans(0.3s);
+	border: 1px solid white;
 
 	&:hover{
 		opacity: 1.0;
 		cursor: pointer;
+		border: 1px solid black;
 	}
 }
 

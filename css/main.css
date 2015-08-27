@@ -152,10 +152,12 @@ body {
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
+    transition: all 0.3s ease-in-out;
+    border: 1px solid white; }
     body div.button:hover {
       opacity: 1.0;
-      cursor: pointer; }
+      cursor: pointer;
+      border: 1px solid black; }
   body .userSettings {
     background-color: white;
     width: 100%;
@@ -163,6 +165,14 @@ body {
     body .userSettings .left {
       padding: 20px;
       width: 50%; }
+  body .interest-content {
+    position: relative;
+    display: table;
+    background-color: white;
+    width: 100%;
+    min-height: 200px;
+    padding: 0px 70px;
+    box-sizing: border-box; }
   body .content {
     margin-top: 60px;
     max-width: 712px;
