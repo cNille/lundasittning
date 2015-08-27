@@ -16,12 +16,12 @@
 	<div class="interest-content">
 		<h2>Sittning <?php echo datePrettify($sitting->date);?></h2>
 		<p>För att lägga en anmälan gör såhär</p> 
-		<ol>
+		<ol
 			<li>Bekräfta ifyllda fält och fyll i resterande fält.</li>
 			<li>Ladda ner sittningsmallen.</li>
-			<li>Fyll i den och spara som en tab-separerad-fil (med ändelsen '.tsv')</li>
+			<li>Fyll i gästlistan och spara som en tab-separerad-fil eller komma-sepererad-fil (med ändelsen '.tsv' eller '.csv')</li>
 			<li>Ladda upp filen och tryck på klar.</li>
-			<li>Mail kommer att skickas till nationen och en bekräftelse till dig</li>
+			<li>Mail kommer att skickas till nationen och en bekräftelse med mer info till dig</li>
 		</ol>
 		<a href='./files/SittningsMall.xlsx' target="_blank">Ladda ner mall</a>
 
@@ -64,8 +64,13 @@
 
 <script>
 	var guestList;
+	var seperator;
 
-	//Triggers when generate-button is pressed.
+	String.prototype.endsWith = function(suffix) {
+	    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+	};
+
+	//Adds a eventlistener for when the button is pressed.
 	document.querySelector('.readBytesButtons').addEventListener('click', function(evt) {
 		guestList = Array();
 		if (evt.target.tagName.toLowerCase() == 'button') {
@@ -84,6 +89,16 @@
 		  return;
 		}
 		var file = files[0];
+
+		if(file.name.endsWith(".tsv")){
+			seperator = '\t';
+		} else if(file.name.endsWith(".csv")){
+			seperator = ';';
+		} else {
+			alert('Wrong format!');
+		  	return;
+		}
+
 		var reader = new FileReader();
 		// If we use onloadend, we need to check the readyState.
 		reader.onloadend = function(evt) {
@@ -95,18 +110,19 @@
 		reader.readAsBinaryString(file);
 	}
 
+	//Reads the data from the rows and transforms to object.
 	function dataToObjects(dataString){
 		var dataRows = dataString.split("\n");
 		guestList = [];
 
-		var dateRow = dataRows[2].split("\t");
-		var bookerRow = dataRows[3].split("\t");
+		var dateRow = dataRows[2].split(seperator);
+		var bookerRow = dataRows[3].split(seperator);
 		var date = dateRow[2];
 		var booker = bookerRow[2];
 
 		var guestName, guestPreferens;
 		for(var i = 7; i < dataRows.length; i++){
-			dataCol = dataRows[i].split("\t");
+			dataCol = dataRows[i].split(seperator);
 			guestName = dataCol[1];
 			if(guestName != ""){
 				guestList.push({ 'name' : guestName, 'preferens' : dataCol[2] });
@@ -114,6 +130,7 @@
 		}
 	}
 
+	// Temp function. Fills up a table on page with guestlist.
 	function fillTable(){
 		$('.generatedTable').empty();
 		$('.generatedTable').append('<tr><th>Nr</th><th>Namn</th><th>Preferens</th></tr>');
@@ -123,9 +140,7 @@
 			$('.generatedTable').append('<tr><td>' + y + '</td><td>' + guestList[x].name + '</td><td>' + guestList[x].preferens + '</td></tr>');
 		}
 	}
-
 </script>
-
 <?php include 'footer.php'; ?>
 
 
