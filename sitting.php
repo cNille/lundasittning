@@ -20,7 +20,7 @@
 	<div class="title">Sittning</div>
 	<div class="single-sitting">
 		<div class="left side">
-				<h3><?php echo datePrettify($sitting->date); ?></h3>
+				<h3><?php echo date('j/n', strtotime($sitting->date)); ?></h3>
 				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
 				<label>Preliminär deadline: </label><span><?php echo $sitting->prelDay; ?></span><br />
 				<label>Preliminär deadline: </label><span><?php echo $sitting->payDay; ?></span>

@@ -11,13 +11,15 @@
 <div class="content">
 	<div class="title">Intresseanmälan</div>
 	<div class="interest-content">
-		<h2>Sittning <?php echo datePrettify($sitting->date);?></h2>
+		<h2>Sittning <?php echo date('j/n', strtotime($sitting->date));?></h2>
 		<p>För att lägga en anmälan gör såhär</p> 
 		<ol>
-			<li>Bekräfta ifyllda fält och fyll i resterande fält.</li>
+			<li>Bekräfta ifyllda fält och fyll i resterande fält. </li>
+			<li>Har du ingen excellista sen innan hoppa till steg 5.</li>
 			<li>Ladda ner sittningsmallen.</li>
 			<li>Fyll i gästlistan och spara som en tab-separerad-fil eller komma-sepererad-fil (med ändelsen '.tsv' eller '.csv')</li>
-			<li>Ladda upp filen och tryck på klar.</li>
+			<li>Ladda upp filen. </li>
+			<li>Tryck på klar.</li>
 			<li>Mail kommer att skickas till nationen och en bekräftelse med mer info till dig</li>
 		</ol>
 		<a href='./files/SittningsMall.xlsx' target="_blank">Ladda ner mall</a>
