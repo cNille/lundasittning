@@ -1,10 +1,22 @@
 <?php 
 	require_once 'header.php';
  	$dbHandler = new DatabaseHandler();
-	$party = $dbHandler->getParty($_GET['partyId']);
-	$user = $dbHandler->getUser($fbid);
-	$dbHandler->disconnect();
+	$party = $dbHandler->getParty($_POST['party']);
 
+	$guestMode = $_POST['guestMode'];
+	$name = $_POST['userName'];
+	$email = $_POST['userEmail'];
+	$phone = $_POST['userTelephone'];
+	$date = $_POST['date'];
+	
+	if($loggedIn){
+		$user = $dbHandler->getUser($fbid);
+	} else if($guestMode == 0){
+		include 'facebook-login/fbconfig.php';
+	} else {
+
+	}
+	$dbHandler->disconnect();
 
  ?>
 <div class="content">
