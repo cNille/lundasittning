@@ -34,7 +34,7 @@
 		<div class="right side">
 
 			<?php if($loggedIn) : ?>
-				<div class="btn primary">
+				<div class="btn primary" id="">
 					<span>Anmäl dig</span>
 				</div>
 			<?php else : ?>
@@ -67,6 +67,4 @@
 		</div>
 	</div>
 </div>
-
-
 <?php include 'footer.php'; ?>

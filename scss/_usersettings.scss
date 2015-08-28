@@ -1,8 +1,5 @@
 .userSettings{
-	background-color: white;
-	width: 100%;
-	min-height: 200px;
-	min-width: 270px;	
+	@include content-bg();
 
 	.left{
 		padding: 20px;

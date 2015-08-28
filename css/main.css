@@ -126,12 +126,13 @@ body {
       color: white; }
   body .single-sitting {
     position: relative;
-    display: table;
+    display: block;
     background-color: white;
     width: 100%;
     min-height: 200px;
-    padding: 0px 70px;
-    box-sizing: border-box; }
+    padding: 0px 50px;
+    box-sizing: border-box;
+    display: table; }
     body .single-sitting .side {
       position: relative;
       display: table-cell; }
@@ -180,10 +181,13 @@ body {
       opacity: 1.0;
       border: 1px solid black; }
   body .userSettings {
+    position: relative;
+    display: block;
     background-color: white;
     width: 100%;
     min-height: 200px;
-    min-width: 270px; }
+    padding: 0px 50px;
+    box-sizing: border-box; }
     body .userSettings .left {
       padding: 20px;
       min-width: 270px;
@@ -203,12 +207,13 @@ body {
       cursor: pointer; }
   body .interest-content {
     position: relative;
-    display: table;
+    display: block;
     background-color: white;
     width: 100%;
     min-height: 200px;
-    padding: 0px 70px;
-    box-sizing: border-box; }
+    padding: 0px 50px;
+    box-sizing: border-box;
+    display: table; }
     body .interest-content h2 {
       font-weight: 100;
       font-size: 50px;
@@ -222,12 +227,13 @@ body {
       margin-bottom: 10px; }
   body .party-content {
     position: relative;
-    display: table;
+    display: block;
     background-color: white;
     width: 100%;
     min-height: 200px;
-    padding: 0px 70px;
-    box-sizing: border-box; }
+    padding: 0px 50px;
+    box-sizing: border-box;
+    display: table; }
     body .party-content .side {
       position: relative;
       display: table-cell;
@@ -244,7 +250,7 @@ body {
         text-align: center;
         margin-top: 15px; }
       body .party-content .side.right .btn {
-        padding: 1r5px;
+        padding: 15px;
         background-color: #e6e6e6;
         display: block;
         text-align: center;

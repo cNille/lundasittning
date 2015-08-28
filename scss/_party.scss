@@ -1,11 +1,6 @@
 .party-content{
-	position: relative;
+	@include content-bg();
 	display: table;
-	background-color: white;
-	width: 100%;
-	min-height: 200px;	
-	padding: 0px 70px;
-    box-sizing: border-box;
 
 	.side{
 		position: relative;
@@ -31,7 +26,7 @@
 			}
 
 			.btn{
-				padding: 1r5px;
+				padding: 15px;
 				background-color: darken(white, 10%);
 				@include button();
 			}

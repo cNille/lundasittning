@@ -55,6 +55,16 @@ $sideNavWidth: 250px;
 	}
 }
 
+@mixin content-bg(){
+	position: relative;
+	display: block;
+	background-color: white;
+	width: 100%;
+	min-height: 200px;	
+	padding: 0px 50px;
+    box-sizing: border-box;
+}
+
 // CSS
 // =================
 
@@ -83,22 +93,18 @@ body{
 		
 	.content {
 		margin-top: $headerHeight + 50px;
-		
 		max-width: $contentWidth;
 		width: 90%;
 		margin-left: auto;
 		margin-right: auto;
-		
 		padding-bottom: 50px;
 		
 		.title {
 			height: 100px;
 			width: 90%;
-			
 			margin-left: auto;
 			margin-right: auto;
 			margin-top: 30px;
-			
 			text-align: center;
 			font-size: 60px;
 			color: white;
@@ -107,24 +113,19 @@ body{
 		.event-grid {
 			margin-left: auto;
 			margin-right: auto;
-		
 			width: 90%;
 	
 			.event-window{
 				background-color: white;
 				margin-left: 10px;
 				margin-top: 10px;
-				
 				float: left;
 				width: 150px;
 				height: 150px;
-				
 				-moz-box-shadow: 2px 2px 4px rgba(0,0,0,.5);
 				-webkit-box-shadow: 2px 2px 4px rgba(0,0,0,.5);
 				box-shadow: 2px 2px 4px rgba(0,0,0,.5);
-				
 				text-align: center;
-				
 				position: relative;
 				
 				.width{
