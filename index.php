@@ -4,6 +4,16 @@
  	$dbHandler = new DatabaseHandler();
 	$sittings = $dbHandler->getSittings();
 	$dbHandler->disconnect();
+
+
+	function spotsLeftTextify($spotsLeft, $resSize){
+		if($spotsLeft > $resSize * 0.5){
+			return "Ledig";
+		} else if ($spotsLeft < 5){
+			return "Fåtal platser kvar";
+		}
+		return "Platser kvar: " . $spotsLeft;
+	}
 	
  ?>
 
@@ -36,7 +46,7 @@
 							<?php echo $date; ?>
 						</div>
 						<div class="event-window-spots">
-							Antal platser: <?php echo $s->spotsLeft;?>
+							<?php echo spotsLeftTextify($s->spotsLeft, $restaurant->size);?>
 						</div>
 						<div class="event-window-button">
 							<a href="./sitting.php?sittId=<?php echo $s->id; ?>"> Se mer </a>

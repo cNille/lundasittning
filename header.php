@@ -37,6 +37,9 @@
 	}
 	
 	$userExists = $dbHandler->fbidExists($fbid);
+	if($userExists){
+		$user = $dbHandler->getUser($fbid);
+	}
 	if($loggedIn && !$userExists && $fbid != null){
 		$dbHandler->createUser($fbid, $fbFullname, $fbEmail);
 	}
@@ -44,7 +47,6 @@
 		$dbHandler->updateFbUser($fbFullname, $fbEmail, $fbid);
 	}
 	$dbHandler->disconnect();
-		
 ?>
 <!doctype html>
 
@@ -62,10 +64,5 @@
 			var RESTAURANT_NAME = '<?php echo $restaurant->name ?>';
 			var RESTAURANT_SIZE = '<?php echo $restaurant->size ?>';
 		</script>
-
-
-		<div class="header">
-			<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>
-		</div>
 
 

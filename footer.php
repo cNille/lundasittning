@@ -15,16 +15,18 @@
 		</div>
 	<?php endif; ?>
 
+	<div class="header">
+		<a href="index.php">Sittning @ <?php echo $restaurant->name; ?></a>
+		<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>
+	</div>
+
 	<div class='shadow'></div>
 	<div class="sidenav">
 		<h1>Menu</h1>
-		<ul>
-			<li>Boka sittning</li>
-			<li>Mina sittningar</li>
-			<li>Mitt konto</li>
-			<li>F.A.Q</li>
-			<li>Logga ut</li>
-		</ul>
+		<a href="index.php">Sittningar</a>
+		<a href="settings.php">Mitt konto</a>
+		<a href="faq.php">F.A.Q</a>
+		<a href="feedback.php">Skicka Feedback</a>
 	</div>
 	</body>
 	<script src="js/removeEvent.js"></script>

@@ -1,0 +1,29 @@
+
+
+.interest-content{
+	position: relative;
+	display: table;
+	background-color: white;
+	width: 100%;
+	min-height: 200px;	
+	padding: 0px 70px;
+    box-sizing: border-box;
+
+    h2{
+    	font-weight: 100;
+    	font-size: 50px;
+    	margin-bottom: 0px;
+    }
+    p{
+    	margin-top: 0;
+    }
+
+    form{
+    	margin: 25px 0;
+    }
+    span{
+   		display: block;
+   		margin-bottom: 10px;
+    }
+
+}

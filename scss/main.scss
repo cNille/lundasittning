@@ -57,9 +57,10 @@ body{
 	@import 'footer';
 	@import 'singlesitting';
 	@import 'usersettings';
+	@import 'interest';
 		
 	.content {
-		margin-top: $headerHeight + 10px;
+		margin-top: $headerHeight + 50px;
 		
 		max-width: $contentWidth;
 		width: 90%;
@@ -109,14 +110,14 @@ body{
 					overflow: hidden;
 		
 					.event-window-date{
-						margin-top: 10px;
-						font-size: 25px;
+						margin-top: 20px;
+						font-size: 60px;
 					}
 					.event-window-spots{
-						margin-top: 10px;
+						margin-top: 5px;
 					}
 					.event-window-button{
-						margin-top: 15px;
+						margin-top: 5px;
 						a {
 							text-decoration: none;
 							color: black;

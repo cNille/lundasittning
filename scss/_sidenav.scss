@@ -1,6 +1,5 @@
 
 
-
 .sidenav{
 	position: fixed;
 	height: 100vh;
@@ -9,9 +8,26 @@
 	right: -$sideNavWidth;
 	background-color: white;
 	@include easy-trans(0.3s);
+	box-sizing: border-box;
+
 
 	&.active{
 		right: 0;
+	}
+
+	h1{
+		padding: 15px 30px;
+	}
+
+	a{
+		display: block;
+		padding: 15px 30px;
+		text-decoration: none;
+		font-size: 20px;
+
+		&:hover{
+			background-color: darken(white, 10%);
+		}
 	}
 }
 

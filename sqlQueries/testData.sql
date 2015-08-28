@@ -47,14 +47,17 @@ insert into userfood values
     (2, 'Nötter');
 
 insert into sitting (sittDate, sittAppetiser, sittMain, sittDesert, resName, spotsLeft) values
-    ('2015-09-04', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 80),
-    ('2015-09-11', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 80),
-    ('2015-09-18', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 80),
-    ('2015-09-25', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 80);
+    ('2015-09-04', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 52),
+    ('2015-09-11', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 42),
+    ('2015-09-18', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 34),
+    ('2015-09-25', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 34);
 
 insert into sittingforeman values
     (1, 1),
+    (1, 2),
+    (2, 1),
     (2, 2),
+    (3, 1),
     (3, 3);
 
 insert into partytype values
@@ -63,24 +66,49 @@ insert into partytype values
 
 insert into party (partyName, sittId, partyType, partyInterest, partyPrel, partyPayed) values
     ('NILLE BDAY', 1, 'Öppen', 40, 10, 5),
-    ('FRANZ BDAY', 2, 'Sluten', 40, 3, 20),
-    ('MALIN BDAY', 3, 'Öppen', 40, 23, 10);
+    ('FRANZ BDAY', 1, 'Sluten', 40, 3, 20),
+    ('MALIN BDAY', 2, 'Öppen', 40, 23, 10),
+    ('NILLE BDAY', 2, 'Öppen', 40, 10, 5),
+    ('FRANZ BDAY', 3, 'Sluten', 40, 3, 20),
+    ('MALIN BDAY', 3, 'Öppen', 40, 23, 10),
+    ('FRANZ BDAY', 4, 'Sluten', 40, 3, 20),
+    ('MALIN BDAY', 4, 'Öppen', 40, 23, 10);
 
 insert into partycreator values
     (1,1),
     (2,2),
-    (3,3);
+    (3,3),
+    (4,1),
+    (5,2),
+    (6,3),
+    (7,1),
+    (8,2);
 
 insert into partyguest (partyId, userId, userPayed) values
     (1,1,0),
     (2,1,1),
     (3,1,0),
+    (4,1,0),
+    (5,1,1),
+    (6,1,0),
+    (7,1,0),
+    (8,1,1),
     (1,2,0),
     (2,2,1),
     (3,2,0),
+    (4,2,0),
+    (5,2,1),
+    (6,2,0),
+    (7,2,0),
+    (8,2,1),
     (1,3,0),
     (2,3,1),
-    (3,3,0);
+    (3,3,0),
+    (4,3,0),
+    (5,3,1),
+    (6,3,0),
+    (7,3,0),
+    (8,3,1);
 
 insert into event values
     ('User created'),

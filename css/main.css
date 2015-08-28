@@ -21,9 +21,19 @@ body {
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box; }
     body .sidenav.active {
       right: 0; }
+    body .sidenav h1 {
+      padding: 15px 30px; }
+    body .sidenav a {
+      display: block;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 20px; }
+      body .sidenav a:hover {
+        background-color: #e6e6e6; }
   body .shadow {
     position: fixed;
     display: block;
@@ -44,11 +54,18 @@ body {
   body .header {
     height: 55px;
     width: 100%;
-    z-index: 1000;
+    position: fixed;
+    top: 0;
     background-color: black;
     -moz-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); }
+    body .header a {
+      color: white;
+      font-size: 25px;
+      line-height: 55px;
+      text-decoration: none;
+      display: inline-block; }
     body .header .header-button {
       position: fixed;
       z-index: 9000;
@@ -81,7 +98,7 @@ body {
       opacity: 0.6; }
   body .fb-login {
     height: 30px;
-    position: absolute;
+    position: fixed;
     display: block;
     bottom: 20px;
     right: 50px;
@@ -113,15 +130,56 @@ body {
     display: table;
     background-color: white;
     width: 100%;
-    min-height: 200px; }
+    min-height: 200px;
+    padding: 0px 70px;
+    box-sizing: border-box; }
     body .single-sitting .side {
       position: relative;
       display: table-cell; }
       body .single-sitting .side.left {
         padding: 20px;
         width: 50%; }
+        body .single-sitting .side.left h3 {
+          margin: 0;
+          font-size: 60px;
+          font-weight: 100; }
         body .single-sitting .side.left table {
-          text-align: center; }
+          text-align: center;
+          margin-top: 15px; }
+      body .single-sitting .side.right label {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 13px; }
+      body .single-sitting .side.right h4 {
+        display: block;
+        text-align: center;
+        margin-bottom: 0px; }
+      body .single-sitting .side.right span {
+        text-align: center;
+        display: block;
+        margin-bottom: 15px; }
+  body div.button {
+    display: block;
+    background-color: white;
+    padding: 25px;
+    margin-top: 15px;
+    text-align: center;
+    opacity: 0.7;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid white;
+    cursor: pointer; }
+    body div.button.disabled {
+      cursor: not-allowed; }
+      body div.button.disabled:hover {
+        opacity: 0.7;
+        border: 1px solid white; }
+    body div.button:hover {
+      opacity: 1.0;
+      border: 1px solid black; }
   body .userSettings {
     background-color: white;
     width: 100%;
@@ -129,8 +187,27 @@ body {
     body .userSettings .left {
       padding: 20px;
       width: 50%; }
+  body .interest-content {
+    position: relative;
+    display: table;
+    background-color: white;
+    width: 100%;
+    min-height: 200px;
+    padding: 0px 70px;
+    box-sizing: border-box; }
+    body .interest-content h2 {
+      font-weight: 100;
+      font-size: 50px;
+      margin-bottom: 0px; }
+    body .interest-content p {
+      margin-top: 0; }
+    body .interest-content form {
+      margin: 25px 0; }
+    body .interest-content span {
+      display: block;
+      margin-bottom: 10px; }
   body .content {
-    margin-top: 60px;
+    margin-top: 100px;
     max-width: 712px;
     width: 90%;
     margin-left: auto;
@@ -165,12 +242,12 @@ body {
           width: 150px;
           overflow: hidden; }
           body .content .event-grid .event-window .width .event-window-date {
-            margin-top: 10px;
-            font-size: 25px; }
+            margin-top: 20px;
+            font-size: 60px; }
           body .content .event-grid .event-window .width .event-window-spots {
-            margin-top: 10px; }
+            margin-top: 5px; }
           body .content .event-grid .event-window .width .event-window-button {
-            margin-top: 15px; }
+            margin-top: 5px; }
             body .content .event-grid .event-window .width .event-window-button a {
               text-decoration: none;
               color: black;
