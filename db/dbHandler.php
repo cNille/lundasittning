@@ -96,6 +96,13 @@
 			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','date', 'interest', 'prel','payed', 'interestOnly' }
 		}
 
+		public function getGuests($partyId) {
+			$sql = "SELECT users.userId, users.userName, userfood.foodPref, partyguest.userPayed FROM partyguest JOIN users ON partyguest.partyId=1 AND users.userId=partyguest.userId LEFT JOIN userfood ON userfood.userId=users.userId";
+			$result = $this->db->executeQuery($sql, array($partyId));
+			echo $result[2][3];
+			return $this->arrarrGuest($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
+		}
+
 		public function getRestaurant($name){
 			$sql = "SELECT * FROM restaurant WHERE resName=?";
 			$result = $this->db->executeQuery($sql, array($name));

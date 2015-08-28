@@ -72,5 +72,24 @@ class DataConverter{
 		];
 		return $s;
 	}
+
+	 function arrToGuest($arr){
+		$g = (object)[
+			'id' => $arr[0],
+			'name' => $arr[1],
+			'foodpref' => $arr[2],
+			'payed' => $arr[3]
+		];
+		return $g;
+	}
+
+	function arrarrGuest($arr){
+		$guests = array();
+		foreach ($arr as $key => $g) {
+			$guest = $this->arrToGuest($g);
+			$guests[] = $guest;
+		}
+		return $guests;
+	}
 }
 ?>

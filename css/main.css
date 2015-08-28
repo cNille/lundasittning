@@ -63,7 +63,8 @@ body {
       font-size: 25px;
       line-height: 55px;
       text-decoration: none;
-      display: inline-block; }
+      display: inline-block;
+      margin-left: 10px; }
     body .header .header-button {
       position: fixed;
       z-index: 9000;
@@ -235,7 +236,7 @@ body {
         width: 50%; }
         body .party-content .side.left h3 {
           margin: 0;
-          font-size: 60px;
+          font-size: 30px;
           font-weight: 100; }
         body .party-content .side.left table {
           text-align: center;

@@ -3,56 +3,44 @@
  	$dbHandler = new DatabaseHandler();
 	$party = $dbHandler->getParty($_GET['partyId']);
 	$sitting = $dbHandler->getSitting($party->sittId);
+	$guests = $dbHandler->getGuests($_GET['partyId']);
 	$dbHandler->disconnect();
+
+	function payedTextify($nr){
+		if($nr == 0){
+			return 'Nej';
+		} else if($nr == 1){
+			return 'Bokningsavgift';
+		} else if($nr == 2){
+			return 'Sittningsavgift';
+		}
+	}
  ?>
 
 <div class="content">
 	<div class="title"><?php echo $party->name; ?></div>
 	<div class="party-content">
 		<div class="left side">
-				<h3><?php echo date('j/n', strtotime($sitting->date)); ?></h3>
-				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
-				<label>Preliminär deadline: </label><span><?php echo $sitting->prelDay; ?></span><br />
-				<label>Preliminär deadline: </label><span><?php echo $sitting->payDay; ?></span>
+				<h3>Datum: <?php echo date('j/n', strtotime($sitting->date)); ?></h3>
+				<p><?php 	echo $guests[0]->fbid; ?></p>
 				<table>
 					<tr>
-						<th>Anmälda sällskap</th>
 						<th>Gäster</th>
+						<th>Matpreferens</th>
+						<th>Betalat</th>
 					</tr>
 					<?php 
-						foreach ($parties as $key => $p) {
+						foreach ($guests as $key => $g) {
 							?>
 								<tr>
-									<td><?php echo $p->name; ?></td>
-									<td><?php echo $p->prel + $p->payed; ?></td>
+									<td><?php echo $g->name; ?></td>
+									<td><?php echo $g->foodpref; ?></td>
+									<td><?php echo payedTextify($g->payed); ?></td>
 								</tr>
 							<?php
 						}
 					?>
 				</table>
-				<?php if($hasInterestedParties) : ?>
-				<table>
-					<tr>
-						<th>Intresserade Sällskap</th>
-						<th>Gäster</th>
-					</tr>
-					<?php 
-						$spotsLeft = $restaurant->size;
-						foreach ($parties as $key => $p) {
-							$prelSpots = $p->prel + $p->payed;
-
-							if($prelSpots == 0){
-							?>
-								<tr>
-									<td><?php echo $p->name; ?></td>
-									<td><?php echo $p->prel + $p->payed; ?></td>
-								</tr>
-							<?php
-							}
-						}
-					?>
-				</table>
-				<?php endif; ?>
 		</div>
 		<div class="right side">
 			<label>Förmän</label>
