@@ -170,10 +170,15 @@ body {
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border: 1px solid white; }
+    border: 1px solid white;
+    cursor: pointer; }
+    body div.button.disabled {
+      cursor: not-allowed; }
+      body div.button.disabled:hover {
+        opacity: 0.7;
+        border: 1px solid white; }
     body div.button:hover {
       opacity: 1.0;
-      cursor: pointer;
       border: 1px solid black; }
   body .userSettings {
     background-color: white;

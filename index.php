@@ -12,7 +12,7 @@
 		} else if ($spotsLeft < 5){
 			return "Fåtal platser kvar";
 		}
-		return "Antal platser: " . $spotsLeft;
+		return "Platser kvar: " . $spotsLeft;
 	}
 	
  ?>

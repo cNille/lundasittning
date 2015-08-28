@@ -80,7 +80,13 @@
 			<span class="mitten"><?php echo $sitting->desert; ?></span>
 		</div>
 	</div>
-	<div class="button"  onclick="location.href='interest.php?sittId=<?php echo $sitting->id ?>';">
+	<div <?php 
+			if($loggedIn){ 
+				echo 'class="button"  onclick="location.href="interest.php?sittId=' . $sitting->id . '";"'; 
+			} else { 
+				echo 'class="button disabled" title="Du måste vara inloggad för att kunna lägga en anmälan."'; 
+			} ?> 
+		>
 		<span>+ Lägg intresseanmälan</span>
 	</div>
 </div>
