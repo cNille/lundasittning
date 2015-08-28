@@ -34,7 +34,7 @@
 		<div class="right side">
 
 			<?php if($loggedIn) : ?>
-				<div class="btn">
+				<div class="btn primary">
 					<span>Anmäl dig</span>
 				</div>
 			<?php else : ?>
