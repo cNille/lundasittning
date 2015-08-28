@@ -19,8 +19,6 @@
 			</div>
 			<div id="gender">
 			</div>
-			<div id="alcohol">
-			</div>
 		</div>
 	</div>
 </div>
