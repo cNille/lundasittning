@@ -6,8 +6,6 @@ body {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
   background-image: url("../images/table.jpg");
   min-height: 100vw;
   min-height: 100vh; }
