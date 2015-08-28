@@ -99,6 +99,7 @@ create table party (
 	partyInterest	integer,
 	partyPrel		integer DEFAULT 0,
 	partyPayed		integer DEFAULT 0,
+	partyMessage	text,
 	primary key(partyId),
 	foreign key(partyType) references partytype(partyType),
 	foreign key(sittId) references sitting(sittId)

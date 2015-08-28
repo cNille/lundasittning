@@ -22,12 +22,14 @@
 	<div class="title"><?php echo $party->name; ?></div>
 	<div class="party-content">
 		<div class="left side">
-				<label>Datum</label>
+				<h4>Datum</h4>
 				<p><?php echo $sitting->date; ?></p>
-				<label>Sällskapsansvarig</label> 
+				<h4>Sällskapsansvarig</h4> 
 				<p><?php echo  $creator[0];?></p>
 				<p><?php echo  $creator[1];?></p>
 				<p><?php echo  $creator[2];?></p>
+				<h4>Meddelande</h4> 
+				<p><?php echo  $party->message;?></p>
 		</div>
 		<div class="right side">
 			<table>

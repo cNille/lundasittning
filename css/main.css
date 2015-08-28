@@ -230,16 +230,15 @@ body {
     box-sizing: border-box; }
     body .party-content .side {
       position: relative;
-      display: table-cell; }
-      body .party-content .side.left {
-        padding: 20px;
-        width: 50%; }
-        body .party-content .side.left label {
-          font-size: 13px;
-          display: block;
-          margin-top: 20px; }
-        body .party-content .side.left p {
-          margin: 5px 0; }
+      display: table-cell;
+      padding: 5px; }
+      body .party-content .side.left h4 {
+        font-size: 15px;
+        display: block;
+        margin: 0;
+        margin-top: 10px; }
+      body .party-content .side.left p {
+        margin: 5px 0; }
       body .party-content .side.right table {
         text-align: center;
         margin-top: 15px; }
