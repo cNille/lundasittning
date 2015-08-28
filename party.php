@@ -48,12 +48,6 @@
 					}
 				?>
 			</table>
-			<label>Förmän</label>
-			<span><?php 
-				foreach ($foreman as $key => $f) {
-					echo  $f[0] . '<br />';
-				}
-			?></span>
 		</div>
 	</div>
 </div>
