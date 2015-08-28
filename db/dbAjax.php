@@ -8,6 +8,7 @@
 	    switch($action) {
 	        case 'addSitting' : addSitting($dbHandler);break;
 	        case 'removeSitting' : removeSitting($dbHandler);break;
+	        case 'updateSettings' : updateSettings($dbHandler);break;
 	    }
 	    $dbHandler.disconnect();
 	}
@@ -22,5 +23,9 @@
 		if(isset($_POST['id']) && !empty($_POST['id'])) {
 			$dbHandler->deleteSitting($_POST['id']);
 		}
+	}
+	
+	function updateSettings($dbHandler){
+		
 	}
 ?>

@@ -183,10 +183,25 @@ body {
   body .userSettings {
     background-color: white;
     width: 100%;
-    min-height: 200px; }
+    min-height: 200px;
+    min-width: 270px; }
     body .userSettings .left {
       padding: 20px;
-      width: 50%; }
+      min-width: 270px;
+      width: 35%; }
+    body .userSettings .left .category {
+      margin-top: 10px; }
+    body .userSettings .left input[type="text"] {
+      float: right;
+      margin-right: 25px; }
+    body .userSettings .left button {
+      float: right;
+      margin-right: 25px;
+      background-color: red;
+      border: none;
+      font-size: 20px; }
+    body .userSettings button:hover {
+      cursor: pointer; }
   body .interest-content {
     position: relative;
     display: table;
