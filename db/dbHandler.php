@@ -108,6 +108,10 @@
 			return $result[0][0];
 		}
 		
-
+		public function getSettings($fbid) {
+			$sql = "SELECT * FROM users WHERE facebookId=?";
+			$result = $this->db->executeQuery($sql, array($fbid));
+			return $this->arrToUser($result[0]); // Structure: {'id', 'fbid', 'name', 'email', 'telephone', 'other', 'active'}
+		}
 	}
 ?>

@@ -59,5 +59,18 @@ class DataConverter{
 		}
 		return $sittings;
 	}
+	
+	 function arrToUser($arr){
+		$s = (object)[ // Init a sitting object.
+			'id' => $arr[0],
+			'fbid' => $arr[1],
+			'name' => $arr[2],
+			'email' => $arr[3],
+			'telephone' => $arr[4],
+			'other' => $arr[5],
+			'active' => $arr[6]
+		];
+		return $s;
+	}
 }
 ?>
