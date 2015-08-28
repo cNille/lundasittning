@@ -234,26 +234,15 @@ body {
       body .party-content .side.left {
         padding: 20px;
         width: 50%; }
-        body .party-content .side.left h3 {
-          margin: 0;
-          font-size: 30px;
-          font-weight: 100; }
-        body .party-content .side.left table {
-          text-align: center;
-          margin-top: 15px; }
-      body .party-content .side.right label {
-        display: block;
-        margin-top: 10px;
+        body .party-content .side.left label {
+          font-size: 13px;
+          display: block;
+          margin-top: 20px; }
+        body .party-content .side.left p {
+          margin: 5px 0; }
+      body .party-content .side.right table {
         text-align: center;
-        font-size: 13px; }
-      body .party-content .side.right h4 {
-        display: block;
-        text-align: center;
-        margin-bottom: 0px; }
-      body .party-content .side.right span {
-        text-align: center;
-        display: block;
-        margin-bottom: 15px; }
+        margin-top: 15px; }
   body div.button {
     display: block;
     background-color: white;

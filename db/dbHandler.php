@@ -99,8 +99,13 @@
 		public function getGuests($partyId) {
 			$sql = "SELECT users.userId, users.userName, userfood.foodPref, partyguest.userPayed FROM partyguest JOIN users ON partyguest.partyId=1 AND users.userId=partyguest.userId LEFT JOIN userfood ON userfood.userId=users.userId";
 			$result = $this->db->executeQuery($sql, array($partyId));
-			echo $result[2][3];
 			return $this->arrarrGuest($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
+		}
+
+		public function getCreator($partyId) {
+			$sql = "SELECT users.userName, users.userEmail, users.userTelephone FROM partycreator JOIN users ON users.userId=partycreator.userId WHERE partycreator.partyId=?";
+			$result = $this->db->executeQuery($sql, array($partyId));
+			return $result[0]; // Structure: username, email, telephone
 		}
 
 		public function getRestaurant($name){

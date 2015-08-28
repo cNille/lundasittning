@@ -4,6 +4,7 @@
 	$party = $dbHandler->getParty($_GET['partyId']);
 	$sitting = $dbHandler->getSitting($party->sittId);
 	$guests = $dbHandler->getGuests($_GET['partyId']);
+	$creator = $dbHandler->getCreator($_GET['partyId']);
 	$dbHandler->disconnect();
 
 	function payedTextify($nr){
@@ -21,41 +22,38 @@
 	<div class="title"><?php echo $party->name; ?></div>
 	<div class="party-content">
 		<div class="left side">
-				<h3>Datum: <?php echo date('j/n', strtotime($sitting->date)); ?></h3>
-				<p><?php 	echo $guests[0]->fbid; ?></p>
-				<table>
-					<tr>
-						<th>Gäster</th>
-						<th>Matpreferens</th>
-						<th>Betalat</th>
-					</tr>
-					<?php 
-						foreach ($guests as $key => $g) {
-							?>
-								<tr>
-									<td><?php echo $g->name; ?></td>
-									<td><?php echo $g->foodpref; ?></td>
-									<td><?php echo payedTextify($g->payed); ?></td>
-								</tr>
-							<?php
-						}
-					?>
-				</table>
+				<label>Datum</label>
+				<p><?php echo $sitting->date; ?></p>
+				<label>Sällskapsansvarig</label> 
+				<p><?php echo  $creator[0];?></p>
+				<p><?php echo  $creator[1];?></p>
+				<p><?php echo  $creator[2];?></p>
 		</div>
 		<div class="right side">
+			<table>
+				<tr>
+					<th>Gäster</th>
+					<th>Matpreferens</th>
+					<th>Betalat</th>
+				</tr>
+				<?php 
+					foreach ($guests as $key => $g) {
+						?>
+							<tr>
+								<td><?php echo $g->name; ?></td>
+								<td><?php echo $g->foodpref; ?></td>
+								<td><?php echo payedTextify($g->payed); ?></td>
+							</tr>
+						<?php
+					}
+				?>
+			</table>
 			<label>Förmän</label>
 			<span><?php 
 				foreach ($foreman as $key => $f) {
 					echo  $f[0] . '<br />';
 				}
 			?></span>
-			<h4>Meny</h4>
-			<label class="mitten">Förrätt</label>
-			<span class="mitten"><?php echo $sitting->appetiser; ?></span>
-			<label class="mitten">Huvudrätt</label>
-			<span class="mitten"><?php echo $sitting->main; ?></span>
-			<label class="mitten">Efterrätt</label>
-			<span class="mitten"><?php echo $sitting->desert; ?></span>
 		</div>
 	</div>
 </div>

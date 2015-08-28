@@ -34,7 +34,7 @@ class DataConverter{
 			'id' => $arr[0],
 			'name' => $arr[1],
 			'type' => $arr[2],
-			'date' => $arr[3],
+			'sittId' => $arr[3],
 			'interest' => $arr[4],
 			'prel' => $arr[5],
 			'payed' => $arr[6],
