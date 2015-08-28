@@ -31,6 +31,19 @@ $sideNavWidth: 250px;
 			transition-delay: $speed;
 }
 
+@mixin button(){
+	display: block;
+	text-align: center;
+	opacity: 0.7;
+	@include easy-trans(0.3s);
+	border: 1px solid white;
+	cursor: pointer;
+	&:hover{
+		opacity: 1.0;
+		border: 1px solid black;
+	}
+}
+
 // CSS
 // =================
 

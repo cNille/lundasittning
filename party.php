@@ -32,6 +32,20 @@
 				<p><?php echo  $party->message;?></p>
 		</div>
 		<div class="right side">
+
+			<?php if($loggedIn) : ?>
+				<div class="btn">
+					<span>Anmäl dig</span>
+				</div>
+			<?php else : ?>
+				<div class="btn primary">
+					<span>Anmäl dig via inlogg</span>
+				</div>
+				<div class="btn">
+					<span>Anmäl dig via gästinlogg</span>
+				</div>
+			<?php endif;?>
+
 			<table>
 				<tr>
 					<th>Gäster</th>

@@ -21,6 +21,7 @@
 			}
 			p{
 				margin: 5px 0;
+				max-width: 325px;
 			}
 		}
 		&.right{
@@ -28,20 +29,27 @@
 				text-align: center;
 				margin-top: 15px;
 			}
+
+			.btn{
+				padding: 5px;
+				background-color: darken(white, 10%);
+				@include button();
+
+
+				&.primary{
+					background-color: #104050;
+					color: white;
+				}
+			}
 		}
 	}
 }
 
 div.button{
-	display: block;
+	@include button();
 	background-color: white;
 	padding: 25px;
 	margin-top: 15px;
-	text-align: center;
-	opacity: 0.7;
-	@include easy-trans(0.3s);
-	border: 1px solid white;
-	cursor: pointer;
 
 	&.disabled{
 		cursor: not-allowed;
@@ -50,11 +58,6 @@ div.button{
 			opacity: 0.7;
 			border: 1px solid white;
 		}
-	}
-
-	&:hover{
-		opacity: 1.0;
-		border: 1px solid black;
 	}
 }
 

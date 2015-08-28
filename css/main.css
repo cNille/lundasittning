@@ -238,15 +238,31 @@ body {
         margin: 0;
         margin-top: 10px; }
       body .party-content .side.left p {
-        margin: 5px 0; }
+        margin: 5px 0;
+        max-width: 325px; }
       body .party-content .side.right table {
         text-align: center;
         margin-top: 15px; }
+      body .party-content .side.right .btn {
+        padding: 5px;
+        background-color: #e6e6e6;
+        display: block;
+        text-align: center;
+        opacity: 0.7;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        border: 1px solid white;
+        cursor: pointer; }
+        body .party-content .side.right .btn:hover {
+          opacity: 1.0;
+          border: 1px solid black; }
+        body .party-content .side.right .btn.primary {
+          background-color: #104050;
+          color: white; }
   body div.button {
     display: block;
-    background-color: white;
-    padding: 25px;
-    margin-top: 15px;
     text-align: center;
     opacity: 0.7;
     -webkit-transition: all 0.3s ease-in-out;
@@ -254,15 +270,18 @@ body {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     border: 1px solid white;
-    cursor: pointer; }
+    cursor: pointer;
+    background-color: white;
+    padding: 25px;
+    margin-top: 15px; }
+    body div.button:hover {
+      opacity: 1.0;
+      border: 1px solid black; }
     body div.button.disabled {
       cursor: not-allowed; }
       body div.button.disabled:hover {
         opacity: 0.7;
         border: 1px solid white; }
-    body div.button:hover {
-      opacity: 1.0;
-      border: 1px solid black; }
   body .content {
     margin-top: 100px;
     max-width: 712px;
