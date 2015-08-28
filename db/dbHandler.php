@@ -90,6 +90,12 @@
 			return $this->arrarrParty($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
 		}
 
+		public function getParty($partyId) {
+			$sql = "SELECT * FROM party WHERE partyId=?";
+			$result = $this->db->executeQuery($sql, array($partyId));
+			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','date', 'interest', 'prel','payed', 'interestOnly' }
+		}
+
 		public function getRestaurant($name){
 			$sql = "SELECT * FROM restaurant WHERE resName=?";
 			$result = $this->db->executeQuery($sql, array($name));

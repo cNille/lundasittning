@@ -65,8 +65,8 @@
 	function readData(opt_startByte, opt_stopByte) {
 		var files = document.getElementById('files').files;
 		if (!files.length) {
-		  alert('Please select a file!');
-		  return;
+			//return if no file selected.
+			return;
 		}
 		var file = files[0];
 		if(file.name.endsWith(".tsv")){
