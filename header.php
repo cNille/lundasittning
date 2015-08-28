@@ -34,6 +34,9 @@
 	}
 	
 	$userExists = $dbHandler->fbidExists($fbid);
+	if($userExists){
+		$user = $dbHandler->getUser($fbid);
+	}
 	if($loggedIn && !$userExists && $fbid != null){
 		$dbHandler->createUser($fbid, $fbFullname, $fbEmail);
 	}
