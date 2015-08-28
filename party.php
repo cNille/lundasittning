@@ -2,12 +2,13 @@
 	require_once 'header.php';
  	$dbHandler = new DatabaseHandler();
 	$party = $dbHandler->getParty($_GET['partyId']);
+	$sitting = $dbHandler->getSitting($party->sittId);
 	$dbHandler->disconnect();
  ?>
 
 <div class="content">
 	<div class="title"><?php echo $party->name; ?></div>
-	<div class="single-sitting">
+	<div class="party-content">
 		<div class="left side">
 				<h3><?php echo date('j/n', strtotime($sitting->date)); ?></h3>
 				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
@@ -68,15 +69,6 @@
 			<label class="mitten">Efterrätt</label>
 			<span class="mitten"><?php echo $sitting->desert; ?></span>
 		</div>
-	</div>
-	<div <?php 
-			if($loggedIn){ 
-				echo 'class="button"  onclick="location.href=\'interest.php?sittId=' . $sitting->id . '\';"'; 
-			} else { 
-				echo 'class="button disabled" title="Du måste vara inloggad för att kunna lägga en anmälan."'; 
-			} ?> 
-		>
-		<span>+ Lägg intresseanmälan</span>
 	</div>
 </div>
 

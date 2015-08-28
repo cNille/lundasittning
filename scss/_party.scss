@@ -1,0 +1,73 @@
+.party-content{
+	position: relative;
+	display: table;
+	background-color: white;
+	width: 100%;
+	min-height: 200px;	
+	padding: 0px 70px;
+    box-sizing: border-box;
+
+	.side{
+		position: relative;
+		display: table-cell;
+
+		&.left{
+			h3{
+			    margin: 0;
+    			font-size: 60px;
+    			font-weight: 100;
+			}
+			padding: 20px;
+			width: 50%;
+			table{
+				text-align: center;
+				margin-top: 15px;
+			}
+		}
+		&.right{
+			label{
+				display: block;
+				margin-top: 10px;
+				text-align: center;
+				font-size: 13px;
+			}
+			h4{
+				display: block;
+				text-align: center;
+				margin-bottom: 0px;
+			}
+			span{
+				text-align: center;
+				display: block;
+				margin-bottom: 15px;
+			}
+		}
+	}
+}
+
+div.button{
+	display: block;
+	background-color: white;
+	padding: 25px;
+	margin-top: 15px;
+	text-align: center;
+	opacity: 0.7;
+	@include easy-trans(0.3s);
+	border: 1px solid white;
+	cursor: pointer;
+
+	&.disabled{
+		cursor: not-allowed;
+
+		&:hover{
+			opacity: 0.7;
+			border: 1px solid white;
+		}
+	}
+
+	&:hover{
+		opacity: 1.0;
+		border: 1px solid black;
+	}
+}
+

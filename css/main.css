@@ -204,6 +204,61 @@ body {
     body .interest-content span {
       display: block;
       margin-bottom: 10px; }
+  body .party-content {
+    position: relative;
+    display: table;
+    background-color: white;
+    width: 100%;
+    min-height: 200px;
+    padding: 0px 70px;
+    box-sizing: border-box; }
+    body .party-content .side {
+      position: relative;
+      display: table-cell; }
+      body .party-content .side.left {
+        padding: 20px;
+        width: 50%; }
+        body .party-content .side.left h3 {
+          margin: 0;
+          font-size: 60px;
+          font-weight: 100; }
+        body .party-content .side.left table {
+          text-align: center;
+          margin-top: 15px; }
+      body .party-content .side.right label {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 13px; }
+      body .party-content .side.right h4 {
+        display: block;
+        text-align: center;
+        margin-bottom: 0px; }
+      body .party-content .side.right span {
+        text-align: center;
+        display: block;
+        margin-bottom: 15px; }
+  body div.button {
+    display: block;
+    background-color: white;
+    padding: 25px;
+    margin-top: 15px;
+    text-align: center;
+    opacity: 0.7;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid white;
+    cursor: pointer; }
+    body div.button.disabled {
+      cursor: not-allowed; }
+      body div.button.disabled:hover {
+        opacity: 0.7;
+        border: 1px solid white; }
+    body div.button:hover {
+      opacity: 1.0;
+      border: 1px solid black; }
   body .content {
     margin-top: 100px;
     max-width: 712px;
