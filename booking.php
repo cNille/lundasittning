@@ -8,7 +8,7 @@
 	$email = $_POST['userEmail'];
 	$phone = $_POST['userTelephone'];
 	$date = $_POST['sittId'];
-	$sitting = $dbHandler->getSitting($_POST['sittId']);
+	$sitting = $dbHandler->getSitting($date);
 
 	if($loggedIn){
 		$user = $dbHandler->getUser($fbid);
@@ -32,7 +32,7 @@
 			Namn <br />
 			<span><input type="text" name="email" value="<?php echo $name; ?>"></span>
 			Datum <br />
-			<span><input type="text" name="email" value="<?php echo $date; ?>"></span>
+			<span><input type="text" name="email" value="<?php echo $sitting->date; ?>"></span>
 			Epost *<br />
 			<span><input type="text" name="email" value="<?php echo $email; ?>"></span>
 			Telefonnummer *<br />
