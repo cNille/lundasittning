@@ -7,8 +7,9 @@
 	$name = $_POST['userName'];
 	$email = $_POST['userEmail'];
 	$phone = $_POST['userTelephone'];
-	$date = $_POST['date'];
-	
+	$date = $_POST['sittId'];
+	$sitting = $dbHandler->getSitting($_POST['sittId']);
+
 	if($loggedIn){
 		$user = $dbHandler->getUser($fbid);
 	} else if($guestMode == 0){
@@ -29,13 +30,13 @@
 		</ol>
 		<form>
 			Namn <br />
-			<span><input type="text" name="email" value="<?php echo $userEmail; ?>"></span>
+			<span><input type="text" name="email" value="<?php echo $name; ?>"></span>
 			Datum <br />
-			<span><input type="text" name="email" value="<?php echo $userEmail; ?>"></span>
+			<span><input type="text" name="email" value="<?php echo $date; ?>"></span>
 			Epost *<br />
-			<span><input type="text" name="email" value="<?php echo $userEmail; ?>"></span>
+			<span><input type="text" name="email" value="<?php echo $email; ?>"></span>
 			Telefonnummer *<br />
-			<span><input type="text" name="phone" value="<?php echo $userTelephone; ?>"></span>
+			<span><input type="text" name="phone" value="<?php echo $phone; ?>"></span>
 			<input type="submit" value="Boka plats"/>
 			<button onclick="window.history.back();">Avbryt</button>
 		</form>

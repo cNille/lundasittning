@@ -93,7 +93,7 @@
 		public function getParty($partyId) {
 			$sql = "SELECT * FROM party WHERE partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
-			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','date', 'interest', 'prel','payed', 'interestOnly' }
+			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
 		}
 
 		public function getGuests($partyId) {

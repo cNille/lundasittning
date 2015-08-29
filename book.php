@@ -35,7 +35,7 @@
 	<input type='hidden' name='userEmail' value='<?php echo $user[3]; ?>'>
 	<input type='hidden' name='userTelephone' value='<?php echo $user[4]; ?>'>
 	<input type='hidden' name='party' value='<?php echo $party->id; ?>'>
-	<input type='hidden' name='date' value='<?php echo $sittin->date; ?>'>
+	<input type='hidden' name='sittId' value='<?php echo $party->sittId; ?>'>
 	<input type='hidden' name='guestMode' value='<?php echo $guestMode; ?>'>
 </form>
 <script language="JavaScript">
