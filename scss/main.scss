@@ -116,6 +116,26 @@ body{
 			margin-right: auto;
 			width: 90%;
 	
+			.event-link{
+				@include easy-trans(0.3s);
+				transform: scale(1.0); 
+				color: black;
+				opacity: 0.9;
+
+				&:hover{
+					opacity: 1.0;				
+				}
+			}
+
+			#event-creator{
+				@include easy-trans(0.3s);
+				opacity: 0.9;
+
+				&:hover{
+					opacity: 1.0;				
+				}
+			}
+
 			.event-window{
 				background-color: white;
 				margin-left: 10px;
@@ -153,9 +173,19 @@ body{
 					}
 					.event-remove-button{
 						position: absolute;
-						right: -20px;
-						bottom: -5px;
+						cursor: pointer;
+						right: -10px;
+						top: -10px;
 						border: none;
+						border-radius: 59px;
+					    height: 30px;
+					    width: 30px;
+					    @include easy-trans(0.3s);
+
+					    &:hover{
+					    	color: #eee;
+					    	background-color: #333;
+					    }
 					}
 				}
 			}

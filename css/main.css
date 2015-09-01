@@ -336,6 +336,24 @@ body {
       margin-left: auto;
       margin-right: auto;
       width: 90%; }
+      body .content .event-grid .event-link {
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        transform: scale(1);
+        color: black;
+        opacity: 0.9; }
+        body .content .event-grid .event-link:hover {
+          opacity: 1.0; }
+      body .content .event-grid #event-creator {
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        opacity: 0.9; }
+        body .content .event-grid #event-creator:hover {
+          opacity: 1.0; }
       body .content .event-grid .event-window {
         background-color: white;
         margin-left: 10px;
@@ -366,9 +384,20 @@ body {
               text-decoration: underline; }
           body .content .event-grid .event-window .width .event-remove-button {
             position: absolute;
-            right: -20px;
-            bottom: -5px;
-            border: none; }
+            cursor: pointer;
+            right: -10px;
+            top: -10px;
+            border: none;
+            border-radius: 59px;
+            height: 30px;
+            width: 30px;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out; }
+            body .content .event-grid .event-window .width .event-remove-button:hover {
+              color: #eee;
+              background-color: #333; }
       body .content .event-grid .event-window.created {
         -webkit-transition: all 0.3s ease-in-out;
         -moz-transition: all 0.3s ease-in-out;

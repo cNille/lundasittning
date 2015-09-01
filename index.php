@@ -40,6 +40,7 @@
 			foreach($sittings as $row => $s) {
 				$date = date('j/n', strtotime($s->date));
 				?>
+				<a href="./sitting.php?sittId=<?php echo $s->id; ?>" class="event-link">
 				<div class="event-window" id="<?php echo $s->id; ?>">
 					<div class="width">
 						<div class="event-window-date">
@@ -49,13 +50,14 @@
 							<?php echo spotsLeftTextify($s->spotsLeft, $restaurant->size);?>
 						</div>
 						<div class="event-window-button">
-							<a href="./sitting.php?sittId=<?php echo $s->id; ?>"> Se mer </a>
+							 Se mer
 						</div>
 						<?php if($accessLevel >= 5){ ?>
-							<button class="event-remove-button">Remove</button>
+							<button class="event-remove-button">X</button>
 						<?php } ?>
 					</div>
 				</div>
+				 </a>
 		<?php } ?>
 			<?php if($accessLevel >= 5){ ?>
 				<div class="event-window" id="event-creator">
