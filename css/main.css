@@ -399,10 +399,10 @@ body {
             border-radius: 59px;
             height: 20px;
             width: 20px;
-            -webkit-transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            -o-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out; }
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -o-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out; }
             body .content .event-grid .event-window .width .event-remove-button:hover {
               color: #eee;
               background-color: #333; }
