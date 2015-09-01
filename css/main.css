@@ -365,7 +365,15 @@ body {
         -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         text-align: center;
-        position: relative; }
+        position: relative;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        box-sizing: border-box;
+        border: 1px solid white; }
+        body .content .event-grid .event-window:hover {
+          border: 1px solid #333; }
         body .content .event-grid .event-window .width {
           width: 150px;
           overflow: hidden; }
@@ -385,12 +393,12 @@ body {
           body .content .event-grid .event-window .width .event-remove-button {
             position: absolute;
             cursor: pointer;
-            right: -10px;
-            top: -10px;
+            right: -5px;
+            top: -5px;
             border: none;
             border-radius: 59px;
-            height: 30px;
-            width: 30px;
+            height: 20px;
+            width: 20px;
             -webkit-transition: all 0.3s ease-in-out;
             -moz-transition: all 0.3s ease-in-out;
             -o-transition: all 0.3s ease-in-out;

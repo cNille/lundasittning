@@ -148,6 +148,13 @@ body{
 				box-shadow: 2px 2px 4px rgba(0,0,0,.5);
 				text-align: center;
 				position: relative;
+
+				@include easy-trans(0.3s);
+				box-sizing: border-box;
+				border: 1px solid white;
+				&:hover{
+					border: 1px solid #333;
+				}
 				
 				.width{
 					width: 150px;
@@ -174,12 +181,12 @@ body{
 					.event-remove-button{
 						position: absolute;
 						cursor: pointer;
-						right: -10px;
-						top: -10px;
+						right: -5px;
+						top: -5px;
 						border: none;
 						border-radius: 59px;
-					    height: 30px;
-					    width: 30px;
+					    height: 20px;
+					    width: 20px;
 					    @include easy-trans(0.3s);
 
 					    &:hover{
