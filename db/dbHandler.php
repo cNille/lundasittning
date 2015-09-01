@@ -90,6 +90,12 @@
 			return $this->arrarrParty($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
 		}
 
+		public function getPartiesByUser($userId) {
+			$sql = "SELECT * FROM partyguest WHERE userId=?";
+			$result = $this->db->executeQuery($sql, array($userId));
+			return $result;
+		}
+
 		public function getParty($partyId) {
 			$sql = "SELECT * FROM party WHERE partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));

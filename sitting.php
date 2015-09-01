@@ -3,6 +3,7 @@
  	$dbHandler = new DatabaseHandler();
 	$sitting = $dbHandler->getSitting($_GET['sittId']);
 	$parties = $dbHandler->getParties($_GET['sittId']);
+	$myParties = $dbHandler->getPartiesByUser($user[0]);
 	$foreman = $dbHandler->getSittingForeman($_GET['sittId']);
 	$dbHandler->disconnect();
 
@@ -31,10 +32,25 @@
 					</tr>
 					<?php 
 						foreach ($parties as $key => $p) {
+							$isParticipating = false;
+							foreach ($myParties as $key => $mp) {
+								if($mp[0] == $p->id){
+									$isParticipating = true;
+								}
+							}
+							
 							?>
 								<tr>
-									<td><?php echo $p->name; ?></td>
+									<?php 
+										if($isParticipating){
+											echo '<td><a href="party.php?id=' . $p->id . '">' . $p->name . '</a></td>';
+										} else {
+											echo '<td>' . $p->name . '</td>';
+										}
+									?>
+									
 									<td><?php echo $p->prel + $p->payed; ?></td>
+									
 								</tr>
 							<?php
 						}
