@@ -24,6 +24,22 @@
 		// Here are all the methods for retrieving and updating data.
 		// ======================================================
 
+		// Restaurant
+		// ======================================================
+		public function getRestaurant($name){
+			$sql = "SELECT * FROM restaurant WHERE resName=?";
+			$result = $this->db->executeQuery($sql, array($name));
+			return $this->arrToRes($result[0]);  // Structure: { 'name', 'email', 'openhours', 'deposit', 'price', 'size', 'summary' }
+		}
+
+		public function getResSize($name){
+			$sql = "SELECT resSize FROM restaurant WHERE resName=?";
+			$result = $this->db->executeQuery($sql, array($name));
+			return $result[0][0];
+		}
+
+		// Users
+		// ======================================================
 		public function fbidExists($fbid){
 			$sql = "SELECT userName FROM users WHERE facebookId=?";
 			$result = $this->db->executeQuery($sql, array($fbid));
@@ -47,13 +63,35 @@
     		$result = $this->db->executeQuery($sql, array($fbid));
     		return $result[0];
 		}
-		
+		public function getSettings($fbid) {
+			$sql = "SELECT * FROM users WHERE facebookId=?";
+			$result = $this->db->executeQuery($sql, array($fbid));
+			return $this->arrToUser($result[0]); // Structure: {'id', 'fbid', 'name', 'email', 'telephone', 'other', 'active'}
+		}
+
+
+		// UserType
+		// ======================================================
 		public function getAccessLevel($fbid, $restaurantName) {
 		    $sql = "SELECT userType FROM restaurantuser JOIN users ON restaurantuser.userId = users.userId WHERE facebookId=? AND resName=?";
     		$result = $this->db->executeQuery($sql, array($fbid,$restaurantName));
     		return $result[0][0];
 		}
 
+		// Restaurantuser
+		// ======================================================
+
+
+		// Foodpref
+		// ======================================================
+
+
+		// Userfood
+		// ======================================================
+
+
+		// Sitting
+		// ======================================================
 		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant, $spots) {
 		    $sql = "INSERT INTO sitting (sittDate, sittPrelDeadline, sittPayDeadline, resName, spotsLeft) VALUES (?, ?, ?, ?, ?);";
     		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadlinel, $restaurant, $spots));
@@ -78,58 +116,64 @@
 			return $this->arrToSitting($result[0]);  // Structure: {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
 		}
 
+
+		// Sittingforeman
+		// ======================================================
 		public function getSittingForeman($sittId) {
 			$sql = "SELECT userName FROM sittingforeman, users WHERE sittingforeman.userId = users.userId AND sittingforeman.sittId=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
 			return $result; 
 		}
 
+
+		// Party
+		// ======================================================
+		public function getParty($partyId) {
+			$sql = "SELECT * FROM party WHERE partyId=?";
+			$result = $this->db->executeQuery($sql, array($partyId));
+			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
+		}
+		
 		public function getParties($sittId) {
 			$sql = "SELECT * FROM party WHERE sittId=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
 			return $this->arrarrParty($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
 		}
 
-		public function getPartiesByUser($userId) {
-			$sql = "SELECT * FROM partyguest WHERE userId=?";
-			$result = $this->db->executeQuery($sql, array($userId));
-			return $result;
-		}
+		// Partytype
+		// ======================================================
 
-		public function getParty($partyId) {
-			$sql = "SELECT * FROM party WHERE partyId=?";
-			$result = $this->db->executeQuery($sql, array($partyId));
-			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
-		}
 
-		public function getGuests($partyId) {
-			$sql = "SELECT users.userId, users.userName, userfood.foodPref, partyguest.userPayed FROM partyguest JOIN users ON partyguest.partyId=1 AND users.userId=partyguest.userId LEFT JOIN userfood ON userfood.userId=users.userId";
-			$result = $this->db->executeQuery($sql, array($partyId));
-			return $this->arrarrGuest($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
-		}
-
+		// Partycreator
+		// ======================================================
 		public function getCreator($partyId) {
 			$sql = "SELECT users.userName, users.userEmail, users.userTelephone FROM partycreator JOIN users ON users.userId=partycreator.userId WHERE partycreator.partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $result[0]; // Structure: username, email, telephone
 		}
 
-		public function getRestaurant($name){
-			$sql = "SELECT * FROM restaurant WHERE resName=?";
-			$result = $this->db->executeQuery($sql, array($name));
-			return $this->arrToRes($result[0]);  // Structure: { 'name', 'email', 'openhours', 'deposit', 'price', 'size', 'summary' }
+
+		// Partyguest
+		// ======================================================
+		public function getPartiesByUser($userId) {
+			$sql = "SELECT * FROM partyguest WHERE userId=?";
+			$result = $this->db->executeQuery($sql, array($userId));
+			return $result;
+		}
+		public function getGuests($partyId) {
+			$sql = "SELECT users.userId, users.userName, userfood.foodPref, partyguest.userPayed FROM partyguest JOIN users ON partyguest.partyId=1 AND users.userId=partyguest.userId LEFT JOIN userfood ON userfood.userId=users.userId";
+			$result = $this->db->executeQuery($sql, array($partyId));
+			return $this->arrarrGuest($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
 		}
 
-		public function getResSize($name){
-			$sql = "SELECT resSize FROM restaurant WHERE resName=?";
-			$result = $this->db->executeQuery($sql, array($name));
-			return $result[0][0];
-		}
-		
-		public function getSettings($fbid) {
-			$sql = "SELECT * FROM users WHERE facebookId=?";
-			$result = $this->db->executeQuery($sql, array($fbid));
-			return $this->arrToUser($result[0]); // Structure: {'id', 'fbid', 'name', 'email', 'telephone', 'other', 'active'}
-		}
+
+		// Log
+		// ======================================================
+
+
+		// Event
+		// ======================================================
+
+
 	}
 ?>
