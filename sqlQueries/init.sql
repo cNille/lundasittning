@@ -39,6 +39,12 @@ create table users (
 	primary key(userId)
 );
 
+create table guestuser (
+	userId 			integer auto_increment,
+	guestName 		varchar(30),
+	guestFoodPref 	tinytext,
+	primary key (userId)
+);
 create table usertype (
 	userType		varchar(20),
 	primary key(userType)

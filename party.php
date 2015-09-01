@@ -34,16 +34,16 @@
 		<div class="right side">
 
 			<?php if($loggedIn) : ?>
-				<div class="btn primary" id="">
+				<a class="btn primary" href="book.php?partyId=<?php echo $_GET['id']; ?>&guestMode=0">
 					<span>Anmäl dig</span>
-				</div>
+				</a>
 			<?php else : ?>
-				<div class="btn primary">
+				<a class="btn primary" href="book.php?guestMode=0&partyId=<?php echo $_GET['id']; ?>">
 					<span>Anmäl dig via inlogg</span>
-				</div>
-				<div class="btn">
+				</a>
+				<a class="btn"  href="book.php?guestMode=1&partyId=<?php echo $_GET['id']; ?>">
 					<span>Anmäl dig via gästinlogg</span>
-				</div>
+				</a>
 			<?php endif;?>
 
 			<table>

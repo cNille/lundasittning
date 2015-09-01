@@ -25,7 +25,6 @@
 		$_SESSION['LAST_PAGE'] = '../book.php';
 		header("Location: facebook-login/fbconfig.php");
 	} 
-
 	$party = $dbHandler->getParty($_GET['partyId']);
 	$sitting = $dbHandler->getSitting($party->date);
 	$dbHandler->disconnect();

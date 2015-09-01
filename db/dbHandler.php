@@ -31,7 +31,6 @@
 			$result = $this->db->executeQuery($sql, array($name));
 			return $this->arrToRes($result[0]);  // Structure: { 'name', 'email', 'openhours', 'deposit', 'price', 'size', 'summary' }
 		}
-
 		public function getResSize($name){
 			$sql = "SELECT resSize FROM restaurant WHERE resName=?";
 			$result = $this->db->executeQuery($sql, array($name));
@@ -69,7 +68,10 @@
 			return $this->arrToUser($result[0]); // Structure: {'id', 'fbid', 'name', 'email', 'telephone', 'other', 'active'}
 		}
 
-
+		// Guestuser
+		// ======================================================
+		
+		
 		// UserType
 		// ======================================================
 		public function getAccessLevel($fbid, $restaurantName) {
@@ -97,25 +99,21 @@
     		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadlinel, $restaurant, $spots));
     		return $this->db->getLastId(); 
 		}
-
 		public function deleteSitting($sittId){
 			$sql = "UPDATE sitting SET active = 0 WHERE sittId=?;";
 		    $result = $this->db->executeUpdate($sql, array($sittId));
 		    return count($result) == 1;  
-		}
-		  
+		} 
 		public function getSittings() {
 			$sql = "SELECT * FROM sitting WHERE active = 1 ORDER BY sittDate";
 			$result = $this->db->executeQuery($sql, array());
 			return $this->arrarrSitting($result); // Structure: [ {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'} ]
 		}
-
 		public function getSitting($sittId) {
 			$sql = "SELECT * FROM sitting WHERE sittId=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
 			return $this->arrToSitting($result[0]);  // Structure: {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
 		}
-
 
 		// Sittingforeman
 		// ======================================================
@@ -133,7 +131,6 @@
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
 		}
-		
 		public function getParties($sittId) {
 			$sql = "SELECT * FROM party WHERE sittId=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
