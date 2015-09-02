@@ -3,6 +3,7 @@
 set FOREIGN_KEY_CHECKS = 0;
 
 drop table if exists users;
+drop table if exists guestuser;
 drop table if exists usertype;
 drop table if exists foodpref;
 drop table if exists userfood;
@@ -106,6 +107,7 @@ create table party (
 	partyPrel		integer DEFAULT 0,
 	partyPayed		integer DEFAULT 0,
 	partyMessage	text,
+	urlkey			varchar(10) NOT NULL,
 	primary key(partyId),
 	foreign key(partyType) references partytype(partyType),
 	foreign key(sittId) references sitting(sittId)

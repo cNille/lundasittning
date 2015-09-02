@@ -22,14 +22,16 @@
 			$user = $dbHandler->createUser($fbid, $fbFullname, $fbEmail);
 		}	
 	} else if($guestMode == 0){
-		$_SESSION['LAST_PAGE'] = '../book.php';
+		$_SESSION['LAST_PAGE'] = '../partybook.php';
 		header("Location: facebook-login/fbconfig.php");
 	} 
 	$party = $dbHandler->getParty($_GET['partyId']);
 	$sitting = $dbHandler->getSitting($party->date);
 	$dbHandler->disconnect();
+
+	echo 'Hej: ' . $party->sittId;
 ?>
-<form action='booking.php' method='post' name='frm'>
+<form action='partybooking.php' method='post' name='frm'>
 	<input type='hidden' name='userName' value='<?php echo $user[2]; ?>'>
 	<input type='hidden' name='userEmail' value='<?php echo $user[3]; ?>'>
 	<input type='hidden' name='userTelephone' value='<?php echo $user[4]; ?>'>

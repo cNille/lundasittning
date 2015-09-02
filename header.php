@@ -41,7 +41,7 @@
 		$dbHandler->createUser($fbid, $fbFullname, $fbEmail);
 	}
 	else if($userExists){
-		$dbHandler->updateFbUser($fbFullname, $fbEmail, $fbid);
+		$dbHandler->updateFbUser($fbFullname, $fbid);
 	}
 	$dbHandler->disconnect();
 ?>

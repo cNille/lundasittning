@@ -1,7 +1,8 @@
 .interest-content{
     @include content-bg();
     display: table;
-
+    text-align: center;
+    
     h2{
     	font-weight: 100;
     	font-size: 50px;
@@ -17,6 +18,15 @@
     span{
    		display: block;
    		margin-bottom: 10px;
+    }
+
+    textarea{
+        display: block;
+        margin: auto;
+    }
+
+    input[type="submit"]{
+        margin-top: 20px;
     }
 
 }

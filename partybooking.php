@@ -7,8 +7,8 @@
 	$name = $_POST['userName'];
 	$email = $_POST['userEmail'];
 	$phone = $_POST['userTelephone'];
-	$date = $_POST['sittId'];
-	$sitting = $dbHandler->getSitting($date);
+	$sittId = $_POST['sittId'];
+	$sitting = $dbHandler->getSitting($sittId);
 
 	if($loggedIn){
 		$user = $dbHandler->getUser($fbid);
@@ -19,25 +19,25 @@
 	}
 	$dbHandler->disconnect();
 
+	function form($x){
+		echo '<input type="text" name="name" value="' . $x . '">';
+	}
  ?>
 <div class="content">
-	<div class="title">Intresseanmälan</div>
+	<div class="title">Boka plats</div>
 	<div class="booking-content">
-		<h3>Anmälan till; <?php echo $party->name; ?></h3>
-		<p>För att lägga en anmälan gör såhär</p> 
-		<ol>
-			<li>Bekräfta ifyllda fält och fyll i resterande fält. </li>
-		</ol>
-		<form>
-			Namn <br />
-			<span><input type="text" name="email" value="<?php echo $name; ?>"></span>
+		<h2><?php echo $party->name; ?></h2>
+		<form action="scripts.php" method="POST">
+			Namn *<br />
+			<span><?php if($guestMode){ form($name); } else { echo $name; } ?></span>
 			Datum <br />
-			<span><input type="text" name="email" value="<?php echo $sitting->date; ?>"></span>
-			Epost *<br />
+			<span><?php echo $sitting->date; ?></span>
+			Epost <br />
 			<span><input type="text" name="email" value="<?php echo $email; ?>"></span>
-			Telefonnummer *<br />
+			Telefonnummer <br />
 			<span><input type="text" name="phone" value="<?php echo $phone; ?>"></span>
-			<input type="submit" value="Boka plats"/>
+			<input type="submit" value="Boka plats" name="bookSpot" />
+			<input type="hidden" name="guestMode" value="<?php echo $guestMode; ?>">
 			<button onclick="window.history.back();">Avbryt</button>
 		</form>
 	</div>

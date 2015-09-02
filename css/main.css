@@ -213,7 +213,8 @@ body {
     min-height: 200px;
     padding: 0px 50px;
     box-sizing: border-box;
-    display: table; }
+    display: table;
+    text-align: center; }
     body .interest-content h2 {
       font-weight: 100;
       font-size: 50px;
@@ -225,6 +226,11 @@ body {
     body .interest-content span {
       display: block;
       margin-bottom: 10px; }
+    body .interest-content textarea {
+      display: block;
+      margin: auto; }
+    body .interest-content input[type="submit"] {
+      margin-top: 20px; }
   body .party-content {
     position: relative;
     display: block;
@@ -248,10 +254,13 @@ body {
         max-width: 325px; }
       body .party-content .side.right table {
         text-align: center;
-        margin-top: 15px; }
+        margin-top: 15px;
+        font-size: 12px; }
       body .party-content .side.right .btn {
         padding: 15px;
         background-color: #e6e6e6;
+        color: #333;
+        text-decoration: none;
         display: block;
         text-align: center;
         opacity: 0.7;
@@ -296,6 +305,9 @@ body {
       body div.button.disabled:hover {
         opacity: 0.7;
         border: 1px solid white; }
+  @media screen and (max-width: 750px) {
+    body .party-content .side {
+      display: block; } }
   body .booking-content {
     position: relative;
     display: block;
@@ -304,7 +316,8 @@ body {
     min-height: 200px;
     padding: 0px 50px;
     box-sizing: border-box;
-    display: table; }
+    display: table;
+    text-align: center; }
     body .booking-content h2 {
       font-weight: 100;
       font-size: 50px;

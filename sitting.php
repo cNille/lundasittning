@@ -16,7 +16,6 @@
 		}
 	}
  ?>
-
 <div class="content">
 	<div class="title">Sittning</div>
 	<div class="single-sitting">
@@ -38,21 +37,23 @@
 									$isParticipating = true;
 								}
 							}
-							
-							?>
-								<tr>
-									<?php 
-										if($isParticipating){
-											echo '<td><a href="party.php?id=' . $p->id . '">' . $p->name . '</a></td>';
-										} else {
-											echo '<td>' . $p->name . '</td>';
-										}
-									?>
-									
-									<td><?php echo $p->prel + $p->payed; ?></td>
-									
-								</tr>
-							<?php
+							$prelSpots = $p->prel + $p->payed;
+							if($prelSpots != 0){
+								?>
+									<tr>
+										<?php 
+											if($isParticipating){
+												echo '<td><a href="party.php?partyKey=' . $p->key . '">' . $p->name . '</a></td>';
+											} else {
+												echo '<td>' . $p->name . '</td>';
+											}
+										?>
+										
+										<td><?php echo $p->prel + $p->payed; ?></td>
+										
+									</tr>
+								<?php
+							}
 						}
 					?>
 				</table>
@@ -65,13 +66,24 @@
 					<?php 
 						$spotsLeft = $restaurant->size;
 						foreach ($parties as $key => $p) {
+							$isParticipating = false;
+							foreach ($myParties as $key => $mp) {
+								if($mp[0] == $p->id){
+									$isParticipating = true;
+								}
+							}
 							$prelSpots = $p->prel + $p->payed;
-
 							if($prelSpots == 0){
 							?>
 								<tr>
-									<td><?php echo $p->name; ?></td>
-									<td><?php echo $p->prel + $p->payed; ?></td>
+									<?php 
+											if($isParticipating){
+												echo '<td><a href="party.php?partyKey=' . $p->key . '">' . $p->name . '</a></td>';
+											} else {
+												echo '<td>' . $p->name . '</td>';
+											}
+										?>
+									<td><?php echo $p->interest; ?></td>
 								</tr>
 							<?php
 							}

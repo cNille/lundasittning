@@ -44,19 +44,21 @@
 			$result = $this->db->executeQuery($sql, array($fbid));
 			return count($result) == 1;
 		}
-
 		public function createUser($fbid, $fullname, $email) {
 		    $sql = "INSERT INTO users (facebookId, userName, userEmail) VALUES (?,?,?);";
     		$result = $this->db->executeUpdate($sql, array($fbid, $fullname, $email));
     		return $result[0]; 
 		}
-		
-		public function updateFbUser($fullname, $email, $fbid) {
-		    $sql = "UPDATE users SET userName=?, userEmail=? WHERE facebookId = ?;";
-    		$result = $this->db->executeUpdate($sql, array($fullname, $email, $fbid));
+		public function updateFbUser($fullname, $fbid) {
+		    $sql = "UPDATE users SET userName=? WHERE facebookId = ?;";
+    		$result = $this->db->executeUpdate($sql, array($fullname, $fbid));
     		return $result[0];
 		}
-
+		public function updateUserContact($id, $email, $telephone) {
+		    $sql = "UPDATE users SET userTelephone=?, userEmail=? WHERE userId = ?;";
+    		$result = $this->db->executeUpdate($sql, array($telephone, $email, $id));
+    		return $result[0];
+		}
 		public function getUser($fbid) {
 		    $sql = "SELECT * FROM users WHERE facebookId = ?;";
     		$result = $this->db->executeQuery($sql, array($fbid));
@@ -71,7 +73,7 @@
 		// Guestuser
 		// ======================================================
 		
-		
+
 		// UserType
 		// ======================================================
 		public function getAccessLevel($fbid, $restaurantName) {
@@ -131,12 +133,21 @@
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
 		}
+		public function getPartyFromKey($partyKey) {
+			$sql = "SELECT * FROM party WHERE urlkey=?";
+			$result = $this->db->executeQuery($sql, array($partyKey));
+			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
+		}
 		public function getParties($sittId) {
 			$sql = "SELECT * FROM party WHERE sittId=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
 			return $this->arrarrParty($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
 		}
-
+		public function createParty($name, $type, $sittId, $int, $msg, $key) {
+		    $sql = "INSERT INTO party (partyName, partyType, sittId, partyInterest, partyMessage, urlkey) VALUES (?, ?, ?, ?, ?, ?);";
+    		$result = $this->db->executeUpdate($sql, array($name, $type, $sittId, $int, $msg, $key));
+    		return $this->db->getLastId(); 
+		}
 		// Partytype
 		// ======================================================
 
@@ -148,6 +159,11 @@
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $result[0]; // Structure: username, email, telephone
 		}
+		public function createPartyCreator($partyId, $userId) {
+		    $sql = "INSERT INTO partycreator (partyId, userId) VALUES (?, ?);";
+    		$result = $this->db->executeUpdate($sql, array($partyId, $userId));
+    		return $this->db->getLastId(); 
+		}
 
 
 		// Partyguest
@@ -158,9 +174,19 @@
 			return $result;
 		}
 		public function getGuests($partyId) {
-			$sql = "SELECT users.userId, users.userName, userfood.foodPref, partyguest.userPayed FROM partyguest JOIN users ON partyguest.partyId=1 AND users.userId=partyguest.userId LEFT JOIN userfood ON userfood.userId=users.userId";
+			$sql = "SELECT users.userId, users.userName, userfood.foodPref, partyguest.userPayed FROM partyguest JOIN users ON users.userId=partyguest.userId LEFT JOIN userfood ON userfood.userId=users.userId WHERE partyguest.partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $this->arrarrGuest($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
+		}
+		public function addPartyGuest($partyId, $userId) {
+		    $sql = "INSERT INTO partyguest (partyId, userId) VALUES (?, ?);";
+    		$result = $this->db->executeUpdate($sql, array($partyId, $userId));
+    		return $this->db->getLastId(); 
+		}
+		public function isParticipating($partyId, $userId) {
+			$sql = "SELECT * FROM partyguest WHERE partyId=? AND userId=?";
+			$result = $this->db->executeQuery($sql, array($partyId, $userId));
+			return count($result) == 1;
 		}
 
 
