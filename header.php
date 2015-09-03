@@ -44,6 +44,7 @@
 		$dbHandler->updateFbUser($fbFullname, $fbid);
 	}
 	$dbHandler->disconnect();
+	$_SESSION['LAST_PAGE'] = str_replace("/sittning", "..", $_SERVER['REQUEST_URI']);
 ?>
 <!doctype html>
 
