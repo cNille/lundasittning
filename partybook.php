@@ -26,10 +26,7 @@
 		header("Location: facebook-login/fbconfig.php");
 	} 
 	$party = $dbHandler->getParty($_GET['partyId']);
-	$sitting = $dbHandler->getSitting($party->date);
 	$dbHandler->disconnect();
-
-	echo 'Hej: ' . $party->sittId;
 ?>
 <form action='partybooking.php' method='post' name='frm'>
 	<input type='hidden' name='userName' value='<?php echo $user[2]; ?>'>

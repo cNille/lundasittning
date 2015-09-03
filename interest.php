@@ -30,7 +30,7 @@
 			<span><input type="number" name="interestedSpots" value="" required></span>
 			Namn på sällskapet *<br />
 			<span><input type="text" name="partyName" value="" required></span>
-			<label>Meddelande som dyker upp för gästerna (250 tecken)</label>			
+			<label>Meddelande till gästerna (250 tecken)</label>			
 			<textarea rows="4" cols="50" name="message" maxlength="250"></textarea>
 			<input type="submit" value="Skicka" name="createInterestParty" />
 		</form>

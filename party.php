@@ -6,8 +6,19 @@
 	$id = $party->id;
 	$isParticipating = $dbHandler->isParticipating($id, $user[0]);
 	$sitting = $dbHandler->getSitting($party->sittId);
-	$guests = $dbHandler->getGuests($id);
+	$partyUsers = $dbHandler->getPartyUsers($id);
+	$partyGuests = $dbHandler->getPartyGuests($id);
 	$creator = $dbHandler->getCreator($id);
+
+	foreach ($partyUsers as $key => $g) {
+		$g->foodpref = '';
+		$myFoodPref = $dbHandler->getMyFoodpref($g->id);
+		foreach ($myFoodPref as $key => $food) {
+			$g->foodpref = $g->foodpref . $food[0] . '<br />';
+		}
+		$g->foodpref = substr($g->foodpref, 0, -1);
+	}
+
 	$dbHandler->disconnect();
 
 	function payedTextify($nr){
@@ -41,7 +52,8 @@
 						<span>Anmäl dig</span>
 					</a>
 				<?php else : ?>
-					<a class="btn primary" href="partybook.php?guestMode=0&partyId=<?php echo $id; ?>">
+					<?php $_SESSION['LAST_PAGE'] = '../' . $party->key; ?>
+					<a class="btn primary" href="facebook-login/fbconfig.php">
 						<span>Anmäl dig via inlogg</span>
 					</a>
 					<a class="btn"  href="partybook.php?guestMode=1&partyId=<?php echo $id; ?>">
@@ -49,7 +61,6 @@
 					</a>
 				<?php endif; ?>
 			<?php endif; ?>
-
 			<table>
 				<tr>
 					<th>Gäster</th>
@@ -57,12 +68,21 @@
 					<th>Betalat</th>
 				</tr>
 				<?php 
-					foreach ($guests as $key => $g) {
+					foreach ($partyUsers as $key => $g) {
 						?>
 						<tr>
 							<td><?php echo $g->name; ?></td>
 							<td><?php echo $g->foodpref; ?></td>
 							<td><?php echo payedTextify($g->payed); ?></td>
+						</tr>
+						<?php
+					}
+					foreach ($partyGuests as $key => $g) {
+						?>
+						<tr>
+							<td><?php echo $g[1]; ?></td>
+							<td><?php echo $g[3]; ?></td>
+							<td><?php echo payedTextify($g[4]); ?></td>
 						</tr>
 						<?php
 					}

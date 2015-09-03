@@ -59,6 +59,16 @@
     		$result = $this->db->executeUpdate($sql, array($telephone, $email, $id));
     		return $result[0];
 		}
+		public function updateEmail($id, $email) {
+		    $sql = "UPDATE users SET userEmail=? WHERE userId = ?;";
+    		$result = $this->db->executeUpdate($sql, array($email, $id));
+    		return $result[0];
+		}
+		public function updatePhone($id, $phone) {
+		    $sql = "UPDATE users SET userTelephone=? WHERE userId = ?;";
+    		$result = $this->db->executeUpdate($sql, array($phone, $id));
+    		return $result[0];
+		}
 		public function getUser($fbid) {
 		    $sql = "SELECT * FROM users WHERE facebookId = ?;";
     		$result = $this->db->executeQuery($sql, array($fbid));
@@ -72,7 +82,17 @@
 
 		// Guestuser
 		// ======================================================
-		
+		public function addGuest($name, $partyId, $foodpref) {
+		    $sql = "INSERT INTO guestuser (guestName, partyId, guestFoodPref) VALUES (?,?,?);";
+    		$result = $this->db->executeUpdate($sql, array($name, $partyId, $foodpref));
+    		return $result[0]; 
+		}
+		public function getPartyGuests($partyId) {
+			$sql = "SELECT * FROM guestuser WHERE partyId=?";
+			$result = $this->db->executeQuery($sql, array($partyId));
+			return $result;
+		}
+
 
 		// UserType
 		// ======================================================
@@ -88,10 +108,30 @@
 
 		// Foodpref
 		// ======================================================
-
+		public function getAllFoodpref() {
+			$sql = "SELECT * FROM foodpref";
+			$result = $this->db->executeQuery($sql, array());
+			return $result;
+		}
 
 		// Userfood
 		// ======================================================
+		public function getMyFoodpref($userId) {
+			$sql = "SELECT foodPref FROM userfood WHERE userId=?";
+			$result = $this->db->executeQuery($sql, array($userId));
+			return $result;
+		}
+		public function addUserFood($userId, $food) {
+		    $sql = "INSERT INTO userfood VALUES (?,?);";
+    		$result = $this->db->executeUpdate($sql, array($userId, $food));
+    		return $result[0];
+		}
+		public function clearUserFood($userId) {
+		    $sql = "DELETE FROM userfood where userId=?;";
+    		$result = $this->db->executeUpdate($sql, array($userId));
+    		return $result[0];
+		}
+
 
 
 		// Sitting
@@ -173,8 +213,8 @@
 			$result = $this->db->executeQuery($sql, array($userId));
 			return $result;
 		}
-		public function getGuests($partyId) {
-			$sql = "SELECT users.userId, users.userName, userfood.foodPref, partyguest.userPayed FROM partyguest JOIN users ON users.userId=partyguest.userId LEFT JOIN userfood ON userfood.userId=users.userId WHERE partyguest.partyId=?";
+		public function getPartyUsers($partyId) {
+			$sql = "SELECT users.userId, users.userName, partyguest.userPayed FROM partyguest JOIN users ON users.userId=partyguest.userId WHERE partyguest.partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $this->arrarrGuest($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
 		}

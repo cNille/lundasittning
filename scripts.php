@@ -14,20 +14,39 @@
 	
 	// Start up database.
  	$dbHandler = new DatabaseHandler();
- 	
- 	// Modify database before retrieving data.
 
 	if($_POST['bookSpot']){
 		$name = $_POST['name'];
-		if(!$name || $name == ''){
-			// Lös snyggare!
-			echo '<script>window.history.back();</script>';
-		}
 		$email = $_POST['email'];
-		$date = $_POST['date'];
+		$foodpref = $_POST['foodpref'];
 		$phone = $_POST['phone'];
-		$semExist = $dbHandler->partyBook($name, $email, $date, $phone);
-		header("Location: index.php");
+		$guestMode = $_POST['guestMode'];
+		$partyId = $_POST['partyId'];
+		$partyKey = $_POST['partyKey'];
+
+		if(!$guestMode){
+			$userId = $_POST['userId'];
+			// Update email if it was specified
+			if($email && $email != ''){
+				$dbHandler->updateEmail($userId, $email);
+			}
+			// Update email if it was specified
+			if($phone && $phone != ''){
+				$dbHandler->updatePhone($userId, $phone);
+			}
+			// Remove all foodpreferences to this user and add all those checked now.
+			$dbHandler->clearUserFood($userId);
+			foreach ($foodpref as $key => $f) {
+				$dbHandler->addUserFood($userId, $f);
+			}
+
+			// Add user to partyguest list.
+			$semExist = $dbHandler->addPartyGuest($partyId, $userId);
+		} else{
+			$_SESSION['LAST_PAGE'] = '../index.php';
+			$semExist = $dbHandler->addGuest($name, $partyId, $foodpref);
+		}
+		header("Location: party.php?partyKey=" . $partyKey);
 		return;
 	}
 

@@ -41,10 +41,12 @@ create table users (
 );
 
 create table guestuser (
-	userId 			integer auto_increment,
+	guestId 		integer auto_increment,
 	guestName 		varchar(30),
-	guestFoodPref 	tinytext,
-	primary key (userId)
+	partyId 		integer,
+	guestFoodPref 	tinytext,	
+	userPayed		tinyint(1) DEFAULT 0,
+	primary key (guestId)
 );
 create table usertype (
 	userType		varchar(20),
