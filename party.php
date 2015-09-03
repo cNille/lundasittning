@@ -38,7 +38,7 @@
 	<div class="party-content">
 		<div class="left side">
 				<h4>Datum</h4>
-				<p><?php echo $sitting->date . '::' . $creator[3]; ?></p>
+				<p><?php echo $sitting->date; ?></p>
 				<h4>Sällskapsansvarig</h4> 
 				<p><?php echo  $creator[1];?></p>
 				<p><?php echo  $creator[2];?></p>
