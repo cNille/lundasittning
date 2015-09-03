@@ -195,7 +195,7 @@
 		// Partycreator
 		// ======================================================
 		public function getCreator($partyId) {
-			$sql = "SELECT users.userName, users.userEmail, users.userTelephone FROM partycreator JOIN users ON users.userId=partycreator.userId WHERE partycreator.partyId=?";
+			$sql = "SELECT users.userId, users.userName, users.userEmail, users.userTelephone FROM partycreator JOIN users ON users.userId=partycreator.userId WHERE partycreator.partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $result[0]; // Structure: username, email, telephone
 		}

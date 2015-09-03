@@ -9,7 +9,8 @@
 	$partyUsers = $dbHandler->getPartyUsers($id);
 	$partyGuests = $dbHandler->getPartyGuests($id);
 	$creator = $dbHandler->getCreator($id);
-
+	$isCreator = $creator[0] == $user[0];
+ 
 	foreach ($partyUsers as $key => $g) {
 		$g->foodpref = '';
 		$myFoodPref = $dbHandler->getMyFoodpref($g->id);
@@ -37,11 +38,15 @@
 	<div class="party-content">
 		<div class="left side">
 				<h4>Datum</h4>
-				<p><?php echo $sitting->date; ?></p>
+				<p><?php echo $sitting->date . '::' . $creator[3]; ?></p>
 				<h4>Sällskapsansvarig</h4> 
-				<p><?php echo  $creator[0];?></p>
 				<p><?php echo  $creator[1];?></p>
 				<p><?php echo  $creator[2];?></p>
+				<p><?php echo  $creator[3];?></p>
+				<?php if($isCreator) : ?>
+				<h4>Anmälningslänk</h4> 
+				<p><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
+				<?php endif; ?>
 				<h4>Meddelande</h4> 
 				<p><?php echo  $party->message;?></p>
 		</div>
@@ -63,28 +68,34 @@
 			<?php endif; ?>
 			<table>
 				<tr>
+					<th>#</th>
 					<th>Gäster</th>
 					<th>Matpreferens</th>
 					<th>Betalat</th>
 				</tr>
 				<?php 
+					$i = 1;
 					foreach ($partyUsers as $key => $g) {
 						?>
 						<tr>
+							<td><?php echo $i; ?></td>
 							<td><?php echo $g->name; ?></td>
 							<td><?php echo $g->foodpref; ?></td>
 							<td><?php echo payedTextify($g->payed); ?></td>
 						</tr>
 						<?php
+						$i++;
 					}
 					foreach ($partyGuests as $key => $g) {
 						?>
 						<tr>
+							<td><?php echo $i; ?></td>
 							<td><?php echo $g[1]; ?></td>
 							<td><?php echo $g[3]; ?></td>
 							<td><?php echo payedTextify($g[4]); ?></td>
 						</tr>
 						<?php
+						$i++;
 					}
 				?>
 			</table>
