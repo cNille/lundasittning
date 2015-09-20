@@ -160,7 +160,7 @@
 		// Sittingforeman
 		// ======================================================
 		public function getSittingForeman($sittId) {
-			$sql = "SELECT userName FROM sittingforeman, users WHERE sittingforeman.userId = users.userId AND sittingforeman.sittId=?";
+			$sql = "SELECT userName, users.userId FROM sittingforeman join users WHERE sittingforeman.userId = users.userId AND sittingforeman.sittId=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
 			return $result; 
 		}
