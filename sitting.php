@@ -7,6 +7,13 @@
 	$foreman = $dbHandler->getSittingForeman($_GET['sittId']);
 	$dbHandler->disconnect();
 
+	$isSittingForeman = false;
+	foreach ($foreman as $key => $f) {
+		if($f[1] == $user[0]){
+			$isSittingForeman = true;
+		}
+	}
+
 	$spotsLeft = $restaurant->size;
 	$hasInterestedParties = false;
 	foreach ($parties as $key => $p) {
@@ -42,7 +49,7 @@
 								?>
 									<tr>
 										<?php 
-											if($isParticipating){
+											if($isParticipating || $isSittingForeman){
 												echo '<td><a href="party.php?partyKey=' . $p->key . '">' . $p->name . '</a></td>';
 											} else {
 												echo '<td>' . $p->name . '</td>';
