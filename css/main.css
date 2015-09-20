@@ -429,7 +429,8 @@ body {
             -webkit-transition: all 0.1s ease-in-out;
             -moz-transition: all 0.1s ease-in-out;
             -o-transition: all 0.1s ease-in-out;
-            transition: all 0.1s ease-in-out; }
+            transition: all 0.1s ease-in-out;
+            padding-left: 7px; }
             body .content .event-grid .event-window .width .event-remove-button:hover {
               color: #eee;
               background-color: #333; }

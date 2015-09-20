@@ -183,6 +183,7 @@ body{
                     height: 20px;
                     width: 20px;
                     @include easy-trans(0.1s);
+                    padding-left: 7px;
 
                     &:hover{
                         color: #eee;
