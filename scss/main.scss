@@ -128,65 +128,65 @@ body{
             @include easy-trans(0.3s);
             transform: scale(1.0); 
             color: black;
-            .event-window{
-                opacity: 0.9;
-                &:hover { opacity: 1.0; }
-                background-color: white;
-                margin-left: 10px;
-                margin-top: 10px;
-                float: left;
+        }
+        .event-window{
+            opacity: 0.9;
+            &:hover { opacity: 1.0; }
+            background-color: white;
+            margin-left: 10px;
+            margin-top: 10px;
+            float: left;
+            width: 150px;
+            height: 150px;
+            -moz-box-shadow: 2px 2px 4px rgba(0,0,0,.5);
+            -webkit-box-shadow: 2px 2px 4px rgba(0,0,0,.5);
+            box-shadow: 2px 2px 4px rgba(0,0,0,.5);
+            text-align: center;
+            position: relative;
+
+            @include easy-trans(0.3s);
+            box-sizing: border-box;
+            border: 1px solid white;
+            &:hover{
+                border: 1px solid #333;
+            }
+
+            .width{
                 width: 150px;
-                height: 150px;
-                -moz-box-shadow: 2px 2px 4px rgba(0,0,0,.5);
-                -webkit-box-shadow: 2px 2px 4px rgba(0,0,0,.5);
-                box-shadow: 2px 2px 4px rgba(0,0,0,.5);
-                text-align: center;
-                position: relative;
+                overflow: hidden;
 
-                @include easy-trans(0.3s);
-                box-sizing: border-box;
-                border: 1px solid white;
-                &:hover{
-                    border: 1px solid #333;
+                .event-window-date{
+                    margin-top: 20px;
+                    font-size: 60px;
                 }
-
-                .width{
-                    width: 150px;
-                    overflow: hidden;
-
-                    .event-window-date{
-                        margin-top: 20px;
-                        font-size: 60px;
+                .event-window-spots{
+                    margin-top: 5px;
+                }
+                .event-window-button{
+                    margin-top: 5px;
+                    a {
+                        text-decoration: none;
+                        color: black;
+                        font-style: italic;
                     }
-                    .event-window-spots{
-                        margin-top: 5px;
+                    a:hover {
+                        text-decoration: underline;
                     }
-                    .event-window-button{
-                        margin-top: 5px;
-                        a {
-                            text-decoration: none;
-                            color: black;
-                            font-style: italic;
-                        }
-                        a:hover {
-                            text-decoration: underline;
-                        }
-                    }
-                    .event-remove-button{
-                        position: absolute;
-                        cursor: pointer;
-                        right: -5px;
-                        top: -5px;
-                        border: none;
-                        border-radius: 59px;
-                        height: 20px;
-                        width: 20px;
-                        @include easy-trans(0.1s);
+                }
+                .event-remove-button{
+                    position: absolute;
+                    cursor: pointer;
+                    right: -5px;
+                    top: -5px;
+                    border: none;
+                    border-radius: 59px;
+                    height: 20px;
+                    width: 20px;
+                    @include easy-trans(0.1s);
 
-                        &:hover{
-                            color: #eee;
-                            background-color: #333;
-                        }
+                    &:hover{
+                        color: #eee;
+                        background-color: #333;
                     }
                 }
             }
