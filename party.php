@@ -26,9 +26,9 @@
 		if($nr == 0){
 			return 'Nej';
 		} else if($nr == 1){
-			return 'Bokningsavgift';
+			return 'Halvt';
 		} else if($nr == 2){
-			return 'Sittningsavgift';
+			return 'Ja';
 		}
 	}
  ?>
