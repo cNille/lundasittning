@@ -26,6 +26,8 @@
 	}
 	
 	function updateSettings($dbHandler){
-		
+		$dbHandler->updateEmail($_POST['userid'], $_POST['email']);
+		$dbHandler->updatePhone($_POST['userid'], $_POST['telephone']);
+		$dbHandler->updateOther($_POST['userid'], $_POST['other']);
 	}
 ?>

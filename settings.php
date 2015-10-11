@@ -1,7 +1,8 @@
 <?php 
 	require_once 'header.php';
 	$dbHandler = new DatabaseHandler();
-	$user = $dbHandler->getSettings($fbid);
+	$foodPref = $dbHandler->getAllFoodpref();
+	$myFoodPref = $dbHandler->getMyFoodpref($user[0]);
 	$dbHandler->disconnect();
 ?>
 
@@ -10,25 +11,33 @@
 		Inställningar
 	</div>
 	<div class="userSettings">
-		<form id="TEMPNAME">
+		<form action="scripts.php" method="POST">
 			<div class="left">
-				<div>
-					Namn <input type="text" name="name" value="<?php echo $user->name; ?>">
+				<div class="category">
+					E-mail <input type="text" name="email" value="<?php echo $user[3]; ?>">
 				</div>
 				<div class="category">
-					E-mail <input type="text" name="email" value="<?php echo $user->email; ?>">
+					Telefonnummer <input type="text" name="phone" value="<?php echo $user[4]; ?>">
 				</div>
 				<div class="category">
-					Telefonnummer <input type="text" name="telephone" value="<?php echo $user->telephone; ?>">
+					<?php
+					foreach ($foodPref as $key => $fp) {
+						$checked = '';
+						foreach ($myFoodPref as $key => $mfp) {
+							if($mfp[0] == $fp[0]){
+								$checked = 'checked';
+							}
+						}
+						echo '<input type="checkbox" name="foodpref[]" value="' . $fp[0] . '" ' . $checked . ' >' . $fp[0] . '<br />';
+					}
+					?>
 				</div>
 				<div class="category">
-					Alkohol <input type="radio" name="alcohol" value="1"> Alkoholfritt <input type="radio" name="alcohol" value="0">
+					Övrigt <input type="text" name="other" value="<?php echo $user[5]; ?>">
 				</div>
-				<div class="category">
-					Kostym/Frack <input type="radio" name="gender" value="2"> Klänning <input type="radio" name="gender" value="1"> Annat <input type="radio" name="gender" value="0">
-				</div>
-				<button class="category" type="button" id="confirmSettings"> Spara </button>
+				<input class="category" type="submit" value="Spara" name="updateSettings" />
 			</div>
+			<input type="hidden" name="userId" value="<?php echo $user[0]; ?>" />
 		</form>
 	</div>
 </div>

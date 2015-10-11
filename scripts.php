@@ -19,6 +19,7 @@
 		$email = $_POST['email'];
 		$foodpref = $_POST['foodpref'];
 		$phone = $_POST['phone'];
+		$other = $_POST['other'];
 		$guestMode = $_POST['guestMode'];
 		$partyId = $_POST['partyId'];
 		$partyKey = $_POST['partyKey'];
@@ -32,6 +33,10 @@
 			// Update email if it was specified
 			if($phone && $phone != ''){
 				$dbHandler->updatePhone($userId, $phone);
+			}
+			// Update other if it was specified
+			if($other && $other != ''){
+				$dbHandler->updateOther($userId, $other);
 			}
 			// Remove all foodpreferences to this user and add all those checked now.
 			$dbHandler->clearUserFood($userId);
@@ -82,6 +87,34 @@
 		$dbHandler->createPartyCreator($id, $userId);
 		$dbHandler->addPartyGuest($id, $userId);
 		header("Location: party.php?partyKey=" . $key);
+		return;
+	}
+	
+	if($_POST['updateSettings']){
+		$email = $_POST['email'];
+		$foodpref = $_POST['foodpref'];
+		$phone = $_POST['phone'];
+		$other = $_POST['other'];
+		
+		$userId = $_POST['userId'];
+		// Update email if it was specified
+		if($email && $email != ''){
+			$dbHandler->updateEmail($userId, $email);
+		}
+		// Update email if it was specified
+		if($phone && $phone != ''){
+			$dbHandler->updatePhone($userId, $phone);
+		}
+		// Update other if it was specified
+		if($other && $other != ''){
+			$dbHandler->updateOther($userId, $other);
+		}
+		// Remove all foodpreferences to this user and add all those checked now.
+		$dbHandler->clearUserFood($userId);
+		foreach ($foodpref as $key => $f) {
+			$dbHandler->addUserFood($userId, $f);
+		}
+		header("Location: http://localhost:8888/NILLEFRANZTEST/sittning/index.php?status=saved");
 		return;
 	}
 	return;

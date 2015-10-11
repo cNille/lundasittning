@@ -1,10 +1,15 @@
 $("#confirmSettings").click(function(){
+	var email = document.getElementById("settingsEmail").value;
+	var telephone = document.getElementById("settingsTelephone").value;
+	var other = document.getElementById("settingsOther").value;
+	
+	
+	
 	$.ajax({
 		type: 'POST',
 		url: 'db/dbAjax.php',
-		data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate+ '&resName=' + RESTAURANT_NAME + '&resSize=' + RESTAURANT_SIZE,
-		success: function(sittId){
-			
+		data: 'action=updateSettings&email=' + email + '&telephone=' + telephone + '&other=' + other + '&userid=4',
+		success: function(){
 		}
 	});
 });

@@ -69,6 +69,11 @@
     		$result = $this->db->executeUpdate($sql, array($phone, $id));
     		return $result[0];
 		}
+		public function updateOther($id, $other) {
+		    $sql = "UPDATE users SET userOther=? WHERE userId = ?;";
+    		$result = $this->db->executeUpdate($sql, array($other, $id));
+    		return $result[0];
+		}
 		public function getUser($fbid) {
 		    $sql = "SELECT * FROM users WHERE facebookId = ?;";
     		$result = $this->db->executeQuery($sql, array($fbid));
@@ -172,7 +177,7 @@
 		    return count($result) == 1;  
 		} 
 		public function getSittings() {
-			$sql = "SELECT * FROM sitting WHERE active = 1 ORDER BY sittDate";
+			$sql = "SELECT * FROM sitting WHERE active = 1 AND sittDate >= CURRENT_DATE() ORDER BY sittDate";
 			$result = $this->db->executeQuery($sql, array());
 			return $this->arrarrSitting($result); // Structure: [ {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'} ]
 		}

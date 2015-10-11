@@ -3,7 +3,6 @@
  	$dbHandler = new DatabaseHandler();
  	$sittId = $_GET['sittId'];
 	$sitting = $dbHandler->getSitting($sittId);
-	$user = $dbHandler->getUser($fbid);
 	$dbHandler->disconnect();
 	$userName = $user[2];
 	$userEmail = $user[3];
@@ -27,7 +26,7 @@
 			Telefonnummer *<br />
 			<span><input type="tel" name="phone" value="<?php echo $userTelephone; ?>" required></span>
 			Antal sittningsplatser ni är intresserade utav *<br />
-			<span><input type="number" name="interestedSpots" value="" required></span>
+			<span><input type="number" name="interestedSpots" value="1" min="1" max="<?php echo $restaurant->size?>" required></span>
 			Namn på sällskapet *<br />
 			<span><input type="text" name="partyName" value="" required></span>
 			<label>Meddelande till gästerna (250 tecken)</label>			
