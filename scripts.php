@@ -123,7 +123,16 @@
 		$user = $_POST['user'];
 
 		if($myAccessLevel >= 5){
-			$dbHandler->setSittingForeman($sittId, $user);
+			$foreman = $dbHandler->getSittingForeman($sittId);
+			$isSittingForeman = false;
+			foreach ($foreman as $key => $f) {
+				if($f[1] == $user){
+					$isSittingForeman = true;
+				}
+			}
+			if (!$isSittingForeman){
+				$dbHandler->setSittingForeman($sittId, $user);
+			}
 		}
 	
 		header("Location: sitting.php?sittId=$sittId");

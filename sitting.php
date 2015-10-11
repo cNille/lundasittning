@@ -105,9 +105,7 @@
 			<span>
 			<?php 
 				if($myAccessLevel >= 5){
-
 					?>
-
 					<form action="scripts.php" method="POST">
 					<select name="user">
 						<?php
@@ -122,8 +120,6 @@
 					<br /><br />
 					<form>
 					<?php
-
-
 				}
 				foreach ($foreman as $key => $f) {
 					echo  $f[0] . '<br />';
