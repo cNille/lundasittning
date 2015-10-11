@@ -17,9 +17,9 @@
 		<table>
 			<tr>
 				<th>Namn</th>
-				<th>Email</th>
-				<th>Phone</th>
-				<th></th>
+				<th>Epost</th>
+				<th>Telefon</th>
+				<th>Användartyp</th>
 			</tr>
 			<?php
 				foreach ($users as $key => $u) {
