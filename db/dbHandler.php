@@ -236,6 +236,12 @@
     		$result = $this->db->executeUpdate($sql, array($name, $type, $sittId, $int, $msg, $key));
     		return $this->db->getLastId(); 
 		}
+		public function updatePartyMsg($pId, $msg){
+		    $sql = "UPDATE party SET partyMessage=? WHERE partyId = ?;";
+    		$result = $this->db->executeUpdate($sql, array($msg, $pId));
+    		return $result[0];		
+		}
+
 		// Partytype
 		// ======================================================
 
