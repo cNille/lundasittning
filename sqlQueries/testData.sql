@@ -8,10 +8,11 @@ insert into restaurant(resName, resPrice, resSize, resSummary) values
     ('Jennifers nation', 40, 50, 'EN UPPLEVELSE!');
 
 insert into usertype values
-	('SuperAdmin'),
-    ('Quratel'),
-    ('Sittningsförman'),
-    ('Förman');
+	('SuperAdmin', 10),
+    ('Quratel', 5),
+    ('Sittningsförman', 2),
+    ('Förman', 1),
+    ('Användare', 0);
 
 insert into users(userName, facebookId, userEmail, userTelephone) values
     ('Nille', '1', 'c@shapeapp.se', '0708342311'),

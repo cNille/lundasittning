@@ -51,6 +51,7 @@ create table guestuser (
 );
 create table usertype (
 	userType		varchar(20),
+	accessLevel		integer,
 	primary key(userType)
 );
 
