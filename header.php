@@ -1,38 +1,5 @@
 <?php
-	
-	session_start(); 
-	require_once 'db/dbHandler.php';
-	require_once 'accessLevelCheck.php';
-
-	 
-	$loggedIn = false;
-	
-	$dbHandler = new DatabaseHandler();	
-	$restaurant = $dbHandler->getRestaurant('Nilles nation'); // Variable determines nation
-	
-	if($_SESSION['FBID'] && $_SESSION['FBID'] != null){
-		$loggedIn = true;
-		$fbid = $_SESSION['FBID'];
-		$fbFullname = $_SESSION['FULLNAME'];
-		$fbGender = $_SESSION['GENDER'];
-		$fbEmail = $_SESSION['EMAIL'] == NULL ? " " : $_SESSION['EMAIL'];
-	}
-
-	// Copy this code to every page where accesslevel is required.
-	requireAccessLevel(0, $dbHandler->getAccessLevel($fbid, $restaurant->name));
-
-	$userExists = $dbHandler->fbidExists($fbid);
-	if($userExists){
-		$user = $dbHandler->getUser($fbid);
-	}
-	if($loggedIn && !$userExists && $fbid != null){
-		$dbHandler->createUser($fbid, $fbFullname, $fbEmail);
-	}
-	else if($userExists){
-		$dbHandler->updateFbUser($fbFullname, $fbid);
-	}
-	$dbHandler->disconnect();
-	$_SESSION['LAST_PAGE'] = str_replace("/sittning", "..", $_SERVER['REQUEST_URI']);
+	require_once 'init.php';	
 ?>
 <!doctype html>
 
