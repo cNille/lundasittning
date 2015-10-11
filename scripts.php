@@ -45,10 +45,10 @@
 			}
 
 			// Add user to partyguest list.
-			$semExist = $dbHandler->addPartyGuest($partyId, $userId);
+			$dbHandler->addPartyGuest($partyId, $userId);
 		} else{
 			$_SESSION['LAST_PAGE'] = '../index.php';
-			$semExist = $dbHandler->addGuest($name, $partyId, $foodpref);
+			$dbHandler->addGuest($name, $partyId, $foodpref);
 		}
 		header("Location: party.php?partyKey=" . $partyKey);
 		return;
@@ -128,6 +128,19 @@
 		}
 		header("Location: index.php?status=saved");
 		return;
+	}
+	if($_POST['updatePartyMsg']){
+		$msg = $_POST['message'];
+		$uId = $user[0];
+		$pId = $_POST['partyId'];
+		$party = $dbHandler->getParty($pId);
+		$creator = $dbHandler->getCreator($pId);
+		$isCreator = $creator[0] == $user[0];
+		if($isCreator){
+			$dbHandler->updatePartyMsg($pId, $msg);
+		}
+		header("Location: party.php?partyKey=$party->key");
+		return;		
 	}
 
 	if($_POST['addSittingForeman']){
