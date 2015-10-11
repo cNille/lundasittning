@@ -1,6 +1,5 @@
 <?php
 	function accessLevel($level){
-		
 		switch ($level){
 			case SuperAdmin: 
 				$accessLevel = 10;
