@@ -27,6 +27,9 @@
 		<?php if($loggedIn){ ?>
 			<a href="settings.php">Mitt konto</a>
 		<?php } ?>
+		<?php if($myAccessLevel >=5){ ?>
+			<a href="users.php">Användare</a>
+		<?php } ?>
 		<a href="faq.php">F.A.Q</a>
 		<a href="feedback.php">Skicka Feedback</a>
 	</div>
