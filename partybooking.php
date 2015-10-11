@@ -33,20 +33,15 @@
 			Namn *<br /Namn>
 			<span><?php if($guestMode){ form($name); } else { echo $name . '<input type="hidden" name="name" value="' . $name . '" />'; } ?></span>
 			
-			Foodpreferences or allergies <br />
 			<?php
-				if(!$guestMode){
-					foreach ($foodPref as $key => $fp) {
-						$checked = '';
-						foreach ($myFoodPref as $key => $mfp) {
-							if($mfp[0] == $fp[0]){
-								$checked = 'checked';
-							}
+				foreach ($foodPref as $key => $fp) {
+					$checked = '';
+					foreach ($myFoodPref as $key => $mfp) {
+						if($mfp[0] == $fp[0]){
+							$checked = 'checked';
 						}
-						echo '<input type="checkbox" name="foodpref[]" value="' . $fp[0] . '" ' . $checked . ' >' . $fp[0] . '<br />';
 					}
-				} else {
-					echo '<input type="text" name="foodpref" /><br />';
+					echo '<input type="checkbox" name="foodpref[]" value="' . $fp[0] . '" ' . $checked . ' >' . $fp[0] . '<br />';
 				}
 			?>
 			<br />

@@ -79,6 +79,14 @@ create table userfood (
 	foreign key (foodPref) references foodpref(foodPref)
 );
 
+create table guestuserfood (
+	guestId			integer,
+	foodPref		varchar(20),
+	primary key(userId,foodPref),
+	foreign key (guestId) references guestuser(guestId),
+	foreign key (foodPref) references foodpref(foodPref)
+);
+
 create table sitting (
 	sittId 				integer auto_increment,
 	sittDate			date not null,

@@ -22,22 +22,23 @@
 		Sittningar HT15
 	</div>
 	<div class="event-grid">
-		<a href="" class="event-link">
-			<div class="event-window" id="" style="display: none;">
-				<div class="width">
-					<div class="event-window-date">
-					</div>
-					<div class="event-window-spots">
-					</div>
-					<div class="event-window-button">
-						Se mer
-					</div>
-					<?php if($myAccessLevel >= 5){ ?>
-						<button class="event-remove-button">Remove</button>
-					<?php } ?>
+		<div class="event-window" id="" style="display: none;">
+			<a href="" class="event-window-link">
+			<div class="width">
+				<div class="event-window-date">
 				</div>
+				<div class="event-window-spots">
+					Ledig
+				</div>
+				<div class="event-window-button">
+					Se mer
+				</div>
+				<?php if($myAccessLevel >= 5){ ?>
+					<button class="event-remove-button">X</button>
+				<?php } ?>
 			</div>
-		</a>
+			</a>
+		</div>
 		<?php 
 			foreach($sittings as $row => $s) {
 				$date = date('j/n', strtotime($s->date));
