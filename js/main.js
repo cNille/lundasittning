@@ -1,5 +1,3 @@
-
-
 $( ".shadow" ).click(function() {
   toggleSide();
 });
@@ -19,8 +17,6 @@ function toggleSide(){
 $('.fb-login').click(function(){
 	window.location.href = "facebook-login/fbconfig.php";
 });
-
-
 
 
 

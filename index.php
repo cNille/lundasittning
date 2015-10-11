@@ -22,42 +22,44 @@
 		Sittningar HT15
 	</div>
 	<div class="event-grid">
-		<div class="event-window" id="0" style="display: none;">
-			<div class="width">
-				<div class="event-window-date">
+		<a href="" class="event-link">
+			<div class="event-window" id="" style="display: none;">
+				<div class="width">
+					<div class="event-window-date">
+					</div>
+					<div class="event-window-spots">
+					</div>
+					<div class="event-window-button">
+						Se mer
+					</div>
+					<?php if($myAccessLevel >= 5){ ?>
+						<button class="event-remove-button">Remove</button>
+					<?php } ?>
 				</div>
-				<div class="event-window-spots">
-				</div>
-				<div class="event-window-button">
-					<a href="./sitting.php?sittId=0"> Se mer </a>
-				</div>
-				<?php if($myAccessLevel >= 5){ ?>
-					<button class="event-remove-button">Remove</button>
-				<?php } ?>
 			</div>
-		</div>
+		</a>
 		<?php 
 			foreach($sittings as $row => $s) {
 				$date = date('j/n', strtotime($s->date));
 				?>
-				<a href="./sitting.php?sittId=<?php echo $s->id; ?>" class="event-link">
-				<div class="event-window" id="<?php echo $s->id; ?>">
-					<div class="width">
-						<div class="event-window-date">
-							<?php echo $date; ?>
+					<div class="event-window" id="<?php echo $s->id; ?>">
+					<a href="./sitting.php?sittId=<?php echo $s->id; ?>" class="event-window-link">
+						<div class="width">
+							<div class="event-window-date">
+								<?php echo $date; ?>
+							</div>
+							<div class="event-window-spots">
+								<?php echo spotsLeftTextify($s->spotsLeft, $restaurant->size);?>
+							</div>
+							<div class="event-window-button">
+								 Se mer
+							</div>
+							<?php if($myAccessLevel >= 5){ ?>
+								<button class="event-remove-button">X</button>
+							<?php } ?>
 						</div>
-						<div class="event-window-spots">
-							<?php echo spotsLeftTextify($s->spotsLeft, $restaurant->size);?>
-						</div>
-						<div class="event-window-button">
-							 Se mer
-						</div>
-						<?php if($myAccessLevel >= 5){ ?>
-							<button class="event-remove-button">X</button>
-						<?php } ?>
+					</a>
 					</div>
-				</div>
-				 </a>
 		<?php } ?>
 			<?php if($myAccessLevel >= 5){ ?>
 				<div class="event-window" id="event-creator">

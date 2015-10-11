@@ -45,7 +45,7 @@
 				<p><?php echo  $creator[3];?></p>
 				<?php if($isCreator) : ?>
 				<h4>Anmälningslänk</h4> 
-				<p><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
+				<p id="toClipboard" onClick="CopyToClipboard();"><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
 				<?php endif; ?>
 				<h4>Meddelande</h4> 
 				<p><?php echo  $party->message;?></p>
