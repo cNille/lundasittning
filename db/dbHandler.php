@@ -195,6 +195,24 @@
 			return $result; 
 		}
 
+		public function getSittingForemanFromRes($resName) {
+			$sql = "SELECT u.userId, u.userName FROM users as u WHERE u.userId IN (SELECT s.userId FROM sittingforeman as s) AND u.userId IN (SELECT r.userId FROM restaurantuser as r WHERE resName=?);";
+			$result = $this->db->executeQuery($sql, array($resName));
+			return $result; 
+		}
+
+		public function setSittingForeman($sittId, $userId) {
+			$sql = "INSERT INTO sittingforeman VALUES (?,?);";
+			$result = $this->db->executeUpdate($sql, array($sittId, $userId));
+			return $result; 
+		}
+
+		public function removeSittingForeman($sittId, $userId) {
+			$sql = "DELETE FROM sittingforeman WHERE sittId=? AND userId=?;";
+			$result = $this->db->executeUpdate($sql, array($sittId, $userId));
+			return $result; 
+		}
+
 
 		// Party
 		// ======================================================
