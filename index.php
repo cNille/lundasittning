@@ -31,7 +31,7 @@
 				<div class="event-window-button">
 					<a href="./sitting.php?sittId=0"> Se mer </a>
 				</div>
-				<?php if($accessLevel >= 5){ ?>
+				<?php if($myAccessLevel >= 5){ ?>
 					<button class="event-remove-button">Remove</button>
 				<?php } ?>
 			</div>
@@ -52,14 +52,14 @@
 						<div class="event-window-button">
 							 Se mer
 						</div>
-						<?php if($accessLevel >= 5){ ?>
+						<?php if($myAccessLevel >= 5){ ?>
 							<button class="event-remove-button">X</button>
 						<?php } ?>
 					</div>
 				</div>
 				 </a>
 		<?php } ?>
-			<?php if($accessLevel >= 5){ ?>
+			<?php if($myAccessLevel >= 5){ ?>
 				<div class="event-window" id="event-creator">
 					<p id="event-creator-initiate"> + </p>
 				</div>
