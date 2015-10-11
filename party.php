@@ -48,7 +48,22 @@
 				<p id="toClipboard" onClick="CopyToClipboard();"><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
 				<?php endif; ?>
 				<h4>Meddelande</h4> 
-				<p><?php echo  $party->message;?></p>
+				<?php 
+					if($isCreator){
+						?>
+						<form action="scripts.php" method="POST">
+							<textarea rows="4" cols="50" name="message" maxlength="250"><?php echo $party->message; ?></textarea>
+							<br />
+							<input type='hidden' value="<?php echo $id; ?>" name="partyId" />
+							<input type="submit" value="Redigera" name="updatePartyMsg" />
+						</form>
+						<?php
+					} else {
+						echo "<p>$party->message</p>";
+					}
+
+				?>
+				
 		</div>
 		<div class="right side">
 			<?php if(!$isParticipating) : ?>
