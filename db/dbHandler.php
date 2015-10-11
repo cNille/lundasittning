@@ -74,6 +74,11 @@
     		$result = $this->db->executeQuery($sql, array($fbid));
     		return $result[0];
 		}
+		public function getUsers($resName) {
+		    $sql = "SELECT u.userId, u.userName, u.userEmail, u.userTelephone, ru.resName, ru.userType FROM users as u JOIN restaurantuser as ru ON u.userId=ru.userId WHERE ru.resName=? ORDER BY userName;";
+    		$result = $this->db->executeQuery($sql, array($resName));
+    		return $result;
+		}
 		public function getSettings($fbid) {
 			$sql = "SELECT * FROM users WHERE facebookId=?";
 			$result = $this->db->executeQuery($sql, array($fbid));
@@ -93,18 +98,38 @@
 			return $result;
 		}
 
-
 		// UserType
 		// ======================================================
 		public function getAccessLevel($fbid, $restaurantName) {
-		    $sql = "SELECT userType FROM restaurantuser JOIN users ON restaurantuser.userId = users.userId WHERE facebookId=? AND resName=?";
+		    $sql = "SELECT ut.accessLevel FROM restaurantuser as ru JOIN users as u ON ru.userId = u.userId JOIN usertype as ut ON ru.userType=ut.userType WHERE u.facebookId=? AND ru.resName=?";
     		$result = $this->db->executeQuery($sql, array($fbid,$restaurantName));
     		return $result[0][0];
+		}
+		public function getAccessLevelById($id, $restaurantName) {
+		    $sql = "SELECT ut.accessLevel FROM restaurantuser as ru JOIN users as u ON ru.userId = u.userId JOIN usertype as ut ON ru.userType=ut.userType WHERE u.userId=? AND ru.resName=?";
+    		$result = $this->db->executeQuery($sql, array($id,$restaurantName));
+    		return $result[0][0];
+		}
+
+		public function getUserTypes($level) {
+		    $sql = "SELECT * from usertype WHERE accessLevel < ?";
+    		$result = $this->db->executeQuery($sql, array($level));
+    		return $result;
+		}
+
+		public function getLevelOfUserType($userType) {
+		    $sql = "SELECT * from usertype WHERE userType=?";
+    		$result = $this->db->executeQuery($sql, array($userType));
+    		return $result[0][1];
 		}
 
 		// Restaurantuser
 		// ======================================================
-
+		public function updateUserType($userType, $userId, $resName) {
+			$sql = "UPDATE restaurantuser SET userType=? WHERE userId=? AND resName=?";
+    		$result = $this->db->executeUpdate($sql, array($userType, $userId, $resName));
+    		return $result;
+		}
 
 		// Foodpref
 		// ======================================================
