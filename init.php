@@ -18,7 +18,7 @@
 
 	// Copy this code to every page where a certain accesslevel is required.
 	$myAccessLevel = $dbHandler->getAccessLevel($fbid, $restaurant->name);
-	requireAccessLevel(0, $myAccessLevel);
+	//requireAccessLevel(0, $myAccessLevel);
 
 	$userExists = $dbHandler->fbidExists($fbid);
 	if($userExists){
