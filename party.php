@@ -66,6 +66,11 @@
 					</a>
 				<?php endif; ?>
 			<?php endif; ?>
+			<?php if($isCreator) : ?>
+				<a class="btn"  href="partybook.php?guestMode=1&partyId=<?php echo $id; ?>">
+					<span>Anmäl dina gäster här</span>
+				</a>
+			<?php endif; ?>
 			<table>
 				<tr>
 					<th>#</th>
