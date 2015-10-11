@@ -54,6 +54,18 @@
 		return;
 	}
 
+
+
+
+	// Needs to be logged in to access methods below
+	// ======================================================================================================
+	if(!$loggedIn){
+		header("Location: index.php");
+		return;
+	}
+
+
+
 	if($_POST['updateUserType']){
 		$users = $_POST['user'];
 		$userType = $_POST['userType'];
