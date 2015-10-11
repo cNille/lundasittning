@@ -13,8 +13,8 @@
 	<div class="interest-content">
 		<h2>Bekräfta</h2>
 		<form action="scripts.php" method="POST">
-			<input type="hidden" name="userId" value="<?php echo $user[0]?>" />
-			<input type="hidden" name="sittId" value="<?php echo $sittId?>" />
+			<input type="hidden" name="userId" value="<?php echo $user[0]; ?>" />
+			<input type="hidden" name="sittId" value="<?php echo $sittId; ?>" />
 			Sittningsdatum <br />
 			<span><?php echo date('j/n', strtotime($sitting->date)); ?></span>
 			Bokare <br />
