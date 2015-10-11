@@ -34,6 +34,7 @@
 		<a href="feedback.php">Skicka Feedback</a>
 	</div>
 	</body>
+	<script src="js/toClipboard.js"></script>
 	<script src="js/removeEvent.js"></script>
 	<script src="js/addEvent.js"></script>
 	<script src="js/saveSettings.js"></script>

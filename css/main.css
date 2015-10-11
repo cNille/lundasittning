@@ -377,14 +377,6 @@ body {
       margin-left: auto;
       margin-right: auto;
       width: 90%; }
-      body .content .event-grid .event-link {
-        position: relative;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-        transform: scale(1);
-        color: black; }
       body .content .event-grid .event-window {
         opacity: 0.9;
         background-color: white;
@@ -408,6 +400,19 @@ body {
           opacity: 1.0; }
         body .content .event-grid .event-window:hover {
           border: 1px solid #333; }
+        body .content .event-grid .event-window .event-window-link {
+          left: 0;
+          top: 0;
+          position: absolute;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+          transform: scale(1);
+          color: black;
+          width: 100%;
+          height: 100%;
+          text-decoration: none; }
         body .content .event-grid .event-window .width {
           width: 150px;
           overflow: hidden; }
@@ -437,7 +442,8 @@ body {
             -moz-transition: all 0.1s ease-in-out;
             -o-transition: all 0.1s ease-in-out;
             transition: all 0.1s ease-in-out;
-            padding-left: 7px; }
+            padding-left: 7px;
+            z-index: 9999; }
             body .content .event-grid .event-window .width .event-remove-button:hover {
               color: #eee;
               background-color: #333; }

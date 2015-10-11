@@ -57,8 +57,10 @@ $("#event-creator-initiate").click(function(){
 				$(".event-window:nth-last-child(2)").addClass("created");
 				$(".event-window:nth-last-child(2)").attr("id",sittIdFin);
 				$(".event-window:nth-last-child(2)").attr("style","block");
+				var temp = $(".event-window:nth-last-child(2)").find(".event-window-link");
+				temp.attr("href", './sitting.php?sittId=' + sittIdFin);
 				$(".event-window:nth-last-child(2)").find(".event-window-date").html(date);
-				$(".event-window:nth-last-child(2)").find(".event-window-spots").html('Antal platser: ' +RESTAURANT_SIZE);
+				$(".event-window:nth-last-child(2)").find(".event-window-spots").html('Ledig');
 				resetCreation()
 				$(".event-window:nth-last-child(2)").addClass("show");
 			}
