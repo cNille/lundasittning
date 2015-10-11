@@ -1,6 +1,5 @@
 <?php 
-	session_start(); 
-	require_once 'db/dbHandler.php';
+	require_once 'init.php';
 
 	function generateRandomString($length = 10) {
 	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -47,6 +46,23 @@
 			$semExist = $dbHandler->addGuest($name, $partyId, $foodpref);
 		}
 		header("Location: party.php?partyKey=" . $partyKey);
+		return;
+	}
+
+	if($_POST['updateUserType']){
+		$users = $_POST['user'];
+		$userType = $_POST['userType'];
+		$accessLevel = $dbHandler->getLevelOfUserType($userType);
+
+		if($accessLevel < $myAccessLevel){
+			foreach ($users as $key => $u) {
+				$userAccessLevel = $dbHandler->getAccessLevelById($u, $resName);
+				if($userAccessLevel < $myAccessLevel){
+					$dbHandler->updateUserType($userType, $u, $resName);
+				}
+			}
+		}		
+		header("Location: users.php");
 		return;
 	}
 
