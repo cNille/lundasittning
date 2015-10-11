@@ -20,6 +20,7 @@ drop table if exists event;
 
 create table restaurant (
 	resName			varchar(30),
+	resNickname		varchar(30),
 	resEmail		varchar(30),
 	resHours		tinytext,
 	resDeposit		integer,
