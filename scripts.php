@@ -114,10 +114,33 @@
 		foreach ($foodpref as $key => $f) {
 			$dbHandler->addUserFood($userId, $f);
 		}
-		header("Location: http://localhost:8888/NILLEFRANZTEST/sittning/index.php?status=saved");
+		header("Location: index.php?status=saved");
 		return;
 	}
-	return;
+
+	if($_POST['addSittingForeman']){
+		$sittId = $_POST['sittId'];
+		$user = $_POST['user'];
+
+		if($myAccessLevel >= 5){
+			$dbHandler->setSittingForeman($sittId, $user);
+		}
+	
+		header("Location: sitting.php?sittId=$sittId");
+		return;		
+	}
+	if($_POST['removeSittingForeman']){
+		$sittId = $_POST['sittId'];
+		$user = $_POST['user'];
+
+		if($myAccessLevel >= 5){
+			$dbHandler->removeSittingForeman($sittId, $user);
+		}
+	
+		header("Location: sitting.php?sittId=$sittId");
+		return;		
+	}
+
 
  	// Close database.
 	$dbHandler->disconnect();
