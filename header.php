@@ -2,6 +2,8 @@
 	
 	session_start(); 
 	require_once 'db/dbHandler.php';
+	require_once 'accessLevelCheck.php';
+
 	 
 	$loggedIn = false;
 	
@@ -15,24 +17,10 @@
 		$fbGender = $_SESSION['GENDER'];
 		$fbEmail = $_SESSION['EMAIL'] == NULL ? " " : $_SESSION['EMAIL'];
 	}
-	
-	switch ($dbHandler->getAccessLevel($fbid, $restaurant->name)){
-		case SuperAdmin: 
-			$accessLevel = 10;
-			break;
-		case Quratel:
-			$accessLevel = 5;
-			break;
-		case Sittningsförman:
-			$accessLevel = 3;
-			break;
-		case Förman:
-			$accessLevel = 2;
-			break;
-		default:
-			$accessLevel = 1;
-	}
-	
+
+	// Copy this code to every page where accesslevel is required.
+	requireAccessLevel(0, $dbHandler->getAccessLevel($fbid, $restaurant->name));
+
 	$userExists = $dbHandler->fbidExists($fbid);
 	if($userExists){
 		$user = $dbHandler->getUser($fbid);
