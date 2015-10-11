@@ -69,15 +69,15 @@
     		$result = $this->db->executeUpdate($sql, array($phone, $id));
     		return $result[0];
 		}
+		public function updateOther($id, $other) {
+		    $sql = "UPDATE users SET userOther=? WHERE userId = ?;";
+    		$result = $this->db->executeUpdate($sql, array($other, $id));
+    		return $result[0];
+		}
 		public function getUser($fbid) {
 		    $sql = "SELECT * FROM users WHERE facebookId = ?;";
     		$result = $this->db->executeQuery($sql, array($fbid));
     		return $result[0];
-		}
-		public function getSettings($fbid) {
-			$sql = "SELECT * FROM users WHERE facebookId=?";
-			$result = $this->db->executeQuery($sql, array($fbid));
-			return $this->arrToUser($result[0]); // Structure: {'id', 'fbid', 'name', 'email', 'telephone', 'other', 'active'}
 		}
 
 		// Guestuser

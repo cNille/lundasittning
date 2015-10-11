@@ -50,6 +50,9 @@
 				}
 			?>
 			<br />
+			
+			Övrigt <br />
+			<span><input type="text" name="other" value="<?php echo $user[5]; ?>"></span>
 
 			Datum <br />
 			<span><?php echo $sitting->date; ?></span>
