@@ -1,0 +1,54 @@
+@mixin myTransition ($target, $speed, $type) {
+    -webkit-transition: $target $speed $type;
+    -moz-transition: $target $speed $type;
+    -o-transition: $target $speed $type;
+    transition: $target $speed $type;
+}
+
+@mixin easy-trans ($speed) {
+    -webkit-transition: all $speed ease-in-out;
+    -moz-transition: all $speed ease-in-out;
+    -o-transition: all $speed ease-in-out;
+    transition: all $speed ease-in-out;
+}
+
+@mixin easy-delay ($speed) {
+    -webkit-transition-delay: $speed;
+    -moz-transition-delay: $speed;
+    -o-transition-delay: $speed;
+    transition-delay: $speed;
+}
+
+@mixin button(){
+    display: block;
+    text-align: center;
+    opacity: 0.7;
+    @include easy-trans(0.3s);
+    border: 1px solid white;
+    cursor: pointer;
+    &:hover{
+        opacity: 1.0;
+        border: 1px solid darken(white, 30%);
+}
+&.primary{
+    background-color: #104050;
+    color: white;
+}
+&.disabled{
+    cursor: not-allowed;
+    &:hover{
+        opacity: 0.7;
+        border: 1px solid white;
+    }
+}
+}
+
+@mixin content-bg(){
+    position: relative;
+    display: block;
+    background-color: white;
+    width: 100%;
+    min-height: 200px;	
+    padding: 15px 25px;
+    box-sizing: border-box;
+}

@@ -8,66 +8,19 @@ $contentWidth: 712px;
 $sideNavWidth: 250px;
 $mobileBreak: 750px;
 
-
 // Mixins
 // =================
-@mixin myTransition ($target, $speed, $type) {
-    -webkit-transition: $target $speed $type;
-    -moz-transition: $target $speed $type;
-    -o-transition: $target $speed $type;
-    transition: $target $speed $type;
-}
-
-@mixin easy-trans ($speed) {
-    -webkit-transition: all $speed ease-in-out;
-    -moz-transition: all $speed ease-in-out;
-    -o-transition: all $speed ease-in-out;
-    transition: all $speed ease-in-out;
-}
-
-@mixin easy-delay ($speed) {
-    -webkit-transition-delay: $speed;
-    -moz-transition-delay: $speed;
-    -o-transition-delay: $speed;
-    transition-delay: $speed;
-}
-
-@mixin button(){
-    display: block;
-    text-align: center;
-    opacity: 0.7;
-    @include easy-trans(0.3s);
-    border: 1px solid white;
-    cursor: pointer;
-    &:hover{
-        opacity: 1.0;
-        border: 1px solid darken(white, 30%);
-}
-&.primary{
-    background-color: #104050;
-    color: white;
-}
-&.disabled{
-    cursor: not-allowed;
-    &:hover{
-        opacity: 0.7;
-        border: 1px solid white;
-    }
-}
-}
-
-@mixin content-bg(){
-    position: relative;
-    display: block;
-    background-color: white;
-    width: 100%;
-    min-height: 200px;	
-    padding: 0px 50px;
-    box-sizing: border-box;
-}
+// Check here all the standard mixins for our website
+@import 'mixins';
 
 // CSS
 // =================
+
+.section{
+    @include content-bg();
+}
+
+
 
 body{
     margin: 0;
@@ -102,16 +55,15 @@ body{
         margin-right: auto;
         padding-bottom: 50px;
 
-        .title {
-            height: 100px;
+        .title, h2 {
+
             width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 30px;
+            margin: 0 auto;
             text-align: center;
             font-size: 60px;
             color: white;
-    }
+            font-weight: 100;
+        }
 
     table{
         text-align: left;

@@ -1,3 +1,12 @@
+.section {
+  position: relative;
+  display: block;
+  background-color: white;
+  width: 100%;
+  min-height: 200px;
+  padding: 15px 25px;
+  box-sizing: border-box; }
+
 body {
   margin: 0;
   padding: 0;
@@ -131,7 +140,7 @@ body {
     background-color: white;
     width: 100%;
     min-height: 200px;
-    padding: 0px 50px;
+    padding: 15px 25px;
     box-sizing: border-box;
     display: table; }
     body .single-sitting .side {
@@ -205,7 +214,7 @@ body {
     background-color: white;
     width: 100%;
     min-height: 200px;
-    padding: 0px 50px;
+    padding: 15px 25px;
     box-sizing: border-box; }
     body .userSettings .left {
       padding: 20px;
@@ -230,7 +239,7 @@ body {
     background-color: white;
     width: 100%;
     min-height: 200px;
-    padding: 0px 50px;
+    padding: 15px 25px;
     box-sizing: border-box;
     display: table;
     text-align: center; }
@@ -256,7 +265,7 @@ body {
     background-color: white;
     width: 100%;
     min-height: 200px;
-    padding: 0px 50px;
+    padding: 15px 25px;
     box-sizing: border-box;
     display: table; }
     body .party-content .side {
@@ -332,7 +341,7 @@ body {
     background-color: white;
     width: 100%;
     min-height: 200px;
-    padding: 0px 50px;
+    padding: 15px 25px;
     box-sizing: border-box;
     display: table;
     text-align: center; }
@@ -354,15 +363,13 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 50px; }
-    body .content .title {
-      height: 100px;
+    body .content .title, body .content h2 {
       width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 30px;
+      margin: 0 auto;
       text-align: center;
       font-size: 60px;
-      color: white; }
+      color: white;
+      font-weight: 100; }
     body .content table {
       text-align: left;
       width: 100%; }
