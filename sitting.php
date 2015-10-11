@@ -5,6 +5,7 @@
 	$parties = $dbHandler->getParties($_GET['sittId']);
 	$myParties = $dbHandler->getPartiesByUser($user[0]);
 	$foreman = $dbHandler->getSittingForeman($_GET['sittId']);
+	$resForeman = $dbHandler->getSittingForemanFromRes($resName);
 	$dbHandler->disconnect();
 
 	$isSittingForeman = false;
@@ -101,7 +102,29 @@
 		</div>
 		<div class="right side">
 			<label>Förmän</label>
-			<span><?php 
+			<span>
+			<?php 
+				if($myAccessLevel >= 5){
+
+					?>
+
+					<form action="scripts.php" method="POST">
+					<select name="user">
+						<?php
+							foreach ($resForeman as $key => $rf) {
+								echo "<option value='$rf[0]'>$rf[1]</option>";
+							}
+						?>
+					</select><br />
+					<input type='submit' name="addSittingForeman" value="Lägg till">
+					<input type='submit' name="removeSittingForeman" value="Ta bort">
+					<input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
+					<br /><br />
+					<form>
+					<?php
+
+
+				}
 				foreach ($foreman as $key => $f) {
 					echo  $f[0] . '<br />';
 				}
