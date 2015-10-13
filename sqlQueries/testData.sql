@@ -1,12 +1,14 @@
 -- Sets in testdata to the tables
 start transaction;
 
+select 'Insert restaurant' as '';
 insert into restaurant(resName, resPrice, resSize, resSummary) values
     ('Nilles nation', 140, 90, 'EN UPPLEVELSE!'),
     ('Franz nation', 240, 120, 'EN UPPLEVELSE!'),
     ('Malins nation', 40, 50, 'EN UPPLEVELSE!'),
     ('Jennifers nation', 40, 50, 'EN UPPLEVELSE!');
 
+select 'Insert usertype' as '';
 insert into usertype values
 	('SuperAdmin', 10),
     ('Quratel', 5),
@@ -14,6 +16,7 @@ insert into usertype values
     ('Förman', 1),
     ('Användare', 0);
 
+select 'Insert users' as '';
 insert into users(userName, facebookId, userEmail, userTelephone) values
     ('Nille', '1', 'c@shapeapp.se', '0708342311'),
     ('Franz', '2', 'franzmail123@gmail.com', '0708123456'),
@@ -21,6 +24,7 @@ insert into users(userName, facebookId, userEmail, userTelephone) values
     ('Franz Lang', '10204701878293819', 'cnilsson_92@hotmail.com', '0708123456'),
     ('Christopher Nilsson', '10153551242685859', 'cnilsson_92@hotmail.com', '0708123456');
 
+select 'Insert restaurantuser' as '';
 insert into restaurantuser values
     (1, 'Nilles nation', 'Quratel'),
     (2, 'Nilles nation', 'Förman'),
@@ -36,6 +40,7 @@ insert into restaurantuser values
     (5, 'Jennifers nation', 'Sittningsförman'),
     (1, 'Malins nation', 'Quratel');
 
+select 'Insert foodpref' as '';
 insert into foodpref values
     ('Laktos'),
     ('Gluten'),
@@ -43,16 +48,19 @@ insert into foodpref values
     ('Vegan'),
     ('Nötter');
 
+select 'Insert userfood' as '';
 insert into userfood values
     (1, 'Laktos'),
     (2, 'Nötter');
 
+select 'Insert sitting' as '';
 insert into sitting (sittDate, sittAppetiser, sittMain, sittDesert, resName, spotsLeft) values
-    ('2015-09-04', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 52),
-    ('2015-09-11', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 42),
-    ('2015-09-18', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 34),
-    ('2015-09-25', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 34);
+    ('2015-11-04', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 52),
+    ('2015-11-11', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 42),
+    ('2015-11-18', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 34),
+    ('2015-11-25', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation', 34);
 
+select 'Insert sittingforeman' as '';
 insert into sittingforeman values
     (1, 1),
     (1, 2),
@@ -61,10 +69,12 @@ insert into sittingforeman values
     (3, 1),
     (3, 3);
 
+select 'Insert partytype' as '';
 insert into partytype values
     ('Sluten'),
     ('Öppen');
 
+select 'Insert user' as '';
 insert into party (partyName, sittId, partyType, partyInterest, partyPrel, partyPayed, partyMessage, urlkey) values
     ('NILLE BDAY', 1, 'Öppen', 40, 10, 5, "Cupcake ipsum dolor sit amet halvah brownie candy.", 'aoeu'),
     ('FRANZ BDAY', 1, 'Sluten', 40, 3, 20, "Cupcake ipsum dolor sit amet halvah brownie candy.", 'qjkx'),
@@ -75,6 +85,7 @@ insert into party (partyName, sittId, partyType, partyInterest, partyPrel, party
     ('FRANZ BDAY', 4, 'Sluten', 40, 3, 20, "Cupcake ipsum dolor sit amet halvah brownie candy.", 'idht'),
     ('MALIN BDAY', 4, 'Öppen', 40, 23, 10, "Cupcake ipsum dolor sit amet halvah brownie candy.", 'dhtn');
 
+select 'Insert partycreator' as '';
 insert into partycreator values
     (1,1),
     (2,2),
@@ -85,6 +96,7 @@ insert into partycreator values
     (7,1),
     (8,2);
 
+select 'Insert partyguest' as '';
 insert into partyguest (partyId, userId, userPayed) values
     (1,1,0),
     (2,1,1),
@@ -111,12 +123,14 @@ insert into partyguest (partyId, userId, userPayed) values
     (7,3,0),
     (8,3,1);
 
+select 'Insert event' as '';
 insert into event values
     ('User created'),
     ('Sitting created'),
     ('Sitting deleted'),
     ('User Payed');
 
+select 'Insert log' as '';
 insert into log (userId, eventText, date) values
     (1, 'User created', CURDATE()),
     (2, 'User created', CURDATE()),

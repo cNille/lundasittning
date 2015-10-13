@@ -2,6 +2,7 @@
 
 set FOREIGN_KEY_CHECKS = 0;
 
+select 'Drop old tables' as '';
 drop table if exists users;
 drop table if exists guestuser;
 drop table if exists usertype;
@@ -18,6 +19,8 @@ drop table if exists partyguest;
 drop table if exists log;
 drop table if exists event;
 
+
+select 'Create restaurant' as '';
 create table restaurant (
 	resName			varchar(30),
 	resNickname		varchar(30),
@@ -30,6 +33,7 @@ create table restaurant (
 	primary key(resName)
 );
 
+select 'Create users' as '';
 create table users (
 	userId			integer auto_increment,
 	facebookId		varchar(30) UNIQUE,
@@ -41,6 +45,7 @@ create table users (
 	primary key(userId)
 );
 
+select 'Create guestuser' as '';
 create table guestuser (
 	guestId 		integer auto_increment,
 	guestName 		varchar(30),
@@ -49,12 +54,15 @@ create table guestuser (
 	userPayed		tinyint(1) DEFAULT 0,
 	primary key (guestId)
 );
+
+select 'Create usertype' as '';
 create table usertype (
 	userType		varchar(20),
 	accessLevel		integer,
 	primary key(userType)
 );
 
+select 'Create restaurantuser' as '';
 create table restaurantuser (
 	userId		integer,
 	resName		varchar(30),
@@ -66,11 +74,13 @@ create table restaurantuser (
 );
 
 
+select 'Create foodpref' as '';
 create table foodpref (
 	foodPref		varchar(20),
 	primary key(foodPref)
 );
 
+select 'Create userfood' as '';
 create table userfood (
 	userId			integer,
 	foodPref		varchar(20),
@@ -79,14 +89,16 @@ create table userfood (
 	foreign key (foodPref) references foodpref(foodPref)
 );
 
+select 'Create guestuserfood' as '';
 create table guestuserfood (
 	guestId			integer,
 	foodPref		varchar(20),
-	primary key(userId,foodPref),
+	primary key(guestId,foodPref),
 	foreign key (guestId) references guestuser(guestId),
 	foreign key (foodPref) references foodpref(foodPref)
 );
 
+select 'Create sitting' as '';
 create table sitting (
 	sittId 				integer auto_increment,
 	sittDate			date not null,
@@ -102,6 +114,7 @@ create table sitting (
 	foreign key(resName) references restaurant(resName)
 );
 
+select 'Create sittingforeman' as '';
 create table sittingforeman (
 	sittId				integer,
 	userId				integer,
@@ -110,6 +123,7 @@ create table sittingforeman (
 	foreign key (userId) references users(userId)
 );
 
+select 'Create party' as '';
 create table party (
 	partyId			integer auto_increment,
 	partyName		varchar(30),
@@ -125,11 +139,13 @@ create table party (
 	foreign key(sittId) references sitting(sittId)
 );
 
+select 'Create partytype' as '';
 create table partytype (
 	partyType		varchar(20),
 	primary key(partyType)
 );
 
+select 'Create partycreator' as '';
 create table partycreator (
 	partyId			integer,
 	userId			integer,
@@ -138,6 +154,7 @@ create table partycreator (
 	foreign key (userId) references users(userId)
 );
 
+select 'Create partyguest' as '';
 create table partyguest (
 	partyId			integer,
 	userId			integer,
@@ -147,6 +164,7 @@ create table partyguest (
 	foreign key (userId) references users(userId)
 );
 
+select 'Create log' as '';
 create table log (
 	logId			integer auto_increment,
 	userId			integer,
@@ -159,6 +177,7 @@ create table log (
 	foreign key(resName) references restaurant(resName)
 );
 
+select 'Create event' as '';
 create table event (
 	eventText		varchar(50),
 	primary key(eventText)
