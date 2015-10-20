@@ -96,32 +96,40 @@ insert into partycreator values
     (7,1),
     (8,2);
 
+select 'Insert paystatus' as '';
+insert into paystatus (status, accesslevel) values
+    ('Nej', 1),
+    ('Insamlat', 1),
+    ('Halvt', 5),
+    ('Ja', 5);
+
+
 select 'Insert partyguest' as '';
 insert into partyguest (partyId, userId, userPayed) values
-    (1,1,0),
-    (2,1,1),
-    (3,1,0),
-    (4,1,0),
-    (5,1,1),
-    (6,1,0),
-    (7,1,0),
-    (8,1,1),
-    (1,2,0),
-    (2,2,1),
-    (3,2,0),
-    (4,2,0),
-    (5,2,1),
-    (6,2,0),
-    (7,2,0),
-    (8,2,1),
-    (1,3,0),
-    (2,3,1),
-    (3,3,0),
-    (4,3,0),
-    (5,3,1),
-    (6,3,0),
-    (7,3,0),
-    (8,3,1);
+    (1,1,'Nej'),
+    (2,1,'Nej'),
+    (3,1,'Nej'),
+    (4,1,'Nej'),
+    (5,1,'Nej'),
+    (6,1,'Nej'),
+    (7,1,'Nej'),
+    (8,1,'Nej'),
+    (1,2,'Nej'),
+    (2,2,'Nej'),
+    (3,2,'Nej'),
+    (4,2,'Nej'),
+    (5,2,'Nej'),
+    (6,2,'Nej'),
+    (7,2,'Nej'),
+    (8,2,'Nej'),
+    (1,3,'Nej'),
+    (2,3,'Nej'),
+    (3,3,'Nej'),
+    (4,3,'Nej'),
+    (5,3,'Nej'),
+    (6,3,'Nej'),
+    (7,3,'Nej'),
+    (8,3,'Nej');
 
 select 'Insert event' as '';
 insert into event values

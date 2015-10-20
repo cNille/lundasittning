@@ -283,6 +283,19 @@ body {
       body .party-content .side.right table {
         margin-top: 15px;
         font-size: 12px; }
+        body .party-content .side.right table .listtoggle {
+          cursor: pointer;
+          border: 1px solid gray;
+          padding: 2px 5px;
+          text-align: center;
+          border-radius: 3px;
+          opacity: 0.5;
+          -webkit-transition: all 0.2s ease-in-out;
+          -moz-transition: all 0.2s ease-in-out;
+          -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out; }
+          body .party-content .side.right table .listtoggle:hover {
+            opacity: 1; }
       body .party-content .side.right .btn {
         padding: 15px;
         background-color: #e6e6e6;

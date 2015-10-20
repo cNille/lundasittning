@@ -93,7 +93,7 @@
 		// Guestuser
 		// ======================================================
 		public function addGuest($name, $partyId, $foodpref) {
-		    $sql = "INSERT INTO guestuser (guestName, partyId, guestFoodPref) VALUES (?,?,?);";
+		    $sql = "INSERT INTO guestuser (guestName, partyId, guestFoodPref, userPayed) VALUES (?,?,?, 'Nej');";
     		$result = $this->db->executeUpdate($sql, array($name, $partyId, $foodpref));
     		return $result[0]; 
 		}
@@ -102,6 +102,11 @@
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $result;
 		}
+        public function updateGuestPayStatus($g, $party, $paystatus){
+            $sql = "UPDATE guestuser SET userPayed=? WHERE guestId=? AND partyId=?";
+            $result = $this->db->executeUpdate($sql, array($paystatus, $g, $party));
+            return $result;
+        }
 
 		// UserType
 		// ======================================================
@@ -273,7 +278,7 @@
 			return $this->arrarrGuest($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
 		}
 		public function addPartyGuest($partyId, $userId) {
-		    $sql = "INSERT INTO partyguest (partyId, userId) VALUES (?, ?);";
+		    $sql = "INSERT INTO partyguest (partyId, userId, userPayed) VALUES (?, ?, 'Nej');";
     		$result = $this->db->executeUpdate($sql, array($partyId, $userId));
     		return $this->db->getLastId(); 
 		}
@@ -282,7 +287,26 @@
 			$result = $this->db->executeQuery($sql, array($partyId, $userId));
 			return count($result) == 1;
 		}
+        public function updateUserPayStatus($user, $party, $paystatus){
+            $sql = "UPDATE partyguest SET userPayed=? WHERE userId=? AND partyId=?";
+            $result = $this->db->executeUpdate($sql, array($paystatus, $user, $party));
+            return $result;
+        }
 
+
+		// Paystatus
+		// ======================================================
+        public function getPayStatus($accesslevel){
+            $sql = "SELECT * FROM paystatus WHERE accesslevel <= ?;";
+            $result = $this->db->executeQuery($sql, array($accesslevel));
+            return $result;
+        }
+
+        public function getPayAccessLevel($status){
+            $sql = "SELECT accesslevel FROM paystatus WHERE status=?;";
+            $result = $this->db->executeQuery($sql, array($status));
+            return $result[0][0];
+        }
 
 		// Log
 		// ======================================================

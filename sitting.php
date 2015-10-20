@@ -51,7 +51,7 @@
 									<tr>
 										<?php 
 											if($isParticipating || $myAccessLevel >= 5 || $isSittingForeman){
-												echo '<td><a href="party.php?partyKey=' . $p->key . '">' . $p->name . '</a></td>';
+												echo '<td><a href="' . $p->key . '">' . $p->name . '</a></td>';
 											} else {
 												echo '<td>' . $p->name . '</td>';
 											}
@@ -86,7 +86,7 @@
 								<tr>
 									<?php 
 											if($isParticipating || $myAccessLevel >= 5 || $isSittingForeman){
-												echo '<td><a href="party.php?partyKey=' . $p->key . '">' . $p->name . '</a></td>';
+												echo '<td><a href="' . $p->key . '">' . $p->name . '</a></td>';
 											} else {
 												echo '<td>' . $p->name . '</td>';
 											}

@@ -143,6 +143,27 @@
 		return;		
 	}
 
+    if($_POST['partyUpdatePay']){
+        $paystatus = $_POST['payStatus'];
+        $userIds = $_POST['userId'];
+        $guestIds = $_POST['guestId'];
+        $partykey = $_POST['partykey'];
+        $partyid = $_POST['partyid'];
+        $reqAccessLevel = $dbHandler->getPayAccessLevel($paystatus);
+        
+        if($myAccessLevel >= $reqAccessLevel){
+            foreach($userIds as $key => $u){
+                $dbHandler->updateUserPayStatus($u, $partyid, $paystatus);
+            } 
+            foreach($guestIds as $key => $g){
+                $dbHandler->updateGuestPayStatus($g, $partyid, $paystatus);
+            } 
+        }
+
+        header("Location: ./$partykey");
+        return;
+    }
+
 	if($_POST['addSittingForeman']){
 		$sittId = $_POST['sittId'];
 		$user = $_POST['user'];

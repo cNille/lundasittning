@@ -8,6 +8,7 @@ drop table if exists guestuser;
 drop table if exists usertype;
 drop table if exists foodpref;
 drop table if exists userfood;
+drop table if exists guestuserfood;
 drop table if exists restaurant;
 drop table if exists restaurantuser;
 drop table if exists sitting;
@@ -16,6 +17,7 @@ drop table if exists party;
 drop table if exists partytype;
 drop table if exists partycreator;
 drop table if exists partyguest;
+drop table if exists paystatus;
 drop table if exists log;
 drop table if exists event;
 
@@ -51,8 +53,9 @@ create table guestuser (
 	guestName 		varchar(30),
 	partyId 		integer,
 	guestFoodPref 	tinytext,	
-	userPayed		tinyint(1) DEFAULT 0,
-	primary key (guestId)
+	userPayed		varchar(30),
+	primary key (guestId),
+    foreign key (userPayed) references paystatus(status)
 );
 
 select 'Create usertype' as '';
@@ -70,7 +73,7 @@ create table restaurantuser (
 	primary key (userId, resName),
 	foreign key (userId) references users(userId),
 	foreign key (userType) references usertype(userType),
-	foreign key (resName) references restaurant(resName)
+	foreign key (resName) references restaurant(resName) ON UPDATE CASCADE
 );
 
 
@@ -86,7 +89,7 @@ create table userfood (
 	foodPref		varchar(20),
 	primary key(userId,foodPref),
 	foreign key (userId) references users(userId),
-	foreign key (foodPref) references foodpref(foodPref)
+	foreign key (foodPref) references foodpref(foodPref) ON UPDATE CASCADE
 );
 
 select 'Create guestuserfood' as '';
@@ -95,7 +98,7 @@ create table guestuserfood (
 	foodPref		varchar(20),
 	primary key(guestId,foodPref),
 	foreign key (guestId) references guestuser(guestId),
-	foreign key (foodPref) references foodpref(foodPref)
+	foreign key (foodPref) references foodpref(foodPref) ON UPDATE CASCADE
 );
 
 select 'Create sitting' as '';
@@ -111,7 +114,7 @@ create table sitting (
 	resName				varchar(30),
 	spotsLeft			tinyint(1) DEFAULT 0,
 	primary key(sittId),
-	foreign key(resName) references restaurant(resName)
+	foreign key(resName) references restaurant(resName) ON UPDATE CASCADE
 );
 
 select 'Create sittingforeman' as '';
@@ -135,7 +138,7 @@ create table party (
 	partyMessage	text,
 	urlkey			varchar(10) NOT NULL,
 	primary key(partyId),
-	foreign key(partyType) references partytype(partyType),
+	foreign key(partyType) references partytype(partyType) ON UPDATE CASCADE,
 	foreign key(sittId) references sitting(sittId)
 );
 
@@ -158,10 +161,18 @@ select 'Create partyguest' as '';
 create table partyguest (
 	partyId			integer,
 	userId			integer,
-	userPayed		tinyint(1) DEFAULT 0,
-	primary key(partyId,userId),
+	userPayed		varchar(30),
+	primary key (partyId,userId),
 	foreign key (partyId) references party(partyId),
-	foreign key (userId) references users(userId)
+	foreign key (userId) references users(userId),
+    foreign key (userPayed) references paystatus(status)
+);
+
+select 'Create paystatus' as '';
+create table paystatus (
+    status          varchar(30),
+    accesslevel     integer,
+    primary key (status)
 );
 
 select 'Create log' as '';
@@ -173,8 +184,8 @@ create table log (
 	resName			varchar(30),
 	primary key(logId),
 	foreign key (userId) references users(userId),
-	foreign key (eventText) references event(eventText),
-	foreign key(resName) references restaurant(resName)
+	foreign key (eventText) references event(eventText) ON UPDATE CASCADE,
+	foreign key (resName) references restaurant(resName) ON UPDATE CASCADE
 );
 
 select 'Create event' as '';

@@ -9,8 +9,8 @@
 	$partyUsers = $dbHandler->getPartyUsers($id);
 	$partyGuests = $dbHandler->getPartyGuests($id);
 	$creator = $dbHandler->getCreator($id);
+    $payStatus = $dbHandler->getPayStatus($myAccessLevel);
 	$isCreator = $creator[0] == $user[0];
- 
 	foreach ($partyUsers as $key => $g) {
 		$g->foodpref = '';
 		$myFoodPref = $dbHandler->getMyFoodpref($g->id);
@@ -22,15 +22,7 @@
 
 	$dbHandler->disconnect();
 
-	function payedTextify($nr){
-		if($nr == 0){
-			return 'Nej';
-		} else if($nr == 1){
-			return 'Halvt';
-		} else if($nr == 2){
-			return 'Ja';
-		}
-	}
+	$isQuratel = $myAccessLevel >= 5;
  ?>
 
 <div class="content">
@@ -86,12 +78,22 @@
 					<span>Anmäl dina gäster här</span>
 				</a>
 			<?php endif; ?>
+			<?php
+				if($isQuratel){
+					echo "<form action='scripts.php' method='POST'>";
+				}
+			?>
 			<table>
 				<tr>
 					<th>#</th>
 					<th>Gäster</th>
 					<th>Matpreferens</th>
 					<th>Betalat</th>
+                    <?php
+                        if($isQuratel){
+                            echo "<th><p class='listtoggle'>Välj alla</p></th>";
+                        }
+                    ?>
 				</tr>
 				<?php 
 					$i = 1;
@@ -101,7 +103,12 @@
 							<td><?php echo $i; ?></td>
 							<td><?php echo $g->name; ?></td>
 							<td><?php echo $g->foodpref; ?></td>
-							<td><?php echo payedTextify($g->payed); ?></td>
+                            <td><?php echo $g->payed; ?></td>
+							<?php
+								if($isQuratel){
+									echo "<td><input type='checkbox' class='chbx' name='userId[]' value='$g->id' /></td>";
+								}
+							?>
 						</tr>
 						<?php
 						$i++;
@@ -112,14 +119,47 @@
 							<td><?php echo $i; ?></td>
 							<td><?php echo $g[1]; ?></td>
 							<td><?php echo $g[3]; ?></td>
-							<td><?php echo payedTextify($g[4]); ?></td>
+                            <td><?php echo $g[4]; ?></td>
+							<?php
+								if($isQuratel){
+									echo "<td><input type='checkbox' class='chbx' name='guestId[]' value='$g[0]' /></td>";
+								}
+							?>
 						</tr>
 						<?php
 						$i++;
 					}
 				?>
 			</table>
+			<?php
+				if($isQuratel){
+                    ?>
+                    <input type="hidden" name="partykey" value="<?php echo $party->key; ?>">
+                    <input type="hidden" name="partyid" value="<?php echo $party->id; ?>">
+					<input type='submit' name='partyUpdatePay' value='Uppdatera till'>
+                    <select name='payStatus'>
+                        <?php
+                            foreach ($payStatus as $key => $p) {
+                                echo "<option value='$p[0]'>$p[0]</option>";
+                            }
+                        ?>
+                    </select>
+					</form>
+                    <?php
+				}
+			?>
 		</div>
 	</div>
 </div>
+
+<script>
+    var toggle = false;
+    $(document).ready(function() { 
+    $(".listtoggle").click(function() {
+        $('.chbx').prop("checked", !toggle);
+        toggle = !toggle; 
+    });                 
+});
+</script>
+
 <?php include 'footer.php'; ?>
