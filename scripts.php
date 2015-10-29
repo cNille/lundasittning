@@ -153,15 +153,37 @@
         
         if($myAccessLevel >= $reqAccessLevel){
             foreach($userIds as $key => $u){
-                $dbHandler->updateUserPayStatus($u, $partyid, $paystatus);
+        		$oldPayStatus = $dbHandler->getUserPayedStatus($u, $partyid);
+        		$oldReqAccessLevel = $dbHandler->getPayAccessLevel($oldPayStatus);
+        		if($myAccessLevel >= $oldReqAccessLevel){
+	                $dbHandler->updateUserPayStatus($u, $partyid, $paystatus);
+	            }
             } 
             foreach($guestIds as $key => $g){
-                $dbHandler->updateGuestPayStatus($g, $partyid, $paystatus);
+            	$oldPayStatus = $dbHandler->getUserPayedStatus($u, $partyid);
+        		$oldReqAccessLevel = $dbHandler->getPayAccessLevel($oldPayStatus);
+        		if($myAccessLevel >= $oldReqAccessLevel){
+	                $dbHandler->updateGuestPayStatus($g, $partyid, $paystatus);
+				}
             } 
         }
-
         header("Location: ./$partykey");
         return;
+    }
+
+    if($_POST['updateSittingMenu']){
+        $appetiser = $_POST['appetiser'];
+        $main = $_POST['main'];
+        $desert = $_POST['desert'];
+        $sittId = $_POST['sittId'];        
+        $sittForeman = $dbHandler->isSittingForeman($sittId, $user[0]);
+        
+        if($sittForeman || $myAccessLevel >= 5){
+
+            
+            header("Location: sitting.php?sittId=$sittId");
+            return;		
+        }       
     }
 
 	if($_POST['addSittingForeman']){

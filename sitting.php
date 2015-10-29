@@ -1,11 +1,27 @@
 <?php 
 	require_once 'header.php';
  	$dbHandler = new DatabaseHandler();
-	$sitting = $dbHandler->getSitting($_GET['sittId']);
-	$parties = $dbHandler->getParties($_GET['sittId']);
+ 	$sittId = $_GET['sittId'];
+	$sitting = $dbHandler->getSitting($sittId);
+	$parties = $dbHandler->getParties($sittId);
+	$partiesPayStatus = $dbHandler->getPartiesPayStatus($sittId);
 	$myParties = $dbHandler->getPartiesByUser($user[0]);
-	$foreman = $dbHandler->getSittingForeman($_GET['sittId']);
+    $allSittingUsers = $dbHandler->getPartyUsersFromSitting($sittId);
+	$foreman = $dbHandler->getSittingForeman($sittId);
 	$resForeman = $dbHandler->getSittingForemanFromRes($resName);
+
+    $test = array();
+	foreach ($allSittingUsers as $key => $g) {
+		$g[] = '';
+		$myFoodPref = $dbHandler->getMyFoodpref($g[1]);
+		foreach ($myFoodPref as $key => $food) {
+			$g[4] = $g[4]. $food[0] . ', ';
+            echo "Hej: $g[4]";
+		}
+		$g[4] = substr($g[4], 0, -2);
+        $test[] = $g;
+	}
+
 	$dbHandler->disconnect();
 
 	$isSittingForeman = false;
@@ -16,13 +32,6 @@
 	}
 
 	$spotsLeft = $restaurant->size;
-	$hasInterestedParties = false;
-	foreach ($parties as $key => $p) {
-		$spotsLeft = $spotsLeft - $p->prel - $p->payed;
-		if($p->prel + $p->payed == 0){
-			$hasInterestedParties = true;
-		}
-	}
  ?>
 <div class="content">
 	<div class="title">Sittning</div>
@@ -35,7 +44,7 @@
 				<table>
 					<tr>
 						<th>Anmälda sällskap</th>
-						<th>Gäster</th>
+						<th></th>
 					</tr>
 					<?php 
 						foreach ($parties as $key => $p) {
@@ -45,8 +54,20 @@
 									$isParticipating = true;
 								}
 							}
-							$prelSpots = $p->prel + $p->payed;
-							if($prelSpots != 0){
+							$prelSpots = 0;
+							$totalSpots = 0;
+							foreach ($partiesPayStatus as $key => $pps) {
+								if($pps[0] == $p->id){  
+                                    if($pps[2] != "Nej" && $pps[2] != "Insamlat"){
+										$prelSpots += $pps[3];
+									}
+									$totalSpots += $pps[3];
+								}
+							}
+	                        $hasInterestedParties = false;
+							if($prelSpots == 0){
+                                $hasInterestedParties = true;
+                            } else {
 								?>
 									<tr>
 										<?php 
@@ -57,7 +78,7 @@
 											}
 										?>
 										
-										<td><?php echo $p->prel + $p->payed; ?></td>
+										<td><?php echo "$prelSpots av $totalSpots har betalat"; ?></td>
 										
 									</tr>
 								<?php
@@ -69,7 +90,7 @@
 				<table>
 					<tr>
 						<th>Intresserade Sällskap</th>
-						<th>Gäster</th>
+						<th></th>
 					</tr>
 					<?php 
 						$spotsLeft = $restaurant->size;
@@ -80,10 +101,19 @@
 									$isParticipating = true;
 								}
 							}
-							$prelSpots = $p->prel + $p->payed;
+							$totalSpots = 0;
+							$prelSpots = 0;
+							foreach ($partiesPayStatus as $key => $pps) {
+								if($pps[0] == $p->id){
+									if($pps[2] != "Nej" && $pps[2] != "Insamlat"){
+										$prelSpots += $pps[3];
+									}
+									$totalSpots += $pps[3];
+								}
+							}
 							if($prelSpots == 0){
 							?>
-								<tr>
+                                <tr>
 									<?php 
 											if($isParticipating || $myAccessLevel >= 5 || $isSittingForeman){
 												echo '<td><a href="' . $p->key . '">' . $p->name . '</a></td>';
@@ -91,7 +121,7 @@
 												echo '<td>' . $p->name . '</td>';
 											}
 										?>
-									<td><?php echo $p->interest; ?></td>
+										<td><?php echo "Intresserade av $totalSpots platser"; ?></td>
 								</tr>
 							<?php
 							}
@@ -101,26 +131,9 @@
 				<?php endif; ?>
 		</div>
 		<div class="right side">
-			<label>Förmän</label>
+			<h4>Förmän</h4>
 			<span>
 			<?php 
-				if($myAccessLevel >= 5){
-					?>
-					<form action="scripts.php" method="POST">
-					<select name="user">
-						<?php
-							foreach ($resForeman as $key => $rf) {
-								echo "<option value='$rf[0]'>$rf[1]</option>";
-							}
-						?>
-					</select><br />
-					<input type='submit' name="addSittingForeman" value="Lägg till">
-					<input type='submit' name="removeSittingForeman" value="Ta bort">
-					<input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
-					<br /><br />
-					<form>
-					<?php
-				}
 				foreach ($foreman as $key => $f) {
 					echo  $f[0] . '<br />';
 				}
@@ -134,6 +147,7 @@
 			<span class="mitten"><?php echo $sitting->desert; ?></span>
 		</div>
 	</div>
+
 	<div <?php 
 			if($loggedIn){ 
 				echo 'class="button"  onclick="location.href=\'interest.php?sittId=' . $sitting->id . '\';"'; 
@@ -143,6 +157,80 @@
 		>
 		<span>+ Lägg intresseanmälan</span>
 	</div>
+	<?php 
+	if($myAccessLevel >= 5 || $isSittingForeman) : ?>
+        <div class="single-sitting">
+            <h2>Inställningar för sittningen</h2>
+            <form action="scripts.php" method="POST">
+                <h3>Menyn</h3>
+                <h4>Förrätt</h4> 
+                <input type="text" name="appetiser" value="<?php echo $sitting->appetiser; ?>" />
+                <br />
+                <h4>Huvudrätt</h4> 
+                <input type="text" name="main" value="<?php echo $sitting->main; ?>"/>
+                <br />
+                <h4>Efterrätt</h4> 
+                <input type="text" name="desert" value="<?php echo $sitting->desert; ?> "/>
+                <br />
+                <input type='hidden' value="<?php echo $sittId; ?>" name="sittId" />
+                <input type="submit" value="Uppdatera Meny" name="updateSittingMenu" />
+            </form>
+
+                <?php if($myAccessLevel >= 5){ ?>
+                    <form action="scripts.php" method="POST">
+                        <h3>Förmän</h3>
+                        <select name="user">
+                        <?php
+                            foreach ($resForeman as $key => $rf) {
+                                echo "<option value='$rf[0]'>$rf[1]</option>";
+                            }
+                        ?>
+                        </select><br />
+                        <input type='submit' name="addSittingForeman" value="Lägg till">
+                        <input type='submit' name="removeSittingForeman" value="Ta bort">
+                        <input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
+                        <br /><br />
+                        <form>
+                <?php } ?>
+
+
+			<table>
+				<tr>
+					<th>#</th>
+					<th>Sällskap</th>
+					<th>Gäster</th>
+					<th>Matpreferens</th>
+				</tr>
+				<?php 
+					$i = 1;
+					foreach ($test as $key => $g) {
+						?>
+						<tr>
+							<td><?php echo $i; ?></td>
+							<td><?php echo $g[0]; ?></td>
+							<td><?php echo $g[2]; ?></td>
+                            <td><?php echo $g[4]; ?></td>
+						</tr>
+						<?php
+						$i++;
+					}
+					foreach ($allSittingGuests as $key => $g) {
+						?>
+						<tr>
+							<td><?php echo $i; ?></td>
+							<td><?php echo $g[1]; ?></td>
+							<td><?php echo $g[3]; ?></td>
+                            <td><?php echo $g[4]; ?></td>
+						</tr>
+						<?php
+						$i++;
+					}
+				?>
+			</table>
+
+
+        </div>
+	<?php endif; ?>
 </div>
 
 

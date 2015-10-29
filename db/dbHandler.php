@@ -236,6 +236,11 @@
 			$result = $this->db->executeQuery($sql, array($sittId));
 			return $this->arrarrParty($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
 		}
+		public function getPartiesPayStatus($sittId) {
+			$sql = "SELECT p.partyId, p.sittId, pg.userPayed, count(*) as Count FROM party as p JOIN partyguest as pg WHERE sittId=? AND p.partyId=pg.partyId GROUP BY p.partyId, pg.userPayed";
+			$result = $this->db->executeQuery($sql, array($sittId));
+			return $result;
+		}
 		public function createParty($name, $type, $sittId, $int, $msg, $key) {
 		    $sql = "INSERT INTO party (partyName, partyType, sittId, partyInterest, partyMessage, urlkey) VALUES (?, ?, ?, ?, ?, ?);";
     		$result = $this->db->executeUpdate($sql, array($name, $type, $sittId, $int, $msg, $key));
@@ -272,6 +277,11 @@
 			$result = $this->db->executeQuery($sql, array($userId));
 			return $result;
 		}
+		public function getPartyUsersFromSitting($sittId) {
+			$sql = "SELECT p.partyName, u.userId, u.userName, pg.userPayed FROM party as p JOIN partyguest as pg JOIN users as u WHERE p.partyId=pg.partyId AND u.userId=pg.userId AND p.sittId=?";
+			$result = $this->db->executeQuery($sql, array($sittId));
+            return $result;
+		}
 		public function getPartyUsers($partyId) {
 			$sql = "SELECT users.userId, users.userName, partyguest.userPayed FROM partyguest JOIN users ON users.userId=partyguest.userId WHERE partyguest.partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
@@ -291,6 +301,11 @@
             $sql = "UPDATE partyguest SET userPayed=? WHERE userId=? AND partyId=?";
             $result = $this->db->executeUpdate($sql, array($paystatus, $user, $party));
             return $result;
+        }
+		public function getUserPayedStatus($user, $party){
+            $sql = "SELECT userPayed FROM partyguest WHERE userId=? AND partyId=?";
+            $result = $this->db->executeQuery($sql, array($user, $party));
+            return $result[0];
         }
 
 

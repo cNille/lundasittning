@@ -35,7 +35,7 @@
 				<p><?php echo  $creator[1];?></p>
 				<p><?php echo  $creator[2];?></p>
 				<p><?php echo  $creator[3];?></p>
-				<?php if($isCreator) : ?>
+				<?php if($isCreator || $isQuratel) : ?>
 				<h4>Anmälningslänk</h4> 
 				<p id="toClipboard" onClick="CopyToClipboard();"><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
 				<?php endif; ?>
@@ -150,6 +150,7 @@
 			?>
 		</div>
 	</div>
+    <a href="./sitting.php?sittId=<?php echo $party->sittId; ?>" class="btn secondary">Tillbaka till sittningen</a>
 </div>
 
 <script>

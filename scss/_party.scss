@@ -39,17 +39,17 @@
                 }
             }
 
-			.btn{
-				padding: 15px;
-				background-color: darken(white, 10%);
-				color: #333;
-				text-decoration: none;
-				@include button();
-			}
 		}
 	}
 }
 
+.btn{
+    padding: 15px;
+    background-color: darken(white, 10%);
+    color: #333;
+    text-decoration: none;
+    @include button();
+}
 div.button{
 	@include button();
 	background-color: white;

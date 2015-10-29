@@ -19,356 +19,6 @@ body {
   background-image: url("../images/table.jpg");
   min-height: 100vw;
   min-height: 100vh; }
-  body .sidenav {
-    position: fixed;
-    height: 100vh;
-    width: 250px;
-    top: 0;
-    right: -250px;
-    background-color: white;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    box-sizing: border-box; }
-    body .sidenav.active {
-      right: 0; }
-    body .sidenav h1 {
-      padding: 15px 30px; }
-    body .sidenav a {
-      display: block;
-      padding: 15px 30px;
-      text-decoration: none;
-      font-size: 20px; }
-      body .sidenav a:hover {
-        background-color: #e6e6e6; }
-  body .shadow {
-    position: fixed;
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    background-color: black;
-    opacity: 0.0;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
-    body .shadow.active {
-      visibility: visible;
-      opacity: 0.5; }
-  body .header {
-    height: 55px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    background-color: black;
-    -moz-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); }
-    body .header a {
-      color: white;
-      font-size: 25px;
-      line-height: 55px;
-      text-decoration: none;
-      display: inline-block;
-      margin-left: 10px; }
-    body .header .header-button {
-      position: fixed;
-      z-index: 9000;
-      right: 0px;
-      top: 0px;
-      padding: 0;
-      width: 2.5em;
-      height: 2.25em;
-      border: none;
-      text-indent: 2.5em;
-      font-size: 1.5em;
-      color: transparent;
-      background: transparent;
-      outline: none;
-      -webkit-transition: all 0.3s ease-in-out;
-      -moz-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out; }
-    body .header .header-button::before {
-      position: absolute;
-      top: 0.5em;
-      right: 0.5em;
-      bottom: 1.0em;
-      left: 1.0em;
-      background: linear-gradient(#FFFFFF 20%, transparent 20%, transparent 40%, #FFFFFF 40%, #FFFFFF 60%, transparent 60%, transparent 80%, #FFFFFF 80%);
-      content: ''; }
-    body .header .header-button:hover {
-      cursor: hand;
-      cursor: pointer;
-      opacity: 0.6; }
-  body .fb-login {
-    height: 30px;
-    position: fixed;
-    display: block;
-    bottom: 20px;
-    right: 50px;
-    opacity: 0.6;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    font-size: 13px;
-    text-align: right; }
-    body .fb-login:hover {
-      opacity: 1.0;
-      cursor: pointer; }
-    body .fb-login img {
-      position: absolute;
-      right: -35px;
-      top: 0;
-      width: 30px;
-      height: 30px;
-      vertical-align: middle; }
-    body .fb-login span {
-      color: white; }
-      body .fb-login span.login {
-        line-height: 30px; }
-    body .fb-login a {
-      color: white; }
-  body .single-sitting {
-    position: relative;
-    display: block;
-    background-color: white;
-    width: 100%;
-    min-height: 200px;
-    padding: 15px 25px;
-    box-sizing: border-box;
-    display: table; }
-    body .single-sitting .side {
-      position: relative;
-      display: table-cell; }
-      body .single-sitting .side.left {
-        padding: 20px;
-        width: 50%; }
-        body .single-sitting .side.left h3 {
-          margin: 0;
-          font-size: 60px;
-          font-weight: 100; }
-        body .single-sitting .side.left table {
-          margin-top: 15px; }
-          body .single-sitting .side.left table a {
-            color: blue; }
-            body .single-sitting .side.left table a:after {
-              border-color: black;
-              width: 0;
-              height: 0;
-              border-top: 60px solid transparent;
-              border-bottom: 60px solid transparent;
-              border-left: 60px solid green; }
-      body .single-sitting .side.right label {
-        display: block;
-        margin-top: 10px;
-        text-align: center;
-        font-size: 13px; }
-      body .single-sitting .side.right h4 {
-        display: block;
-        text-align: center;
-        margin-bottom: 0px; }
-      body .single-sitting .side.right span {
-        text-align: center;
-        display: block;
-        margin-bottom: 15px; }
-  body div.button {
-    display: block;
-    background-color: white;
-    padding: 25px;
-    margin-top: 15px;
-    text-align: center;
-    opacity: 0.7;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    border: 1px solid white;
-    cursor: pointer; }
-    body div.button.disabled {
-      cursor: not-allowed; }
-      body div.button.disabled:hover {
-        opacity: 0.7;
-        border: 1px solid white; }
-    body div.button:hover {
-      opacity: 1.0;
-      border: 1px solid black; }
-  @media screen and (max-width: 750px) {
-    body .single-sitting .side {
-      display: block;
-      text-align: center;
-      width: 100%; }
-      body .single-sitting .side.left {
-        padding: 5px;
-        width: 100%; }
-        body .single-sitting .side.left h3 {
-          font-size: 30px; } }
-  body .userSettings {
-    position: relative;
-    display: block;
-    background-color: white;
-    width: 100%;
-    min-height: 200px;
-    padding: 15px 25px;
-    box-sizing: border-box; }
-    body .userSettings .left {
-      padding: 20px;
-      min-width: 270px;
-      width: 35%; }
-    body .userSettings .left .category {
-      margin-top: 10px; }
-    body .userSettings .left input[type="text"] {
-      float: right;
-      margin-right: 25px; }
-    body .userSettings .left button {
-      float: right;
-      margin-right: 25px;
-      background-color: red;
-      border: none;
-      font-size: 20px; }
-    body .userSettings button:hover {
-      cursor: pointer; }
-  body .interest-content {
-    position: relative;
-    display: block;
-    background-color: white;
-    width: 100%;
-    min-height: 200px;
-    padding: 15px 25px;
-    box-sizing: border-box;
-    display: table;
-    text-align: center; }
-    body .interest-content h2 {
-      font-weight: 100;
-      font-size: 50px;
-      margin-bottom: 0px; }
-    body .interest-content p {
-      margin-top: 0; }
-    body .interest-content form {
-      margin: 25px 0; }
-    body .interest-content span {
-      display: block;
-      margin-bottom: 10px; }
-    body .interest-content textarea {
-      display: block;
-      margin: auto; }
-    body .interest-content input[type="submit"] {
-      margin-top: 20px; }
-  body .party-content {
-    position: relative;
-    display: block;
-    background-color: white;
-    width: 100%;
-    min-height: 200px;
-    padding: 15px 25px;
-    box-sizing: border-box;
-    display: table; }
-    body .party-content .side {
-      position: relative;
-      display: table-cell;
-      padding: 5px; }
-      body .party-content .side.left h4 {
-        font-size: 15px;
-        display: block;
-        margin: 0;
-        margin-top: 10px; }
-      body .party-content .side.left p {
-        margin: 5px 0;
-        max-width: 325px; }
-      body .party-content .side.right table {
-        margin-top: 15px;
-        font-size: 12px; }
-        body .party-content .side.right table .listtoggle {
-          cursor: pointer;
-          border: 1px solid gray;
-          padding: 2px 5px;
-          text-align: center;
-          border-radius: 3px;
-          opacity: 0.5;
-          -webkit-transition: all 0.2s ease-in-out;
-          -moz-transition: all 0.2s ease-in-out;
-          -o-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out; }
-          body .party-content .side.right table .listtoggle:hover {
-            opacity: 1; }
-      body .party-content .side.right .btn {
-        padding: 15px;
-        background-color: #e6e6e6;
-        color: #333;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        opacity: 0.7;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-        border: 1px solid white;
-        cursor: pointer; }
-        body .party-content .side.right .btn:hover {
-          opacity: 1.0;
-          border: 1px solid #b3b3b3; }
-        body .party-content .side.right .btn.primary {
-          background-color: #104050;
-          color: white; }
-        body .party-content .side.right .btn.disabled {
-          cursor: not-allowed; }
-          body .party-content .side.right .btn.disabled:hover {
-            opacity: 0.7;
-            border: 1px solid white; }
-  body div.button {
-    display: block;
-    text-align: center;
-    opacity: 0.7;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    border: 1px solid white;
-    cursor: pointer;
-    background-color: white;
-    padding: 25px;
-    margin-top: 15px; }
-    body div.button:hover {
-      opacity: 1.0;
-      border: 1px solid #b3b3b3; }
-    body div.button.primary {
-      background-color: #104050;
-      color: white; }
-    body div.button.disabled {
-      cursor: not-allowed; }
-      body div.button.disabled:hover {
-        opacity: 0.7;
-        border: 1px solid white; }
-  @media screen and (max-width: 750px) {
-    body .party-content .side {
-      display: block; } }
-  body .booking-content {
-    position: relative;
-    display: block;
-    background-color: white;
-    width: 100%;
-    min-height: 200px;
-    padding: 15px 25px;
-    box-sizing: border-box;
-    display: table;
-    text-align: center; }
-    body .booking-content h2 {
-      font-weight: 100;
-      font-size: 50px;
-      margin-bottom: 0px; }
-    body .booking-content p {
-      margin-top: 0; }
-    body .booking-content form {
-      margin: 25px 0; }
-    body .booking-content span {
-      display: block;
-      margin-bottom: 10px; }
   body .content {
     margin-top: 100px;
     max-width: 712px;
@@ -526,5 +176,360 @@ body {
         background: url("../images/confirm.png") no-repeat;
         background-size: 100% 100%;
         right: 10px; }
+  body .header {
+    height: 55px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: black;
+    -moz-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); }
+    body .header a {
+      color: white;
+      font-size: 25px;
+      line-height: 55px;
+      text-decoration: none;
+      display: inline-block;
+      margin-left: 10px; }
+    body .header .header-button {
+      position: fixed;
+      z-index: 9000;
+      right: 0px;
+      top: 0px;
+      padding: 0;
+      width: 2.5em;
+      height: 2.25em;
+      border: none;
+      text-indent: 2.5em;
+      font-size: 1.5em;
+      color: transparent;
+      background: transparent;
+      outline: none;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
+    body .header .header-button::before {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      bottom: 1.0em;
+      left: 1.0em;
+      background: linear-gradient(#FFFFFF 20%, transparent 20%, transparent 40%, #FFFFFF 40%, #FFFFFF 60%, transparent 60%, transparent 80%, #FFFFFF 80%);
+      content: ''; }
+    body .header .header-button:hover {
+      cursor: hand;
+      cursor: pointer;
+      opacity: 0.6; }
+  body .sidenav {
+    position: fixed;
+    height: 100vh;
+    width: 250px;
+    top: 0;
+    right: -250px;
+    background-color: white;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box; }
+    body .sidenav.active {
+      right: 0; }
+    body .sidenav h1 {
+      padding: 15px 30px; }
+    body .sidenav a {
+      display: block;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 20px; }
+      body .sidenav a:hover {
+        background-color: #e6e6e6; }
+  body .shadow {
+    position: fixed;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    background-color: black;
+    opacity: 0.0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+    body .shadow.active {
+      visibility: visible;
+      opacity: 0.5; }
+  body .fb-login {
+    height: 30px;
+    position: fixed;
+    display: block;
+    bottom: 20px;
+    right: 50px;
+    opacity: 0.6;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    font-size: 13px;
+    text-align: right; }
+    body .fb-login:hover {
+      opacity: 1.0;
+      cursor: pointer; }
+    body .fb-login img {
+      position: absolute;
+      right: -35px;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      vertical-align: middle; }
+    body .fb-login span {
+      color: white; }
+      body .fb-login span.login {
+        line-height: 30px; }
+    body .fb-login a {
+      color: white; }
+  body .single-sitting {
+    position: relative;
+    display: block;
+    background-color: white;
+    width: 100%;
+    min-height: 200px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    display: table; }
+    body .single-sitting h4 {
+      margin: 0; }
+    body .single-sitting h2 {
+      font-size: 40px;
+      color: #333; }
+    body .single-sitting .side {
+      position: relative;
+      display: table-cell; }
+      body .single-sitting .side.left {
+        padding: 20px;
+        width: 50%; }
+        body .single-sitting .side.left h3 {
+          margin: 0;
+          font-size: 60px;
+          font-weight: 100; }
+        body .single-sitting .side.left table {
+          margin-top: 15px; }
+          body .single-sitting .side.left table a {
+            color: blue; }
+            body .single-sitting .side.left table a:after {
+              border-color: black;
+              width: 0;
+              height: 0;
+              border-top: 60px solid transparent;
+              border-bottom: 60px solid transparent;
+              border-left: 60px solid green; }
+      body .single-sitting .side.right label {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 13px; }
+      body .single-sitting .side.right h4 {
+        display: block;
+        text-align: center;
+        margin-bottom: 0px; }
+      body .single-sitting .side.right span {
+        text-align: center;
+        display: block;
+        margin-bottom: 15px; }
+  body div.button {
+    display: block;
+    background-color: white;
+    padding: 25px;
+    margin: 15px 0px;
+    text-align: center;
+    opacity: 0.7;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid white;
+    cursor: pointer; }
+    body div.button.disabled {
+      cursor: not-allowed; }
+      body div.button.disabled:hover {
+        opacity: 0.7;
+        border: 1px solid white; }
+    body div.button:hover {
+      opacity: 1.0;
+      border: 1px solid black; }
+  @media screen and (max-width: 750px) {
+    body .single-sitting .side {
+      display: block;
+      text-align: center;
+      width: 100%; }
+      body .single-sitting .side.left {
+        padding: 5px;
+        width: 100%; }
+        body .single-sitting .side.left h3 {
+          font-size: 30px; } }
+  body .userSettings {
+    position: relative;
+    display: block;
+    background-color: white;
+    width: 100%;
+    min-height: 200px;
+    padding: 15px 25px;
+    box-sizing: border-box; }
+    body .userSettings .left {
+      padding: 20px;
+      min-width: 270px;
+      width: 35%; }
+    body .userSettings .left .category {
+      margin-top: 10px; }
+    body .userSettings .left input[type="text"] {
+      float: right;
+      margin-right: 25px; }
+    body .userSettings .left button {
+      float: right;
+      margin-right: 25px;
+      background-color: red;
+      border: none;
+      font-size: 20px; }
+    body .userSettings button:hover {
+      cursor: pointer; }
+  body .interest-content {
+    position: relative;
+    display: block;
+    background-color: white;
+    width: 100%;
+    min-height: 200px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    display: table;
+    text-align: center; }
+    body .interest-content h2 {
+      font-weight: 100;
+      font-size: 50px;
+      margin-bottom: 0px; }
+    body .interest-content p {
+      margin-top: 0; }
+    body .interest-content form {
+      margin: 25px 0; }
+    body .interest-content span {
+      display: block;
+      margin-bottom: 10px; }
+    body .interest-content textarea {
+      display: block;
+      margin: auto; }
+    body .interest-content input[type="submit"] {
+      margin-top: 20px; }
+  body .booking-content {
+    position: relative;
+    display: block;
+    background-color: white;
+    width: 100%;
+    min-height: 200px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    display: table;
+    text-align: center; }
+    body .booking-content h2 {
+      font-weight: 100;
+      font-size: 50px;
+      margin-bottom: 0px; }
+    body .booking-content p {
+      margin-top: 0; }
+    body .booking-content form {
+      margin: 25px 0; }
+    body .booking-content span {
+      display: block;
+      margin-bottom: 10px; }
+  body .party-content {
+    position: relative;
+    display: block;
+    background-color: white;
+    width: 100%;
+    min-height: 200px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    display: table; }
+    body .party-content .side {
+      position: relative;
+      display: table-cell;
+      padding: 5px; }
+      body .party-content .side.left h4 {
+        font-size: 15px;
+        display: block;
+        margin: 0;
+        margin-top: 10px; }
+      body .party-content .side.left p {
+        margin: 5px 0;
+        max-width: 325px; }
+      body .party-content .side.right table {
+        margin-top: 15px;
+        font-size: 12px; }
+        body .party-content .side.right table .listtoggle {
+          cursor: pointer;
+          border: 1px solid gray;
+          padding: 2px 5px;
+          text-align: center;
+          border-radius: 3px;
+          opacity: 0.5;
+          -webkit-transition: all 0.2s ease-in-out;
+          -moz-transition: all 0.2s ease-in-out;
+          -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out; }
+          body .party-content .side.right table .listtoggle:hover {
+            opacity: 1; }
+  body .btn {
+    padding: 15px;
+    background-color: #e6e6e6;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    opacity: 0.7;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid white;
+    cursor: pointer; }
+    body .btn:hover {
+      opacity: 1.0;
+      border: 1px solid #b3b3b3; }
+    body .btn.primary {
+      background-color: #104050;
+      color: white; }
+    body .btn.disabled {
+      cursor: not-allowed; }
+      body .btn.disabled:hover {
+        opacity: 0.7;
+        border: 1px solid white; }
+  body div.button {
+    display: block;
+    text-align: center;
+    opacity: 0.7;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid white;
+    cursor: pointer;
+    background-color: white;
+    padding: 25px;
+    margin-top: 15px; }
+    body div.button:hover {
+      opacity: 1.0;
+      border: 1px solid #b3b3b3; }
+    body div.button.primary {
+      background-color: #104050;
+      color: white; }
+    body div.button.disabled {
+      cursor: not-allowed; }
+      body div.button.disabled:hover {
+        opacity: 0.7;
+        border: 1px solid white; }
+  @media screen and (max-width: 750px) {
+    body .party-content .side {
+      display: block; } }
 
 /*# sourceMappingURL=main.css.map */
