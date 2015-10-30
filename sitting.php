@@ -7,6 +7,7 @@
 	$partiesPayStatus = $dbHandler->getPartiesPayStatus($sittId);
 	$myParties = $dbHandler->getPartiesByUser($user[0]);
     $allSittingUsers = $dbHandler->getPartyUsersFromSitting($sittId);
+    $allSittingGuests = $dbHandler->getPartyGuestsFromSitting($sittId);
 	$foreman = $dbHandler->getSittingForeman($sittId);
 	$resForeman = $dbHandler->getSittingForemanFromRes($resName);
 
@@ -19,6 +20,16 @@
 		}
 		$g[4] = substr($g[4], 0, -2);
         $sittingUsersWithFoodPref[] = $g;
+	}
+    $sittingGuestsWithFoodPref = array();
+	foreach ($allSittingGuests as $key => $g) {
+		$g[] = '';
+		$myFoodPref = $dbHandler->getMyFoodpref($g[1]);
+		foreach ($myFoodPref as $key => $food) {
+			$g[4] = $g[4]. $food[0] . ', ';
+		}
+		$g[4] = substr($g[4], 0, -2);
+        $sittingGuestsWithFoodPref[] = $g;
 	}
 
 	$dbHandler->disconnect();
@@ -213,12 +224,12 @@
 						<?php
 						$i++;
 					}
-					foreach ($allSittingGuests as $key => $g) {
+					foreach ($sittingGuestsWithFoodPref as $key => $g) {
 						?>
 						<tr>
 							<td><?php echo $i; ?></td>
-							<td><?php echo $g[1]; ?></td>
-							<td><?php echo $g[3]; ?></td>
+							<td><?php echo $g[0]; ?></td>
+							<td><?php echo $g[2]; ?></td>
                             <td><?php echo $g[4]; ?></td>
 						</tr>
 						<?php

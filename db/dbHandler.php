@@ -97,6 +97,11 @@
     		$result = $this->db->executeUpdate($sql, array($name, $partyId, $foodpref));
     		return $result[0]; 
 		}
+		public function getPartyGuestsFromSitting($sittId) {
+			$sql = "SELECT p.partyName, g.guestId, g.guestName, gu.userPayed FROM party as p JOIN guestuser as gu JOIN guestuser as g WHERE p.partyId=gu.partyId AND g.guestId=gu.guestId AND p.sittId=?";
+			$result = $this->db->executeQuery($sql, array($sittId));
+            return $result;
+		}
 		public function getPartyGuests($partyId) {
 			$sql = "SELECT * FROM guestuser WHERE partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
@@ -182,7 +187,7 @@
 		    return count($result) == 1;  
 		} 
 		public function getSittings($active) {
-			$sql = "SELECT s.sittId, s.sittDate, s.active, count(*) as guests FROM sitting as s JOIN party as p JOIN partyguest as pg WHERE s.active=1 AND s.sittId=p.sittId AND p.partyId=pg.partyId GROUP BY s.sittId";
+			$sql = "SELECT s.sittId, s.sittDate, s.active, count(*) as spotsLeft FROM sitting as s JOIN party as p JOIN partyguest as pg WHERE s.active=1 AND s.sittId=p.sittId AND p.partyId=pg.partyId GROUP BY s.sittId";
 			$result = $this->db->executeQuery($sql, array($active));
 			return $result; 
 		}
