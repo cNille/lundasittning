@@ -6,8 +6,7 @@
 	$id = $party->id;
 	$isParticipating = $dbHandler->isParticipating($id, $user[0]);
 	$sitting = $dbHandler->getSitting($party->sittId);
-	$partyUsers = $dbHandler->getPartyUsers($id);
-	$partyGuests = $dbHandler->getPartyGuests($id);
+	$partyUsers = $dbHandler->getPartyParticipant($id);
 	$creator = $dbHandler->getCreator($id);
     $payStatus = $dbHandler->getPayStatus($myAccessLevel);
 	$isCreator = $creator[0] == $user[0];
@@ -19,7 +18,6 @@
 		}
 		$g->foodpref = substr($g->foodpref, 0, -1);
 	}
-
 	$dbHandler->disconnect();
 
 	$isQuratel = $myAccessLevel >= 5;
@@ -60,7 +58,7 @@
 		<div class="right side">
 			<?php if(!$isParticipating) : ?>
 				<?php if($loggedIn) : ?>
-					<a class="btn primary" href="partybook.php?partyId=<?php echo $id; ?>&guestMode=0">
+					<a class="btn primary" href="partybooking.php?partyId=<?php echo $id; ?>&guestMode=0">
 						<span>Anmäl dig</span>
 					</a>
 				<?php else : ?>
@@ -68,13 +66,13 @@
 					<a class="btn primary" href="facebook-login/fbconfig.php">
 						<span>Anmäl dig via inlogg</span>
 					</a>
-					<a class="btn"  href="partybook.php?guestMode=1&partyId=<?php echo $id; ?>">
+					<a class="btn"  href="partybooking.php?guestMode=1&partyId=<?php echo $id; ?>">
 						<span>Anmäl dig via gästinlogg</span>
 					</a>
 				<?php endif; ?>
 			<?php endif; ?>
 			<?php if($isCreator) : ?>
-				<a class="btn"  href="partybook.php?guestMode=1&partyId=<?php echo $id; ?>">
+				<a class="btn"  href="partybooking.php?guestMode=1&partyId=<?php echo $id; ?>">
 					<span>Anmäl dina gäster här</span>
 				</a>
 			<?php endif; ?>
@@ -113,22 +111,6 @@
 						<?php
 						$i++;
 					}
-					foreach ($partyGuests as $key => $g) {
-						?>
-						<tr>
-							<td><?php echo $i; ?></td>
-							<td><?php echo $g[1]; ?></td>
-							<td><?php echo $g[3]; ?></td>
-                            <td><?php echo $g[4]; ?></td>
-							<?php
-								if($isQuratel){
-									echo "<td><input type='checkbox' class='chbx' name='guestId[]' value='$g[0]' /></td>";
-								}
-							?>
-						</tr>
-						<?php
-						$i++;
-					}
 				?>
 			</table>
 			<?php
@@ -152,15 +134,13 @@
 	</div>
     <a href="./sitting.php?sittId=<?php echo $party->sittId; ?>" class="btn secondary">Tillbaka till sittningen</a>
 </div>
-
 <script>
     var toggle = false;
     $(document).ready(function() { 
-    $(".listtoggle").click(function() {
-        $('.chbx').prop("checked", !toggle);
-        toggle = !toggle; 
-    });                 
-});
+	    $(".listtoggle").click(function() {
+	        $('.chbx').prop("checked", !toggle);
+	        toggle = !toggle; 
+	    });                 
+	});
 </script>
-
 <?php include 'footer.php'; ?>

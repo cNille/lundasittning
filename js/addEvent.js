@@ -49,7 +49,7 @@ $("#event-creator-initiate").click(function(){
 		$.ajax({
 			type: 'POST',
 			url: 'db/dbAjax.php',
-			data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate+ '&resName=' + RESTAURANT_NAME + '&resSize=' + RESTAURANT_SIZE,
+			data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate+ '&resName=' + RESTAURANT_NAME,
 			success: function(sittId){
 				var sittIdFin = sittId.replace(/[^0-9]/, '');
 				$(".event-window:nth-last-child(2)").removeClass("created show");

@@ -3,22 +3,22 @@
  	$dbHandler = new DatabaseHandler();
 	$party = $dbHandler->getParty($_POST['party']);
 
-	$guestMode = $_POST['guestMode'];
-	$name = $_POST['userName'];
-	$email = $_POST['userEmail'];
-	$phone = $_POST['userTelephone'];
-	$sittId = $_POST['sittId'];
+	$guestMode = $_GET['guestMode'];
+	$party = $dbHandler->getParty($_GET['partyId']);
+
+	if($guestMode == 1){
+		
+	}
+
+	$name = $user[1];
+	$email = $user[3];
+	$phone = $user[4];
+	$sittId = $party->sittId;
 	$sitting = $dbHandler->getSitting($sittId);
 	$foodPref = $dbHandler->getAllFoodpref();
 	$myFoodPref = $dbHandler->getMyFoodpref($user[0]);
 
-	if($loggedIn){
-		$user = $dbHandler->getUser($fbid);
-	} else if($guestMode == 0){
-		include 'facebook-login/fbconfig.php';
-	} else {
-
-	}
+	
 	$dbHandler->disconnect();
 
 	function form($x){

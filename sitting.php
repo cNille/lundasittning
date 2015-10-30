@@ -5,9 +5,8 @@
 	$sitting = $dbHandler->getSitting($sittId);
 	$parties = $dbHandler->getParties($sittId);
 	$partiesPayStatus = $dbHandler->getPartiesPayStatus($sittId);
-	$myParties = $dbHandler->getPartiesByUser($user[0]);
-    $allSittingUsers = $dbHandler->getPartyUsersFromSitting($sittId);
-    $allSittingGuests = $dbHandler->getPartyGuestsFromSitting($sittId);
+	$myParties = $dbHandler->getPartiesByParticipant($user[0]);
+    $allSittingUsers = $dbHandler->getPartyParticipantFromSitting($sittId);
 	$foreman = $dbHandler->getSittingForeman($sittId);
 	$resForeman = $dbHandler->getSittingForemanFromRes($resName);
 
@@ -21,17 +20,6 @@
 		$g[4] = substr($g[4], 0, -2);
         $sittingUsersWithFoodPref[] = $g;
 	}
-    $sittingGuestsWithFoodPref = array();
-	foreach ($allSittingGuests as $key => $g) {
-		$g[] = '';
-		$myFoodPref = $dbHandler->getMyFoodpref($g[1]);
-		foreach ($myFoodPref as $key => $food) {
-			$g[4] = $g[4]. $food[0] . ', ';
-		}
-		$g[4] = substr($g[4], 0, -2);
-        $sittingGuestsWithFoodPref[] = $g;
-	}
-
 	$dbHandler->disconnect();
 
 	$isSittingForeman = false;
@@ -185,7 +173,6 @@
                 <input type='hidden' value="<?php echo $sittId; ?>" name="sittId" />
                 <input type="submit" value="Uppdatera Meny" name="updateSittingMenu" />
             </form>
-
                 <?php if($myAccessLevel >= 5){ ?>
                     <form action="scripts.php" method="POST">
                         <h3>Förmän</h3>
@@ -202,8 +189,6 @@
                         <br /><br />
                         <form>
                 <?php } ?>
-
-
 			<table>
 				<tr>
 					<th>#</th>
@@ -224,24 +209,9 @@
 						<?php
 						$i++;
 					}
-					foreach ($sittingGuestsWithFoodPref as $key => $g) {
-						?>
-						<tr>
-							<td><?php echo $i; ?></td>
-							<td><?php echo $g[0]; ?></td>
-							<td><?php echo $g[2]; ?></td>
-                            <td><?php echo $g[4]; ?></td>
-						</tr>
-						<?php
-						$i++;
-					}
 				?>
 			</table>
-
-
         </div>
 	<?php endif; ?>
-
 </div>
-
 <?php include 'footer.php'; ?>

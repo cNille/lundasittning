@@ -4,7 +4,7 @@
 
  	$access = $dbHandler->getAccessLevel($fbid, $restaurant->name);
  	requireAccessLevel(5, $access);
- 	$users = $dbHandler->getUsers($restaurant->name);
+ 	$users = $dbHandler->getParticipants($restaurant->name);
  	$userTypes = $dbHandler->getUserTypes($access);
 	$dbHandler->disconnect();
  ?>

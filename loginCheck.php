@@ -16,19 +16,19 @@
 		$fbEmail = $_SESSION['EMAIL'] == NULL ? " " : $_SESSION['EMAIL'];
 	}
 
-	// Copy this code to every page where a certain accesslevel is required.
+	// Use this variabel where a certain accesslevel is required.
 	$myAccessLevel = $dbHandler->getAccessLevel($fbid, $restaurant->name);
-	//requireAccessLevel(0, $myAccessLevel);
 
 	$userExists = $dbHandler->fbidExists($fbid);
 	if($userExists){
 		$user = $dbHandler->getUser($fbid);
 	}
 	if($loggedIn && !$userExists && $fbid != null){
-		$dbHandler->createUser($fbid, $fbFullname, $fbEmail);
+		$loginId = $dbHandler->createLoginAccount($fbid, $fbFullname, $fbEmail);
+        $dbHandler->createParticipant($fbFullName, "", $loginId);
 	}
 	else if($userExists){
-		$dbHandler->updateFbUser($fbFullname, $fbid);
+		$dbHandler->updateName($fbFullname, $user[0]);
 	}
 	$dbHandler->disconnect();
 	$_SESSION['LAST_PAGE'] = str_replace("/sittning", "..", $_SERVER['REQUEST_URI']);

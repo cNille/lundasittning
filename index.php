@@ -1,10 +1,9 @@
 <?php 
-	require_once 'header.php';
+    require_once 'header.php';
 
  	$dbHandler = new DatabaseHandler();
-	$sittings = $dbHandler->getSittings(1);
+    $sittings = $dbHandler->getSittings(1);
 	$dbHandler->disconnect();
-
 
 	function spotsLeftTextify($spotsLeft, $resSize){
 		if($spotsLeft > $resSize * 0.5){

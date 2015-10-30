@@ -1,5 +1,5 @@
 <?php 
-	require_once 'init.php';
+	require_once 'loginCheck.php';
 
 	function generateRandomString($length = 10) {
 	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -26,34 +26,26 @@
 
 		if(!$guestMode){
 			$userId = $_POST['userId'];
-			// Update email if it was specified
-			if($email && $email != ''){
-				$dbHandler->updateEmail($userId, $email);
-			}
-			// Update email if it was specified
-			if($phone && $phone != ''){
-				$dbHandler->updatePhone($userId, $phone);
-			}
-			// Update other if it was specified
-			if($other && $other != ''){
-				$dbHandler->updateOther($userId, $other);
-			}
-			// Remove all foodpreferences to this user and add all those checked now.
-			$dbHandler->clearUserFood($userId);
-			foreach ($foodpref as $key => $f) {
-				$dbHandler->addUserFood($userId, $f);
-			}
+			// Update if specified.
+			if($email && $email != ''){ $dbHandler->updateEmail($userId, $email); }
+			if($phone && $phone != ''){ $dbHandler->updatePhone($userId, $phone); }
+			if($other && $other != ''){ $dbHandler->updateOther($userId, $other); }
 
-			// Add user to partyguest list.
-			$dbHandler->addPartyGuest($partyId, $userId);
+			// Remove all foodpreferences to this user and add all those checked now.
+			$dbHandler->clearParticipantFood($userId);
+			foreach ($foodpref as $key => $f) {
+				$dbHandler->addParticipantFood($userId, $f, NULL);
+			}
 		} else{
-			$_SESSION['LAST_PAGE'] = '../index.php';
-			$dbHandler->addGuest($name, $partyId, $foodpref);
+			$userId = $dbHandler->createParticipant($name, $other);
 		}
+
+		// Add user to partyguest list.
+		$dbHandler->addPartyParticipant($partyId, $userId);
+
 		header("Location: party.php?partyKey=" . $partyKey);
 		return;
 	}
-
 
 
 
@@ -63,7 +55,6 @@
 		header("Location: index.php");
 		return;
 	}
-
 
 
 	if($_POST['updateUserType']){
@@ -85,9 +76,8 @@
 
 	if($_POST['createInterestParty']){
 		$userId = $_POST['userId'];
-		$email = $_POST['email'];
-		$phone = $_POST['phone'];
-		$dbHandler->updateUserContact($userId, $email, $phone);
+		$dbHandler->updateEmail($userId, $_POST['email']);
+		$dbHandler->updatePhone($userId, $_POST['phone']);
 
 		$partyName = $_POST['partyName'];
 		$type = 'Sluten';
@@ -97,7 +87,7 @@
 		$key = generateRandomString();
 		$id = $dbHandler->createParty($partyName, $type, $sittId, $int, $msg, $key);
 		$dbHandler->createPartyCreator($id, $userId);
-		$dbHandler->addPartyGuest($id, $userId);
+		$dbHandler->addPartyParticipant($id, $userId);
 		header("Location: party.php?partyKey=" . $key);
 		return;
 	}
@@ -111,20 +101,20 @@
 		$userId = $_POST['userId'];
 		// Update email if it was specified
 		if($email && $email != ''){
-			$dbHandler->updateEmail($userId, $email);
+			$dbHandler->updateEmail($user[2], $email);
 		}
 		// Update email if it was specified
 		if($phone && $phone != ''){
-			$dbHandler->updatePhone($userId, $phone);
+			$dbHandler->updatePhone($user[2], $phone);
 		}
 		// Update other if it was specified
 		if($other && $other != ''){
-			$dbHandler->updateOther($userId, $other);
+			$dbHandler->updateOther($user[0], $other);
 		}
 		// Remove all foodpreferences to this user and add all those checked now.
-		$dbHandler->clearUserFood($userId);
+		$dbHandler->clearParticipantFood($user[0]);
 		foreach ($foodpref as $key => $f) {
-			$dbHandler->addUserFood($userId, $f);
+			$dbHandler->addParticipantFood($user[0], $f);
 		}
 		header("Location: index.php?status=saved");
 		return;
@@ -146,26 +136,19 @@
     if($_POST['partyUpdatePay']){
         $paystatus = $_POST['payStatus'];
         $userIds = $_POST['userId'];
-        $guestIds = $_POST['guestId'];
+        //$guestIds = $_POST['guestId'];
         $partykey = $_POST['partykey'];
         $partyid = $_POST['partyid'];
         $reqAccessLevel = $dbHandler->getPayAccessLevel($paystatus);
         
         if($myAccessLevel >= $reqAccessLevel){
             foreach($userIds as $key => $u){
-        		$oldPayStatus = $dbHandler->getUserPayedStatus($u, $partyid);
+        		$oldPayStatus = $dbHandler->getParticipantPayedStatus($u, $partyid);
         		$oldReqAccessLevel = $dbHandler->getPayAccessLevel($oldPayStatus);
         		if($myAccessLevel >= $oldReqAccessLevel){
-	                $dbHandler->updateUserPayStatus($u, $partyid, $paystatus);
+	                $dbHandler->updateParticipantPayStatus($u, $partyid, $paystatus);
 	            }
-            } 
-            foreach($guestIds as $key => $g){
-            	$oldPayStatus = $dbHandler->getUserPayedStatus($u, $partyid);
-        		$oldReqAccessLevel = $dbHandler->getPayAccessLevel($oldPayStatus);
-        		if($myAccessLevel >= $oldReqAccessLevel){
-	                $dbHandler->updateGuestPayStatus($g, $partyid, $paystatus);
-				}
-            } 
+            }
         }
         header("Location: ./$partykey");
         return;
@@ -180,6 +163,9 @@
         
         if($sittForeman || $myAccessLevel >= 5){
 
+            $dbHandler->updateAppetiser($sittId, $appetiser);
+            $dbHandler->updateMain($sittId, $main);
+            $dbHandler->updateDesert($sittId, $desert);
             
             header("Location: sitting.php?sittId=$sittId");
             return;		
@@ -217,7 +203,6 @@
 		header("Location: sitting.php?sittId=$sittId");
 		return;		
 	}
-
 
  	// Close database.
 	$dbHandler->disconnect();
