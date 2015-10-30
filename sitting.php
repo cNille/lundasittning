@@ -45,6 +45,7 @@
 						<th></th>
 					</tr>
 					<?php 
+	                    $hasInterestedParties = false;
 						foreach ($parties as $key => $p) {
 							$isParticipating = false;
 							foreach ($myParties as $key => $mp) {
@@ -62,23 +63,20 @@
 									$totalSpots += $pps[3];
 								}
 							}
-	                        $hasInterestedParties = false;
 							if($prelSpots == 0){
                                 $hasInterestedParties = true;
                             } else {
 								?>
-									<tr>
-										<?php 
-											if($isParticipating || $myAccessLevel >= 5 || $isSittingForeman){
-												echo '<td><a href="' . $p->key . '">' . $p->name . '</a></td>';
-											} else {
-												echo '<td>' . $p->name . '</td>';
-											}
-										?>
-										
-										<td><?php echo "$prelSpots av $totalSpots har betalat"; ?></td>
-										
-									</tr>
+								<tr>
+									<?php 
+										if($isParticipating || $myAccessLevel >= 5 || $isSittingForeman){
+											echo '<td><a href="' . $p->key . '">' . $p->name . '</a></td>';
+										} else {
+											echo '<td>' . $p->name . '</td>';
+										}
+									?>
+									<td><?php echo "$p->interest platser ($prelSpots betalat, $totalSpots anmälda)"; ?></td>
+								</tr>
 								<?php
 							}
 						}
@@ -87,7 +85,7 @@
 				<?php if($hasInterestedParties) : ?>
 				<table>
 					<tr>
-						<th>Intresserade Sällskap</th>
+						<th>Intresserade sällskap</th>
 						<th></th>
 					</tr>
 					<?php 
@@ -111,16 +109,16 @@
 							}
 							if($prelSpots == 0){
 							?>
-                                <tr>
-									<?php 
-											if($isParticipating || $myAccessLevel >= 5 || $isSittingForeman){
-												echo '<td><a href="' . $p->key . '">' . $p->name . '</a></td>';
-											} else {
-												echo '<td>' . $p->name . '</td>';
-											}
-										?>
-										<td><?php echo "Intresserade av $totalSpots platser"; ?></td>
-								</tr>
+                            <tr>
+								<?php 
+									if($isParticipating || $myAccessLevel >= 5 || $isSittingForeman){
+										echo '<td><a href="' . $p->key . '">' . $p->name . '</a></td>';
+									} else {
+										echo '<td>' . $p->name . '</td>';
+									}
+								?>
+								<td><?php echo "$p->interest platser ($totalSpots anmälda)"; ?></td>
+							</tr>
 							<?php
 							}
 						}

@@ -309,8 +309,8 @@ body {
       position: relative;
       display: table-cell; }
       body .single-sitting .side.left {
-        padding: 20px;
-        width: 50%; }
+        padding-top: 20px;
+        width: 55%; }
         body .single-sitting .side.left h3 {
           margin: 0;
           font-size: 60px;
