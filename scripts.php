@@ -48,7 +48,6 @@
 	}
 
 
-
 	// Needs to be logged in to access methods below
 	// ======================================================================================================
 	if(!$loggedIn){
@@ -88,6 +87,28 @@
 		$id = $dbHandler->createParty($partyName, $type, $sittId, $int, $msg, $key);
 		$dbHandler->createPartyCreator($id, $userId);
 		$dbHandler->addPartyParticipant($id, $userId);
+
+		// Send email to Restaurant
+   		$party = $dbHandler->getParty($id);
+   		$sitting = $dbHandler->getSitting($party->sittId);
+   		$user = $dbHandler->getUser($userId);
+
+		$link = $_SERVER['SERVER_NAME'];
+   		$from = "c@shapeapp.se";
+   		$to = $restaurant->email; 
+		ini_set("SMTP", "send.one.com");
+   		ini_set("sendmail_from", $from);
+
+   		$subject = "Sittningsintresseanmälan, $sitting->sittDate";
+		$msg = "En intresseanmälan har lagts till sittningen $sitting->sittDate.\r\n";
+		$msg .= "Anmälan är gjord av $user[1] ($user[3], $user[4]).\r\n\r\n";
+		$msg .= "Vill du veta mer så besök sidan här:\r\n";
+		$msg .= "$link\r\n";
+		$msg = wordwrap($msg,70);
+
+		$headers = "From: $from\r\nReply-To: $from\r\n";
+		mail($to, $subject, $msg, $headers);
+
 		header("Location: party.php?partyKey=" . $key);
 		return;
 	}
