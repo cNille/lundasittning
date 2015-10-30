@@ -1,6 +1,9 @@
 // Colors
 // =================
 $black: #333;
+$red: #f2867d;
+$blue: #4a6b83;
+$lightGrey: #ccc;
 
 // Sizes
 // =================
@@ -21,8 +24,6 @@ $mobileBreak: 750px;
     @include content-bg();
 }
 
-
-
 body{
     margin: 0;
     padding: 0;
@@ -38,7 +39,6 @@ body{
 
     min-height: 100vw;
     min-height: 100vh;
-
 
     .content {
         margin-top: $headerHeight + 50px;
@@ -58,14 +58,65 @@ body{
             font-weight: 100;
         }
 
-    table{
-        text-align: left;
-        width: 100%;
+        table{
+            text-align: left;
+            width: 100%;
+        }
+
+        input[type=submit] {
+            @include button();
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid $lightGrey;
+
+            &:hover, &:focus{
+                border: 1px solid $blue;
+            }
+        }
+
+        input[type=radio] {
+            margin: 25px 15px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        input[type=checkbox]{
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        select{
+            outline: none;
+            border: 1px solid $lightGrey;
+            @include easy-trans(0.3s);
+            margin: 5px 10px;
+
+            &:hover{
+                border: 1px solid $blue;
+            }
+        }
+
+        input[type=email], input[type=password], input[type=text], input[type=tel], input[type=number], textarea{
+            display: block;
+            outline: none;
+            @include easy-trans(0.3s);
+            border: 1px solid $lightGrey;
+            margin: 5px 0px;  
+            padding: 10px 15px;
+            width: 100%;
+            max-width: 250px;
+            
+            &:hover, &:focus{
+                border: 1px solid $blue;
+            }
+            
+        }
+
     }
-
-
-    
-}
     @import 'header';
     @import 'sidenav';
     @import 'footer';

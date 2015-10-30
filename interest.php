@@ -4,7 +4,7 @@
  	$sittId = $_GET['sittId'];
 	$sitting = $dbHandler->getSitting($sittId);
 	$dbHandler->disconnect();
-	$userName = $user[2];
+	$userName = $user[1];
 	$userEmail = $user[3];
 	$userTelephone = $user[4];
  ?>
@@ -15,11 +15,9 @@
 		<form action="scripts.php" method="POST">
 			<input type="hidden" name="userId" value="<?php echo $user[0]; ?>" />
 			<input type="hidden" name="sittId" value="<?php echo $sittId; ?>" />
-			Sittningsdatum <br />
-			<span><?php echo date('j/n', strtotime($sitting->date)); ?></span>
-			Bokare <br />
+			<h4>Bokare </h4>
 			<span><?php echo $userName; ?></span>
-			Datum <br />
+			<h4>Datum </h4>
 			<span><?php echo $sitting->date; ?></span>
 			Epost *<br />
 			<span><input type="email" name="email" value="<?php echo $userEmail; ?>" required></span>

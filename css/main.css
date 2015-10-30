@@ -36,6 +36,67 @@ body {
     body .content table {
       text-align: left;
       width: 100%; }
+    body .content input[type=submit] {
+      display: block;
+      text-align: center;
+      opacity: 0.7;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      border: 1px solid white;
+      cursor: pointer;
+      display: inline-block;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc; }
+      body .content input[type=submit]:hover {
+        opacity: 1.0;
+        border: 1px solid #b3b3b3; }
+      body .content input[type=submit].primary {
+        background-color: #104050;
+        color: white; }
+      body .content input[type=submit].disabled {
+        cursor: not-allowed; }
+        body .content input[type=submit].disabled:hover {
+          opacity: 0.7;
+          border: 1px solid white; }
+      body .content input[type=submit]:hover, body .content input[type=submit]:focus {
+        border: 1px solid #4a6b83; }
+    body .content input[type=radio] {
+      margin: 25px 15px;
+      transform: scale(1.2);
+      cursor: pointer; }
+    body .content input[type=checkbox] {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      transform: scale(1.2);
+      cursor: pointer; }
+    body .content select {
+      outline: none;
+      border: 1px solid #ccc;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      margin: 5px 10px; }
+      body .content select:hover {
+        border: 1px solid #4a6b83; }
+    body .content input[type=email], body .content input[type=password], body .content input[type=text], body .content input[type=tel], body .content input[type=number], body .content textarea {
+      display: block;
+      outline: none;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      border: 1px solid #ccc;
+      margin: 5px 0px;
+      padding: 10px 15px;
+      width: 100%;
+      max-width: 250px; }
+      body .content input[type=email]:hover, body .content input[type=email]:focus, body .content input[type=password]:hover, body .content input[type=password]:focus, body .content input[type=text]:hover, body .content input[type=text]:focus, body .content input[type=tel]:hover, body .content input[type=tel]:focus, body .content input[type=number]:hover, body .content input[type=number]:focus, body .content textarea:hover, body .content textarea:focus {
+        border: 1px solid #4a6b83; }
   body .header {
     height: 55px;
     width: 100%;
@@ -263,24 +324,22 @@ body {
     min-height: 200px;
     padding: 15px 25px;
     box-sizing: border-box;
-    display: table;
-    text-align: center; }
+    display: table; }
     body .interest-content h2 {
       font-weight: 100;
       font-size: 50px;
-      margin-bottom: 0px; }
+      margin-bottom: 0px;
+      color: #333; }
+    body .interest-content h4 {
+      margin: 0; }
     body .interest-content p {
       margin-top: 0; }
     body .interest-content form {
-      margin: 25px 0; }
+      margin: 25px auto;
+      max-width: 300px; }
     body .interest-content span {
       display: block;
       margin-bottom: 10px; }
-    body .interest-content textarea {
-      display: block;
-      margin: auto; }
-    body .interest-content input[type="submit"] {
-      margin-top: 20px; }
   body .booking-content {
     position: relative;
     display: block;
