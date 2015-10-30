@@ -36,146 +36,6 @@ body {
     body .content table {
       text-align: left;
       width: 100%; }
-    body .content .event-grid {
-      margin-left: auto;
-      margin-right: auto;
-      width: 90%; }
-      body .content .event-grid .event-window {
-        opacity: 0.9;
-        background-color: white;
-        margin-left: 10px;
-        margin-top: 10px;
-        float: left;
-        width: 150px;
-        height: 150px;
-        -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        text-align: center;
-        position: relative;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-        box-sizing: border-box;
-        border: 1px solid white; }
-        body .content .event-grid .event-window:hover {
-          opacity: 1.0; }
-        body .content .event-grid .event-window:hover {
-          border: 1px solid #333; }
-        body .content .event-grid .event-window .event-window-link {
-          left: 0;
-          top: 0;
-          position: absolute;
-          -webkit-transition: all 0.3s ease-in-out;
-          -moz-transition: all 0.3s ease-in-out;
-          -o-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out;
-          transform: scale(1);
-          color: black;
-          width: 100%;
-          height: 100%;
-          text-decoration: none;
-          z-index: 0; }
-        body .content .event-grid .event-window .width {
-          width: 150px;
-          overflow: hidden; }
-          body .content .event-grid .event-window .width .event-window-date {
-            margin-top: 20px;
-            font-size: 60px; }
-          body .content .event-grid .event-window .width .event-window-spots {
-            margin-top: 5px; }
-          body .content .event-grid .event-window .width .event-window-button {
-            margin-top: 5px; }
-            body .content .event-grid .event-window .width .event-window-button a {
-              text-decoration: none;
-              color: black;
-              font-style: italic; }
-            body .content .event-grid .event-window .width .event-window-button a:hover {
-              text-decoration: underline; }
-          body .content .event-grid .event-window .width .event-remove-button {
-            position: absolute;
-            cursor: pointer;
-            right: -5px;
-            top: -5px;
-            border: none;
-            border-radius: 59px;
-            height: 20px;
-            width: 20px;
-            -webkit-transition: all 0.1s ease-in-out;
-            -moz-transition: all 0.1s ease-in-out;
-            -o-transition: all 0.1s ease-in-out;
-            transition: all 0.1s ease-in-out;
-            padding-left: 7px;
-            z-index: 9999; }
-            body .content .event-grid .event-window .width .event-remove-button:hover {
-              color: #eee;
-              background-color: #333; }
-      body .content .event-grid #event-creator {
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-        opacity: 0.9; }
-        body .content .event-grid #event-creator:hover {
-          opacity: 1.0; }
-      body .content .event-grid .event-window.created {
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-        opacity: 0;
-        width: 0px; }
-      body .content .event-grid .event-window.created.show {
-        opacity: 1;
-        width: 150px; }
-      body .content .event-grid .event-window.remove {
-        opacity: 0;
-        width: 0px; }
-      body .content .event-grid #event-creator p {
-        padding: 0;
-        margin: 0;
-        height: 150px;
-        line-height: 140px;
-        font-size: 100px;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none; }
-      body .content .event-grid #event-creator input {
-        padding: 0;
-        margin: 0;
-        border: 0;
-        background: transparent;
-        outline: none;
-        width: 150px;
-        height: 120px;
-        line-height: 80px;
-        font-size: 30px;
-        text-align: center; }
-      body .content .event-grid #event-creator p:hover {
-        cursor: pointer; }
-      body .content .event-grid #event-creator button {
-        position: absolute;
-        bottom: 10px;
-        border: none;
-        width: 25px;
-        height: 25px;
-        color: transparent; }
-      body .content .event-grid #event-creator button:focus {
-        outline: none; }
-      body .content .event-grid #event-creator button:hover {
-        cursor: pointer; }
-      body .content .event-grid #event-creator #reject {
-        background: url("../images/reject.png") no-repeat;
-        background-size: 100% 100%;
-        left: 10px; }
-      body .content .event-grid #event-creator #confirm {
-        background: url("../images/confirm.png") no-repeat;
-        background-size: 100% 100%;
-        right: 10px; }
   body .header {
     height: 55px;
     width: 100%;
@@ -531,5 +391,145 @@ body {
   @media screen and (max-width: 750px) {
     body .party-content .side {
       display: block; } }
+  body .event-grid {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%; }
+    body .event-grid .event-window {
+      opacity: 0.9;
+      background-color: white;
+      margin-left: 10px;
+      margin-top: 10px;
+      float: left;
+      width: 150px;
+      height: 150px;
+      -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      position: relative;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      box-sizing: border-box;
+      border: 1px solid white; }
+      body .event-grid .event-window:hover {
+        opacity: 1.0; }
+      body .event-grid .event-window:hover {
+        border: 1px solid #333; }
+      body .event-grid .event-window .event-window-link {
+        left: 0;
+        top: 0;
+        position: absolute;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        transform: scale(1);
+        color: black;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        z-index: 0; }
+      body .event-grid .event-window .width {
+        width: 150px;
+        overflow: hidden; }
+        body .event-grid .event-window .width .event-window-date {
+          margin-top: 20px;
+          font-size: 60px; }
+        body .event-grid .event-window .width .event-window-spots {
+          margin-top: 5px; }
+        body .event-grid .event-window .width .event-window-button {
+          margin-top: 5px; }
+          body .event-grid .event-window .width .event-window-button a {
+            text-decoration: none;
+            color: black;
+            font-style: italic; }
+          body .event-grid .event-window .width .event-window-button a:hover {
+            text-decoration: underline; }
+        body .event-grid .event-window .width .event-remove-button {
+          position: absolute;
+          cursor: pointer;
+          right: -5px;
+          top: -5px;
+          border: none;
+          border-radius: 59px;
+          height: 20px;
+          width: 20px;
+          -webkit-transition: all 0.1s ease-in-out;
+          -moz-transition: all 0.1s ease-in-out;
+          -o-transition: all 0.1s ease-in-out;
+          transition: all 0.1s ease-in-out;
+          padding-left: 7px;
+          z-index: 9999; }
+          body .event-grid .event-window .width .event-remove-button:hover {
+            color: #eee;
+            background-color: #333; }
+    body .event-grid #event-creator {
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      opacity: 0.9; }
+      body .event-grid #event-creator:hover {
+        opacity: 1.0; }
+    body .event-grid .event-window.created {
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+      width: 0px; }
+    body .event-grid .event-window.created.show {
+      opacity: 1;
+      width: 150px; }
+    body .event-grid .event-window.remove {
+      opacity: 0;
+      width: 0px; }
+    body .event-grid #event-creator p {
+      padding: 0;
+      margin: 0;
+      height: 150px;
+      line-height: 140px;
+      font-size: 100px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+    body .event-grid #event-creator input {
+      padding: 0;
+      margin: 0;
+      border: 0;
+      background: transparent;
+      outline: none;
+      width: 150px;
+      height: 120px;
+      line-height: 80px;
+      font-size: 30px;
+      text-align: center; }
+    body .event-grid #event-creator p:hover {
+      cursor: pointer; }
+    body .event-grid #event-creator button {
+      position: absolute;
+      bottom: 10px;
+      border: none;
+      width: 25px;
+      height: 25px;
+      color: transparent; }
+    body .event-grid #event-creator button:focus {
+      outline: none; }
+    body .event-grid #event-creator button:hover {
+      cursor: pointer; }
+    body .event-grid #event-creator #reject {
+      background: url("../images/reject.png") no-repeat;
+      background-size: 100% 100%;
+      left: 10px; }
+    body .event-grid #event-creator #confirm {
+      background: url("../images/confirm.png") no-repeat;
+      background-size: 100% 100%;
+      right: 10px; }
 
 /*# sourceMappingURL=main.css.map */

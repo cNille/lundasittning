@@ -1,0 +1,167 @@
+.event-grid {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        
+        .event-window{
+            opacity: 0.9;
+            &:hover { opacity: 1.0; }
+            background-color: white;
+            margin-left: 10px;
+            margin-top: 10px;
+            float: left;
+            width: 150px;
+            height: 150px;
+            -moz-box-shadow: 2px 2px 4px rgba(0,0,0,.5);
+            -webkit-box-shadow: 2px 2px 4px rgba(0,0,0,.5);
+            box-shadow: 2px 2px 4px rgba(0,0,0,.5);
+            text-align: center;
+            position: relative;
+
+            @include easy-trans(0.3s);
+            box-sizing: border-box;
+            border: 1px solid white;
+            &:hover{
+                border: 1px solid #333;
+            }
+            
+             .event-window-link{
+             	left: 0;
+             	top: 0;
+				position: absolute;
+				@include easy-trans(0.3s);
+				transform: scale(1.0); 
+				color: black;
+				width: 100%;
+				height: 100%;
+				text-decoration: none;
+				z-index: 0;
+			}
+
+            .width{
+                width: 150px;
+                overflow: hidden;
+
+                .event-window-date{
+                    margin-top: 20px;
+                    font-size: 60px;
+                }
+                .event-window-spots{
+                    margin-top: 5px;
+                }
+                .event-window-button{
+                    margin-top: 5px;
+                    a {
+                        text-decoration: none;
+                        color: black;
+                        font-style: italic;
+                    }
+                    a:hover {
+                        text-decoration: underline;
+                    }
+                }
+                .event-remove-button{
+                    position: absolute;
+                    cursor: pointer;
+                    right: -5px;
+                    top: -5px;
+                    border: none;
+                    border-radius: 59px;
+                    height: 20px;
+                    width: 20px;
+                    @include easy-trans(0.1s);
+                    padding-left: 7px;
+                    z-index: 9999;
+
+                    &:hover{
+                        color: #eee;
+                        background-color: #333;
+                    }
+                }
+            }
+        }
+
+        #event-creator{
+            @include easy-trans(0.3s);
+            opacity: 0.9;
+
+            &:hover{
+                opacity: 1.0;				
+            }
+        }
+
+        .event-window.created{
+            @include easy-trans (0.3s);
+            opacity: 0;
+            width: 0px;
+        }
+        .event-window.created.show {
+            opacity: 1;
+            width: 150px;
+        }
+        .event-window.remove {
+            opacity: 0;
+            width: 0px;
+        }
+
+        #event-creator{
+
+            p {
+                padding: 0;
+                margin: 0;
+                height: 150px;
+                line-height: 140px;
+                font-size: 100px;
+
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            input {
+                padding: 0;
+                margin: 0;
+                border: 0;
+                background: transparent;
+                outline: none;
+
+                width: 150px;
+                height: 120px;
+                line-height: 80px;
+                font-size: 30px;
+
+                text-align: center;
+            }
+            p:hover{
+                cursor: pointer;
+            }
+            button{
+                position: absolute;
+                bottom: 10px;
+                border: none;
+                width: 25px;
+                height: 25px;
+                color: transparent;
+            }
+            button:focus {
+                outline: none;
+            }
+            button:hover {
+                cursor: pointer;
+            }
+            #reject{
+                background: url('../images/reject.png') no-repeat;
+                background-size: 100% 100%;
+                left: 10px;
+            }
+            #confirm{
+                background: url('../images/confirm.png') no-repeat;
+                background-size: 100% 100%;
+                right: 10px;
+            }
+        }
+        &:hover{
+        }
+    }
