@@ -112,7 +112,6 @@ create table sitting (
 	sittPayDeadline		date,
 	active				tinyint(1) DEFAULT 1,
 	resName				varchar(30),
-	spotsLeft			integer DEFAULT 0,
 	primary key(sittId),
 	foreign key(resName) references restaurant(resName) ON UPDATE CASCADE
 );
