@@ -94,7 +94,7 @@ create table participantfood (
 select 'Create sitting' as '';
 create table sitting (
 	id 				    integer auto_increment,
-	sittDate		    	date not null,
+	sittDate		   	date not null,
 	appetiser   		varchar(50),
 	main       			varchar(50),
 	desert	    		varchar(50),

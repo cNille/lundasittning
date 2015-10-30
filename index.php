@@ -3,9 +3,13 @@
 
  	$dbHandler = new DatabaseHandler();
     $sittings = $dbHandler->getSittings(1);
+    $sittingSpotsTaken = $dbHandler->getSittingsSpots(1);
 	$dbHandler->disconnect();
 
 	function spotsLeftTextify($spotsLeft, $resSize){
+		// För översikt under testning, ta bort sen.
+		return "Platser kvar: " . $spotsLeft;
+
 		if($spotsLeft > $resSize * 0.5){
 			return "Ledig";
 		} else if ($spotsLeft < 5){
@@ -41,7 +45,15 @@
 		<?php 
 			foreach($sittings as $row => $s) {
 				$date = date('j/n', strtotime($s[1]));
-                $spotsLeft = $restaurant->size - $s[3];
+
+				$spotsTaken = 0;
+				foreach ($sittingSpotsTaken as $key => $sst) {
+					if($sst[0] == $s[0]){
+						$spotsTaken = $sst[1];
+					}
+				}
+
+                $spotsLeft = $restaurant->size - $spotsTaken;
 				?>
 					<div class="event-window" id="<?php echo $s[0]; ?>">
 					<a href="./sitting.php?sittId=<?php echo $s[0]; ?>" class="event-window-link">
