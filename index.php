@@ -2,7 +2,7 @@
 	require_once 'header.php';
 
  	$dbHandler = new DatabaseHandler();
-	$sittings = $dbHandler->getSittings();
+	$sittings = $dbHandler->getSittings(1);
 	$dbHandler->disconnect();
 
 
@@ -41,16 +41,17 @@
 		</div>
 		<?php 
 			foreach($sittings as $row => $s) {
-				$date = date('j/n', strtotime($s->date));
+				$date = date('j/n', strtotime($s[1]));
+                $spotsLeft = $restaurant->size - $s[3];
 				?>
-					<div class="event-window" id="<?php echo $s->id; ?>">
-					<a href="./sitting.php?sittId=<?php echo $s->id; ?>" class="event-window-link">
+					<div class="event-window" id="<?php echo $s[0]; ?>">
+					<a href="./sitting.php?sittId=<?php echo $s[0]; ?>" class="event-window-link">
 						<div class="width">
 							<div class="event-window-date">
 								<?php echo $date; ?>
 							</div>
 							<div class="event-window-spots">
-								<?php echo spotsLeftTextify($s->spotsLeft, $restaurant->size);?>
+								<?php echo spotsLeftTextify($spotsLeft, $restaurant->size);?>
 							</div>
 							<div class="event-window-button">
 								 Se mer

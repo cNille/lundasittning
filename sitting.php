@@ -10,16 +10,15 @@
 	$foreman = $dbHandler->getSittingForeman($sittId);
 	$resForeman = $dbHandler->getSittingForemanFromRes($resName);
 
-    $test = array();
+    $sittingUsersWithFoodPref = array();
 	foreach ($allSittingUsers as $key => $g) {
 		$g[] = '';
 		$myFoodPref = $dbHandler->getMyFoodpref($g[1]);
 		foreach ($myFoodPref as $key => $food) {
 			$g[4] = $g[4]. $food[0] . ', ';
-            echo "Hej: $g[4]";
 		}
 		$g[4] = substr($g[4], 0, -2);
-        $test[] = $g;
+        $sittingUsersWithFoodPref[] = $g;
 	}
 
 	$dbHandler->disconnect();
@@ -203,7 +202,7 @@
 				</tr>
 				<?php 
 					$i = 1;
-					foreach ($test as $key => $g) {
+					foreach ($sittingUsersWithFoodPref as $key => $g) {
 						?>
 						<tr>
 							<td><?php echo $i; ?></td>
@@ -231,7 +230,7 @@
 
         </div>
 	<?php endif; ?>
-</div>
 
+</div>
 
 <?php include 'footer.php'; ?>

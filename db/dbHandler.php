@@ -181,10 +181,10 @@
 		    $result = $this->db->executeUpdate($sql, array($sittId));
 		    return count($result) == 1;  
 		} 
-		public function getSittings() {
-			$sql = "SELECT * FROM sitting WHERE active = 1 AND sittDate >= CURRENT_DATE() ORDER BY sittDate";
-			$result = $this->db->executeQuery($sql, array());
-			return $this->arrarrSitting($result); // Structure: [ {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'} ]
+		public function getSittings($active) {
+			$sql = "SELECT s.sittId, s.sittDate, s.active, count(*) as guests FROM sitting as s JOIN party as p JOIN partyguest as pg WHERE s.active=1 AND s.sittId=p.sittId AND p.partyId=pg.partyId GROUP BY s.sittId";
+			$result = $this->db->executeQuery($sql, array($active));
+			return $result; 
 		}
 		public function getSitting($sittId) {
 			$sql = "SELECT * FROM sitting WHERE sittId=?";
