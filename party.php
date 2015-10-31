@@ -21,6 +21,7 @@
 	$dbHandler->disconnect();
 
 	$isQuratel = $myAccessLevel >= 5;
+	echo "hej: $isParticipating";
  ?>
 
 <div class="content">
@@ -70,6 +71,10 @@
 						<span>Anmäl dig via gästinlogg</span>
 					</a>
 				<?php endif; ?>
+            <?php else : ?>
+					<span class="btn primary" style="cursor: default;">
+                        Du är redan anmäld.
+					</span>
 			<?php endif; ?>
 			<?php if($isCreator) : ?>
 				<a class="btn"  href="partybooking.php?guestMode=1&partyId=<?php echo $id; ?>">
@@ -132,7 +137,7 @@
 			?>
 		</div>
 	</div>
-    <a href="./sitting.php?sittId=<?php echo $party->sittId; ?>" class="btn secondary">Tillbaka till sittningen</a>
+    <a href="./sitting.php?sittId=<?php echo $party->sittId; ?>" class="button primary">Tillbaka till sittningen</a>
 </div>
 <script>
     var toggle = false;

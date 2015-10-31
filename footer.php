@@ -3,10 +3,11 @@
 
 	<?php if ($loggedIn): ?> 
 		<div class="fb-login">
+            <a href="facebook-login/logout.php">
 			<img src="https://graph.facebook.com/<?php echo $fbid; ?>/picture" />
 			<span><?php echo $fbFullname; ?></span>
 			<br />
-			<a href="facebook-login/logout.php">Logga ut</a>
+            Logga ut</a>
 		</div>
 	<?php else : ?>
 		<div class="fb-login">

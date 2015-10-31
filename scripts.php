@@ -30,14 +30,14 @@
 			if($email && $email != ''){ $dbHandler->updateEmail($userId, $email); }
 			if($phone && $phone != ''){ $dbHandler->updatePhone($userId, $phone); }
 			if($other && $other != ''){ $dbHandler->updateOther($userId, $other); }
-
-			// Remove all foodpreferences to this user and add all those checked now.
-			$dbHandler->clearParticipantFood($userId);
-			foreach ($foodpref as $key => $f) {
-				$dbHandler->addParticipantFood($userId, $f, NULL);
-			}
 		} else{
 			$userId = $dbHandler->createParticipant($name, $other);
+		}
+
+		// Remove all foodpreferences to this user and add all those checked now.
+		$dbHandler->clearParticipantFood($userId);
+		foreach ($foodpref as $key => $f) {
+			$dbHandler->addParticipantFood($userId, $f, NULL);
 		}
 
 		// Add user to partyguest list.
@@ -104,6 +104,18 @@
 		$msg .= "Anmälan är gjord av $user[1] ($user[3], $user[4]).\r\n\r\n";
 		$msg .= "Vill du veta mer så besök sidan här:\r\n";
 		$msg .= "$link\r\n";
+		$msg = wordwrap($msg,70);
+
+		$headers = "From: $from\r\nReply-To: $from\r\n";
+		mail($to, $subject, $msg, $headers);
+
+		// Send email to PartyCreator
+   		$to = $user[3]; 
+   		$subject = "Anmälningsbekräftelse, $sitting->sittDate";
+		$msg = "Vi har mottagit den intresseanmälan av ett sällskap.\r\n";
+		$msg .= "Nationen kommer att behandla din anmälan och inom kort kontakta dig, har du några frågor kan du skicka maila:$sitting->email\r\n\r\n";
+		$msg .= "Med varma hälsningar,\r\n";
+		$msg .= "Sittningsbokning@Lund\r\n";
 		$msg = wordwrap($msg,70);
 
 		$headers = "From: $from\r\nReply-To: $from\r\n";

@@ -3,6 +3,7 @@
 $black: #333;
 $red: #f2867d;
 $blue: #4a6b83;
+$lightBlue: lighten($blue, 50%);
 $lightGrey: #ccc;
 
 // Sizes
@@ -60,12 +61,72 @@ body{
             font-weight: 100;
         }
 
+
+        .button{
+            display: block;
+            background-color: white;
+            padding: 25px;
+            margin: 15px 0px;
+            text-align: center;
+            opacity: 0.7;
+            @include easy-trans(0.3s);
+            border: 1px solid white;
+            cursor: pointer;
+            text-decoration: none;
+            color: $black;
+
+            &.disabled{
+                cursor: not-allowed;
+
+                &:hover{
+                    opacity: 0.7;
+                    border: 1px solid white;
+                }
+            }
+
+            &:hover{
+                opacity: 1.0;
+                border: 1px solid black;
+            }
+        }
+
+
         table{
             text-align: left;
             width: 100%;
+            
+            &.fancy{
+                border: 1px solid $blue;
+                border-spacing: 0;
+                border-collapse: collapse;
+                
+                th {
+                    text-align: left;
+                    padding-top: 5px;
+                    padding-bottom: 4px;
+                    background-color: $blue;
+                    color: #fff;
+                }
+                
+                th, td {
+                    border: 1px solid $blue;
+                    padding: 3px 7px 2px 7px;
+                    box-sizing: border-box;
+                }
+
+            }
+            tr.odd{
+                background-color: $lightBlue;
+            }
         }
 
-        input[type=submit] {
+        .myForm{
+            margin: 25px auto;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        input[type=submit], .formcancel {
             @include button();
             display: inline-block;
             margin: 10px 0;

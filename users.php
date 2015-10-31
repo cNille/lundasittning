@@ -14,18 +14,20 @@
 		<h3></h3>
 		
 		<form action="scripts.php" method="POST">
-		<table>
+		<table class="fancy">
 			<tr>
 				<th>Namn</th>
 				<th>Epost</th>
 				<th>Telefon</th>
 				<th>Användartyp</th>
+                <th></th>
 			</tr>
 			<?php
+                $c = false;
 				foreach ($users as $key => $u) {
 					$type = $u[5] != "" ? $u[5] : "Användare"
 					?>
-						<tr>
+						<tr <?php echo (($c = !$c)?' class="odd"':''); ?>>
 							<?php echo "<td>$u[1]</td>"; ?>
 							<?php echo "<td>$u[2]</td>"; ?>
 							<?php echo "<td>$u[3]</td>"; ?>

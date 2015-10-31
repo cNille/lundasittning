@@ -29,10 +29,10 @@
 	<div class="title">Boka plats</div>
 	<div class="booking-content">
 		<h2><?php echo $party->name; ?></h2>
-		<form action="scripts.php" method="POST">
-			Namn *<br /Namn>
+		<form class="myForm" action="scripts.php" method="POST">
+			<h4>Namn * </h4>
 			<span><?php if($guestMode){ form($name); } else { echo $name . '<input type="hidden" name="name" value="' . $name . '" />'; } ?></span>
-			
+			<h4>Matpreferens</h4>
 			<?php
 				foreach ($foodPref as $key => $fp) {
 					$checked = '';
@@ -46,21 +46,20 @@
 			?>
 			<br />
 			
-			Övrigt <br />
+			<h4>Övrigt</h4>
 			<span><input type="text" name="other" value="<?php echo $user[5]; ?>"></span>
-
-			Datum <br />
+			<h4>Datum</h4>
 			<span><?php echo $sitting->date; ?></span>
-			Epost <br />
+			<h4>Epost</h4>
 			<span><input type="text" name="email" value="<?php echo $email; ?>"></span>
-			Telefonnummer <br />
+			<h4>Telefonnummer</h4>
 			<span><input type="text" name="phone" value="<?php echo $phone; ?>"></span>
 			<input type="submit" value="Boka plats" name="bookSpot" />
 			<input type="hidden" name="guestMode" value="<?php echo $guestMode; ?>" />
 			<input type="hidden" name="partyId" value="<?php echo $party->id; ?>" />
 			<input type="hidden" name="partyKey" value="<?php echo $party->key; ?>" />
 			<input type="hidden" name="userId" value="<?php echo $user[0]; ?>" />
-			<button onclick="window.history.back();">Avbryt</button>
+			<button class="formcancel" onclick="window.history.back();">Avbryt</button>
 		</form>
 	</div>
 </div>

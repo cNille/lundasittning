@@ -33,10 +33,53 @@ body {
       font-size: 60px;
       color: white;
       font-weight: 100; }
+    body .content .button {
+      display: block;
+      background-color: white;
+      padding: 25px;
+      margin: 15px 0px;
+      text-align: center;
+      opacity: 0.7;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      border: 1px solid white;
+      cursor: pointer;
+      text-decoration: none;
+      color: #333; }
+      body .content .button.disabled {
+        cursor: not-allowed; }
+        body .content .button.disabled:hover {
+          opacity: 0.7;
+          border: 1px solid white; }
+      body .content .button:hover {
+        opacity: 1.0;
+        border: 1px solid black; }
     body .content table {
       text-align: left;
       width: 100%; }
-    body .content input[type=submit] {
+      body .content table.fancy {
+        border: 1px solid #4a6b83;
+        border-spacing: 0;
+        border-collapse: collapse; }
+        body .content table.fancy th {
+          text-align: left;
+          padding-top: 5px;
+          padding-bottom: 4px;
+          background-color: #4a6b83;
+          color: #fff; }
+        body .content table.fancy th, body .content table.fancy td {
+          border: 1px solid #4a6b83;
+          padding: 3px 7px 2px 7px;
+          box-sizing: border-box; }
+      body .content table tr.odd {
+        background-color: #dfe7ed; }
+    body .content .myForm {
+      margin: 25px auto;
+      width: 90%;
+      max-width: 300px; }
+    body .content input[type=submit], body .content .formcancel {
       display: block;
       text-align: center;
       opacity: 0.7;
@@ -50,18 +93,18 @@ body {
       margin: 10px 0;
       padding: 7px 10px;
       border: 1px solid #ccc; }
-      body .content input[type=submit]:hover {
+      body .content input[type=submit]:hover, body .content .formcancel:hover {
         opacity: 1.0;
         border: 1px solid #b3b3b3; }
-      body .content input[type=submit].primary {
+      body .content input[type=submit].primary, body .content .formcancel.primary {
         background-color: #104050;
         color: white; }
-      body .content input[type=submit].disabled {
+      body .content input[type=submit].disabled, body .content .formcancel.disabled {
         cursor: not-allowed; }
-        body .content input[type=submit].disabled:hover {
+        body .content input[type=submit].disabled:hover, body .content .formcancel.disabled:hover {
           opacity: 0.7;
           border: 1px solid white; }
-      body .content input[type=submit]:hover, body .content input[type=submit]:focus {
+      body .content input[type=submit]:hover, body .content input[type=submit]:focus, body .content .formcancel:hover, body .content .formcancel:focus {
         border: 1px solid #4a6b83; }
     body .content input[type=radio] {
       margin: 25px 15px;
@@ -271,27 +314,6 @@ body {
         text-align: center;
         display: block;
         margin-bottom: 15px; }
-  body div.button {
-    display: block;
-    background-color: white;
-    padding: 25px;
-    margin: 15px 0px;
-    text-align: center;
-    opacity: 0.7;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    border: 1px solid white;
-    cursor: pointer; }
-    body div.button.disabled {
-      cursor: not-allowed; }
-      body div.button.disabled:hover {
-        opacity: 0.7;
-        border: 1px solid white; }
-    body div.button:hover {
-      opacity: 1.0;
-      border: 1px solid black; }
   @media screen and (max-width: 750px) {
     body .single-sitting .side {
       display: block;
@@ -345,9 +367,6 @@ body {
       margin: 0; }
     body .interest-content p {
       margin-top: 0; }
-    body .interest-content form {
-      margin: 25px auto;
-      max-width: 300px; }
     body .interest-content span {
       display: block;
       margin-bottom: 10px; }
@@ -367,8 +386,8 @@ body {
       margin-bottom: 0px; }
     body .booking-content p {
       margin-top: 0; }
-    body .booking-content form {
-      margin: 25px 0; }
+    body .booking-content h4 {
+      margin: 0; }
     body .booking-content span {
       display: block;
       margin-bottom: 10px; }

@@ -10,6 +10,7 @@
 	$foreman = $dbHandler->getSittingForeman($sittId);
 	$resForeman = $dbHandler->getSittingForemanFromRes($resName);
 
+    $foodStatistics = array();
     $sittingUsersWithFoodPref = array();
 	foreach ($allSittingUsers as $key => $g) {
 		$g[] = '';
@@ -18,6 +19,9 @@
 			$g[4] = $g[4]. $food[0] . ', ';
 		}
 		$g[4] = substr($g[4], 0, -2);
+        if(count($myFoodPref) > 0){
+            $foodStatistics[$g[4]]++;
+        }
         $sittingUsersWithFoodPref[] = $g;
 	}
 	$dbHandler->disconnect();
@@ -146,7 +150,7 @@
 
 	<div <?php 
 			if($loggedIn){ 
-				echo 'class="button"  onclick="location.href=\'interest.php?sittId=' . $sitting->id . '\';"'; 
+				echo 'class="button primary"  onclick="location.href=\'interest.php?sittId=' . $sitting->id . '\';"'; 
 			} else { 
 				echo 'class="button disabled" title="Du måste vara inloggad för att kunna lägga en anmälan."'; 
 			} ?> 
@@ -185,9 +189,27 @@
                         <input type='submit' name="removeSittingForeman" value="Ta bort">
                         <input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
                         <br /><br />
-                        <form>
+                    </form>
                 <?php } ?>
-			<table>
+            
+            <h3>Matstatistik</h3>
+            <table class="fancy">
+                <tr>
+                    <th>Matpreferens</th>
+                    <th>Antal</th>
+                </tr>
+            <?php
+                $c = false;
+                foreach($foodStatistics as $key => $s){
+                    $alt = $toogle % 2 ? "alt" : "e";
+                    echo "<tr".(($c = !$c)?' class="odd"':'')."><td>$key</td><td>$s</td></tr>";
+                }
+
+            ?>
+            </table>
+
+            <h3>Anmälda gäster</h3>
+			<table class="fancy">
 				<tr>
 					<th>#</th>
 					<th>Sällskap</th>
@@ -198,7 +220,7 @@
 					$i = 1;
 					foreach ($sittingUsersWithFoodPref as $key => $g) {
 						?>
-						<tr>
+						<tr <?php echo (($c = !$c)?' class="odd"':''); ?>>
 							<td><?php echo $i; ?></td>
 							<td><?php echo $g[0]; ?></td>
 							<td><?php echo $g[2]; ?></td>

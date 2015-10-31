@@ -12,7 +12,7 @@
 	<div class="title">Intresseanmälan</div>
 	<div class="interest-content">
 		<h2>Bekräfta</h2>
-		<form action="scripts.php" method="POST">
+		<form class="myForm" action="scripts.php" method="POST">
 			<input type="hidden" name="userId" value="<?php echo $user[0]; ?>" />
 			<input type="hidden" name="sittId" value="<?php echo $sittId; ?>" />
 			<h4>Bokare </h4>

@@ -103,12 +103,6 @@ insert into paystatus (status, accesslevel) values
 select 'Insert partyparticipant' as '';
 insert into partyparticipant (partyId, participantId, participantPayed) values
     (1,1,'Nej'),
-    (2,1,'Nej'),
-    (3,1,'Nej'),
-    (4,1,'Nej'),
-    (5,1,'Nej'),
-    (6,1,'Nej'),
-    (7,1,'Nej'),
     (8,1,'Nej'),
     (1,2,'Nej'),
     (2,2,'Nej'),
