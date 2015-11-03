@@ -7,11 +7,14 @@ class DataConverter{
 		return (object) [
 			'name' => $arr[0],
 			'email' => $arr[1],
-			'openhours' => $arr[2],
-			'deposit' => $arr[3],
-			'price' => $arr[4],
-			'size' => $arr[5],
-			'summary' => $arr[6]
+			'telephone' => $arr[2],
+			'homepage' => $arr[3],
+			'openhours' => $arr[4],
+			'address' => $arr[5],
+			'deposit' => $arr[6],
+			'price' => $arr[7],
+			'size' => $arr[8],
+			'summary' => $arr[9]
 		];
 	}
 

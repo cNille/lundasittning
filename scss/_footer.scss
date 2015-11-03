@@ -6,6 +6,7 @@ footer{
     background-color: #333;
     padding: 50px;
     color: $white;
+    margin-top: 50px;
 
     .logocontainer{
         width: 200px;
@@ -15,6 +16,11 @@ footer{
         background-size: contain;
         background-repeat: no-repeat;
         background-position: 50% 50%;
+    }
+
+    h3{
+        text-align: center;
+        
     }
     
     .infocontainer{

@@ -81,6 +81,7 @@
 		<?php } ?>
 	</div>
 </div>
+<div style="clear:both;"></div>
 
 
 <?php include 'footer.php'; ?>
