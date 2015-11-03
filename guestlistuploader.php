@@ -130,7 +130,6 @@
                 } else {
                     $("#saveButton").text("Gå tillbaka");
                     $("#saveButton").attr("onclick", "window.location.href ='party.php?partyKey=" + partyKey + "'");
-                    //alert(partyKey);
                 }
 			}
 		});

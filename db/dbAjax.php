@@ -9,7 +9,7 @@
 	        case 'addSitting' : addSitting($dbHandler);break;
 	        case 'removeSitting' : removeSitting($dbHandler);break;
 	        case 'updateSettings' : updateSettings($dbHandler);break;
-	        case 'addGuestList' : addGuestList($dbHandler);break;
+	        case 'addGuestList' : addGuestList($dbHandler, $user);break;
 	    }
 	    $dbHandler.disconnect();
 	}
@@ -32,12 +32,11 @@
 		$dbHandler->updateOther($_POST['userid'], $_POST['other']);
 	}
 	
-	function addGuestList($dbHandler){
+	function addGuestList($dbHandler, $user){
         $partyId = $_POST["partyId"];
         
         $creator = $dbHandler->getCreator($partyId);
         $isCreator = $user[0] == $creator[0];
-
 
         if($isCreator){
             $json = $_POST["guestList"];
