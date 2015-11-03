@@ -211,7 +211,7 @@
             return count($result) == 1;
         }
 		public function getSittingForemanFromRes($resName) {
-			$sql = "SELECT p.id, p.name FROM participant as p WHERE p.id IN (SELECT participantId FROM sittingforeman) AND p.id IN (SELECT participantId FROM restaurantparticipant WHERE resName=?);";
+			$sql = "SELECT p.id, p.name FROM participant as p WHERE p.id IN (SELECT participantId FROM restaurantparticipant WHERE resName=? AND userType='Sittningsförman');";
 			$result = $this->db->executeQuery($sql, array($resName));
 			return $result; 
 		}
