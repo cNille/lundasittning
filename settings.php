@@ -12,7 +12,7 @@
 	</div>
 	<div class="userSettings">
 		<form action="scripts.php" method="POST">
-			<div class="left">
+			<div style="max-width: 280px; margin: auto;">
 				<div class="category">
 					E-mail <input type="text" name="email" value="<?php echo $user[3]; ?>">
 				</div>
