@@ -31,10 +31,12 @@ insert into participant(name, other, loginaccount) values
 select 'Insert restaurantparticipant' as '';
 insert into restaurantparticipant values
     (1, 'Nilles nation', 'SuperAdmin'),
-    (2, 'Nilles nation', 'Förman'),
-    (3, 'Nilles nation', 'Sittningsförman'),
-    (1, 'Franz nation', 'Förman'),
-    (1, 'Malins nation', 'Quratel');
+    (1, 'Franz nation', 'Quratel'),
+    (1, 'Malins nation', 'Sittningsförman'),
+    (2, 'Nilles nation', 'SuperAdmin'),
+    (2, 'Franz nation', 'Quratel'),
+    (2, 'Malins nation', 'Sittningsförman'),
+    (3, 'Malins nation', 'Quratel');
 
 select 'Insert foodpref' as '';
 insert into foodpref values

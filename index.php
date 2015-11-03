@@ -53,7 +53,7 @@
 					}
 				}
 
-                $spotsLeft = $restaurant->size - $spotsTaken;
+                $spotsLeft = $restaurant[6] - $spotsTaken;
 				?>
 					<div class="event-window" id="<?php echo $s[0]; ?>">
 					<a href="./sitting.php?sittId=<?php echo $s[0]; ?>" class="event-window-link">

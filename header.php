@@ -14,8 +14,8 @@
 	</head>
 	<body>
 		<script>
-			var RESTAURANT_NAME = '<?php echo $restaurant->name ?>';
-			var RESTAURANT_SIZE = '<?php echo $restaurant->size ?>';
+			var RESTAURANT_NAME = '<?php echo $restaurant[0] ?>';
+			var RESTAURANT_SIZE = '<?php echo $restaurant[6] ?>';
 		</script>
 
 

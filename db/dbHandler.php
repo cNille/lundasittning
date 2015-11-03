@@ -29,8 +29,8 @@
 		public function getRestaurant($name){
 			$sql = "SELECT * FROM restaurant WHERE name=?";
 			$result = $this->db->executeQuery($sql, array($name));
-			return $this->arrToRes($result[0]);  // Structure: { 'name', 'email', 'openhours', 'deposit', 'price', 'size', 'summary' }
-		}
+			return $result[0];
+			}
 		public function getResSize($name){
 			$sql = "SELECT resSize FROM restaurant WHERE name=?";
 			$result = $this->db->executeQuery($sql, array($name));
@@ -64,6 +64,8 @@
 			$result = $this->db->executeQuery($sql, array($fbid));
 			return $result[0];
 		}
+		
+		// Funktionen ovan finns identisk i "getUser($fbid)"
 
 		// Participant
 		// ======================================================

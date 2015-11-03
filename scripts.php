@@ -134,11 +134,11 @@
 		$userId = $_POST['userId'];
 		// Update email if it was specified
 		if($email && $email != ''){
-			$dbHandler->updateEmail($user[2], $email);
+			$dbHandler->updateEmail($user[0], $email);
 		}
 		// Update email if it was specified
 		if($phone && $phone != ''){
-			$dbHandler->updatePhone($user[2], $phone);
+			$dbHandler->updatePhone($user[0], $phone);
 		}
 		// Update other if it was specified
 		if($other && $other != ''){
