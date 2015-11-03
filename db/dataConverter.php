@@ -6,15 +6,16 @@ class DataConverter{
 	 function arrToRes($arr){
 		return (object) [
 			'name' => $arr[0],
-			'email' => $arr[1],
-			'telephone' => $arr[2],
-			'homepage' => $arr[3],
-			'openhours' => $arr[4],
-			'address' => $arr[5],
-			'deposit' => $arr[6],
-			'price' => $arr[7],
-			'size' => $arr[8],
-			'summary' => $arr[9]
+			'nickname' => $arr[1],
+			'email' => $arr[2],
+			'telephone' => $arr[3],
+			'homepage' => $arr[4],
+			'openhours' => $arr[5],
+			'address' => $arr[6],
+			'deposit' => $arr[7],
+			'price' => $arr[8],
+			'size' => $arr[9],
+			'summary' => $arr[10]
 		];
 	}
 
