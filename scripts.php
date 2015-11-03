@@ -95,7 +95,7 @@
 
 		$link = $_SERVER['SERVER_NAME'];
    		$from = "c@shapeapp.se";
-   		$to = $restaurant->email; 
+   		$to = $restaurant[2]; 
 		ini_set("SMTP", "send.one.com");
    		ini_set("sendmail_from", $from);
 

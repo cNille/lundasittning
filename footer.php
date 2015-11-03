@@ -35,7 +35,7 @@ Sugar plum cookie brownie soufflé bonbon gummi bears lollipop pie lemon drops. 
 
 
 	<div class="header">
-		<a href="index.php">Sittning @ <?php echo $restaurant->name; ?></a>
+		<a href="index.php">Sittning @ <?php echo $restaurant[0]; ?></a>
 		<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>
 	</div>
 

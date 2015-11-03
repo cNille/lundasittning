@@ -17,7 +17,7 @@
 	}
 
 	// Use this variabel where a certain accesslevel is required.
-	$myAccessLevel = $dbHandler->getAccessLevel($fbid, $restaurant->name);
+	$myAccessLevel = $dbHandler->getAccessLevel($fbid, $restaurant[0]);
 
 	$userExists = $dbHandler->fbidExists($fbid);
 	if($userExists){

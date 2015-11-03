@@ -62,7 +62,7 @@
 								<?php echo $date; ?>
 							</div>
 							<div class="event-window-spots">
-								<?php echo spotsLeftTextify($spotsLeft, $restaurant->size);?>
+								<?php echo spotsLeftTextify($spotsLeft, $restaurant[6]);?>
 							</div>
 							<div class="event-window-button">
 								 Se mer

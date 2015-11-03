@@ -33,7 +33,7 @@
 		}
 	}
 
-	$spotsLeft = $restaurant->size;
+	$spotsLeft = $restaurant[6];
  ?>
 <div class="content">
 	<div class="title">Sittning</div>
@@ -93,7 +93,7 @@
 						<th></th>
 					</tr>
 					<?php 
-						$spotsLeft = $restaurant->size;
+						$spotsLeft = $restaurant[6];
 						foreach ($parties as $key => $p) {
 							$isParticipating = false;
 							foreach ($myParties as $key => $mp) {
