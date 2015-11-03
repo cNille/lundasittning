@@ -78,7 +78,10 @@
 			<?php endif; ?>
 			<?php if($isCreator) : ?>
 				<a class="btn"  href="partybooking.php?guestMode=1&partyId=<?php echo $id; ?>">
-					<span>Anmäl dina gäster här</span>
+					<span>Anmäl en gäst här</span>
+				</a>
+				<a class="btn"  href="guestlistuploader.php?partyid=<?php echo $id; ?>">
+					<span>Ladda in gästlista från Excel</span>
 				</a>
 			<?php endif; ?>
 			<?php

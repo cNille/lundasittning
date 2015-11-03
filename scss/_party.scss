@@ -47,6 +47,7 @@
     padding: 15px;
     background-color: darken(white, 10%);
     color: #333;
+    outline: none;
     text-decoration: none;
     @include button();
 }

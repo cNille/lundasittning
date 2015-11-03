@@ -12,21 +12,25 @@
 	<div class="title">Ladda upp Gästlista</div>
 	<div class="interest-content">
 		<h2>Sittning <?php echo date('j/n', strtotime($sitting->date));?></h2>
-		<p>För att lägga en anmälan gör såhär</p> 
+		<p>För att läsa in en gästlista gör såhär</p> 
 		<ol>
 			<li>Ladda ner sittningsmallen.</li>
 			<li>Fyll i gästlistan och spara som en tab-separerad-fil eller komma-sepererad-fil (med ändelsen '.tsv' eller '.csv')</li>
 			<li>Ladda upp filen. </li>
+			<li>Läs in filen. </li>
 			<li>Tryck på klar.</li>
 		</ol>
-		<a href='./files/SittningsMall.xlsx' target="_blank">Ladda ner mall</a>
+		<a href='./files/Gastlista.xlsx' class="btn primary" target="_blank">Ladda ner mall</a>
+        <br />
 		<p>
 			Välj fil med gästlista
 			<input type="file" id="files" name="file" /> 
 			<span class="readBytesButtons" style="display: block; padding-top:30px;">
-			  <button>Skicka anmälan</button>
+			  <button class="btn">Läs in fil</button>
 			</span>
 		</p>
+        <button id="saveButton" class="btn primary" onclick="addListToParty()">Spara</button>
+
 		<div id="byte_content"></div>
 		<h2>Gästlista</h2>
 		<table class="generatedTable">
@@ -75,6 +79,13 @@
 		reader.readAsBinaryString(file);
 	}
 
+    function swedify(str){
+        str = str.replace("Ã¥", "å");
+        str = str.replace("Ã¤", "ä");
+        str = str.replace("Ã¶", "ö");
+        return str
+    }
+
 	//Reads the data from the rows and transforms to object.
 	function dataToObjects(dataString){
 		var dataRows = dataString.split("\n");
@@ -85,12 +96,16 @@
 		var date = dateRow[2];
 		var booker = bookerRow[2];
 
-		var guestName, guestPreferens;
+		var guestName, preferens, other;
 		for(var i = 7; i < dataRows.length; i++){
 			dataCol = dataRows[i].split(seperator);
 			guestName = dataCol[1];
 			if(guestName != ""){
-				guestList.push({ 'name' : guestName, 'preferens' : dataCol[2] });
+                guestName = swedify(guestName);
+                preferens = swedify(dataCol[2]);
+                other = swedify(dataCol[3]);
+                
+				guestList.push({ 'name' : guestName, 'preferens' : preferens, 'other' : other});
 			}
 		}
 	}
@@ -98,12 +113,39 @@
 	// Temp function. Fills up a table on page with guestlist.
 	function fillTable(){
 		$('.generatedTable').empty();
-		$('.generatedTable').append('<tr><th>Nr</th><th>Namn</th><th>Preferens</th></tr>');
+		$('.generatedTable').append('<tr><th>Nr</th><th>Namn</th><th>Preferens</th><th>Annat</th></tr>');
 		var y;
 		for(x in guestList){
 			y = parseInt(x) + 1;
-			$('.generatedTable').append('<tr><td>' + y + '</td><td>' + guestList[x].name + '</td><td>' + guestList[x].preferens + '</td></tr>');
+			$('.generatedTable').append('<tr><td>' + y + '</td><td>' + guestList[x].name + '</td><td>' + guestList[x].preferens + '</td><td>' + guestList[x].other + '</td></tr>');
 		}
 	}
+
+    function addListToParty(){
+        
+        var guestStr = JSON.stringify(guestList);
+        var partyId = <?php echo $_GET["partyid"]; ?>;
+		$.ajax({
+			type: 'POST',
+			url: 'db/dbAjax.php',
+			data: 'action=addGuestList&partyId=' + partyId + '&guestList=' + guestStr,
+			success: function(partyKey){
+
+                if(partyKey == "notCreator"){
+                    alert('Error: Du är inte skapare av detta sällskap.');
+                } else {
+                    $("#saveButton").text("Gå tillbaka");
+                    $("#saveButton").attr("onclick", "window.location.href ='party.php?partyKey=" + partyKey + "'");
+                    //alert(partyKey);
+                }
+			}
+		});
+    }
+
+    function done(){
+        ;
+    }
+
+
 </script>
 <?php include 'footer.php'; ?>

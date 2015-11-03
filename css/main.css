@@ -432,6 +432,7 @@ body {
     padding: 15px;
     background-color: #e6e6e6;
     color: #333;
+    outline: none;
     text-decoration: none;
     display: block;
     text-align: center;
