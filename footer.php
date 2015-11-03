@@ -16,6 +16,22 @@
 		</div>
 	<?php endif; ?>
 
+    <footer>
+        <div class="logocontainer">
+            
+        </div>
+            
+        <div class="infocontainer">
+            <p>Cupcake ipsum dolor sit amet chocolate bar sweet halvah I love. Cookie lemon drops tootsie roll lemon drops I love candy donut. Tiramisu gummi bears caramels croissant cake cake. Tootsie roll caramels gummies fruitcake powder jelly lollipop.
+Sugar plum cookie brownie soufflé bonbon gummi bears lollipop pie lemon drops. Cake apple pie cake gummies soufflé. Danish powder gummies. Pastry fruitcake sweet lemon drops oat cake marzipan.</p>
+        </div>
+
+        <div class="contactinformation">
+        
+        </div>
+    </footer>
+
+
 	<div class="header">
 		<a href="index.php">Sittning @ <?php echo $restaurant->name; ?></a>
 		<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>

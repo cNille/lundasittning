@@ -21,7 +21,6 @@
 	$dbHandler->disconnect();
 
 	$isQuratel = $myAccessLevel >= 5;
-	echo "hej: $isParticipating";
  ?>
 
 <div class="content">
