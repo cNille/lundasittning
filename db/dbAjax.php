@@ -39,7 +39,7 @@
         $isCreator = $user[0] == $creator[0];
 
 
-        if($isCreator || true){
+        if($isCreator){
             $json = $_POST["guestList"];
             $guestList = json_decode($json);
 

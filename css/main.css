@@ -12,6 +12,7 @@ body {
   padding: 0;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 100;
+  background-color: #333;
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -145,7 +146,7 @@ body {
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: black;
+    background-color: #333;
     -moz-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); }

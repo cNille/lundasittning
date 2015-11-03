@@ -1,23 +1,16 @@
 <?php 
 	require_once 'header.php';
- 	$dbHandler = new DatabaseHandler();
-	$sitting = $dbHandler->getSitting($_GET['sittId']);
-	$user = $dbHandler->getUser($fbid);
-	$dbHandler->disconnect();
-	$userName = $user[2];
-	$userEmail = $user[3];
-	$userTelephone = $user[4];
  ?>
 <div class="content">
 	<div class="title">Ladda upp Gästlista</div>
 	<div class="interest-content">
-		<h2>Sittning <?php echo date('j/n', strtotime($sitting->date));?></h2>
 		<p>För att läsa in en gästlista gör såhär</p> 
 		<ol>
 			<li>Ladda ner sittningsmallen.</li>
 			<li>Fyll i gästlistan och spara som en tab-separerad-fil eller komma-sepererad-fil (med ändelsen '.tsv' eller '.csv')</li>
 			<li>Ladda upp filen. </li>
 			<li>Läs in filen. </li>
+			<li>Dubbelkolla att allt blev inläst korrekt, annars ändra i filen och ladda upp igen. </li>
 			<li>Tryck på klar.</li>
 		</ol>
 		<a href='./files/Gastlista.xlsx' class="btn primary" target="_blank">Ladda ner mall</a>
@@ -32,7 +25,7 @@
         <button id="saveButton" class="btn primary" onclick="addListToParty()">Spara</button>
 
 		<div id="byte_content"></div>
-		<h2>Gästlista</h2>
+		<h2 id="guestListHeader"></h2>
 		<table class="generatedTable">
 		</table>		
 	</div>
@@ -112,8 +105,9 @@
 	
 	// Temp function. Fills up a table on page with guestlist.
 	function fillTable(){
+        $("#guestListHeader").text('Gästlista');
 		$('.generatedTable').empty();
-		$('.generatedTable').append('<tr><th>Nr</th><th>Namn</th><th>Preferens</th><th>Annat</th></tr>');
+		$('.generatedTable').append('<tr><th>#</th><th>Namn</th><th>Preferens</th><th>Annat</th></tr>');
 		var y;
 		for(x in guestList){
 			y = parseInt(x) + 1;
