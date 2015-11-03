@@ -261,6 +261,11 @@
     		$result = $this->db->executeUpdate($sql, array($msg, $pId));
     		return $result[0];		
 		}
+		public function updatePartyInterest($pId, $interest){
+		    $sql = "UPDATE party SET interest=? WHERE id=?;";
+    		$result = $this->db->executeUpdate($sql, array($interest, $pId));
+    		return $result[0];		
+		}
 
 		// Partytype
 		// ======================================================

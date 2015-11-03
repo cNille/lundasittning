@@ -30,6 +30,16 @@
 		<div class="left side">
 				<h4>Datum</h4>
 				<p><?php echo $sitting->date; ?></p>
+                <h4>Platser anmälda</h4>
+                <?php if($isQuratel) : ?>
+                    <form action="scripts.php" method="POST">
+                        <input type="number" name="interest" value="<?php echo $party->interest; ?>" />
+                        <input type="hidden" name="partyId" value="<?php echo $party->id; ?>" />
+                        <input type="submit" name="updatePartyInterest" value="Uppdatera platser" />
+                    </form>
+                <?php else : ?>
+                    <p><?php echo $party->interest; ?> platser (vid eventuella förändringar, kontakta quratelet och meddela detta.)</p>
+                <?php endif; ?>
 				<h4>Sällskapsansvarig</h4> 
 				<p><?php echo  $creator[1];?></p>
 				<p><?php echo  $creator[2];?></p>
@@ -46,7 +56,7 @@
 							<textarea rows="4" cols="50" name="message" maxlength="250"><?php echo $party->message; ?></textarea>
 							<br />
 							<input type='hidden' value="<?php echo $id; ?>" name="partyId" />
-							<input type="submit" value="Redigera" name="updatePartyMsg" />
+							<input type="submit" value="Uppdatera meddelande" name="updatePartyMsg" />
 						</form>
 						<?php
 					} else {
@@ -93,13 +103,14 @@
 				<tr>
 					<th>#</th>
 					<th>Gäster</th>
-					<th>Matpreferens</th>
-					<th>Betalat</th>
-                    <?php
-                        if($isQuratel){
-                            echo "<th><p class='listtoggle'>Välj alla</p></th>";
-                        }
-                    ?>
+                    <?php if($isCreator || $isQuratel) : ?>
+                
+                        <th>Matpreferens</th>
+                        <th>Betalat</th>
+                        <th><p class='listtoggle'>Välj alla</p></th>
+                        
+
+                    <?php endif; ?>
 				</tr>
 				<?php 
 					$i = 1;
@@ -108,13 +119,13 @@
 						<tr>
 							<td><?php echo $i; ?></td>
 							<td><?php echo $g->name; ?></td>
-							<td><?php echo $g->foodpref; ?></td>
-                            <td><?php echo $g->payed; ?></td>
-							<?php
-								if($isQuratel){
-									echo "<td><input type='checkbox' class='chbx' name='userId[]' value='$g->id' /></td>";
-								}
-							?>
+							<?php if($isCreator || $isQuratel) : ?>
+
+                                <td><?php echo $g->foodpref; ?></td>
+                                <td><?php echo $g->payed; ?></td>
+								<td><input type='checkbox' class='chbx' name='userId[]' value='<?php echo $g->id; ?>' /></td>";
+
+							<?php endif; ?>
 						</tr>
 						<?php
 						$i++;

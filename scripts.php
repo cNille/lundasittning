@@ -152,16 +152,29 @@
 		header("Location: index.php?status=saved");
 		return;
 	}
+	if($_POST['updatePartyInterest']){
+		$interest = $_POST['interest'];
+		$uId = $user[0];
+		$pId = $_POST['partyId'];
+		$creator = $dbHandler->getCreator($pId);
+		$isCreator = $creator[0] == $user[0];
+		if($isCreator){
+			$dbHandler->updatePartyInterest($pId, $interest);
+		}
+        $party = $dbHandler->getParty($pId);
+		header("Location: party.php?partyKey=$party->key");
+		return;		
+	}
 	if($_POST['updatePartyMsg']){
 		$msg = $_POST['message'];
 		$uId = $user[0];
 		$pId = $_POST['partyId'];
-		$party = $dbHandler->getParty($pId);
 		$creator = $dbHandler->getCreator($pId);
 		$isCreator = $creator[0] == $user[0];
 		if($isCreator){
 			$dbHandler->updatePartyMsg($pId, $msg);
 		}
+        $party = $dbHandler->getParty($pId);
 		header("Location: party.php?partyKey=$party->key");
 		return;		
 	}
