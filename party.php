@@ -123,7 +123,7 @@
 
                                 <td><?php echo $g->foodpref; ?></td>
                                 <td><?php echo $g->payed; ?></td>
-								<td><input type='checkbox' class='chbx' name='userId[]' value='<?php echo $g->id; ?>' /></td>";
+								<td><input type='checkbox' class='chbx' name='userId[]' value='<?php echo $g->id; ?>' /></td>
 
 							<?php endif; ?>
 						</tr>
