@@ -82,7 +82,7 @@
 				<?php endif; ?>
             <?php else : ?>
 					<span class="btn primary" style="cursor: default;">
-                        Du är redan anmäld.
+                        Du är redan anmäld
 					</span>
 			<?php endif; ?>
 			<?php if($isCreator) : ?>

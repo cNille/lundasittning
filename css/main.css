@@ -229,9 +229,13 @@ body {
       opacity: 0.5; }
   body footer {
     background-color: #333;
-    padding: 50px;
+    padding: 100px;
+    box-sizing: border-box;
     color: #eee;
-    margin-top: 50px; }
+    margin-top: 50px;
+    position: relative;
+    display: table;
+    width: 100%; }
     body footer .logocontainer {
       width: 200px;
       height: 200px;
@@ -239,35 +243,48 @@ body {
       background-image: url("../images/vitlogga.gif");
       background-size: contain;
       background-repeat: no-repeat;
-      background-position: 50% 50%; }
+      background-position: 50% 50%;
+      position: relative;
+      display: inline-block;
+      width: 49%; }
     body footer h3 {
       text-align: center; }
     body footer .infocontainer {
       max-width: 280px;
-      margin: auto; }
-    body footer .contactinformation {
-      max-width: 280px;
-      margin: auto; }
-    body footer a {
-      font-weight: 400;
-      color: #f2867d;
-      text-decoration: none;
-      position: relative; }
-      body footer a::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
+      margin: auto;
+      position: relative;
+      display: inline-block;
+      width: 49%; }
+      body footer .infocontainer .contactinformation {
+        max-width: 280px;
+        margin: auto; }
+      body footer .infocontainer a {
+        font-weight: 400;
+        color: #f2867d;
+        text-decoration: none;
+        position: relative; }
+        body footer .infocontainer a::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-bottom: 1px solid #4a6b83;
+          opacity: 0;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out; }
+        body footer .infocontainer a:hover::before {
+          opacity: 1; }
+    @media screen and (max-width: 700px) {
+      body footer .logocontainer {
+        width: 100%; }
+      body footer .infocontainer {
         width: 100%;
-        height: 100%;
-        border-bottom: 1px solid #4a6b83;
-        opacity: 0;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out; }
-      body footer a:hover::before {
-        opacity: 1; }
+        display: block;
+        margin: auto; } }
   body .fb-login {
     height: 30px;
     position: fixed;

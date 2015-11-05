@@ -106,7 +106,7 @@
 		$msg .= "$link\r\n";
 		$msg = wordwrap($msg,70);
 
-		$headers = "From: $from\r\nReply-To: $from\r\n";
+		$headers = "From: $from\r\nReply-To: $to\r\n";
 		mail($to, $subject, $msg, $headers);
 
 		// Send email to PartyCreator
@@ -118,7 +118,7 @@
 		$msg .= "Sittningsbokning@Lund\r\n";
 		$msg = wordwrap($msg,70);
 
-		$headers = "From: $from\r\nReply-To: $from\r\n";
+		$headers = "From: $from\r\nReply-To: $to\r\n";
 		mail($to, $subject, $msg, $headers);
 
 		header("Location: party.php?partyKey=" . $key);

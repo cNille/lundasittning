@@ -21,19 +21,19 @@
             
         </div>
 
-        <h3><?php echo $restaurant[0]; ?></h3>
                 
         <div class="infocontainer">
+            <h3><?php echo $restaurant[0]; ?></h3>
             <p><?php echo $restaurant[10]; ?></p>
+            <div class="contactinformation">
+                <p><strong>Email: </strong> <?php echo $restaurant[2] ?> </p>
+                <p><strong>Telephone: </strong> <?php echo $restaurant[3]; ?> </p>
+                <p><strong>Adress: </strong> <?php echo $restaurant[6]; ?> </p>
+                <p><strong>Öppettider: </strong> <?php echo $restaurant[5]; ?> </p>
+                <p><strong>Homepage: </strong> <a href="<?php echo $restaurant[4]; ?>"><?php echo $restaurant[4]; ?></a> </p>
+            </div>
         </div>
 
-        <div class="contactinformation">
-            <p><strong>Email: </strong> <?php echo $restaurant[2] ?> </p>
-            <p><strong>Telephone: </strong> <?php echo $restaurant[3]; ?> </p>
-            <p><strong>Adress: </strong> <?php echo $restaurant[6]; ?> </p>
-            <p><strong>Öppettider: </strong> <?php echo $restaurant[5]; ?> </p>
-            <p><strong>Homepage: </strong> <a href="<?php echo $restaurant[4]; ?>"> <?php echo $restaurant[4]; ?> </a> </p>
-        </div>
     </footer>
 
 

@@ -4,9 +4,13 @@
 
 footer{
     background-color: #333;
-    padding: 50px;
+    padding: 100px;
+    box-sizing: border-box;
     color: $white;
     margin-top: 50px;
+    position: relative;
+    display: table;
+    width: 100%;
 
     .logocontainer{
         width: 200px;
@@ -16,44 +20,64 @@ footer{
         background-size: contain;
         background-repeat: no-repeat;
         background-position: 50% 50%;
+        position: relative;
+        display: inline-block;
+        width: 49%;
+        
     }
 
     h3{
         text-align: center;
         
     }
-    
+
+ 
     .infocontainer{
         max-width: 280px;
         margin: auto;
+        position: relative;
+        display: inline-block;
+        width:49%;
+
+        .contactinformation{
+            max-width: 280px;
+            margin: auto;
+        }
+
+        a{
+            font-weight: 400;
+            color: $red;
+            text-decoration: none;
+            position: relative;
+
+            &::before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-bottom: 1px solid $blue;
+                opacity: 0;
+                @include easy-trans(0.3s);
+            }
+            &:hover::before{
+                opacity: 1;
+            }
+        }
+    }
+
+    @media screen and (max-width: 700px){
+        .logocontainer{
+            width: 100%;
+        }
+        .infocontainer{
+            width: 100%;
+            display: block;
+            margin: auto;
+        }
     }
     
-    .contactinformation{
-        max-width: 280px;
-        margin: auto;
-    }
-			
-	    a{
-        font-weight: 400;
-        color: $red;
-        text-decoration: none;
-        position: relative;
-
-        &::before{
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-bottom: 1px solid $blue;
-            opacity: 0;
-            @include easy-trans(0.3s);
-        }
-        &:hover::before{
-            opacity: 1;
-        }
-    }
 }
 
 
