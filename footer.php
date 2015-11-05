@@ -21,21 +21,24 @@
             
         </div>
 
-        <h3>Nilles Nation</h3>
+        <h3><?php echo $restaurant[0]; ?></h3>
                 
         <div class="infocontainer">
-            <p>Cupcake ipsum dolor sit amet chocolate bar sweet halvah I love. Cookie lemon drops tootsie roll lemon drops I love candy donut. Tiramisu gummi bears caramels croissant cake cake. Tootsie roll caramels gummies fruitcake powder jelly lollipop.
-Sugar plum cookie brownie soufflé bonbon gummi bears lollipop pie lemon drops. Cake apple pie cake gummies soufflé. Danish powder gummies. Pastry fruitcake sweet lemon drops oat cake marzipan.</p>
+            <p><?php echo $restaurant[10]; ?></p>
         </div>
 
         <div class="contactinformation">
-        
+            <p><strong>Email: </strong> <?php echo $restaurant[2] ?> </p>
+            <p><strong>Telephone: </strong> <?php echo $restaurant[3]; ?> </p>
+            <p><strong>Adress: </strong> <?php echo $restaurant[6]; ?> </p>
+            <p><strong>Öppettider: </strong> <?php echo $restaurant[5]; ?> </p>
+            <p><strong>Homepage: </strong> <?php echo $restaurant[4]; ?> </p>
         </div>
     </footer>
 
 
 	<div class="header">
-		<a href="index.php">Sittning @ <?php echo $restaurant[0]; ?></a>
+		<a href="index.php">Sittning @ <?php echo $restaurant[1]; ?></a>
 		<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>
 	</div>
 

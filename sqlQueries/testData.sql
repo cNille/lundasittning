@@ -2,11 +2,12 @@
 start transaction;
 
 select 'Insert restaurant' as '';
-insert into restaurant(name, price, size, summary) values
-    ('Nilles nation', 140, 90, 'EN UPPLEVELSE!'),
-    ('Franz nation', 240, 120, 'EN UPPLEVELSE!'),
-    ('Malins nation', 40, 50, 'EN UPPLEVELSE!'),
-    ('Jennifers nation', 40, 50, 'EN UPPLEVELSE!');
+insert into restaurant(name, price, size, summary, nickname, email, telephone, homepage, hours, address) values
+    ('Nilles nation', 140, 90, 'EN UPPLEVELSE!', 'NN','c@shapeapp.se','0708342311','www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7'),
+    ('Franz nation', 240, 120, 'EN UPPLEVELSE!', 'NN','c@shapeapp.se','0708342311','www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7'),
+    ('Malins nation', 40, 50, 'EN UPPLEVELSE!', 'NN','c@shapeapp.se','0708342311','www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7'),
+    ('Jennifers nation', 40, 50, 'EN UPPLEVELSE!', 'NN','c@shapeapp.se','0708342311','www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7');
+
 
 select 'Insert usertype' as '';
 insert into usertype values

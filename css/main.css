@@ -245,6 +245,9 @@ body {
     body footer .infocontainer {
       max-width: 280px;
       margin: auto; }
+    body footer .contactinformation {
+      max-width: 280px;
+      margin: auto; }
   body .fb-login {
     height: 30px;
     position: fixed;
