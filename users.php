@@ -2,14 +2,17 @@
 	require_once 'header.php';
  	$dbHandler = new DatabaseHandler();
 
- 	$access = $dbHandler->getAccessLevel($fbid, $restaurant->name);
+ 	$access = $dbHandler->getAccessLevel($fbid, $restaurant[0]);
+
+    // Requires accesslevel of 5 or else redirects to index.php
  	requireAccessLevel(5, $access);
- 	$users = $dbHandler->getParticipants($restaurant->name);
+
+ 	$users = $dbHandler->getParticipants($restaurant[0]);
  	$userTypes = $dbHandler->getUserTypes($access);
 	$dbHandler->disconnect();
  ?>
 <div class="content">
-	<?php echo "<h2>Användare vid $restaurant->name</h2>"; ?>
+	<?php echo "<h2>Användare vid $restaurant[0]</h2>"; ?>
 	<div class="section">
 		<h3></h3>
 		
