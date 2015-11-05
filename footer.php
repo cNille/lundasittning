@@ -32,7 +32,7 @@
             <p><strong>Telephone: </strong> <?php echo $restaurant[3]; ?> </p>
             <p><strong>Adress: </strong> <?php echo $restaurant[6]; ?> </p>
             <p><strong>Öppettider: </strong> <?php echo $restaurant[5]; ?> </p>
-            <p><strong>Homepage: </strong> <?php echo $restaurant[4]; ?> </p>
+            <p><strong>Homepage: </strong> <a href="<?php echo $restaurant[4]; ?>"> <?php echo $restaurant[4]; ?> </a> </p>
         </div>
     </footer>
 
