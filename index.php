@@ -10,7 +10,7 @@
 		// För översikt under testning, ta bort sen.
 		return "Platser kvar: " . $spotsLeft;
 
-		if($spotsLeft > $resSize * 0.5){
+		if($spotsLeft > $resSize * 0.7){
 			return "Ledig";
 		} else if ($spotsLeft < 5){
 			return "Fåtal platser kvar";

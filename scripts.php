@@ -125,6 +125,28 @@
 		return;
 	}
 	
+	if($_POST['updateNationSettings']){
+		$name = $_POST['name'];
+		$nickname = $_POST['nickname'];
+		$email = $_POST['email'];
+		$phone = $_POST['phone'];
+		$homepage = $_POST['homepage'];
+		$hours = $_POST['hours'];
+		$address = $_POST['address'];
+		$deposit = $_POST['deposit'];
+		$price = $_POST['price'];
+		$size = $_POST['size'];
+		$summary = $_POST['summary'];
+
+        $access = $dbHandler->getAccessLevel($fbid, $restaurant[0]);
+        requireAccessLevel(5, $access);
+
+        $dbHandler->updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary);
+
+
+		header("Location: nationsettings.php?status=saved");
+		return;
+	}
 	if($_POST['updateSettings']){
 		$email = $_POST['email'];
 		$foodpref = $_POST['foodpref'];
