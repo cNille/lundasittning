@@ -1,20 +1,6 @@
 	
 
 
-	<?php if ($loggedIn): ?> 
-		<div class="fb-login">
-            <a href="facebook-login/logout.php">
-			<img src="https://graph.facebook.com/<?php echo $fbid; ?>/picture" />
-			<span><?php echo $fbFullname; ?></span>
-			<br />
-            Logga ut</a>
-		</div>
-	<?php else : ?>
-		<div class="fb-login">
-			<img src="images/FB-logga.png" />
-			<span class="login">Logga in</span>
-		</div>
-	<?php endif; ?>
 
     <footer>
         <div class="logocontainer">
@@ -36,6 +22,20 @@
 
     </footer>
 
+    <?php if ($loggedIn): ?> 
+        <div class="fb-login">
+            <a href="facebook-login/logout.php">
+            <img src="https://graph.facebook.com/<?php echo $fbid; ?>/picture" />
+            <span><?php echo $fbFullname; ?></span>
+            <br />
+            Logga ut</a>
+        </div>
+    <?php else : ?>
+        <div class="fb-login">
+            <img src="images/FB-logga.png" />
+            <span class="login">Logga in</span>
+        </div>
+    <?php endif; ?>
 
 	<div class="header">
 		<a href="index.php">Sittning @ <?php echo $restaurant[1]; ?></a>

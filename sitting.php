@@ -33,7 +33,7 @@
 		}
 	}
 
-	$spotsLeft = $restaurant[6];
+	$spotsLeft = $restaurant[9];
  ?>
 <div class="content">
 	<div class="title">Sittning</div>
@@ -41,8 +41,9 @@
 		<div class="left side">
 				<h3><?php echo date('j/n', strtotime($sitting->date)); ?></h3>
 				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
-				<label>Preliminär deadline: </label><span><?php echo $sitting->prelDay; ?></span><br />
-				<label>Preliminär deadline: </label><span><?php echo $sitting->payDay; ?></span>
+				<label>Boknings-deadline: </label><span><?php echo $sitting->prelDay; ?></span><br />
+				<label>Betalnings-deadline: </label><span><?php echo $sitting->payDay; ?></span>
+                <br /><br />
 				<table>
 					<tr>
 						<th>Anmälda sällskap</th>
