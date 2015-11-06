@@ -153,7 +153,7 @@
 
     <?php if($isQuratel) : ?>
     <div class="party-content">
-        <h2>Vy för Quratel</h2>
+        <h3>Vy för Quratel</h3>
         <h4>Platser anmälda</h4>
         <form action="scripts.php" method="POST">
             <input type="number" name="interest" value="<?php echo $party->interest; ?>" />
