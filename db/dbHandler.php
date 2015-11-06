@@ -38,6 +38,21 @@
 		}
 
         public function updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo){
+            $name = htmlspecialchars($name);
+            $nickname = htmlspecialchars($nickname);
+            $email = htmlspecialchars($email);
+            $phone = htmlspecialchars($phone);
+            $homepage = htmlspecialchars($homepage);
+            $hours = htmlspecialchars($hours);
+            $address = htmlspecialchars($address);
+            $deposit = htmlspecialchars($deposit);
+            $price = htmlspecialchars($price);
+            $size = htmlspecialchars($size);
+            $summary = htmlspecialchars($summary);
+            $bg = htmlspecialchars($bg);
+            $loggo = htmlspecialchars($loggo);
+
+
             $sql = "UPDATE restaurant SET nickname=?, email=?, telephone=?, homepage=?, hours=?, address=?, deposit=?, price=?, size=?, summary=?, backgroundimage=?, loggoimage=? WHERE name=?;";
             $result = $this->db->executeUpdate($sql, array( $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $name));
             return count($result) == 1;
@@ -51,16 +66,24 @@
 			return count($result) == 1;
 		}
 		public function createLoginAccount($fbid, $email) {
+            $fbid = htmlspecialchars($fbid);
+            $email = htmlspecialchars($email);
+
 		    $sql = "INSERT INTO loginaccount (fbid, email) VALUES (?,?);";
     		$result = $this->db->executeUpdate($sql, array($fbid, $email));
     		return $this->db->getLastId(); 
 		}
 		public function updateEmail($id, $email) {
+            $id = htmlspecialchars($id);
+            $email = htmlspecialchars($email);
 		    $sql = "UPDATE loginaccount SET email=? WHERE id = ?;";
     		$result = $this->db->executeUpdate($sql, array($email, $id));
     		return $result[0];
 		}
 		public function updatePhone($id, $phone) {
+            $id = htmlspecialchars($id);
+            $phone = htmlspecialchars($phone);
+
 		    $sql = "UPDATE loginaccount SET telephone=? WHERE id = ?;";
     		$result = $this->db->executeUpdate($sql, array($phone, $id));
     		return $result[0];
@@ -76,6 +99,10 @@
 		// Participant
 		// ======================================================
         public function createParticipant($name, $other, $loginaccount){
+            $name = htmlspecialchars($name);
+            $other = htmlspecialchars($other);
+            $loginaccount = htmlspecialchars($loginaccount);
+
             $sql = "INSERT INTO participant (name, other) VALUES (?,?)";
             $result = $this->db->executeUpdate($sql, array($name, $other));
     		return $this->db->getLastId(); 
@@ -86,11 +113,15 @@
             return $result;
         }
         public function updateName($name, $participantId) {
+            $name = htmlspecialchars($name);
+            $participantId = htmlspecialchars($participantId);
             $sql = "UPDATE participant SET name=? WHERE id=?;";
             $result = $this->db->executeUpdate($sql, array($name, $participantId));
             return $result[0];
         }
         public function updateOther($id, $other) {
+            $id = htmlspecialchars($id);
+            $other = htmlspecialchars($other);
             $sql = "UPDATE participant SET other=? WHERE id = ?;";
             $result = $this->db->executeUpdate($sql, array($other, $id));
             return $result[0];
@@ -166,11 +197,18 @@
 		// Sitting
 		// ======================================================
 		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant) {
+            $sittDate = htmlspecialchars($sittDate);
+            $sittPrelDeadline = htmlspecialchars($sittPrelDeadline);
+            $sittPayDeadline = htmlspecialchars($sittPayDeadline);
+            $restaurant = htmlspecialchars($restaurant);
+
 		    $sql = "INSERT INTO sitting (sittDate, prelDeadline, payDeadline, resName) VALUES (?, ?, ?, ?);";
     		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadlinel, $restaurant));
     		return $this->db->getLastId(); 
 		}
 		public function deleteSitting($sittId){
+            $sittId = htmlspecialchars($sittId);
+            
 			$sql = "UPDATE sitting SET active = 0 WHERE id=?;";
 		    $result = $this->db->executeUpdate($sql, array($sittId));
 		    return count($result) == 1;  
@@ -192,14 +230,20 @@
 		}
 
         public function updateAppetiser($sittId, $appetiser) {
+            $sittId = htmlspecialchars($sittId);
+            $appetiser = htmlspecialchars($appetiser);
             $sql = "UPDATE sitting SET appetiser=? WHERE id = ?;";
             $result = $this->db->executeUpdate($sql, array($appetiser, $sittId));
         }
         public function updateMain($sittId, $main) {
+            $sittId = htmlspecialchars($sittId);
+            $main = htmlspecialchars($main);
             $sql = "UPDATE sitting SET main=? WHERE id = ?;";
             $result = $this->db->executeUpdate($sql, array($main, $sittId));
         }
         public function updateDesert($sittId, $desert) {
+            $sittId = htmlspecialchars($sittId);
+            $desert = htmlspecialchars($desert);
             $sql = "UPDATE sitting SET desert=? WHERE id = ?;";
             $result = $this->db->executeUpdate($sql, array($desert, $sittId));
         }
@@ -225,12 +269,16 @@
 		}
 
 		public function setSittingForeman($sittId, $participantId) {
+            $sittId = htmlspecialchars($sittId);
+            $participantId = htmlspecialchars($participantId);
 			$sql = "INSERT INTO sittingforeman VALUES (?,?);";
 			$result = $this->db->executeUpdate($sql, array($sittId, $participantId));
 			return $result; 
 		}
 
 		public function removeSittingForeman($sittId, $participantId) {
+            $sittId = htmlspecialchars($sittId);
+            $participantId = htmlspecialchars($participantId);
 			$sql = "DELETE FROM sittingforeman WHERE sittId=? AND participantId=?;";
 			$result = $this->db->executeUpdate($sql, array($sittId, $participantId));
 			return $result; 
@@ -260,16 +308,26 @@
 			return $result;
 		}
 		public function createParty($name, $type, $sittId, $int, $msg, $key) {
+            $name = htmlspecialchars($name);
+            $type = htmlspecialchars($type);
+            $sittId = htmlspecialchars($sittId);
+            $int = htmlspecialchars($int);
+            $msg = htmlspecialchars($msg);
+            $key = htmlspecialchars($key);
 		    $sql = "INSERT INTO party (name, partyType, sittId, interest, message, urlkey) VALUES (?, ?, ?, ?, ?, ?);";
     		$result = $this->db->executeUpdate($sql, array($name, $type, $sittId, $int, $msg, $key));
     		return $this->db->getLastId(); 
 		}
 		public function updatePartyMsg($pId, $msg){
+            $pId = htmlspecialchars($pId);
+            $msg = htmlspecialchars($msg);
 		    $sql = "UPDATE party SET message=? WHERE id=?;";
     		$result = $this->db->executeUpdate($sql, array($msg, $pId));
     		return $result[0];		
 		}
 		public function updatePartyInterest($pId, $interest){
+            $pId = htmlspecialchars($pId);
+            $interest = htmlspecialchars($interest);
 		    $sql = "UPDATE party SET interest=? WHERE id=?;";
     		$result = $this->db->executeUpdate($sql, array($interest, $pId));
     		return $result[0];		
@@ -287,6 +345,8 @@
 			return $result[0]; 
 		}
 		public function createPartyCreator($partyId, $participantId) {
+            $partyId = htmlspecialchars($partyId);
+            $participantId = htmlspecialchars($participantId);
 		    $sql = "INSERT INTO partycreator (partyId, participantId) VALUES (?, ?);";
     		$result = $this->db->executeUpdate($sql, array($partyId, $participantId));
     		return $this->db->getLastId(); 
@@ -311,6 +371,8 @@
 			return $this->arrarrGuest($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
 		}
 		public function addPartyParticipant($partyId, $participantId) {
+            $partyId = htmlspecialchars($partyId);
+            $participantId = htmlspecialchars($participantId);
 		    $sql = "INSERT INTO partyparticipant (partyId, participantId, participantPayed) VALUES (?, ?, 'Nej');";
     		$result = $this->db->executeUpdate($sql, array($partyId, $participantId));
     		return $this->db->getLastId(); 
@@ -321,6 +383,9 @@
 			return count($result) == 1;
 		}
         public function updateParticipantPayStatus($participant, $party, $paystatus){
+            $participant = htmlspecialchars($participant);
+            $party = htmlspecialchars($party);
+            $paystatus = htmlspecialchars($paystatus);
             $sql = "UPDATE partyparticipant SET participantPayed=? WHERE participantId=? AND partyId=?";
             $result = $this->db->executeUpdate($sql, array($paystatus, $participant, $party));
             return $result;
