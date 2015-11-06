@@ -722,10 +722,26 @@ body {
     body .event-grid #event-creator #reject {
       background: url("../images/reject.png") no-repeat;
       background-size: 100% 100%;
-      left: 10px; }
+      left: 10px;
+      -webkit-transition: all 0.2s ease-in-out;
+      -moz-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      opacity: 0.5; }
+      body .event-grid #event-creator #reject:hover {
+        opacity: 1; }
+      body .event-grid #event-creator #reject:hover {
+        opacity: 1; }
     body .event-grid #event-creator #confirm {
       background: url("../images/confirm.png") no-repeat;
       background-size: 100% 100%;
-      right: 10px; }
+      right: 10px;
+      -webkit-transition: all 0.2s ease-in-out;
+      -moz-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      opacity: 0.5; }
+      body .event-grid #event-creator #confirm:hover {
+        opacity: 1; }
 
 /*# sourceMappingURL=main.css.map */
