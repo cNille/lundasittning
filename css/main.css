@@ -466,7 +466,10 @@ body {
     min-height: 200px;
     padding: 15px 25px;
     box-sizing: border-box;
-    display: table; }
+    display: table;
+    margin-bottom: 20px; }
+    body .party-content h2 {
+      color: #333; }
     body .party-content .side {
       position: relative;
       display: table-cell;

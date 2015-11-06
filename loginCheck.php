@@ -5,6 +5,8 @@
 	$loggedIn = false;
 	
 	$resName = 'Nilles nation';
+	//$resName = 'Malins nation';
+	//$resName = 'Franz nation';
 	$dbHandler = new DatabaseHandler();	
 	$restaurant = $dbHandler->getRestaurant($resName); // Variable determines nation
 	

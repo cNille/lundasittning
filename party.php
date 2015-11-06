@@ -25,45 +25,19 @@
 
 <div class="content">
 	<div class="title"><?php echo $party->name; ?></div>
+
+
 	<div class="party-content">
 		<div class="left side">
-				<h4>Datum</h4>
-				<p><?php echo $sitting->date; ?></p>
-                <h4>Platser anmälda</h4>
-                <?php if($isQuratel) : ?>
-                    <form action="scripts.php" method="POST">
-                        <input type="number" name="interest" value="<?php echo $party->interest; ?>" />
-                        <input type="hidden" name="partyId" value="<?php echo $party->id; ?>" />
-                        <input type="submit" name="updatePartyInterest" value="Uppdatera platser" />
-                    </form>
-                <?php else : ?>
-                    <p><?php echo $party->interest; ?> platser (vid eventuella förändringar, kontakta quratelet och meddela detta.)</p>
-                <?php endif; ?>
-				<h4>Sällskapsansvarig</h4> 
-				<p><?php echo  $creator[1];?></p>
-				<p><?php echo  $creator[2];?></p>
-				<p><?php echo  $creator[3];?></p>
-				<?php if($isCreator || $isQuratel) : ?>
-				<h4>Anmälningslänk</h4> 
-				<p id="toClipboard" onClick="CopyToClipboard();"><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
-				<?php endif; ?>
-				<h4>Meddelande</h4> 
-				<?php 
-					if($isCreator){
-						?>
-						<form action="scripts.php" method="POST">
-							<textarea rows="4" cols="50" name="message" maxlength="250"><?php echo $party->message; ?></textarea>
-							<br />
-							<input type='hidden' value="<?php echo $id; ?>" name="partyId" />
-							<input type="submit" value="Uppdatera meddelande" name="updatePartyMsg" />
-						</form>
-						<?php
-					} else {
-						echo "<p>$party->message</p>";
-					}
-
-				?>
-				
+            <h4>Datum</h4>
+            <p><?php echo $sitting->date; ?></p>
+            <h4>Platser anmälda</h4>
+            <p><?php echo $party->interest; ?> platser</p>
+            <h4>Sällskapsansvarig</h4> 
+            <p><?php echo  $creator[1];?></p>
+            <p><?php echo  $creator[2];?></p>
+            <p><?php echo  $creator[3];?></p>
+            <p><?php echo $party->message; ?></p>
 		</div>
 		<div class="right side">
 			<?php if(!$isParticipating) : ?>
@@ -77,39 +51,71 @@
 						<span>Anmäl dig via inlogg</span>
 					</a>
 					<a class="btn"  href="partybooking.php?guestMode=1&partyId=<?php echo $id; ?>">
-						<span>Anmäl dig via gästinlogg</span>
+						<span>Anmäl dig utan inlogg</span>
 					</a>
 				<?php endif; ?>
             <?php else : ?>
-					<span class="btn primary" style="cursor: default;">
-                        Du är redan anmäld
-					</span>
+                <span class="btn primary" style="cursor: default;">
+                    Du är redan anmäld
+                </span>
 			<?php endif; ?>
-			<?php if($isCreator) : ?>
-				<a class="btn"  href="partybooking.php?guestMode=1&partyId=<?php echo $id; ?>">
-					<span>Anmäl en gäst här</span>
-				</a>
-				<a class="btn"  href="guestlistuploader.php?partyid=<?php echo $id; ?>">
-					<span>Ladda in gästlista från Excel</span>
-				</a>
-			<?php endif; ?>
-			<?php
-				if($isQuratel){
-					echo "<form action='scripts.php' method='POST'>";
-				}
-			?>
 			<table>
 				<tr>
 					<th>#</th>
 					<th>Gäster</th>
-                    <?php if($isCreator || $isQuratel) : ?>
-                
-                        <th>Matpreferens</th>
-                        <th>Betalat</th>
-                        <th><p class='listtoggle'>Välj alla</p></th>
-                        
+				</tr>
+				<?php 
+                $i = 1;
+                foreach ($partyUsers as $key => $g) {
+                    ?>
+                    <tr>
+                        <td><?php echo $i; ?></td>
+                        <td><?php echo $g->name; ?></td>
+                    </tr>
+                    <?php
+                    $i++;
+                }
+				?>
+			</table>
+		</div>
+	</div>
 
-                    <?php endif; ?>
+
+    <a href="./sitting.php?sittId=<?php echo $party->sittId; ?>" class="button primary">Tillbaka till sittningen</a>
+
+
+	<?php if($isCreator || $isQuratel) : ?>
+    <div class="party-content">
+        <div class="left side">
+        <h3>Vy för Sällskapsskaparen</h3>
+            <h4>Platser anmälda</h4>
+            <p><?php echo $party->interest; ?> platser (för att uppdatera detta, kontakta quratelet).</p>
+            <h4>Anmälningslänk</h4> 
+            <p id="toClipboard" onClick="CopyToClipboard();"><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
+            <h4>Meddelande</h4> 
+            <form action="scripts.php" method="POST">
+                <textarea rows="4" cols="50" name="message" maxlength="250"><?php echo $party->message; ?></textarea>
+                <br />
+                <input type='hidden' value="<?php echo $id; ?>" name="partyId" />
+                <input type="submit" value="Uppdatera meddelande" name="updatePartyMsg" />
+            </form>
+        </div>
+        <div class="right side">
+            <a class="btn"  href="partybooking.php?guestMode=1&partyId=<?php echo $id; ?>">
+                <span>Anmäl en gäst här</span>
+            </a>
+            <a class="btn"  href="guestlistuploader.php?partyid=<?php echo $id; ?>">
+                <span>Ladda in gästlista från Excel</span>
+            </a>
+
+			<form action='scripts.php' method='POST'>
+			<table>
+				<tr>
+					<th>#</th>
+					<th>Gäster</th>
+                    <th>Matpreferens</th>
+                    <th>Betalat</th>
+                    <th><p class='listtoggle'>Välj alla</p></th>
 				</tr>
 				<?php 
 					$i = 1;
@@ -119,11 +125,9 @@
 							<td><?php echo $i; ?></td>
 							<td><?php echo $g->name; ?></td>
 							<?php if($isCreator || $isQuratel) : ?>
-
                                 <td><?php echo $g->foodpref; ?></td>
                                 <td><?php echo $g->payed; ?></td>
 								<td><input type='checkbox' class='chbx' name='userId[]' value='<?php echo $g->id; ?>' /></td>
-
 							<?php endif; ?>
 						</tr>
 						<?php
@@ -131,26 +135,35 @@
 					}
 				?>
 			</table>
-			<?php
-				if($isQuratel){
-                    ?>
-                    <input type="hidden" name="partykey" value="<?php echo $party->key; ?>">
-                    <input type="hidden" name="partyid" value="<?php echo $party->id; ?>">
-					<input type='submit' name='partyUpdatePay' value='Uppdatera till'>
-                    <select name='payStatus'>
-                        <?php
-                            foreach ($payStatus as $key => $p) {
-                                echo "<option value='$p[0]'>$p[0]</option>";
-                            }
-                        ?>
-                    </select>
-					</form>
-                    <?php
-				}
-			?>
-		</div>
-	</div>
-    <a href="./sitting.php?sittId=<?php echo $party->sittId; ?>" class="button primary">Tillbaka till sittningen</a>
+            <input type="hidden" name="partykey" value="<?php echo $party->key; ?>">
+            <input type="hidden" name="partyid" value="<?php echo $party->id; ?>">
+            <input type='submit' name='partyUpdatePay' value='Uppdatera till'>
+            <select name='payStatus'>
+                <?php
+                    foreach ($payStatus as $key => $p) {
+                        echo "<option value='$p[0]'>$p[0]</option>";
+                    }
+                ?>
+            </select>
+            </form>
+        </div>
+    </div>
+	<?php endif; ?>
+
+
+    <?php if($isQuratel) : ?>
+    <div class="party-content">
+        <h2>Vy för Quratel</h2>
+        <h4>Platser anmälda</h4>
+        <form action="scripts.php" method="POST">
+            <input type="number" name="interest" value="<?php echo $party->interest; ?>" />
+            <input type="hidden" name="partyId" value="<?php echo $party->id; ?>" />
+            <input type="submit" name="updatePartyInterest" value="Uppdatera platser" />
+        </form>
+    </div>
+	<?php endif; ?>
+
+
 </div>
 <script>
     var toggle = false;

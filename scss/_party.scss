@@ -1,6 +1,11 @@
 .party-content{
 	@include content-bg();
 	display: table;
+    margin-bottom: 20px;
+
+    h2{
+        color: $black;
+    }
 
 	.side{
 		position: relative;

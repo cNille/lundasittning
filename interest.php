@@ -29,7 +29,8 @@
 			<span><input type="text" name="partyName" value="" required></span>
 			<label>Meddelande till gästerna (250 tecken)</label>			
 			<textarea rows="4" cols="50" name="message" maxlength="250"></textarea>
-			<input type="submit" value="Skicka" name="createInterestParty" />
+			<input class="primary" type="submit" value="Skicka" name="createInterestParty" />
+			<button class="formcancel" onclick="window.history.back();">Avbryt</button>
 		</form>
 	</div>
 </div>
