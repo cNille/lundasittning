@@ -149,16 +149,17 @@
 		</div>
 	</div>
 
-	<div <?php 
-			if($loggedIn){ 
-				echo 'class="button primary"  onclick="location.href=\'interest.php?sittId=' . $sitting->id . '\';"'; 
-			} else { 
-				echo 'class="button disabled" title="Du måste vara inloggad för att kunna lägga en anmälan."'; 
-			} ?> 
-		>
-		<span>+ Lägg intresseanmälan</span>
-	</div>
+	<?php if($loggedIn) : ?>
+        <div class="button primary"  onclick="location.href='interest.php?sittId=<?php echo $sitting->id; ?>';">
+            <span>+ Lägg en intresseanmälan</span>
+        </div>
+        <?php else : ?>
+            <div class="button primary"  onclick="location.href='facebook-login/fbconfig.php';">
+                <span>Logga in för att kunna lägga en intresseanmälan</span>
+            </div>
+        <?php endif; ?>
 	<?php 
+
 	if($myAccessLevel >= 5 || $isSittingForeman) : ?>
         <div class="single-sitting">
             <h2>Vy för Sittningsförmän</h2>
