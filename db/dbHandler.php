@@ -55,6 +55,9 @@
 
             $sql = "UPDATE restaurant SET nickname=?, email=?, telephone=?, homepage=?, hours=?, address=?, deposit=?, price=?, size=?, summary=?, backgroundimage=?, loggoimage=? WHERE name=?;";
             $result = $this->db->executeUpdate($sql, array( $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $name));
+
+            $this->log("Restaurang uppdated.", null, null);
+
             return count($result) == 1;
         }
 
@@ -71,6 +74,9 @@
 
 		    $sql = "INSERT INTO loginaccount (fbid, email) VALUES (?,?);";
     		$result = $this->db->executeUpdate($sql, array($fbid, $email));
+
+            $this->log("Loginaccount created.", null, null);
+
     		return $this->db->getLastId(); 
 		}
 		public function updateEmail($id, $email) {
@@ -78,6 +84,9 @@
             $email = htmlspecialchars($email);
 		    $sql = "UPDATE loginaccount SET email=? WHERE id = ?;";
     		$result = $this->db->executeUpdate($sql, array($email, $id));
+
+            $this->log("Loginaccount update.", null, null);
+
     		return $result[0];
 		}
 		public function updatePhone($id, $phone) {
@@ -413,6 +422,10 @@
 
 		// Log
 		// ======================================================
+        public function log($logMessage, $user, $res){
+            $sql = "INSERT INTO log (eventText, participantId, logdate, resName) VALUES (?,?,NOW(),?);";
+            $result = $this->db->executeUpdate($sql, array($logMessage, $user, $res));
+        }   
 
 
 		// Event

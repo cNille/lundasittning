@@ -173,7 +173,7 @@ create table log (
 	id  		    	integer auto_increment,
 	participantId		integer,
 	eventText	    	varchar(50),
-	logDate			    date,
+	logDate			    datetime,
 	resName		    	varchar(30),
 	primary key(id),
 	foreign key (participantId) references participant(id),
