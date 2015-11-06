@@ -9,7 +9,9 @@
 	background-color: white;
 	@include easy-trans(0.3s);
 	box-sizing: border-box;
-
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
 
 	&.active{
 		right: 0;
@@ -24,9 +26,12 @@
 		padding: 15px 30px;
 		text-decoration: none;
 		font-size: 20px;
+        color: $blue;
+        @include easy-trans(0.3s);
 
 		&:hover{
-			background-color: darken(white, 10%);
+			background-color: $red;
+            color: $white;
 		}
 	}
 }

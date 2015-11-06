@@ -219,7 +219,10 @@ body {
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000; }
     body .sidenav.active {
       right: 0; }
     body .sidenav h1 {
@@ -228,9 +231,15 @@ body {
       display: block;
       padding: 15px 30px;
       text-decoration: none;
-      font-size: 20px; }
+      font-size: 20px;
+      color: #4a6b83;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
       body .sidenav a:hover {
-        background-color: #e6e6e6; }
+        background-color: #f2867d;
+        color: #eee; }
   body .shadow {
     position: fixed;
     display: block;
