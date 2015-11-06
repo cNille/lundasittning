@@ -44,6 +44,8 @@
 		// Add user to partyguest list.
 		$dbHandler->addPartyParticipant($partyId, $userId);
 
+        $_SESSION['message'] = "Plats bokad.";
+        
 		header("Location: party.php?partyKey=" . $partyKey);
 		return;
 	}
@@ -70,6 +72,7 @@
 				}
 			}
 		}		
+        $_SESSION['message'] = "Användare uppdaterad.";
 		header("Location: users.php");
 		return;
 	}
@@ -122,6 +125,8 @@
 		$headers = "From: $from\r\nReply-To: $to\r\n";
 		mail($to, $subject, $msg, $headers);
 
+        $_SESSION['message'] = 'Intresseanmälan lagd. Mail skickat till Nationen med info.';
+        
 		header("Location: party.php?partyKey=" . $key);
 		return;
 	}
@@ -143,7 +148,7 @@
 		$size = $_POST['size'];
 		$summary = $_POST['summary'];
 
-        $msg = "Save success.";
+        $msg = "Save successfull.";
         if (isset($_FILES['backgroundimage']) && $_FILES['backgroundimage'] != '') {
             $bgName = "$restaurant[0]_background";
             $success = uploadImage($_FILES["backgroundimage"], $bgName);
@@ -156,6 +161,7 @@
         }
         if ($bg == "") {
             $bg = $restaurant[11];
+            $msg = "Save successfull.";
         }
         if (isset($_FILES['nationloggo']) && $_FILES['nationloggo'] != '') {
             $loggoName = "$restaurant[0]_loggo";
@@ -169,12 +175,14 @@
         }
         if ($loggo == "") {
             $loggo = $restaurant[12];
+            $msg = "Save successfull.";
         }
     
         $dbHandler->updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo);
 
-
-        $_SESSION['status'] = $msg;
+        if($msg != ""){
+            $_SESSION['message'] = $msg;
+        }
 		header("Location: nationsettings.php");
         return;
 	}
@@ -202,6 +210,9 @@
 		foreach ($foodpref as $key => $f) {
 			$dbHandler->addParticipantFood($user[0], $f);
 		}
+
+        $_SESSION['message'] = 'Inställningar sparade.';
+
 		header("Location: index.php?status=saved");
 		return;
 	}
@@ -215,6 +226,9 @@
 			$dbHandler->updatePartyInterest($pId, $interest);
 		}
         $party = $dbHandler->getParty($pId);
+
+        $_SESSION['message'] = 'Antal intresserade uppdaterat.';
+
 		header("Location: party.php?partyKey=$party->key");
 		return;		
 	}
@@ -228,6 +242,9 @@
 			$dbHandler->updatePartyMsg($pId, $msg);
 		}
         $party = $dbHandler->getParty($pId);
+
+        $_SESSION['message'] = 'Meddelande uppdaterad.';
+
 		header("Location: party.php?partyKey=$party->key");
 		return;		
 	}
@@ -249,6 +266,8 @@
 	            }
             }
         }
+
+
         header("Location: ./$partykey");
         return;
     }
@@ -265,6 +284,8 @@
             $dbHandler->updateAppetiser($sittId, $appetiser);
             $dbHandler->updateMain($sittId, $main);
             $dbHandler->updateDesert($sittId, $desert);
+
+            $_SESSION['message'] = 'Menyn är nu uppdaterad.';
             
             header("Location: sitting.php?sittId=$sittId");
             return;		
@@ -288,6 +309,10 @@
 			}
 		}
 	
+
+        $_SESSION['message'] = 'Förman är nu tillagd.';
+
+
 		header("Location: sitting.php?sittId=$sittId");
 		return;		
 	}
@@ -299,6 +324,8 @@
 			$dbHandler->removeSittingForeman($sittId, $user);
 		}
 	
+        $_SESSION['message'] = 'Förman är nu borttagen.';
+
 		header("Location: sitting.php?sittId=$sittId");
 		return;		
 	}

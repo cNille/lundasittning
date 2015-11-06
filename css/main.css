@@ -33,6 +33,9 @@ body {
       font-size: 60px;
       color: white;
       font-weight: 100; }
+      @media screen and (max-width: 750px) {
+        body .content .title, body .content h2 {
+          font-size: 35px; } }
     body .content .button {
       display: block;
       background-color: white;
@@ -135,8 +138,8 @@ body {
       transition: all 0.3s ease-in-out;
       border: 1px solid #ccc;
       margin: 5px 0px;
-      padding: 10px 15px;
-      width: 100%;
+      padding: 10px 5%;
+      width: 90%;
       max-width: 250px; }
       body .content input[type=email]:hover, body .content input[type=email]:focus, body .content input[type=password]:hover, body .content input[type=password]:focus, body .content input[type=text]:hover, body .content input[type=text]:focus, body .content input[type=tel]:hover, body .content input[type=tel]:focus, body .content input[type=number]:hover, body .content input[type=number]:focus, body .content textarea:hover, body .content textarea:focus {
         border: 1px solid #4a6b83; }
@@ -226,6 +229,23 @@ body {
     body .shadow.active {
       visibility: visible;
       opacity: 0.5; }
+  body .message {
+    position: absolute;
+    display: block;
+    width: 60%;
+    height: 100px;
+    top: 25%;
+    left: 20%;
+    padding: 20px 30px;
+    box-shadow: 0px 0px 25px #333;
+    border: 1px solid #ccc;
+    background-color: #4a6b83;
+    color: #eee;
+    cursor: pointer; }
+    body .message .close {
+      position: absolute;
+      top: 10px;
+      right: 10px; }
   body footer {
     background-color: #333;
     padding: 100px;
@@ -277,12 +297,14 @@ body {
         body footer .infocontainer a:hover::before {
           opacity: 1; }
     @media screen and (max-width: 700px) {
-      body footer .logocontainer {
-        width: 100%; }
-      body footer .infocontainer {
-        width: 100%;
-        display: block;
-        margin: auto; } }
+      body footer {
+        padding: 50px 0; }
+        body footer .logocontainer {
+          width: 100%; }
+        body footer .infocontainer {
+          width: 100%;
+          display: block;
+          margin: auto; } }
   body .fb-login {
     height: 30px;
     position: fixed;

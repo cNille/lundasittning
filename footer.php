@@ -1,7 +1,4 @@
 	
-
-
-
     <footer>
         <div class="logocontainer" style="background-image: url('uploads/<?php echo $restaurant[12]; ?>');">
         </div>
@@ -34,6 +31,31 @@
             <span class="login">Logga in</span>
         </div>
     <?php endif; ?>
+
+    <?php
+        if(isset($_SESSION['message'])) :
+            $msgType = "Meddelande";
+            if(isset($_SESSION['messagetype'])){
+                $msgType = $_SESSION['messagetype']; 
+            }
+            $msg = $_SESSION['message']; 
+            unset($_SESSION['message']);
+            $_SESSION['messagetype'] = '';
+    ?>
+
+    <div class="message">
+        <span class="close">X</span>
+        <h4><?php echo $msgType; ?></h4>
+        <p class="msg"><?php echo $msg; ?></p>
+        <span class="msg">(Klicka för att ta bort)</span>
+    </div>
+    <script>
+        $('.message').click(function(){
+            $('.message').fadeOut();
+        });
+    </script>
+    <?php endif;?>
+
 
 	<div class="header">
 		<a href="index.php">Sittning @ <?php echo $restaurant[1]; ?></a>

@@ -60,6 +60,10 @@ body{
             font-size: 60px;
             color: white;
             font-weight: 100;
+
+            @media screen and (max-width: $mobileBreak) {
+                font-size: 35px;
+            }
         }
 
 
@@ -170,8 +174,8 @@ body{
             @include easy-trans(0.3s);
             border: 1px solid $lightGrey;
             margin: 5px 0px;  
-            padding: 10px 15px;
-            width: 100%;
+            padding: 10px 5%;
+            width: 90%;
             max-width: 250px;
             
             &:hover, &:focus{
