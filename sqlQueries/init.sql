@@ -34,6 +34,8 @@ create table restaurant (
 	price   		integer,
 	size   			integer,
 	summary 		tinytext,
+	backgroundimage tinytext,
+	loggoimage 		tinytext,
     active          tinyint(1) DEFAULT 1,
 	primary key(name)
 );

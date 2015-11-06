@@ -15,12 +15,28 @@
 	    Nationsinställningar
 	</div>
 	<div class="userSettings">
-		<form action="scripts.php" method="POST">
+		<form action="scripts.php" enctype="multipart/form-data" method="POST">
 			<div style="max-width: 280px; margin: auto;">
 				<h3>
 	 		        <?php echo $restaurant[0]; ?>
                     <input type="hidden" name="name" value="<?php echo $restaurant[0]; ?>" />
 				</h3>
+				<div class="category">
+                    <h4>Bakgrundsbild</h4>
+                    <input type="file" id="bgimageinput" name="backgroundimage" accept="image/*" />
+                    <div id="backgroundgallery">
+                        <img id="bgimage" src="uploads/<?php echo $restaurant[11]; ?>" onerror="this.src='';" />
+                    </div>
+				</div>
+				<div class="category">
+                    <h4>Nationslogga</h4>
+                    <input type="file" id="loggoimageinput" name="nationloggo" accept="image/*" />
+                    <div id="loggogallery">
+                        <img id="loggoimage" src="uploads/<?php echo $restaurant[12]; ?>" onerror="this.src='';" />
+                    </div>
+				</div>
+                <br /><br /><br />
+                <br /><br /><br />
 				<div class="category">
 			        Smeknamn <input type="text" name="nickname" value="<?php echo $restaurant[1]; ?>">
 				</div>
@@ -52,11 +68,52 @@
                     Kort beskrivande text för nationen                 
                     <textarea rows="4" cols="50" name="summary" maxlength="250"><?php echo $restaurant[10]; ?></textarea>
                 </div>
+
+
 				<input class="primary category" type="submit" value="Spara" name="updateNationSettings" />
 			</div>
 			<input type="hidden" name="userId" value="<?php echo $user[0]; ?>" />
+
 		</form>
 	</div>
 </div>
+<script>
+$('#bgimageinput').change(function(){
+    var file = this.files[0];
+    var img = document.getElementById("bgimage");
+    img.file = file;
+
+    // Using FileReader to display the image content
+    var reader = new FileReader();
+    reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+    reader.readAsDataURL(file);
+
+});
+$('#loggoimageinput').change(function(){
+    var file = this.files[0];
+    var img = document.getElementById("loggoimage");
+    img.file = file;
+
+    var reader = new FileReader();
+    reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+    reader.readAsDataURL(file);
+});
+</script>
+ <style>
+    #gallery .thumbnail{
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 150px;
+        float:left;
+        margin:2px;
+    }
+    #gallery .thumbnail img{
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 150px;
+    }
+</style>
 
 <?php include 'footer.php'; ?>

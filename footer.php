@@ -3,10 +3,8 @@
 
 
     <footer>
-        <div class="logocontainer">
-            
+        <div class="logocontainer" style="background-image: url('uploads/<?php echo $restaurant[12]; ?>');">
         </div>
-
                 
         <div class="infocontainer">
             <h3><?php echo $restaurant[0]; ?></h3>

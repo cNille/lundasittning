@@ -1,6 +1,7 @@
 <?php 
 	require_once 'loginCheck.php';
 
+
 	function generateRandomString($length = 10) {
 	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	    $charactersLength = strlen($characters);
@@ -126,6 +127,10 @@
 	}
 	
 	if($_POST['updateNationSettings']){
+        // Only quratel or admin are allowed
+        $access = $dbHandler->getAccessLevel($fbid, $restaurant[0]);
+        requireAccessLevel(5, $access);
+
 		$name = $_POST['name'];
 		$nickname = $_POST['nickname'];
 		$email = $_POST['email'];
@@ -138,14 +143,40 @@
 		$size = $_POST['size'];
 		$summary = $_POST['summary'];
 
-        $access = $dbHandler->getAccessLevel($fbid, $restaurant[0]);
-        requireAccessLevel(5, $access);
+        $msg = "Save success.";
+        if (isset($_FILES['backgroundimage']) && $_FILES['backgroundimage'] != '') {
+            $bgName = "$restaurant[0]_background";
+            $success = uploadImage($_FILES["backgroundimage"], $bgName);
+            if($success != ""){
+                $msg = $success;
+            } else {
+                $bgType = explode(".", $_FILES["backgroundimage"]["name"])[1];
+                $bg = "$bgName.$bgType";
+            }
+        }
+        if ($bg == "") {
+            $bg = $restaurant[11];
+        }
+        if (isset($_FILES['nationloggo']) && $_FILES['nationloggo'] != '') {
+            $loggoName = "$restaurant[0]_loggo";
+            $success = uploadImage($_FILES["nationloggo"], $loggoName);
+            if($success != ""){
+                $msg = $success;
+            } else {
+                $loggoType = explode(".", $_FILES["nationloggo"]["name"])[1];
+                $loggo = "$loggoName.$loggoType";
+            }
+        }
+        if ($loggo == "") {
+            $loggo = $restaurant[12];
+        }
+    
+        $dbHandler->updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo);
 
-        $dbHandler->updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary);
 
-
-		header("Location: nationsettings.php?status=saved");
-		return;
+        $_SESSION['status'] = $msg;
+		header("Location: nationsettings.php");
+        return;
 	}
 	if($_POST['updateSettings']){
 		$email = $_POST['email'];
@@ -271,6 +302,48 @@
 		header("Location: sitting.php?sittId=$sittId");
 		return;		
 	}
+
+    function uploadImage($file, $name){
+        $target_dir = "uploads";
+
+        $end = $file["name"];
+        $e = explode(".", $end);
+        $target_file = "$target_dir/$name.$e[1]";
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        $check = getimagesize($file["tmp_name"]);
+        
+        if($check !== false) {
+            $msg = "File is an image - " . $check["mime"] . ".\n";
+            $uploadOk = 1;
+        } else {
+            $msg = "File is not an image.";
+            $uploadOk = 0;
+        }
+
+        // Check file size
+        $size = $file["size"];
+        if ($size > 15000000) {
+            $msg = "Sorry, your file is too large. $size";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+            $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed. $imageFileType";
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            $msg .= "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($file["tmp_name"], $target_file)) {
+                $msg = "";
+            }
+        }
+        return $msg;
+    }
 
  	// Close database.
 	$dbHandler->disconnect();

@@ -37,9 +37,9 @@
 			return $result[0][0];
 		}
 
-        public function updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary){
-            $sql = "UPDATE restaurant SET nickname=?, email=?, telephone=?, homepage=?, hours=?, address=?, deposit=?, price=?, size=?, summary=? WHERE name=?;";
-            $result = $this->db->executeUpdate($sql, array( $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $name ));
+        public function updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo){
+            $sql = "UPDATE restaurant SET nickname=?, email=?, telephone=?, homepage=?, hours=?, address=?, deposit=?, price=?, size=?, summary=?, backgroundimage=?, loggoimage=? WHERE name=?;";
+            $result = $this->db->executeUpdate($sql, array( $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $name));
             return count($result) == 1;
         }
 

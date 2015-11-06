@@ -17,7 +17,6 @@ body {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: url("../images/table.jpg");
   min-height: 100vw;
   min-height: 100vh; }
   body .content {
@@ -240,7 +239,6 @@ body {
       width: 200px;
       height: 200px;
       margin: 25px auto;
-      background-image: url("../images/vitlogga.gif");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: 50% 50%;
@@ -403,6 +401,11 @@ body {
       padding: 20px;
       min-width: 270px;
       width: 35%; }
+    body .userSettings .category img {
+      width: 100%;
+      position: relative;
+      display: block;
+      background-color: gray; }
     body .userSettings .left .category {
       margin-top: 10px; }
     body .userSettings .left input[type="text"] {

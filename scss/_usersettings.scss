@@ -6,6 +6,16 @@
 		min-width: 270px;
 		width: 35%;
 	}
+    
+    .category{
+        
+        img{
+            width: 100%;
+            position: relative;
+            display: block;
+            background-color: gray;
+        }
+    }
 	
 	.left .category{
 		margin-top: 10px;
