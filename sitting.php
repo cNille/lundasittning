@@ -79,7 +79,7 @@
 											echo '<td>' . $p->name . '</td>';
 										}
 									?>
-									<td><?php echo "$p->interest platser ($prelSpots betalat, $totalSpots anmälda)"; ?></td>
+									<td class="right"><?php echo "$p->interest platser"; ?></td>
 								</tr>
 								<?php
 							}
@@ -121,7 +121,7 @@
 										echo '<td>' . $p->name . '</td>';
 									}
 								?>
-								<td><?php echo "$p->interest platser ($totalSpots anmälda)"; ?></td>
+								<td class="right"><?php echo "$p->interest platser"; ?></td>
 							</tr>
 							<?php
 							}
@@ -160,9 +160,9 @@
 	<?php 
 	if($myAccessLevel >= 5 || $isSittingForeman) : ?>
         <div class="single-sitting">
-            <h2>Inställningar för sittningen</h2>
+            <h2>Vy för Sittningsförmän</h2>
             <form action="scripts.php" method="POST">
-                <h3>Menyn</h3>
+                <h3>Meny</h3>
                 <h4>Förrätt</h4> 
                 <input type="text" name="appetiser" value="<?php echo $sitting->appetiser; ?>" />
                 <br />
@@ -175,23 +175,39 @@
                 <input type='hidden' value="<?php echo $sittId; ?>" name="sittId" />
                 <input type="submit" value="Uppdatera Meny" name="updateSittingMenu" />
             </form>
-                <?php if($myAccessLevel >= 5){ ?>
-                    <form action="scripts.php" method="POST">
-                        <h3>Förmän</h3>
-                        <select name="user">
-                        <?php
-                            foreach ($resForeman as $key => $rf) {
-                                echo "<option value='$rf[0]'>$rf[1]</option>";
-                            }
-                        ?>
-                        </select><br />
-                        <input type='submit' name="addSittingForeman" value="Lägg till">
-                        <input type='submit' name="removeSittingForeman" value="Ta bort">
-                        <input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
-                        <br /><br />
-                    </form>
-                <?php } ?>
-            
+            <h3>Sällskap</h3>
+            <table class="fancy">
+                <tr>
+                    <th>Sällskap</th>
+                    <th>Antal platser begärt</th>
+                    <th>Antal platser bokade</th>
+                    <th>Antal anmälda just nu</th>
+                </tr>
+            <?php
+                $c = false;
+                foreach($parties as $key => $p){
+                    $signedUp = 0;
+                    $booked = 0;
+                    foreach ($partiesPayStatus as $key => $pps) {
+                        if($pps[0] == $p->id){
+                            if($pps[2] == "Halvt" || $pps[2] == "Ja"){
+                                $booked += $pps[3];
+                            } 
+                            $signedUp += $pps[3];
+                        }
+                    }
+                    ?>
+                    <tr>
+                        <td><?php echo $p->name; ?></td>
+                        <td><?php echo $p->interest; ?></td>
+                        <td><?php echo $booked; ?></td>
+                        <td><?php echo $signedUp; ?></td>
+                    </tr>
+                    <?php
+                }
+
+            ?>
+            </table>
             <h3>Matstatistik</h3>
             <table class="fancy">
                 <tr>
@@ -201,7 +217,6 @@
             <?php
                 $c = false;
                 foreach($foodStatistics as $key => $s){
-                    $alt = $toogle % 2 ? "alt" : "e";
                     echo "<tr".(($c = !$c)?' class="odd"':'')."><td>$key</td><td>$s</td></tr>";
                 }
 
@@ -231,6 +246,25 @@
 					}
 				?>
 			</table>
+        </div>
+    <?php endif; ?>
+	<?php if($myAccessLevel >= 5) : ?>
+        <div class="single-sitting">
+            <h2>Vy för Quratel</h2>
+                <form action="scripts.php" method="POST">
+                    <h3>Förmän</h3>
+                    <select name="user">
+                    <?php
+                        foreach ($resForeman as $key => $rf) {
+                            echo "<option value='$rf[0]'>$rf[1]</option>";
+                        }
+                    ?>
+                    </select><br />
+                    <input type='submit' name="addSittingForeman" value="Lägg till">
+                    <input type='submit' name="removeSittingForeman" value="Ta bort">
+                    <input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
+                    <br /><br />
+                </form>
         </div>
 	<?php endif; ?>
 </div>

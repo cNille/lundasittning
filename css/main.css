@@ -322,7 +322,8 @@ body {
     min-height: 200px;
     padding: 15px 25px;
     box-sizing: border-box;
-    display: table; }
+    display: table;
+    margin-bottom: 15px; }
     body .single-sitting h4 {
       margin: 0; }
     body .single-sitting h2 {
@@ -339,27 +340,34 @@ body {
           font-size: 60px;
           font-weight: 100; }
         body .single-sitting .side.left table {
-          margin-top: 15px; }
-          body .single-sitting .side.left table a {
-            font-weight: 400;
-            color: #f2867d;
-            text-decoration: none;
-            position: relative; }
-            body .single-sitting .side.left table a::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              border-bottom: 1px solid #4a6b83;
-              opacity: 0;
-              -webkit-transition: all 0.3s ease-in-out;
-              -moz-transition: all 0.3s ease-in-out;
-              -o-transition: all 0.3s ease-in-out;
-              transition: all 0.3s ease-in-out; }
-            body .single-sitting .side.left table a:hover::before {
-              opacity: 1; }
+          padding-right: 30px;
+          padding-bottom: 30px; }
+          body .single-sitting .side.left table td.right {
+            text-align: right; }
+          @media screen and (max-width: 750px) {
+            body .single-sitting .side.left table {
+              padding-right: 0px; } }
+        body .single-sitting .side.left a {
+          font-weight: 400;
+          color: #f2867d;
+          text-decoration: none;
+          position: relative;
+          margin: 5px 40px 10px 0px; }
+          body .single-sitting .side.left a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-bottom: 1px solid #4a6b83;
+            opacity: 0;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out; }
+          body .single-sitting .side.left a:hover::before {
+            opacity: 1; }
       body .single-sitting .side.right label {
         display: block;
         margin-top: 10px;
