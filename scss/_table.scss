@@ -1,0 +1,28 @@
+table{
+    text-align: left;
+    width: 100%;
+    
+    &.fancy{
+        border: 1px solid $blue;
+        border-spacing: 0;
+        border-collapse: collapse;
+        
+        th {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: $blue;
+            color: #fff;
+        }
+        
+        th, td {
+            border: 1px solid $blue;
+            padding: 3px 7px 2px 7px;
+            box-sizing: border-box;
+        }
+
+    }
+    tr.odd{
+        background-color: $lightBlue;
+    }
+}

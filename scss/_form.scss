@@ -1,0 +1,62 @@
+.myForm{
+    margin: 25px auto;
+    width: 90%;
+    max-width: 300px;
+}
+
+form{
+    
+}
+
+input[type=submit], .formcancel {
+    @include button();
+    display: inline-block;
+    margin: 10px 0;
+    padding: 7px 10px;
+    border: 1px solid $lightGrey;
+
+    &:hover, &:focus{
+        border: 1px solid $blue;
+    }
+}
+
+input[type=radio] {
+    margin: 25px 15px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+input[type=checkbox]{
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+select{
+    outline: none;
+    border: 1px solid $lightGrey;
+    @include easy-trans(0.3s);
+    margin: 5px 10px;
+
+    &:hover{
+        border: 1px solid $blue;
+    }
+}
+
+input[type=email], input[type=password], input[type=text], input[type=tel], input[type=number], textarea{
+    display: block;
+    outline: none;
+    @include easy-trans(0.3s);
+    border: 1px solid $lightGrey;
+    margin: 5px 0px;  
+    padding: 10px 5%;
+    width: 90%;
+    max-width: 250px;
+    
+    &:hover, &:focus{
+        border: 1px solid $blue;
+    }
+    
+}

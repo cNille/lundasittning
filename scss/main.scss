@@ -19,6 +19,11 @@ $mobileBreak: 750px;
 // Check here all the standard mixins for our website
 @import 'mixins';
 
+// Customination
+// =================
+@import 'form';
+@import 'table';
+
 // CSS
 // =================
 
@@ -40,9 +45,7 @@ body{
     background-attachment: fixed;
 
     min-height: 100vw;
-    min-height: 100vh;
-
-    
+    min-height: 100vh;    
 
     .content {
         margin-top: $headerHeight + 50px;
@@ -53,7 +56,6 @@ body{
         padding-bottom: 50px;
 
         .title, h2 {
-
             width: 90%;
             margin: 0 auto;
             text-align: center;
@@ -65,7 +67,6 @@ body{
                 font-size: 35px;
             }
         }
-
 
         .button{
             display: block;
@@ -95,96 +96,24 @@ body{
             }
         }
 
-
-        table{
-            text-align: left;
-            width: 100%;
-            
-            &.fancy{
-                border: 1px solid $blue;
-                border-spacing: 0;
-                border-collapse: collapse;
-                
-                th {
-                    text-align: left;
-                    padding-top: 5px;
-                    padding-bottom: 4px;
-                    background-color: $blue;
-                    color: #fff;
-                }
-                
-                th, td {
-                    border: 1px solid $blue;
-                    padding: 3px 7px 2px 7px;
-                    box-sizing: border-box;
-                }
-
-            }
-            tr.odd{
-                background-color: $lightBlue;
-            }
-        }
-
-        .myForm{
-            margin: 25px auto;
-            width: 90%;
-            max-width: 300px;
-        }
-
-        input[type=submit], .formcancel {
+        .btn{
+            padding: 15px;
+            background-color: darken(white, 10%);
+            color: #333;
+            outline: none;
+            text-decoration: none;
             @include button();
-            display: inline-block;
-            margin: 10px 0;
-            padding: 7px 10px;
-            border: 1px solid $lightGrey;
-
-            &:hover, &:focus{
-                border: 1px solid $blue;
-            }
         }
-
-        input[type=radio] {
-            margin: 25px 15px;
-            transform: scale(1.1);
-            cursor: pointer;
+        div.button{
+            @include button();
+            background-color: white;
+            padding: 25px;
+            margin-top: 15px;
         }
-
-        input[type=checkbox]{
-            width: 16px;
-            height: 16px;
-            vertical-align: middle;
-            transform: scale(1.1);
-            cursor: pointer;
-        }
-
-        select{
-            outline: none;
-            border: 1px solid $lightGrey;
-            @include easy-trans(0.3s);
-            margin: 5px 10px;
-
-            &:hover{
-                border: 1px solid $blue;
-            }
-        }
-
-        input[type=email], input[type=password], input[type=text], input[type=tel], input[type=number], textarea{
-            display: block;
-            outline: none;
-            @include easy-trans(0.3s);
-            border: 1px solid $lightGrey;
-            margin: 5px 0px;  
-            padding: 10px 5%;
-            width: 90%;
-            max-width: 250px;
-            
-            &:hover, &:focus{
-                border: 1px solid $blue;
-            }
-            
-        }
-
     }
+
+    // Specific pages
+    // =================
     @import 'header';
     @import 'sidenav';
     @import 'footer';
