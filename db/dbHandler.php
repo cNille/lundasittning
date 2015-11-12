@@ -74,10 +74,11 @@
 
 		    $sql = "INSERT INTO loginaccount (fbid, email) VALUES (?,?);";
     		$result = $this->db->executeUpdate($sql, array($fbid, $email));
+        
+        $id = $this->db->getLastId();
+        $this->log("Loginaccount created, id: $id.", null, null);
 
-            $this->log("Loginaccount created.", null, null);
-
-    		return $this->db->getLastId(); 
+    		return $id;
 		}
 		public function updateEmail($id, $email) {
             $id = htmlspecialchars($id);
@@ -112,8 +113,8 @@
             $other = htmlspecialchars($other);
             $loginaccount = htmlspecialchars($loginaccount);
 
-            $sql = "INSERT INTO participant (name, other) VALUES (?,?)";
-            $result = $this->db->executeUpdate($sql, array($name, $other));
+            $sql = "INSERT INTO participant (name, other, loginaccount) VALUES (?,?,?)";
+            $result = $this->db->executeUpdate($sql, array($name, $other, $loginaccount));
     		return $this->db->getLastId(); 
         }
         public function getParticipants($resName) {

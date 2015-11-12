@@ -26,8 +26,8 @@
 		$user = $dbHandler->getUser($fbid);
 	}
 	if($loggedIn && !$userExists && $fbid != null){
-		$loginId = $dbHandler->createLoginAccount($fbid, $fbFullname, $fbEmail);
-        $dbHandler->createParticipant($fbFullName, "", $loginId);
+		$loginId = $dbHandler->createLoginAccount($fbid, $fbEmail);
+    $dbHandler->createParticipant($fbFullname, "", $loginId);
 	}
 	else if($userExists){
 		$dbHandler->updateName($fbFullname, $user[0]);

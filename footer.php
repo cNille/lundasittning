@@ -50,7 +50,6 @@
 			<a href="users.php">Användare</a>
 		<?php } ?>
 		<a href="faq.php">F.A.Q</a>
-		<a href="feedback.php">Skicka Feedback</a>
 	</div>
 	</body>
 	<script src="js/toClipboard.js"></script>
