@@ -22,7 +22,7 @@
 	
 	function removeSitting($dbHandler){
 		if(isset($_POST['id']) && !empty($_POST['id'])) {
-			$dbHandler->deleteSitting($_POST['id']);
+			echo $dbHandler->deleteSitting($_POST['id']);
 		}
 	}
     

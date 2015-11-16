@@ -36,11 +36,11 @@
 				<div class="event-window-button">
 					Se mer
 				</div>
-				<?php if($myAccessLevel >= 5){ ?>
-					<button class="event-remove-button">X</button>
-				<?php } ?>
 			</div>
 			</a>
+			<?php if($myAccessLevel >= 5){ ?>
+				<button class="event-remove-button">X</button>
+			<?php } ?>
 		</div>
 		<?php 
 			foreach($sittings as $row => $s) {
@@ -67,11 +67,11 @@
 							<div class="event-window-button">
 								 Se mer
 							</div>
-							<?php if($myAccessLevel >= 5){ ?>
-								<button class="event-remove-button">X</button>
-							<?php } ?>
 						</div>
 					</a>
+					<?php if($myAccessLevel >= 5){ ?>
+						<button class="event-remove-button">X</button>
+					<?php } ?>
 					</div>
 		<?php } ?>
 		<?php if($myAccessLevel >= 5){ ?>
