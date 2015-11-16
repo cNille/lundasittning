@@ -682,11 +682,17 @@ body {
       -moz-transition: all 0.3s ease-in-out;
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-      opacity: 0;
       width: 0px; }
+      body .event-grid .event-window.created .event-remove-button {
+        -webkit-transition-delay: 0.25s;
+        -moz-transition-delay: 0.25s;
+        -o-transition-delay: 0.25s;
+        transition-delay: 0.25s;
+        opacity: 0; }
     body .event-grid .event-window.created.show {
-      opacity: 1;
       width: 150px; }
+      body .event-grid .event-window.created.show .event-remove-button {
+        opacity: 1.0; }
     body .event-grid .event-window.remove {
       opacity: 0;
       width: 0px; }

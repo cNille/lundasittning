@@ -92,13 +92,20 @@
     }
 
     .event-window.created{
-        @include easy-trans (0.3s);
-        opacity: 0;
+        @include easy-trans(0.3s);
         width: 0px;
+        
+        .event-remove-button{
+        	@include easy-delay(0.25s);
+        	opacity: 0;
+        }
     }
     .event-window.created.show {
-        opacity: 1;
         width: 150px;
+        
+        .event-remove-button{
+        	opacity: 1.0;
+        }
     }
     .event-window.remove {
         opacity: 0;

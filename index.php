@@ -27,16 +27,16 @@
 	<div class="event-grid">
 		<div class="event-window" id="" style="display: none;">
 			<a href="" class="event-window-link">
-			<div class="width">
-				<div class="event-window-date">
+				<div class="width">
+					<div class="event-window-date">
+					</div>
+					<div class="event-window-spots">
+						Ledig
+					</div>
+					<div class="event-window-button">
+						Se mer
+					</div>
 				</div>
-				<div class="event-window-spots">
-					Ledig
-				</div>
-				<div class="event-window-button">
-					Se mer
-				</div>
-			</div>
 			</a>
 			<?php if($myAccessLevel >= 5){ ?>
 				<button class="event-remove-button">X</button>
@@ -56,22 +56,22 @@
                 $spotsLeft = $restaurant[9] - $spotsTaken;
 				?>
 					<div class="event-window" id="<?php echo $s[0]; ?>">
-					<a href="./sitting.php?sittId=<?php echo $s[0]; ?>" class="event-window-link">
-						<div class="width">
-							<div class="event-window-date">
-								<?php echo $date; ?>
+						<a href="./sitting.php?sittId=<?php echo $s[0]; ?>" class="event-window-link">
+							<div class="width">
+								<div class="event-window-date">
+									<?php echo $date; ?>
+								</div>
+								<div class="event-window-spots">
+									<?php echo spotsLeftTextify($spotsLeft, $restaurant[6]);?>
+								</div>
+								<div class="event-window-button">
+									 Se mer
+								</div>
 							</div>
-							<div class="event-window-spots">
-								<?php echo spotsLeftTextify($spotsLeft, $restaurant[6]);?>
-							</div>
-							<div class="event-window-button">
-								 Se mer
-							</div>
-						</div>
-					</a>
-					<?php if($myAccessLevel >= 5){ ?>
-						<button class="event-remove-button">X</button>
-					<?php } ?>
+						</a>
+						<?php if($myAccessLevel >= 5){ ?>
+							<button class="event-remove-button">X</button>
+						<?php } ?>
 					</div>
 		<?php } ?>
 		<?php if($myAccessLevel >= 5){ ?>
