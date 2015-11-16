@@ -111,7 +111,7 @@
         public function createParticipant($name, $other, $loginaccount){
             $name = htmlspecialchars($name);
             $other = htmlspecialchars($other);
-            $loginaccount = htmlspecialchars($loginaccount);
+            $loginaccount = $loginaccount != null ? htmlspecialchars($loginaccount) : null;
 
             $sql = "INSERT INTO participant (name, other, loginaccount) VALUES (?,?,?)";
             $result = $this->db->executeUpdate($sql, array($name, $other, $loginaccount));

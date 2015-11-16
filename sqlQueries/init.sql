@@ -54,7 +54,7 @@ create table participant (
     id              integer auto_increment,
     name            varchar(30),
     other           varchar(50),
-    loginaccount    integer,
+    loginaccount    integer NULL,
     active          tinyint(1) DEFAULT 1,
     primary key (id),
     foreign key (loginaccount) references loginaccount(id)
