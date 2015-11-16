@@ -25,6 +25,25 @@
             border: 1px solid #333;
         }
         
+        .event-remove-button{
+			position: absolute;
+			cursor: pointer;
+			right: -5px;
+			top: -5px;
+			border: none;
+			border-radius: 59px;
+			height: 20px;
+			width: 20px;
+			@include easy-trans(0.1s);
+			padding-left: 7px;
+			z-index: 9999;
+
+			&:hover{
+				color: #eee;
+				background-color: #333;
+			}
+		}
+        
          .event-window-link{
          	left: 0;
          	top: 0;
@@ -58,24 +77,6 @@
                 }
                 a:hover {
                     text-decoration: underline;
-                }
-            }
-            .event-remove-button{
-                position: absolute;
-                cursor: pointer;
-                right: -5px;
-                top: -5px;
-                border: none;
-                border-radius: 59px;
-                height: 20px;
-                width: 20px;
-                @include easy-trans(0.1s);
-                padding-left: 7px;
-                z-index: 9999;
-
-                &:hover{
-                    color: #eee;
-                    background-color: #333;
                 }
             }
         }
