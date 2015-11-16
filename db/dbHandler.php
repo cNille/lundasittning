@@ -224,7 +224,7 @@
 		    return count($result) == 1;  
 		} 
 		public function getSittings($active) {
-			$sql = "SELECT id, sittDate, active FROM sitting WHERE active=? AND sittDate >= NOW();";
+			$sql = "SELECT id, sittDate, active FROM sitting WHERE active=? AND sittDate >= NOW() ORDER BY sittDate;";
 			$result = $this->db->executeQuery($sql, array($active));
 			return $result; 
 		}
@@ -406,6 +406,12 @@
             return $result[0];
         }
 
+		public function deletePartyParticipant($partyId, $participantId) {
+      $participantId = htmlspecialchars($participantId);
+      $sql = "DELETE FROM partyparticipant WHERE partyId=? AND participantId=?;";
+			$result = $this->db->executeUpdate($sql, array($partyId, $participantId));
+			return count($result) == 1; 
+		}
 
 		// Paystatus
 		// ======================================================

@@ -249,10 +249,41 @@
 		return;		
 	}
 
+    if($_POST['partyDeleteParticipant']){
+      $_SESSION['message'] = 'Gäst borttagen.';
+
+      // Determine isCreator
+      $uId = $user[0];
+		  $pId = $_POST['partyid'];
+      $party = $dbHandler->getParty($pId);
+		  $creator = $dbHandler->getCreator($pId);
+		  $isCreator = $creator[0] == $user[0];
+      
+      // Get id's to remove
+      $userIds = $_POST['userId'];
+    
+      // If has access level
+		  if($isCreator || $myAccessLevel >= 5){
+        foreach($userIds as $key => $u){
+          if($u != $creator[0]){
+            $success = $dbHandler->deletePartyParticipant($pId, $u);
+            if(!$success){
+              $_SESSION['message'] = 'Deltagare gick ej att ta bort.';
+              break;
+            }
+          } else {
+            $_SESSION['message'] = 'Du kan ej ta bort sällskapsskaparen.';
+            break;
+          }
+        }
+		  }
+      header("Location: party.php?partyKey=$party->key");
+      return;
+    }
+
     if($_POST['partyUpdatePay']){
         $paystatus = $_POST['payStatus'];
         $userIds = $_POST['userId'];
-        //$guestIds = $_POST['guestId'];
         $partykey = $_POST['partykey'];
         $partyid = $_POST['partyid'];
         $reqAccessLevel = $dbHandler->getPayAccessLevel($paystatus);

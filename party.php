@@ -145,6 +145,7 @@
                     }
                 ?>
             </select>
+            <input type='submit' name='partyDeleteParticipant' value='Ta bort markerade'>
             </form>
         </div>
     </div>
