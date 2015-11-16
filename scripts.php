@@ -32,7 +32,7 @@
 			if($phone && $phone != ''){ $dbHandler->updatePhone($userId, $phone); }
 			if($other && $other != ''){ $dbHandler->updateOther($userId, $other); }
 		} else{
-			$userId = $dbHandler->createParticipant($name, $other);
+			$userId = $dbHandler->createParticipant($name, $other, NULL);
 		}
 
 		// Remove all foodpreferences to this user and add all those checked now.
