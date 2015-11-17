@@ -159,7 +159,7 @@
 		}
 
 		public function getUserTypes($level) {
-		    $sql = "SELECT * from usertype WHERE accessLevel < ?";
+		    $sql = "SELECT * from usertype WHERE accessLevel <= ?";
     		$result = $this->db->executeQuery($sql, array($level));
     		return $result;
 		}

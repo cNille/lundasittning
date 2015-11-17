@@ -60,19 +60,22 @@
 
 
 	if($_POST['updateUserType']){
+    $_SESSION['message'] = "Användare uppdaterad.";
+
 		$users = $_POST['user'];
 		$userType = $_POST['userType'];
 		$accessLevel = $dbHandler->getLevelOfUserType($userType);
 
-		if($accessLevel < $myAccessLevel){
+		if($accessLevel <= $myAccessLevel){
 			foreach ($users as $key => $u) {
 				$userAccessLevel = $dbHandler->getAccessLevelById($u, $resName);
 				if($userAccessLevel < $myAccessLevel){
 					$dbHandler->updateUserType($userType, $u, $resName);
-				}
+				} else {
+          $_SESSION['message'] = "Kan inte ändra användartyp på en användare av samma typ som dig.";
+        }
 			}
 		}		
-        $_SESSION['message'] = "Användare uppdaterad.";
 		header("Location: users.php");
 		return;
 	}
@@ -361,47 +364,47 @@
 		return;		
 	}
 
-    function uploadImage($file, $name){
-        $target_dir = "uploads";
+  function uploadImage($file, $name){
+      $target_dir = "uploads";
 
-        $end = $file["name"];
-        $e = explode(".", $end);
-        $target_file = "$target_dir/$name.$e[1]";
-        $uploadOk = 1;
-        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-        $check = getimagesize($file["tmp_name"]);
-        
-        if($check !== false) {
-            $msg = "File is an image - " . $check["mime"] . ".\n";
-            $uploadOk = 1;
-        } else {
-            $msg = "File is not an image.";
-            $uploadOk = 0;
-        }
+      $end = $file["name"];
+      $e = explode(".", $end);
+      $target_file = "$target_dir/$name.$e[1]";
+      $uploadOk = 1;
+      $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+      $check = getimagesize($file["tmp_name"]);
+      
+      if($check !== false) {
+          $msg = "File is an image - " . $check["mime"] . ".\n";
+          $uploadOk = 1;
+      } else {
+          $msg = "File is not an image.";
+          $uploadOk = 0;
+      }
 
-        // Check file size
-        $size = $file["size"];
-        if ($size > 15000000) {
-            $msg = "Sorry, your file is too large. $size";
-            $uploadOk = 0;
-        }
-        // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" ) {
-            $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed. $imageFileType";
-            $uploadOk = 0;
-        }
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            $msg .= "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-        } else {
-            if (move_uploaded_file($file["tmp_name"], $target_file)) {
-                $msg = "";
-            }
-        }
-        return $msg;
-    }
+      // Check file size
+      $size = $file["size"];
+      if ($size > 15000000) {
+          $msg = "Sorry, your file is too large. $size";
+          $uploadOk = 0;
+      }
+      // Allow certain file formats
+      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+      && $imageFileType != "gif" ) {
+          $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed. $imageFileType";
+          $uploadOk = 0;
+      }
+      // Check if $uploadOk is set to 0 by an error
+      if ($uploadOk == 0) {
+          $msg .= "Sorry, your file was not uploaded.";
+      // if everything is ok, try to upload file
+      } else {
+          if (move_uploaded_file($file["tmp_name"], $target_file)) {
+              $msg = "";
+          }
+      }
+      return $msg;
+  }
 
  	// Close database.
 	$dbHandler->disconnect();
