@@ -213,7 +213,7 @@
             $restaurant = htmlspecialchars($restaurant);
 
 		    $sql = "INSERT INTO sitting (sittDate, prelDeadline, payDeadline, resName) VALUES (?, ?, ?, ?);";
-    		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadlinel, $restaurant));
+    		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant));
     		return $this->db->getLastId(); 
 		}
 		public function deleteSitting($sittId){

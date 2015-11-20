@@ -58,10 +58,10 @@ insert into participantfood values
 
 select 'Insert sitting' as '';
 insert into sitting (sittDate, appetiser, main, desert, resName) values
-    ('2015-11-04', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation'),
-    ('2015-11-11', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation'),
-    ('2015-11-18', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation'),
-    ('2015-11-25', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation');
+    ('2015-12-04', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation'),
+    ('2015-12-11', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation'),
+    ('2015-12-18', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation'),
+    ('2015-12-25', 'Pannkakor', 'Pizza', 'Glass', 'Nilles nation');
 
 select 'Insert sittingforeman' as '';
 insert into sittingforeman values

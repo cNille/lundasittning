@@ -37,6 +37,8 @@ create table restaurant (
 	backgroundimage tinytext,
 	loggoimage 		tinytext,
     active          tinyint(1) DEFAULT 1,
+    preldate 		integer DEFAULT '14',
+    paydate 		integer DEFAULT '10',
 	primary key(name)
 );
 
@@ -104,8 +106,6 @@ create table sitting (
 	appetiser   		varchar(50),
 	main       			varchar(50),
 	desert	    		varchar(50),
-	prelDeadline	    date,
-	payDeadline		    date,
 	active				tinyint(1) DEFAULT 1,
 	resName				varchar(30),
 	primary key(id),

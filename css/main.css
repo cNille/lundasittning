@@ -98,6 +98,9 @@ table {
   padding: 15px 25px;
   box-sizing: border-box; }
 
+.bold {
+  font-weight: 900; }
+
 body {
   margin: 0;
   padding: 0;
