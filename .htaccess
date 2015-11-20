@@ -2,9 +2,8 @@ RewriteEngine on
 RewriteBase /sittning/
 
 
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 
-RewriteRule ^/?([0-9a-zA-Z]{2})$/?([0-9a-zA-Z]{10})$/ party.php?partyKey=$2
+RewriteRule ^/?([0-9a-zA-Z]{4,10})$ party.php?partyKey=$1
