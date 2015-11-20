@@ -130,6 +130,7 @@ create table party (
 	interest    	integer,
 	message     	text,
 	urlkey			varchar(10) NOT NULL,
+	active			tinyint(1) DEFAULT 1,
 	primary key(id),
 	foreign key(partyType) references partytype(partyType) ON UPDATE CASCADE,
 	foreign key(sittId) references sitting(id)

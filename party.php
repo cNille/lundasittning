@@ -173,6 +173,12 @@
             <input type="number" name="interest" value="<?php echo $party->interest; ?>" />
             <input type="hidden" name="partyId" value="<?php echo $party->id; ?>" />
             <input type="submit" name="updatePartyInterest" value="Uppdatera platser" />
+
+            <hr />
+            <h3>Ta bort sällskap<h3>
+            <input type="submit" name="deleteParty" value="Radera Sällskap" />
+            <input type="hidden" name="sittId" value="<?php echo $party->sittId; ?>" />
+
         </form>
     </div>
 	<?php endif; ?>

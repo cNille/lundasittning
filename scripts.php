@@ -283,6 +283,19 @@
       header("Location: party.php?partyKey=$party->key");
       return;
     }
+	
+	if($_POST['deleteParty']){
+		$partyId = $_POST['partyId'];
+		$sittId = $_POST['sittId'];
+
+		if($myAccessLevel >= 5){
+			$dbHandler->deleteParty($partyId);
+		}
+        $_SESSION['message'] = 'Sällskapet är nu borttagen.';
+
+		header("Location: sitting.php?sittId=$sittId");
+		return;		
+	}
 
     if($_POST['partyUpdatePay']){
         $paystatus = $_POST['payStatus'];
@@ -346,9 +359,6 @@
 		} else {
 			$_SESSION['message'] = 'Vänligen ange en sittningsförman.';
 		}
-	
-
-
 
 		header("Location: sitting.php?sittId=$sittId");
 		return;		
