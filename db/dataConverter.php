@@ -3,7 +3,7 @@
 	// ======================================================
 class DataConverter{
 
-	 function arrToRes($arr){
+	 function createRestaurantObject($arr){
 		return (object) [
 			'name' => $arr[0],
 			'nickname' => $arr[1],
@@ -19,7 +19,7 @@ class DataConverter{
 		];
 	}
 
-	 function arrToSitting($arr){
+	 function createSittingObject($arr){
 		$s = (object)[ // Init a sitting object.
 			'id' => $arr[0],
 			'date' => $arr[1],
@@ -32,7 +32,7 @@ class DataConverter{
 		return $s;
 	}
 
-	 function arrToParty($arr){
+	 function createPartyObject($arr){
 		return (object) [ // Init a party object.
 			'id' => $arr[0],
 			'name' => $arr[1],
@@ -45,25 +45,25 @@ class DataConverter{
 		];
 	}
 
-	 function arrarrParty($arr){
+	 function createPartyList($arr){
 		$parties = array();
 		foreach ($arr as $key => $p) {
-			$party = $this->arrToParty($p);
+			$party = $this->createPartyObject($p);
 			$parties[] = $party;
 		}
 		return $parties;
 	}
 
-	function arrarrSitting($arr){
+	function createSittingList($arr){
 		$sittings = array();
 		foreach ($arr as $key => $s) {
-			$sitt = $this->arrToSitting($s);
+			$sitt = $this->createSittingObject($s);
 			$sittings[] = $sitt;
 		}
 		return $sittings;
 	}
 	
-	 function arrToUser($arr){
+	 function createUserObject($arr){
 		$s = (object)[ // Init a sitting object.
 			'id' => $arr[0],
 			'fbid' => $arr[1],
@@ -76,7 +76,7 @@ class DataConverter{
 		return $s;
 	}
 
-	 function arrToGuest($arr){
+	 function createGuestObject($arr){
 		$g = (object)[
 			'id' => $arr[0],
 			'name' => $arr[1],
@@ -85,10 +85,10 @@ class DataConverter{
 		return $g;
 	}
 
-	function arrarrGuest($arr){
+	function createGuestList($arr){
 		$guests = array();
 		foreach ($arr as $key => $g) {
-			$guest = $this->arrToGuest($g);
+			$guest = $this->createGuestObject($g);
 			$guests[] = $guest;
 		}
 		return $guests;

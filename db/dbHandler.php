@@ -236,7 +236,7 @@
 		public function getSitting($sittId) {
 			$sql = "SELECT * FROM sitting WHERE id=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
-			return $this->arrToSitting($result[0]);  // Structure: {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
+			return $this->createSittingObject($result[0]);  // Structure: {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
 		}
 
         public function updateAppetiser($sittId, $appetiser) {
@@ -300,17 +300,17 @@
 		public function getParty($partyId) {
 			$sql = "SELECT * FROM party WHERE id=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
-			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
+			return $this->createPartyObject($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
 		}
 		public function getPartyFromKey($partyKey) {
 			$sql = "SELECT * FROM party WHERE urlkey=?";
 			$result = $this->db->executeQuery($sql, array($partyKey));
-			return $this->arrToParty($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
+			return $this->createPartyObject($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
 		}
 		public function getParties($sittId) {
 			$sql = "SELECT * FROM party WHERE sittId=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
-			return $this->arrarrParty($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
+			return $this->createPartyList($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
 		}
 		public function getPartiesPayStatus($sittId) {
 			$sql = "SELECT p.id, p.sittId, pp.participantPayed, count(*) as Count FROM party as p JOIN partyparticipant as pp WHERE p.sittId=? AND p.id=pp.partyId GROUP BY p.id, pp.participantPayed";
@@ -378,7 +378,7 @@
 		public function getPartyParticipant($partyId) {
 			$sql = "SELECT p.id, p.name, pp.participantPayed FROM partyparticipant as pp JOIN participant as p ON p.id=pp.participantId WHERE pp.partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
-			return $this->arrarrGuest($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
+			return $this->createGuestList($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
 		}
 		public function addPartyParticipant($partyId, $participantId) {
             $partyId = htmlspecialchars($partyId);

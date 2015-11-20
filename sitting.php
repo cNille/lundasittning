@@ -4,6 +4,8 @@
  	$sittId = $_GET['sittId'];
 	$sitting = $dbHandler->getSitting($sittId);
 	$parties = $dbHandler->getParties($sittId);
+
+
 	$partiesPayStatus = $dbHandler->getPartiesPayStatus($sittId);
 	$myParties = $dbHandler->getPartiesByParticipant($user[0]);
     $allSittingUsers = $dbHandler->getPartyParticipantFromSitting($sittId);
@@ -34,6 +36,7 @@
 	}
 
 	$spotsLeft = $restaurant[9];
+
  ?>
 <div class="content">
 	<div class="title">Sittning</div>

@@ -327,10 +327,12 @@
     }
 
 	if($_POST['addSittingForeman']){
+        $_SESSION['message'] = 'Förman är nu tillagd.';
+
 		$sittId = $_POST['sittId'];
 		$user = $_POST['user'];
 
-		if($myAccessLevel >= 5){
+		if($myAccessLevel >= 5 && isset($user)){
 			$foreman = $dbHandler->getSittingForeman($sittId);
 			$isSittingForeman = false;
 			foreach ($foreman as $key => $f) {
@@ -341,10 +343,11 @@
 			if (!$isSittingForeman){
 				$dbHandler->setSittingForeman($sittId, $user);
 			}
+		} else {
+			$_SESSION['message'] = 'Vänligen ange en sittningsförman.';
 		}
 	
 
-        $_SESSION['message'] = 'Förman är nu tillagd.';
 
 
 		header("Location: sitting.php?sittId=$sittId");
