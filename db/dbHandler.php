@@ -348,6 +348,7 @@
     		$result = $this->db->executeUpdate($sql, array($interest, $pId));
     		return $result[0];		
 		}
+		
 		public function deleteParty($pId){            
 			$sql = "UPDATE party SET active = 0 WHERE id=?;";
 		    $result = $this->db->executeUpdate($sql, array($pId));
@@ -382,7 +383,7 @@
 			return $result;
 		}
 		public function getPartyParticipantFromSitting($sittId) {
-			$sql = "SELECT p.name, u.id, u.name, pp.participantPayed FROM party as p JOIN partyparticipant as pp JOIN participant as u WHERE p.id=pp.partyId AND u.id=pp.participantId AND p.sittId=?";
+			$sql = "SELECT p.name, u.id, u.name, pp.participantPayed, u.other FROM party as p JOIN partyparticipant as pp JOIN participant as u WHERE p.id=pp.partyId AND u.id=pp.participantId AND p.sittId=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
             return $result;
 		}

@@ -18,11 +18,11 @@
 		$g[] = '';
 		$myFoodPref = $dbHandler->getMyFoodpref($g[1]);
 		foreach ($myFoodPref as $key => $food) {
-			$g[4] = $g[4]. $food[0] . ', ';
+			$g[5] = $g[5]. $food[0] . ', ';
 		}
-		$g[4] = substr($g[4], 0, -2);
+		$g[5] = substr($g[5], 0, -2);
         if(count($myFoodPref) > 0){
-            $foodStatistics[$g[4]]++;
+            $foodStatistics[$g[5]]++;
         }
         $sittingUsersWithFoodPref[] = $g;
 	}
@@ -235,6 +235,7 @@
 					<th>Sällskap</th>
 					<th>Gäster</th>
 					<th>Matpreferens</th>
+					<th>Annat</th>
 				</tr>
 				<?php 
 					$i = 1;
@@ -244,6 +245,7 @@
 							<td><?php echo $i; ?></td>
 							<td><?php echo $g[0]; ?></td>
 							<td><?php echo $g[2]; ?></td>
+                            <td><?php echo $g[5]; ?></td>
                             <td><?php echo $g[4]; ?></td>
 						</tr>
 						<?php

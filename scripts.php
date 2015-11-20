@@ -98,9 +98,11 @@
 		// Send email to Restaurant
    		$party = $dbHandler->getParty($id);
    		$sitting = $dbHandler->getSitting($party->sittId);
-   		$user = $dbHandler->getUser($userId);
+   		//$user = $dbHandler->getUser($userId);
 
-		$link = $_SERVER['SERVER_NAME'];
+		$link = $_SERVER['HTTP_REFERER'];
+		$pos = strrpos($link, '/');
+		$link = substr($link, 0, $pos+1);
    		$from = "c@shapeapp.se";
    		$to = $restaurant[2]; 
 		ini_set("SMTP", "send.one.com");
@@ -120,9 +122,9 @@
    		$to = $user[3]; 
    		$subject = "Anmälningsbekräftelse, $sitting->sittDate";
 		$msg = "Vi har mottagit den intresseanmälan av ett sällskap.\r\n";
-		$msg .= "Nationen kommer att behandla din anmälan och inom kort kontakta dig, har du några frågor kan du skicka maila:$sitting->email\r\n\r\n";
+		$msg .= "Nationen kommer att behandla din anmälan och inom kort kontakta dig, har du några frågor kan du skicka maila:$restaurant[2]\r\n\r\n";
 		$msg .= "Med varma hälsningar,\r\n";
-		$msg .= "Sittningsbokning@Lund\r\n";
+		$msg .= "Lundasittning\r\n";
 		$msg = wordwrap($msg,70);
 
 		$headers = "From: $from\r\nReply-To: $to\r\n";
