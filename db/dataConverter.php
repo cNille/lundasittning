@@ -15,7 +15,9 @@ class DataConverter{
 			'deposit' => $arr[7],
 			'price' => $arr[8],
 			'size' => $arr[9],
-			'summary' => $arr[10]
+			'summary' => $arr[10],
+			'preldate' => $arr[14],
+			'paydate' => $arr[15]
 		];
 	}
 
@@ -27,7 +29,7 @@ class DataConverter{
 			'main' => $arr[3],
 			'desert' => $arr[4],
 			'prelDay' => $arr[5],
-			'payDay' => $arr[6],
+			'payDay' => $arr[6]
 		];
 		return $s;
 	}

@@ -31,6 +31,10 @@ $mobileBreak: 750px;
     @include content-bg();
 }
 
+.bold{
+	font-weight: 900;
+}
+
 body{
     margin: 0;
     padding: 0;

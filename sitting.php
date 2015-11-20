@@ -43,9 +43,9 @@
 	<div class="single-sitting">
 		<div class="left side">
 				<h3><?php echo date('j/n', strtotime($sitting->date)); ?></h3>
-				<label>Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
-				<label>Bokningsavgift-deadline: </label><span><?php echo $sitting->prelDay; ?></span><br />
-				<label>Sittningsavgift-deadline: </label><span><?php echo $sitting->payDay; ?></span>
+				<label class="bold">Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
+				<label class="bold">Bokningsavgift-deadline: </label><span><?php echo date('j/n - Y', strtotime($sitting->date . "-$restaurant[14] days")); ?></span><br />
+				<label class="bold">Sittningsavgift-deadline: </label><span><?php echo date('j/n - Y', strtotime($sitting->date . "-$restaurant[15] days")); ?></span>
                 <br /><br />
 				<table>
 					<tr>
@@ -168,7 +168,7 @@
             <h2>Vy för Sittningsförmän</h2>
             <form action="scripts.php" method="POST">
                 <h3>Meny</h3>
-                <h4>Förrätt</h4> 
+                <h4>Förrätt</h4>
                 <input type="text" name="appetiser" value="<?php echo $sitting->appetiser; ?>" />
                 <br />
                 <h4>Huvudrätt</h4> 

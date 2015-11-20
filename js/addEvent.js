@@ -37,19 +37,11 @@ $("#event-creator-initiate").click(function(){
 		else{
 			var realDate = "2015-" + arr[1] + "-" + arr[0];
 		}
-		
-		var prelDate = new Date(realDate);
-		prelDate.setDate(prelDate.getDate() - 14);
-		prelDate = formatDate(prelDate);
-		
-		var payDate = new Date(realDate);
-		payDate.setDate(payDate.getDate() - 10);
-		payDate = formatDate(payDate);
 
 		$.ajax({
 			type: 'POST',
 			url: 'db/dbAjax.php',
-			data: 'action=addSitting&date=' + realDate + '&preldate=' + prelDate + '&paydate=' + payDate+ '&resName=' + RESTAURANT_NAME,
+			data: 'action=addSitting&date=' + realDate + '&resName=' + RESTAURANT_NAME,
 			success: function(sittId){
 				var sittIdFin = sittId.replace(/[^0-9]/, '');
 				$(".event-window:nth-last-child(2)").removeClass("created show");
