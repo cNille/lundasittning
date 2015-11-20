@@ -25,14 +25,14 @@
                     <h4>Bakgrundsbild</h4>
                     <input type="file" id="bgimageinput" name="backgroundimage" accept="image/*" />
                     <div id="backgroundgallery">
-                        <img id="bgimage" src="uploads/<?php echo $restaurant[11]; ?>" onerror="this.src='';" />
+                        <img id="bgimage" src="uploads/<?php echo $restaurant[11]; ?>" onerror="this.src='./images/reject.png';" />
                     </div>
 				</div>
 				<div class="category">
                     <h4>Nationslogga</h4>
                     <input type="file" id="loggoimageinput" name="nationloggo" accept="image/*" />
                     <div id="loggogallery">
-                        <img id="loggoimage" src="uploads/<?php echo $restaurant[12]; ?>" onerror="this.src='';" />
+                        <img id="loggoimage" src="uploads/<?php echo $restaurant[12]; ?>" onerror="this.src='./images/reject.png';" />
                     </div>
 				</div>
                 <br /><br /><br />
