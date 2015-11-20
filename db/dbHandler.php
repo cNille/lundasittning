@@ -298,22 +298,23 @@
 		// Party
 		// ======================================================
 		public function getParty($partyId) {
-			$sql = "SELECT * FROM party WHERE id=?";
+			$sql = "SELECT * FROM party WHERE id=? and active=1";
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $this->createPartyObject($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
 		}
 		public function getPartyFromKey($partyKey) {
-			$sql = "SELECT * FROM party WHERE urlkey=?";
+			$sql = "SELECT * FROM party WHERE urlkey=? and active=1";
 			$result = $this->db->executeQuery($sql, array($partyKey));
 			return $this->createPartyObject($result[0]);  // Structure: {'id', 'name', 'type','sittId', 'interest', 'prel','payed', 'interestOnly' }
 		}
 		public function getParties($sittId) {
-			$sql = "SELECT * FROM party WHERE sittId=?";
+			$sql = "SELECT * FROM party WHERE sittId=? and active=1";
 			$result = $this->db->executeQuery($sql, array($sittId));
 			return $this->createPartyList($result); // Structure: [{ 'id', 'name', 'type', 'date', 'interest', 'prel', 'payed', 'interestOnly' }, ...]
 		}
 		public function getPartiesPayStatus($sittId) {
-			$sql = "SELECT p.id, p.sittId, pp.participantPayed, count(*) as Count FROM party as p JOIN partyparticipant as pp WHERE p.sittId=? AND p.id=pp.partyId GROUP BY p.id, pp.participantPayed";
+			$sql = "SELECT p.id, p.sittId, pp.participantPayed, count(*) as Count FROM party as p JOIN partyparticipant as pp WHERE p.sittId=?
+			 AND p.id=pp.partyId GROUP BY p.id, pp.participantPayed";
 			$result = $this->db->executeQuery($sql, array($sittId));
 			return $result;
 		}
@@ -342,6 +343,11 @@
     		$result = $this->db->executeUpdate($sql, array($interest, $pId));
     		return $result[0];		
 		}
+		public function deleteParty($pId){            
+			$sql = "UPDATE party SET active = 0 WHERE id=?;";
+		    $result = $this->db->executeUpdate($sql, array($pId));
+		    return count($result) == 1;  
+		} 
 
 		// Partytype
 		// ======================================================
