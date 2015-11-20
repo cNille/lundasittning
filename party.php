@@ -10,6 +10,10 @@
 	$creator = $dbHandler->getCreator($id);
     $payStatus = $dbHandler->getPayStatus($myAccessLevel);
 	$isCreator = $creator[0] == $user[0];
+	
+	$deposit = $restaurant[7];
+	$price = $restaurant[8];
+	$total = count($partyUsers)*($price+$deposit);
 	foreach ($partyUsers as $key => $g) {
 		$g->foodpref = '';
 		$myFoodPref = $dbHandler->getMyFoodpref($g->id);
@@ -17,6 +21,13 @@
 			$g->foodpref = $g->foodpref . $food[0] . '<br />';
 		}
 		$g->foodpref = substr($g->foodpref, 0, -1);
+		
+		if($g->payed == "Ja"){
+			$sum += $price + $deposit;
+		}
+		else if($g->payed == "Halvt"){
+			$sum += $deposit;
+		}
 	}
 	$dbHandler->disconnect();
 
@@ -90,6 +101,8 @@
         <h3>Vy för Sällskapsskaparen</h3>
             <h4>Platser anmälda</h4>
             <p><?php echo $party->interest; ?> platser (för att uppdatera detta, kontakta quratelet).</p>
+            <h4>Kvar att betala</h4>
+            <p> <?php echo $total-$sum ?> kr (tänk på att summan kan bli lägre efter förmannarabatt). </p>
             <h4>Anmälningslänk</h4> 
             <p id="toClipboard" onClick="CopyToClipboard();"><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
             <h4>Meddelande</h4> 
