@@ -1,9 +1,16 @@
 <?php 
 	require_once 'header.php';
+	$id = $_GET['partyid'];
+ 	$dbHandler = new DatabaseHandler();
+ 	$party = $dbHandler->getParty($id);
+ 	$dbHandler->disconnect();
+
+ 	$key = $party->key;
  ?>
 <div class="content">
 	<div class="title">Ladda upp Gästlista</div>
 	<div class="interest-content">
+		<a class="btn" href="<?php echo $nationURL; ?>/sallskap/<?php echo $key; ?>">Gå tillbaka</a>
 		<p>För att läsa in en gästlista gör såhär</p> 
 		<ol>
 			<li>Ladda ner sittningsmallen.</li>
@@ -13,7 +20,7 @@
 			<li>Dubbelkolla att allt blev inläst korrekt, annars ändra i filen och ladda upp igen. </li>
 			<li>Tryck på klar.</li>
 		</ol>
-		<a href='./files/Gastlista.xlsx' class="btn primary" target="_blank">Ladda ner mall</a>
+		<a href='<?php echo $siteURL; ?>/files/Gastlista.xlsx' class="btn primary" target="_blank">Ladda ner mall</a>
         <br />
 		<p>
 			Välj fil med gästlista
@@ -23,7 +30,6 @@
 			</span>
 		</p>
         <button id="saveButton" class="btn primary" onclick="addListToParty()">Spara</button>
-
 		<div id="byte_content"></div>
 		<h2 id="guestListHeader"></h2>
 		<table class="generatedTable">
@@ -128,8 +134,9 @@
                 if(partyKey == "notCreator"){
                     alert('Error: Du är inte skapare av detta sällskap.');
                 } else {
-                    $("#saveButton").text("Gå tillbaka");
-                    $("#saveButton").attr("onclick", "window.location.href ='party.php?partyKey=" + partyKey + "'");
+                    $("#saveButton").text("Sparat");
+                    $("#saveButton").removeClass("primary");
+
                 }
 			}
 		});
