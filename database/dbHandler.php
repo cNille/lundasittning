@@ -38,6 +38,12 @@
 			$result = $this->db->executeQuery($sql, array($name));
 			return $result[0];
 		}
+
+		public function getRestaurantFromNickname($nick){
+			$sql = "SELECT * FROM restaurant WHERE nickname=? and active=1";
+			$result = $this->db->executeQuery($sql, array($nick));
+			return $result[0];
+		}
 		public function getResSize($name){
 			$sql = "SELECT resSize FROM restaurant WHERE name=?";
 			$result = $this->db->executeQuery($sql, array($name));

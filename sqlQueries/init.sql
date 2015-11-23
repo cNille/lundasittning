@@ -24,7 +24,7 @@ drop table if exists log;
 select 'Create restaurant' as '';
 create table restaurant (
     name			varchar(30),
-	nickname		varchar(30),
+	nickname		varchar(30) UNIQUE,
 	email	    	varchar(50),
     telephone       varchar(30),
 	homepage        varchar(70),

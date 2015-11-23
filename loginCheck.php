@@ -9,7 +9,8 @@
 	//$resName = 'Malins nation';
 	//$resName = 'Franz nation';
 	$dbHandler = new DatabaseHandler();	
-	$restaurant = $dbHandler->getRestaurant($resName); // Variable determines nation
+	$n = strtolower($nation);
+	$restaurant = $dbHandler->getRestaurantFromNickname($n); // Variable determines nation
 	
 	if($_SESSION['FBID'] && $_SESSION['FBID'] != null){
 		$loggedIn = true;

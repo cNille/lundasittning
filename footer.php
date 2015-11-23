@@ -1,6 +1,6 @@
 	
     <footer>
-        <div class="logocontainer" style="background-image: url('<?php echo $nationURL; ?>/<?php echo $nationURL; ?>/uploads/<?php echo $restaurant[12]; ?>');">
+        <div class="logocontainer" style="background-image: url('<?php echo $nationURL; ?>/uploads/<?php echo $restaurant[12]; ?>');">
         </div>
                 
         <div class="infocontainer">
@@ -34,7 +34,7 @@
 
 
 	<div class="header">
-		<a href="<?php echo $nationURL; ?>">Sittning @ <?php echo $restaurant[1]; ?></a>
+		<a href="<?php echo $nationURL; ?>">Sittning @ <?php echo strtoupper($restaurant[1]); ?></a>
 		<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>
 	</div>
 
