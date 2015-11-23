@@ -1,6 +1,6 @@
 <?php
 	session_start(); 
-	require_once 'db/dbHandler.php';
+	require_once 'database/dbHandler.php';
 	require_once 'link.php';
 
 	$loggedIn = false;

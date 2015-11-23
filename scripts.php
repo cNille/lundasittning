@@ -113,7 +113,7 @@
 		$msg = "En intresseanmälan har lagts till sittningen $sitting->sittDate.\r\n";
 		$msg .= "Anmälan är gjord av $user[1] ($user[3], $user[4]).\r\n\r\n";
 		$msg .= "Vill du veta mer så besök sidan här:\r\n";
-		$msg .= "$link\r\n";
+		$msg .= "$nationURL\r\n";
 		$msg = wordwrap($msg,70);
 
 		$headers = "From: $from\r\nReply-To: $to\r\n";

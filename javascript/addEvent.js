@@ -40,7 +40,7 @@ $("#event-creator-initiate").click(function(){
 
 		$.ajax({
 			type: 'POST',
-			url: 'db/dbAjax.php',
+			url: SITEURL + '/database/dbAjax.php',
 			data: 'action=addSitting&date=' + realDate + '&resName=' + RESTAURANT_NAME,
 			success: function(sittId){
 				var sittIdFin = sittId.replace(/[^0-9]/, '');

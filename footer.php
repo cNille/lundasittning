@@ -41,7 +41,7 @@
 	<div class='shadow'></div>
 	<div class="sidenav">
 		<h1>Menu</h1>
-		<a href="./">Sittningar</a>
+		<a href="<?php echo $nationURL; ?>/">Sittningar</a>
 		<?php if($loggedIn){ ?>
 			<a href="<?php echo $nationURL; ?>/settings.php">Mitt konto</a>
 		<?php } ?>
@@ -56,6 +56,6 @@
 	<script src="<?php echo $nationURL; ?>/javascript/removeEvent.js"></script>
 	<script src="<?php echo $nationURL; ?>/javascript/addEvent.js"></script>
 	<script src="<?php echo $nationURL; ?>/javascript/saveSettings.js"></script>
+    <script src="<?php echo $nationURL; ?>/javascript/main.js"></script>
 	<div style="display: none;">Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-	<script src="<?php echo $nationURL; ?>/javascript/main.js"></script>
 </html>

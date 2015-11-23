@@ -15,7 +15,9 @@
 	<body style="background-image: url('<?php echo $siteURL; ?>/uploads/<?php echo $restaurant[11]; ?>')">
 		<script>
 			var RESTAURANT_NAME = '<?php echo $restaurant[0] ?>';
-			var RESTAURANT_SIZE = '<?php echo $restaurant[9] ?>';
+            var RESTAURANT_SIZE = '<?php echo $restaurant[9] ?>';
+            var SITEURL = '<?php echo $siteURL; ?>';
+            var NATIONURL = '<?php echo $nationURL; ?>';
 		</script>
 
 

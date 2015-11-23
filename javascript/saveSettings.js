@@ -7,7 +7,7 @@ $("#confirmSettings").click(function(){
 	
 	$.ajax({
 		type: 'POST',
-		url: 'db/dbAjax.php',
+		url: NATIONURL + 'database/dbAjax.php',
 		data: 'action=updateSettings&email=' + email + '&telephone=' + telephone + '&other=' + other + '&userid=4',
 		success: function(){
 		}
