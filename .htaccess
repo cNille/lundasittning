@@ -6,4 +6,34 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 
-RewriteRule ^/?([0-9a-zA-Z]{4,10})$ party.php?partyKey=$1
+# Catch /NATION/sallskap/aoeuaoeu to party.php
+RewriteRule ^/?([a-zA-Z]{2})/sallskap/?([0-9a-zA-Z]{4,10}) party.php?nation=$1&partyKey=$2
+
+# Catch /NATION/sittning/aoeuaoeu to sittning.php
+RewriteRule ^/?([a-zA-Z]{2})/sittning/([0-9a-zA-Z]{1,10}) sitting.php?nation=$1&sittId=$2
+
+# Catch /NATION/interest
+RewriteRule ^/?([a-zA-Z]{2})/interest/([0-9]{0,6}) interest.php?nation=$1&sittId=$2
+
+
+# Catch /NATION/partybooking/PARTYID/GUESTMODE
+RewriteRule ^/?([a-zA-Z]{2})/partybooking/([0-9]{0,6})/([0-9]{0,1}) partybooking.php?nation=$1&partyId=$2&guestMode=$3
+
+# Catch /NATION/guestlistuploader
+RewriteRule ^/?([a-zA-Z]{2})/guestlistuploader/([0-9]{0,6}) guestlistuploader.php?nation=$1&partyid=$2
+
+# Catch all other links
+RewriteRule ^/?([a-zA-Z]{2})/(.+) $2?nation=$1
+
+# Catch index.php
+RewriteRule ^/?([a-zA-Z]{2})/ restaurant.php?nation=$1
+RewriteRule ^/?([a-zA-Z]{2})$ restaurant.php?nation=$1
+
+
+
+
+#RewriteRule ^/?([a-zA-Z]{2}) ?nation=$1s
+
+
+
+

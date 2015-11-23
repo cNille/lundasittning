@@ -33,6 +33,7 @@
 
 	$isQuratel = $myAccessLevel >= 5;
  ?>
+<link rel="stylesheet" type="text/css" href="../../css/main.css" />
 
 <div class="content">
 	<div class="title"><?php echo $party->name; ?></div>
@@ -53,15 +54,15 @@
 		<div class="right side">
 			<?php if(!$isParticipating) : ?>
 				<?php if($loggedIn) : ?>
-					<a class="btn primary" href="partybooking.php?partyId=<?php echo $id; ?>&guestMode=0">
+					<a class="btn primary" href="<?php echo $nationURL; ?>/partybooking/<?php echo $id; ?>/0">
 						<span>Anmäl dig</span>
 					</a>
 				<?php else : ?>
 					<?php $_SESSION['LAST_PAGE'] = '../' . $party->key; ?>
-					<a class="btn primary" href="facebook-login/fbconfig.php">
+					<a class="btn primary" href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
 						<span>Anmäl dig via inlogg</span>
 					</a>
-					<a class="btn"  href="partybooking.php?guestMode=1&partyId=<?php echo $id; ?>">
+					<a class="btn"  href="<?php echo $nationURL; ?>/partybooking/<?php echo $id; ?>/1">
 						<span>Anmäl dig utan inlogg</span>
 					</a>
 				<?php endif; ?>
@@ -92,7 +93,7 @@
 	</div>
 
 
-    <a href="./sitting.php?sittId=<?php echo $party->sittId; ?>" class="button primary">Tillbaka till sittningen</a>
+    <a href="<?php echo $nationURL; ?>/sitting/<?php echo $party->sittId; ?>" class="button primary">Tillbaka till sittningen</a>
 
 
 	<?php if($isCreator || $isQuratel) : ?>
@@ -106,7 +107,7 @@
             <h4>Anmälningslänk</h4> 
             <p id="toClipboard" onClick="CopyToClipboard();"><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
             <h4>Meddelande</h4> 
-            <form action="scripts.php" method="POST">
+            <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
                 <textarea rows="4" cols="50" name="message" maxlength="250"><?php echo $party->message; ?></textarea>
                 <br />
                 <input type='hidden' value="<?php echo $id; ?>" name="partyId" />
@@ -114,14 +115,14 @@
             </form>
         </div>
         <div class="right side">
-            <a class="btn"  href="partybooking.php?guestMode=1&partyId=<?php echo $id; ?>">
+            <a class="btn"  href="<?php echo $nationURL; ?>/partybooking/<?php echo $id; ?>/1">
                 <span>Anmäl en gäst här</span>
             </a>
-            <a class="btn"  href="guestlistuploader.php?partyid=<?php echo $id; ?>">
+            <a class="btn"  href="<?php echo $nationURL; ?>/guestlistuploader/<?php echo $id; ?>">
                 <span>Ladda in gästlista från Excel</span>
             </a>
 
-			<form action='scripts.php' method='POST'>
+			<form action="<?php echo $nationURL; ?>/scripts.php" method='POST'>
 			<table>
 				<tr>
 					<th>#</th>
@@ -169,7 +170,7 @@
     <div class="party-content">
         <h3>Vy för Quratel</h3>
         <h4>Platser anmälda</h4>
-        <form action="scripts.php" method="POST">
+        <form action="<?php $nationURL; ?>/scripts.php" method="POST">
             <input type="number" name="interest" value="<?php echo $party->interest; ?>" />
             <input type="hidden" name="partyId" value="<?php echo $party->id; ?>" />
             <input type="submit" name="updatePartyInterest" value="Uppdatera platser" />

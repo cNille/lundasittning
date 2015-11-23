@@ -1,6 +1,7 @@
 <?php
 	session_start(); 
 	require_once 'db/dbHandler.php';
+	require_once 'link.php';
 
 	$loggedIn = false;
 	
@@ -33,7 +34,8 @@
 		$dbHandler->updateName($fbFullname, $user[0]);
 	}
 	$dbHandler->disconnect();
-	$_SESSION['LAST_PAGE'] = str_replace("/sittning", "..", $_SERVER['REQUEST_URI']);
+	
+	$_SESSION['LAST_PAGE'] = $_SERVER["HTTP_REFERER"];
 
 
 	// Redirect if the accesslevel is below the required accesslevel.

@@ -46,7 +46,7 @@
 
         $_SESSION['message'] = "Plats bokad.";
         
-		header("Location: party.php?partyKey=" . $partyKey);
+		header("Location: $nationURL/sallskap/$partyKey");
 		return;
 	}
 
@@ -54,7 +54,7 @@
 	// Needs to be logged in to access methods below
 	// ======================================================================================================
 	if(!$loggedIn){
-		header("Location: index.php");
+		header("Location: $siteURL");
 		return;
 	}
 
@@ -76,7 +76,7 @@
         }
 			}
 		}		
-		header("Location: users.php");
+		header("Location: $nationURL/users.php");
 		return;
 	}
 
@@ -91,6 +91,7 @@
 		$int = $_POST['interestedSpots'];
 		$msg = $_POST['message'];
 		$key = generateRandomString();
+
 		$id = $dbHandler->createParty($partyName, $type, $sittId, $int, $msg, $key);
 		$dbHandler->createPartyCreator($id, $userId);
 		$dbHandler->addPartyParticipant($id, $userId);
@@ -132,7 +133,7 @@
 
         $_SESSION['message'] = 'Intresseanmälan lagd. Mail skickat till Nationen med info.';
         
-		header("Location: party.php?partyKey=" . $key);
+		header("Location: $nationURL/sallskap/$key");
 		return;
 	}
 	
@@ -188,7 +189,7 @@
         if($msg != ""){
             $_SESSION['message'] = $msg;
         }
-		header("Location: nationsettings.php");
+		header("Location: $nationURL/nationsettings.php");
         return;
 	}
 	if($_POST['updateSettings']){
@@ -218,7 +219,7 @@
 
         $_SESSION['message'] = 'Inställningar sparade.';
 
-		header("Location: index.php?status=saved");
+		header("Location: $nationURL/restaurant.php?status=saved");
 		return;
 	}
 	if($_POST['updatePartyInterest']){
@@ -234,7 +235,7 @@
 
         $_SESSION['message'] = 'Antal intresserade uppdaterat.';
 
-		header("Location: party.php?partyKey=$party->key");
+		header("Location: $nationURL/sallskap/$party->key");
 		return;		
 	}
 	if($_POST['updatePartyMsg']){
@@ -250,7 +251,7 @@
 
         $_SESSION['message'] = 'Meddelande uppdaterad.';
 
-		header("Location: party.php?partyKey=$party->key");
+		header("Location: $nationURL/sallskap/$party->key");
 		return;		
 	}
 
@@ -282,7 +283,7 @@
           }
         }
 		  }
-      header("Location: party.php?partyKey=$party->key");
+      header("Location: $nationURL/sallskap/$party->key");
       return;
     }
 	
@@ -295,7 +296,7 @@
 		}
         $_SESSION['message'] = 'Sällskapet är nu borttagen.';
 
-		header("Location: sitting.php?sittId=$sittId");
+		header("Location: $nationURL/sittning/$sittId");
 		return;		
 	}
 
@@ -317,7 +318,7 @@
         }
 
 
-        header("Location: ./$partykey");
+        header("Location: $nationURL/sallskap/$partykey");
         return;
     }
 
@@ -336,7 +337,7 @@
 
             $_SESSION['message'] = 'Menyn är nu uppdaterad.';
             
-            header("Location: sitting.php?sittId=$sittId");
+            header("Location: $nationURL/sittning/$sittId");
             return;		
         }       
     }
@@ -362,7 +363,7 @@
 			$_SESSION['message'] = 'Vänligen ange en sittningsförman.';
 		}
 
-		header("Location: sitting.php?sittId=$sittId");
+		header("Location: $nationURL/sittning/$sittId");
 		return;		
 	}
 	if($_POST['removeSittingForeman']){
@@ -375,7 +376,7 @@
 	
         $_SESSION['message'] = 'Förman är nu borttagen.';
 
-		header("Location: sitting.php?sittId=$sittId");
+		header("Location: $nationURL/sittning/$sittId");
 		return;		
 	}
 
@@ -425,5 +426,5 @@
 	$dbHandler->disconnect();
 
 	// Redirect back to index.
-	header("Location: index.php");
+	header("Location: $siteURL");
 ?>

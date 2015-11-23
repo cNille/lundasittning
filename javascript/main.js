@@ -15,7 +15,7 @@ function toggleSide(){
 }
 
 $('.fb-login').click(function(){
-	window.location.href = "facebook-login/fbconfig.php";
+	window.location.href = "<?php echo $siteURL; ?>/facebook-login/fbconfig.php";
 });
 
 

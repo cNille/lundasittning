@@ -16,7 +16,7 @@
 	<div class="section">
 		<h3></h3>
 		
-		<form action="scripts.php" method="POST">
+		<form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
 		<table class="fancy">
 			<tr>
 				<th>Namn</th>

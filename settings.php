@@ -11,7 +11,7 @@
 		Inställningar
 	</div>
 	<div class="userSettings">
-		<form action="scripts.php" method="POST">
+		<form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
 			<div style="max-width: 280px; margin: auto;">
 				<div class="category">
 					E-mail <input type="text" name="email" value="<?php echo $user[3]; ?>">

@@ -33,7 +33,7 @@
         <span><?php echo $sitting->date; ?></span>
         <h4>Sällskap</h4>
         <span><?php echo $party->name; ?></span>
-		<form class="myForm" action="scripts.php" method="POST">
+		<form class="myForm" action="<?php echo $nationURL; ?>/scripts.php" method="POST">
 			<h4>Namn * </h4>
 			<span>
                 <?php 

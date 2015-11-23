@@ -1,5 +1,6 @@
 <?php 
-	require_once 'header.php';
+	require_once "header.php";
+
  	$dbHandler = new DatabaseHandler();
  	$sittId = $_GET['sittId'];
 	$sitting = $dbHandler->getSitting($sittId);
@@ -38,6 +39,7 @@
 	$spotsLeft = $restaurant[9];
 
  ?>
+ <link rel="stylesheet" type="text/css" href="../../css/main.css" />
 <div class="content">
 	<div class="title">Sittning</div>
 	<div class="single-sitting">
@@ -153,20 +155,20 @@
 	</div>
 
 	<?php if($loggedIn) : ?>
-        <div class="button primary"  onclick="location.href='interest.php?sittId=<?php echo $sitting->id; ?>';">
+        <a class="button primary"  href="<?php echo $nationURL; ?>/interest/<?php echo $sitting->id; ?>">
             <span>+ Lägg en intresseanmälan</span>
-        </div>
+        </a>
         <?php else : ?>
-            <div class="button primary"  onclick="location.href='facebook-login/fbconfig.php';">
+            <a class="button primary"  href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
                 <span>Logga in för att kunna lägga en intresseanmälan</span>
-            </div>
+            </a>
         <?php endif; ?>
 	<?php 
 
 	if($myAccessLevel >= 5 || $isSittingForeman) : ?>
         <div class="single-sitting">
             <h2>Vy för Sittningsförmän</h2>
-            <form action="scripts.php" method="POST">
+            <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
                 <h3>Meny</h3>
                 <h4>Förrätt</h4>
                 <input type="text" name="appetiser" value="<?php echo $sitting->appetiser; ?>" />
@@ -258,7 +260,7 @@
 	<?php if($myAccessLevel >= 5) : ?>
         <div class="single-sitting">
             <h2>Vy för Quratel</h2>
-                <form action="scripts.php" method="POST">
+                <form action="<?php echo $nationURL; ?>scripts.php" method="POST">
                     <h3>Förmän</h3>
                     <select name="user">
                     <?php

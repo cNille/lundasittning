@@ -15,7 +15,7 @@
 	    Nationsinställningar
 	</div>
 	<div class="userSettings">
-		<form action="scripts.php" enctype="multipart/form-data" method="POST">
+		<form action="<?php echo $nationURL; ?>/scripts.php" enctype="multipart/form-data" method="POST">
 			<div style="max-width: 280px; margin: auto;">
 				<h3>
 	 		        <?php echo $restaurant[0]; ?>
