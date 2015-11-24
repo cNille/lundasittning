@@ -4,7 +4,6 @@
  	$dbHandler = new DatabaseHandler();
     $restaurants = $dbHandler->getRestaurants();
 	$dbHandler->disconnect();
-					var_dump($restaurants);
  ?>
 
 <div class="content">
@@ -28,7 +27,7 @@
 				?>
 					<a href="<? echo $siteURL . '/' . $nickname; ?>">
 						<div class="restaurant">
-							<img src="uploads/<?php echo $loggo; ?>" />
+							<div class="loggo" style="background-image: url('uploads/<?php echo $loggo; ?>')"></div>
 							<h3>
 								<?php echo $name; ?>
 							</h3>
@@ -38,4 +37,4 @@
 	</div>
 </div>
 <div style="clear:both;"></div>
-<?php include 'footer.php'; ?>
+<?php //include 'footer.php'; ?>
