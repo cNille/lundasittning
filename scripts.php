@@ -144,6 +144,7 @@
 
 		$name = $_POST['name'];
 		$nickname = $_POST['nickname'];
+		$nickname = strtolower($nickname);
 		$email = $_POST['email'];
 		$phone = $_POST['phone'];
 		$homepage = $_POST['homepage'];
