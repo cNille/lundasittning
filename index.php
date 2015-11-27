@@ -7,10 +7,13 @@
  ?>
 
 <div class="content">
+
+		<img src="<?php echo $siteURL; ?>/images/lundasittning_logga_whitex800.png" height="200px" style="margin: auto; display: block;" />
 	<div class="title">
 		Lundasittning
 	</div>
 	<p class="white">
+
 		Välkommen till Lundasittning, din guide för sittningar i Lund!
 	</p>
 	<p class="white" >
