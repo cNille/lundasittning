@@ -101,6 +101,9 @@ table {
 .bold {
   font-weight: 900; }
 
+.white {
+  color: #eee; }
+
 body {
   margin: 0;
   padding: 0;
@@ -797,6 +800,7 @@ body {
         body .restaurant-grid a .restaurant h3 {
           font-size: 20px;
           text-align: center;
-          text-transform: uppercase; }
+          text-transform: uppercase;
+          font-weight: 100; }
 
 /*# sourceMappingURL=main.css.map */

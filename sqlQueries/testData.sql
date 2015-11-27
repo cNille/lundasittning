@@ -1,4 +1,7 @@
 -- Sets in testdata to the tables
+
+-- use lundasittning_se;
+
 start transaction;
 
 select 'Insert restaurant' as '';

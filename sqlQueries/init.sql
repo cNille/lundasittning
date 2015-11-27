@@ -1,5 +1,7 @@
 -- SQL init queries for setting up database.
 
+-- use lundasittning_se;
+
 set FOREIGN_KEY_CHECKS = 0;
 
 select 'Drop old tables' as '';

@@ -10,12 +10,14 @@
 	<div class="title">
 		Lundasittning
 	</div>
-	<p>
+	<p class="white">
 		Välkommen till Lundasittning, din guide för sittningar i Lund!
 	</p>
-	<p>
+	<p class="white" >
 		Här nedan kan du se nationer som är anknutna till vår sida. 
-		Klicka dig in på dem för att kunna se deras sittningar. // Frallan & Nille
+		Klicka dig in på dem för att kunna se deras sittningar.
+		<br />
+		// Frallan & Nille
 	</p>
 	<div class="restaurant-grid">
 		

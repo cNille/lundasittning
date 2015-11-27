@@ -1,11 +1,12 @@
 <?php 
     $nation = $_GET['nation'];
 
-	// Local
-    $siteURL = "http://$_SERVER[SERVER_NAME]:8000/sittning";
-    $nationURL = "http://$_SERVER[SERVER_NAME]:8000/sittning/$nation";
 
-    // Live
-    //$siteURL = "$_SERVER[HTTP_REFERER]";
-    //$nationURL = "$_SERVER[HTTP_REFERER]/$nation";
+	if($_SERVER['HTTP_HOST'] == "lundasittning.se"){
+    	$siteURL = "http://$_SERVER[SERVER_NAME]";
+    	$nationURL = "http://$_SERVER[SERVER_NAME]/$nation"; 
+	} else {
+	    $siteURL = "http://$_SERVER[SERVER_NAME]:8000/sittning";
+	    $nationURL = "http://$_SERVER[SERVER_NAME]:8000/sittning/$nation";
+	}
 ?>
