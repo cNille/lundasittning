@@ -241,6 +241,13 @@ body {
       text-decoration: none;
       display: inline-block;
       margin-left: 10px; }
+@keyframes JUMP {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.2); }
+  100% {
+    transform: scale(1.1); } }
     body .header .header-button {
       position: fixed;
       z-index: 9000;
@@ -249,7 +256,7 @@ body {
       padding: 0;
       width: 55px;
       height: 55px;
-      border: none;
+      border: 1px solid #f2867d;
       background-color: #f2867d;
       outline: none;
       -webkit-transition: all 0.3s ease-in-out;
@@ -258,17 +265,21 @@ body {
       transition: all 0.3s ease-in-out;
       cursor: pointer; }
       body .header .header-button:hover {
-        background-color: #fbdcda; }
+        border: 1px solid #eee; }
       body .header .header-button .menuloggo {
         position: relative;
         display: block;
         background-image: url("../images/hamburgermenux55.png");
         margin: auto;
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         background-size: contain;
         background-repeat: no-repeat;
-        background-position: 50% 50%; }
+        background-position: 50% 50%;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out; }
   body .sidenav {
     position: fixed;
     height: 100vh;

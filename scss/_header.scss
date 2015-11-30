@@ -50,6 +50,12 @@
 		margin-left: 10px;
 	}
 
+	@keyframes JUMP {
+	  0%   { transform: scale(1.0); }
+	  50%   { transform: scale(1.2); }
+	  100% { transform: scale(1.1); }
+	}
+
 
 	.header-button {
 		position: fixed;
@@ -59,14 +65,14 @@
 		padding: 0;
 		width: 55px;
 		height: 55px;
-		border: none;
+		border: 1px solid $red;
 		background-color: $red;
 		outline: none;
 		@include easy-trans(0.3s);
 		cursor: pointer;
 
 		&:hover {
-			background-color: lighten($red, 20%);
+			border: 1px solid $white;
 		}
 
 		.menuloggo{
@@ -74,11 +80,12 @@
 			    display: block;
 			    background-image: url("../images/hamburgermenux55.png");
 			    margin: auto;
-			    width: 30px;
-			    height: 30px;
+			    width: 25px;
+			    height: 25px;
 			    background-size: contain;
 			    background-repeat: no-repeat;
 			    background-position: 50% 50%;
+			    @include easy-trans(0.3s);
 		}
 	}
 }
