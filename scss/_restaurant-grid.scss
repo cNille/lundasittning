@@ -19,13 +19,14 @@
 		.restaurant{
 			position: relative;
 			display: block;
-			background-color: $white;
 			height: 100%;
 			padding: 10px;
 			opacity: 0.8;
 			@include easy-trans(0.3s);
+			background-color: transparent;
 			&:hover{
 				opacity: 1;
+				background-color: lighten($black, 10%);
 			}
 			.loggo{
 				position: relative; 
@@ -43,8 +44,9 @@
 				text-align: center;
 				text-transform: uppercase;
 				font-weight: 100;
+				@include easy-trans(0.3s);
+				color: $white;
 			}
-
 		}
 	}
 

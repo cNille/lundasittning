@@ -786,16 +786,17 @@ body {
       body .restaurant-grid a .restaurant {
         position: relative;
         display: block;
-        background-color: #eee;
         height: 100%;
         padding: 10px;
         opacity: 0.8;
         -webkit-transition: all 0.3s ease-in-out;
         -moz-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out; }
+        transition: all 0.3s ease-in-out;
+        background-color: transparent; }
         body .restaurant-grid a .restaurant:hover {
-          opacity: 1; }
+          opacity: 1;
+          background-color: #4d4d4d; }
         body .restaurant-grid a .restaurant .loggo {
           position: relative;
           display: block;
@@ -810,6 +811,11 @@ body {
           font-size: 20px;
           text-align: center;
           text-transform: uppercase;
-          font-weight: 100; }
+          font-weight: 100;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+          color: #eee; }
 
 /*# sourceMappingURL=main.css.map */
