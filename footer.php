@@ -35,7 +35,7 @@
 
 	<div class="header">
 		<a href="<?php echo $nationURL; ?>">Sittning @ <?php echo strtoupper($restaurant[1]); ?></a>
-		<button class="header-button" id="open-button" onclick="toggleSide()">Open Menu</button>
+		<button class="header-button" id="open-button" onclick="toggleSide()"><div class="menuloggo"></div></button>
 	</div>
 
 	<div class='shadow'></div>

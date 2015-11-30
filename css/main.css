@@ -247,30 +247,28 @@ body {
       right: 0px;
       top: 0px;
       padding: 0;
-      width: 2.5em;
-      height: 2.25em;
+      width: 55px;
+      height: 55px;
       border: none;
-      text-indent: 2.5em;
-      font-size: 1.5em;
-      color: transparent;
-      background: transparent;
+      background-color: #f2867d;
       outline: none;
       -webkit-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       -o-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out; }
-    body .header .header-button::before {
-      position: absolute;
-      top: 0.5em;
-      right: 0.5em;
-      bottom: 1.0em;
-      left: 1.0em;
-      background: linear-gradient(#FFFFFF 20%, transparent 20%, transparent 40%, #FFFFFF 40%, #FFFFFF 60%, transparent 60%, transparent 80%, #FFFFFF 80%);
-      content: ''; }
-    body .header .header-button:hover {
-      cursor: hand;
-      cursor: pointer;
-      opacity: 0.6; }
+      transition: all 0.3s ease-in-out;
+      cursor: pointer; }
+      body .header .header-button:hover {
+        background-color: #fbdcda; }
+      body .header .header-button .menuloggo {
+        position: relative;
+        display: block;
+        background-image: url("../images/hamburgermenux55.png");
+        margin: auto;
+        width: 30px;
+        height: 30px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%; }
   body .sidenav {
     position: fixed;
     height: 100vh;

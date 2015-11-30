@@ -57,32 +57,29 @@
 		right: 0px;
 		top: 0px;
 		padding: 0;
-		width: 2.5em;
-		height: 2.25em;
+		width: 55px;
+		height: 55px;
 		border: none;
-		text-indent: 2.5em;
-		font-size: 1.5em;
-		color: transparent;
-		background: transparent;
+		background-color: $red;
 		outline: none;
-			@include easy-trans(0.3s);
-
-	}
-	
-	.header-button::before {
-		position: absolute;
-		top: 0.5em;
-		right: 0.5em;
-		bottom: 1.0em;
-		left: 1.0em;
-		background: linear-gradient(#FFFFFF 20%, transparent 20%, transparent 40%, #FFFFFF 40%, #FFFFFF 60%, transparent 60%, transparent 80%, #FFFFFF 80%);
-		content: '';
-	}
-	
-	.header-button:hover {
-		cursor: hand;
+		@include easy-trans(0.3s);
 		cursor: pointer;
-		opacity: 0.6;
+
+		&:hover {
+			background-color: lighten($red, 20%);
+		}
+
+		.menuloggo{
+			    position: relative;
+			    display: block;
+			    background-image: url("../images/hamburgermenux55.png");
+			    margin: auto;
+			    width: 30px;
+			    height: 30px;
+			    background-size: contain;
+			    background-repeat: no-repeat;
+			    background-position: 50% 50%;
+		}
 	}
 }
 
