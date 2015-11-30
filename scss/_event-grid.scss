@@ -24,6 +24,10 @@
         &:hover{
             border: 1px solid #333;
         }
+
+        @media screen and (max-width: $mobileBreak){
+            width: 100%;
+        }
         
         .event-remove-button{
 			position: absolute;
@@ -60,6 +64,8 @@
         .width{
             width: 150px;
             overflow: hidden;
+            margin: auto;
+            
 
             .event-window-date{
                 margin-top: 20px;

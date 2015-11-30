@@ -14,23 +14,7 @@
                 <p><strong>Homepage: </strong> <a href="<?php echo $restaurant[4]; ?>"><?php echo $restaurant[4]; ?></a> </p>
             </div>
         </div>
-
     </footer>
-
-    <?php if ($loggedIn): ?> 
-        <div class="fb-login" >
-            <a href="<?php echo $siteURL; ?>/facebook-login/logout.php">
-            <img src="https://graph.facebook.com/<?php echo $fbid; ?>/picture" />
-            <span><?php echo $fbFullname; ?></span>
-            <br />
-            Logga ut</a>
-        </div>
-    <?php else : ?>
-        <a class="fb-login" href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
-            <img src="<?php echo $siteURL; ?>/images/FB-logga.png" />
-            <span class="login">Logga in</span>
-        </a>
-    <?php endif; ?>
 
 
 	<div class="header">
@@ -41,6 +25,18 @@
 	<div class='shadow'></div>
 	<div class="sidenav">
 		<h1>Menu</h1>
+        <?php if ($loggedIn): ?> 
+            <div class="fb-loggedin">
+                <img src="https://graph.facebook.com/<?php echo $fbid; ?>/picture" />
+                <span>Inloggad som: <?php echo $fbFullname; ?></span>
+            </div>
+        <?php else : ?>
+            <a class="fb-login" href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
+                <img src="<?php echo $siteURL; ?>/images/FB-logga.png" />
+                <span class="login">Logga in</span>
+            </a>
+        <?php endif; ?>
+
 		<a href="<?php echo $nationURL; ?>/">Sittningar</a>
 		<?php if($loggedIn){ ?>
 			<a href="<?php echo $nationURL; ?>/settings.php">Mitt konto</a>
@@ -49,7 +45,11 @@
 			<a href="<?php echo $nationURL; ?>/nationsettings.php">Nationsinställningar</a>
 			<a href="<?php echo $nationURL; ?>/users.php">Användare</a>
 		<?php } ?>
-		<a href="<?php echo $nationURL; ?>/faq.php">F.A.Q</a>
+        <a href="<?php echo $nationURL; ?>/faq.php">F.A.Q</a>
+        <a href="<?php echo $siteURL; ?>">Till lundasittning.se</a>
+        <?php if ($loggedIn): ?> 
+            <a class="fb-logout" href="<?php echo $siteURL; ?>/facebook-login/logout.php">Logga ut</a>
+        <?php endif; ?>
 	</div>
 	</body>
 	<script src="<?php echo $nationURL; ?>/javascript/toClipboard.js"></script>

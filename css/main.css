@@ -122,7 +122,8 @@ body {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 50px; }
+    padding-bottom: 50px;
+    min-height: 400px; }
     body .content .title, body .content h2 {
       width: 90%;
       margin: 0 auto;
@@ -291,10 +292,13 @@ body {
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    box-sizing: border-box;
-    -moz-box-shadow: inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow: inset 0 0 10px #000000; }
+    box-sizing: border-box; }
+    body .sidenav::after {
+      width: 100%;
+      height: 100%;
+      -moz-box-shadow: inset 0 0 10px #000000;
+      -webkit-box-shadow: inset 0 0 10px #000000;
+      box-shadow: inset 0 0 10px #000000; }
     body .sidenav.active {
       right: 0; }
     body .sidenav h1 {
@@ -312,6 +316,33 @@ body {
       body .sidenav a:hover {
         background-color: #f2867d;
         color: #eee; }
+      body .sidenav a.fb-login {
+        font-size: 15px;
+        font-weight: 700; }
+        body .sidenav a.fb-login img {
+          vertical-align: middle;
+          width: 25px;
+          height: 25px;
+          border-radius: 3px; }
+        body .sidenav a.fb-login span {
+          margin-left: 10px; }
+      body .sidenav a.fb-logout {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        font-size: 15px;
+        font-weight: 700; }
+    body .sidenav .fb-loggedin {
+      padding: 10px; }
+      body .sidenav .fb-loggedin img {
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        border-radius: 100px; }
+      body .sidenav .fb-loggedin span {
+        font-size: 11px;
+        font-weight: 700;
+        margin-left: 5px; }
   body .shadow {
     position: fixed;
     display: block;
@@ -388,35 +419,6 @@ body {
           width: 100%;
           display: block;
           margin: auto; } }
-  body .fb-login {
-    height: 30px;
-    position: fixed;
-    display: block;
-    bottom: 20px;
-    right: 50px;
-    opacity: 0.6;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    font-size: 13px;
-    text-align: right; }
-    body .fb-login:hover {
-      opacity: 1.0;
-      cursor: pointer; }
-    body .fb-login img {
-      position: absolute;
-      right: -35px;
-      top: 0;
-      width: 30px;
-      height: 30px;
-      vertical-align: middle; }
-    body .fb-login span {
-      color: white; }
-      body .fb-login span.login {
-        line-height: 30px; }
-    body .fb-login a {
-      color: white; }
   body .single-sitting {
     position: relative;
     display: block;
@@ -636,6 +638,9 @@ body {
         opacity: 1.0; }
       body .event-grid .event-window:hover {
         border: 1px solid #333; }
+      @media screen and (max-width: 750px) {
+        body .event-grid .event-window {
+          width: 100%; } }
       body .event-grid .event-window .event-remove-button {
         position: absolute;
         cursor: pointer;
@@ -670,7 +675,8 @@ body {
         z-index: 0; }
       body .event-grid .event-window .width {
         width: 150px;
-        overflow: hidden; }
+        overflow: hidden;
+        margin: auto; }
         body .event-grid .event-window .width .event-window-date {
           margin-top: 20px;
           font-size: 60px; }
