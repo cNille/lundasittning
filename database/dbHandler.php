@@ -267,7 +267,9 @@
 			return $result; 
 		}
 		public function getSittingsSpots($active) {
-			$sql = "SELECT s.id, count(*) as spots FROM sitting as s JOIN party as p JOIN partyparticipant as pp WHERE s.active=? AND s.id=p.sittId AND p.id=pp.partyId GROUP BY s.id";
+			$sql = "SELECT s.id, count(*) as spots FROM sitting as s JOIN party as p JOIN partyparticipant as pp join paystatus as ps WHERE pp.participantPayed = ps.status AND s.active=1 AND s.id=p.sittId AND p.id=pp.partyId AND ps.accesslevel > 1 GROUP BY s.id;";
+//SELECT s.id, count(*) as spots FROM sitting as s JOIN party as p JOIN partyparticipant as pp join paystatus as ps WHERE pp.participantPayed = ps.status AND s.active=1 AND s.id=p.sittId AND p.id=pp.partyId AND ps.accesslevel > 1 GROUP BY s.id;
+
 			$result = $this->db->executeQuery($sql, array($active));
 			return $result; 
 		}

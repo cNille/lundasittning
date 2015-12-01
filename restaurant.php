@@ -4,20 +4,20 @@
  	$dbHandler = new DatabaseHandler();
     $sittings = $dbHandler->getSittings(1, $restaurant[0]);
     $sittingSpotsTaken = $dbHandler->getSittingsSpots(1);
-	$dbHandler->disconnect();
+	$dbHandler->disconnect();	
 
-	function spotsLeftTextify($spotsLeft, $resSize){
-		// För översikt under testning, ta bort sen.
-		return "Platser kvar: " . $spotsLeft;
-
-		if($spotsLeft > $resSize * 0.7){
-			return "Ledig";
-		} else if ($spotsLeft < 5){
-			return "Fåtal platser kvar";
-		}
-		return "Platser kvar: " . $spotsLeft;
-	}
 	
+    function spotsLeftTextify($spotsLeft, $resSize){
+        // För översikt under testning, ta bort sen.
+        return "Platser kvar: " . $spotsLeft;
+
+        if($spotsLeft > $resSize * 0.7){
+            return "Ledig";
+        } else if ($spotsLeft < 5){
+            return "Fåtal platser kvar";
+        }
+        return "Platser kvar: " . $spotsLeft;
+    }
  ?>
 
 <div class="content">

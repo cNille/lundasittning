@@ -1,5 +1,6 @@
 <?php
 	require_once 'loginCheck.php';
+
 ?>
 <!doctype html>
 

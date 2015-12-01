@@ -6,6 +6,7 @@
 	$sitting = $dbHandler->getSitting($sittId);
 	$parties = $dbHandler->getParties($sittId);
 
+	$sittingSpotsTaken = $dbHandler->getSittingsSpots(1);
 
 	$partiesPayStatus = $dbHandler->getPartiesPayStatus($sittId);
 	$myParties = $dbHandler->getPartiesByParticipant($user[0]);
@@ -36,7 +37,15 @@
 		}
 	}
 
-	$spotsLeft = $restaurant[9];
+	// Get spotsleft.
+	$spotsTaken = 0;
+	foreach ($sittingSpotsTaken as $key => $sst) {
+		if($sst[0] == $sittId){
+			$spotsTaken = $sst[1];
+		}
+	}
+
+    $spotsLeft = $restaurant[9] - $spotsTaken;
 
  ?>
  <link rel="stylesheet" type="text/css" href="../../css/main.css" />
