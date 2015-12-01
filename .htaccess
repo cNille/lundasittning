@@ -35,8 +35,4 @@ RewriteRule ^/?([a-zA-Z]{2})$ restaurant.php?nation=$1
 
 
 
-#RewriteRule ^/?([a-zA-Z]{2}) ?nation=$1s
-
-
-
 

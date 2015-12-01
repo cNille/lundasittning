@@ -3,7 +3,7 @@ $('body').on('click', '.event-remove-button', function() {
 
 	$.ajax({
 		type: 'POST',
-		url:  NATIONURL + 'database/dbAjax.php',
+		url:  SITEURL + '/database/dbAjax.php',
 		data: 'action=removeSitting&id=' + temp,
 		success: function(data){
 			$('#' + temp).remove();

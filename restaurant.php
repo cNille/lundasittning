@@ -2,7 +2,7 @@
     require_once 'header.php';
 
  	$dbHandler = new DatabaseHandler();
-    $sittings = $dbHandler->getSittings(1);
+    $sittings = $dbHandler->getSittings(1, $restaurant[0]);
     $sittingSpotsTaken = $dbHandler->getSittingsSpots(1);
 	$dbHandler->disconnect();
 

@@ -50,7 +50,7 @@
 			return $result[0][0];
 		}
 
-        public function updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo){
+        public function updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $participantid){
             $name = htmlspecialchars($name);
             $nickname = htmlspecialchars($nickname);
             $email = htmlspecialchars($email);
@@ -69,7 +69,7 @@
             $sql = "UPDATE restaurant SET nickname=?, email=?, telephone=?, homepage=?, hours=?, address=?, deposit=?, price=?, size=?, summary=?, backgroundimage=?, loggoimage=? WHERE name=?;";
             $result = $this->db->executeUpdate($sql, array( $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $name));
 
-            $this->log("Restaurang uppdated.", null, null);
+            $this->log("Restaurang uppdated. New data: $name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo", $participantid, $name);
 
             return count($result) == 1;
         }
@@ -88,8 +88,8 @@
 		    $sql = "INSERT INTO loginaccount (fbid, email) VALUES (?,?);";
     		$result = $this->db->executeUpdate($sql, array($fbid, $email));
         
-        $id = $this->db->getLastId();
-        $this->log("Loginaccount created, id: $id.", null, null);
+        	$id = $this->db->getLastId();
+        	$this->log("Loginaccount created, fbid: $id.", null, null);
 
     		return $id;
 		}
@@ -99,7 +99,7 @@
 		    $sql = "UPDATE loginaccount SET email=? WHERE id = ?;";
     		$result = $this->db->executeUpdate($sql, array($email, $id));
 
-            $this->log("Loginaccount update.", null, null);
+            $this->log("Email updated to: $email", $id, null);
 
     		return $result[0];
 		}
@@ -109,6 +109,10 @@
 
 		    $sql = "UPDATE loginaccount SET telephone=? WHERE id = ?;";
     		$result = $this->db->executeUpdate($sql, array($phone, $id));
+
+    		$this->log("Phone updated to: $phone", $id, null);
+
+
     		return $result[0];
 		}
 		public function getSettings($fbid) {
@@ -128,6 +132,8 @@
 
             $sql = "INSERT INTO participant (name, other, loginaccount) VALUES (?,?,?)";
             $result = $this->db->executeUpdate($sql, array($name, $other, $loginaccount));
+
+            $this->log("Participant created. Name: $name, Other: $other, Loginaccount: $loginaccount", null, null);
     		return $this->db->getLastId(); 
         }
         public function getParticipants($resName) {
@@ -140,6 +146,8 @@
             $participantId = htmlspecialchars($participantId);
             $sql = "UPDATE participant SET name=? WHERE id=?;";
             $result = $this->db->executeUpdate($sql, array($name, $participantId));
+
+            $this->log("Name updated to: $name", $participantId, null);
             return $result[0];
         }
         public function updateOther($id, $other) {
@@ -147,6 +155,8 @@
             $other = htmlspecialchars($other);
             $sql = "UPDATE participant SET other=? WHERE id = ?;";
             $result = $this->db->executeUpdate($sql, array($other, $id));
+            $this->log("Other updated to: $other", $id, null);
+
             return $result[0];
         }
 
@@ -188,6 +198,9 @@
 		public function updateUserType($usertype, $participantid, $resname) {
 			$sql = "update restaurantparticipant set usertype=? where participantid=? and resname=?";
     		$result = $this->db->executeupdate($sql, array($usertype, $participantid, $resname));
+
+    		$this->log("Usertype updated to $usertype", $participantid, $resname);
+
     		return $result;
 		}
 
@@ -209,36 +222,47 @@
 		public function addParticipantFood($participantid, $food) {
 		    $sql = "insert into participantfood values (?,?);";
     		$result = $this->db->executeupdate($sql, array($participantid, $food));
+
+    		$this->log("Participantfood added: $food", $participantid, null);
     		return $result[0];
 		}
 		public function clearParticipantFood($participantid) {
 		    $sql = "delete from participantfood where participantid=?;";
     		$result = $this->db->executeupdate($sql, array($participantid));
+
+    		$this->log("Participantfood cleared.", $participantid, null);
+
     		return $result[0];
 		}
 
 		// Sitting
 		// ======================================================
-		public function addSitting($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant) {
+		public function addSitting($sittDate, $restaurant, $participantid) {
             $sittDate = htmlspecialchars($sittDate);
             $sittPrelDeadline = htmlspecialchars($sittPrelDeadline);
             $sittPayDeadline = htmlspecialchars($sittPayDeadline);
             $restaurant = htmlspecialchars($restaurant);
 
-		    $sql = "INSERT INTO sitting (sittDate, prelDeadline, payDeadline, resName) VALUES (?, ?, ?, ?);";
-    		$result = $this->db->executeUpdate($sql, array($sittDate, $sittPrelDeadline, $sittPayDeadline, $restaurant));
+		    $sql = "INSERT INTO sitting (sittDate, resName) VALUES (?, ?);";
+    		$result = $this->db->executeUpdate($sql, array($sittDate, $restaurant));
+
+    		$this->log("Sitting added. Date: $sittDate", $participantid, $restaurant);
+
     		return $this->db->getLastId(); 
 		}
-		public function deleteSitting($sittId){
+		public function deleteSitting($sittId, $participantid, $restaurant){
             $sittId = htmlspecialchars($sittId);
             
 			$sql = "UPDATE sitting SET active = 0 WHERE id=?;";
 		    $result = $this->db->executeUpdate($sql, array($sittId));
+
+		    $this->log("Sitting deleted. Sitting: $sittId", $participantid, $restaurant);
+
 		    return count($result) == 1;  
 		} 
-		public function getSittings($active) {
-			$sql = "SELECT id, sittDate, active FROM sitting WHERE active=? AND sittDate >= NOW() ORDER BY sittDate;";
-			$result = $this->db->executeQuery($sql, array($active));
+		public function getSittings($active, $restaurant) {
+			$sql = "SELECT id, sittDate, active FROM sitting WHERE active=? AND resName=? AND sittDate >= NOW() ORDER BY sittDate;";
+			$result = $this->db->executeQuery($sql, array($active, $restaurant));
 			return $result; 
 		}
 		public function getSittingsSpots($active) {
@@ -252,22 +276,30 @@
 			return $this->createSittingObject($result[0]);  // Structure: {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
 		}
 
-        public function updateAppetiser($sittId, $appetiser) {
+        public function updateAppetiser($sittId, $appetiser, $participantid, $restaurant) {
             $sittId = htmlspecialchars($sittId);
             $appetiser = htmlspecialchars($appetiser);
             $sql = "UPDATE sitting SET appetiser=? WHERE id = ?;";
+
+            $this->log("Appetiser updated. Sitting: $sittId, Appetiser: $appetiser", $participantid, $restaurant);
+
             $result = $this->db->executeUpdate($sql, array($appetiser, $sittId));
         }
-        public function updateMain($sittId, $main) {
+        public function updateMain($sittId, $main, $participantid, $restaurant) {
             $sittId = htmlspecialchars($sittId);
             $main = htmlspecialchars($main);
             $sql = "UPDATE sitting SET main=? WHERE id = ?;";
+
+            $this->log("Maincourse updated. Sitting: $sittId, Maincourse: $main", $participantid, $restaurant);
             $result = $this->db->executeUpdate($sql, array($main, $sittId));
         }
-        public function updateDesert($sittId, $desert) {
+        public function updateDesert($sittId, $desert, $participantid, $restaurant) {
             $sittId = htmlspecialchars($sittId);
             $desert = htmlspecialchars($desert);
             $sql = "UPDATE sitting SET desert=? WHERE id = ?;";
+
+            $this->log("Desert updated. Sitting: $sittId, Desert: $desert", $participantid, $restaurant);
+            
             $result = $this->db->executeUpdate($sql, array($desert, $sittId));
         }
 
@@ -291,19 +323,25 @@
 			return $result; 
 		}
 
-		public function setSittingForeman($sittId, $participantId) {
+		public function setSittingForeman($sittId, $foremanId, $participantid) {
             $sittId = htmlspecialchars($sittId);
-            $participantId = htmlspecialchars($participantId);
+            $participantId = htmlspecialchars($foremanId);
 			$sql = "INSERT INTO sittingforeman VALUES (?,?);";
-			$result = $this->db->executeUpdate($sql, array($sittId, $participantId));
+			$result = $this->db->executeUpdate($sql, array($sittId, $foremanId));
+
+			$this->log("Sittingforeman added. Sitting: $sittId, Desert: $desert", $participantid, null);
+
 			return $result; 
 		}
 
-		public function removeSittingForeman($sittId, $participantId) {
+		public function removeSittingForeman($sittId, $foremanId, $participantid) {
             $sittId = htmlspecialchars($sittId);
-            $participantId = htmlspecialchars($participantId);
+            $participantId = htmlspecialchars($foremanId);
 			$sql = "DELETE FROM sittingforeman WHERE sittId=? AND participantId=?;";
-			$result = $this->db->executeUpdate($sql, array($sittId, $participantId));
+			$result = $this->db->executeUpdate($sql, array($sittId, $foremanId));
+
+			$this->log("Sittingforeman removed. Sitting: $sittId, Desert: $desert", $participantid, null);
+			
 			return $result; 
 		}
 
@@ -331,7 +369,7 @@
 			$result = $this->db->executeQuery($sql, array($sittId));
 			return $result;
 		}
-		public function createParty($name, $type, $sittId, $int, $msg, $key) {
+		public function createParty($name, $type, $sittId, $int, $msg, $key, $participantid, $restaurant) {
             $name = htmlspecialchars($name);
             $type = htmlspecialchars($type);
             $sittId = htmlspecialchars($sittId);
@@ -340,26 +378,35 @@
             $key = htmlspecialchars($key);
 		    $sql = "INSERT INTO party (name, partyType, sittId, interest, message, urlkey) VALUES (?, ?, ?, ?, ?, ?);";
     		$result = $this->db->executeUpdate($sql, array($name, $type, $sittId, $int, $msg, $key));
-    		return $this->db->getLastId(); 
+
+			$this->log("Party created. Name: $name, Type: $type, SittId: $sittId, Interest: $int, Message: $msg, Key: $key", $participantid, $restaurant);
 		}
-		public function updatePartyMsg($pId, $msg){
+		public function updatePartyMsg($pId, $msg, $participantid, $restaurant){
             $pId = htmlspecialchars($pId);
             $msg = htmlspecialchars($msg);
 		    $sql = "UPDATE party SET message=? WHERE id=?;";
     		$result = $this->db->executeUpdate($sql, array($msg, $pId));
+
+    		$this->log("Party message updated. PartyId: $pId, Message: $msg", $participantid, $restaurant);
     		return $result[0];		
 		}
-		public function updatePartyInterest($pId, $interest){
+		public function updatePartyInterest($pId, $interest, $participantid, $restaurant){
             $pId = htmlspecialchars($pId);
             $interest = htmlspecialchars($interest);
 		    $sql = "UPDATE party SET interest=? WHERE id=?;";
     		$result = $this->db->executeUpdate($sql, array($interest, $pId));
+
+    		$this->log("Party interest updated. PartyId: $pId, Interest: $interest", $participantid, $restaurant);
+
     		return $result[0];		
 		}
 		
-		public function deleteParty($pId){            
+		public function deleteParty($pId, $participantid, $restaurant){            
 			$sql = "UPDATE party SET active = 0 WHERE id=?;";
 		    $result = $this->db->executeUpdate($sql, array($pId));
+
+		    $this->log("Party deleted. PartyId: $pId", $participantid, $restaurant);
+
 		    return count($result) == 1;  
 		} 
 
@@ -374,11 +421,13 @@
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $result[0]; 
 		}
-		public function createPartyCreator($partyId, $participantId) {
+		public function createPartyCreator($partyId, $participantid, $restaurant) {
             $partyId = htmlspecialchars($partyId);
-            $participantId = htmlspecialchars($participantId);
+            $participantid = htmlspecialchars($participantid);
 		    $sql = "INSERT INTO partycreator (partyId, participantId) VALUES (?, ?);";
-    		$result = $this->db->executeUpdate($sql, array($partyId, $participantId));
+    		$result = $this->db->executeUpdate($sql, array($partyId, $participantid));
+
+    		$this->log("Partycreator created. PartyId: $partyId", $participantid, $restaurant);
     		return $this->db->getLastId(); 
 		}
 
@@ -400,11 +449,13 @@
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $this->createGuestList($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
 		}
-		public function addPartyParticipant($partyId, $participantId) {
+		public function addPartyParticipant($partyId, $participantId, $restaurant) {
             $partyId = htmlspecialchars($partyId);
             $participantId = htmlspecialchars($participantId);
 		    $sql = "INSERT INTO partyparticipant (partyId, participantId, participantPayed) VALUES (?, ?, 'Nej');";
     		$result = $this->db->executeUpdate($sql, array($partyId, $participantId));
+
+    		$this->log("Partyparticipant created. PartyId: $partyId", $participantid, $restaurant);
     		return $this->db->getLastId(); 
 		}
 		public function isParticipating($partyId, $participantId) {
@@ -412,12 +463,14 @@
 			$result = $this->db->executeQuery($sql, array($partyId, $participantId));
 			return count($result) == 1;
 		}
-        public function updateParticipantPayStatus($participant, $party, $paystatus){
+        public function updateParticipantPayStatus($participant, $party, $paystatus, $restaurant){
             $participant = htmlspecialchars($participant);
             $party = htmlspecialchars($party);
             $paystatus = htmlspecialchars($paystatus);
             $sql = "UPDATE partyparticipant SET participantPayed=? WHERE participantId=? AND partyId=?";
             $result = $this->db->executeUpdate($sql, array($paystatus, $participant, $party));
+
+            $this->log("Partyparticipant paystatus updated. Party: $party, Paystatus: $paystatus", $participant, $restaurant);
             return $result;
         }
 		public function getParticipantPayedStatus($participant, $party){
@@ -426,10 +479,13 @@
             return $result[0];
         }
 
-		public function deletePartyParticipant($partyId, $participantId) {
-      $participantId = htmlspecialchars($participantId);
-      $sql = "DELETE FROM partyparticipant WHERE partyId=? AND participantId=?;";
-			$result = $this->db->executeUpdate($sql, array($partyId, $participantId));
+		public function deletePartyParticipant($partyId, $partyparticipant, $participantid, $restaurant) {
+      		$partyparticipant = htmlspecialchars($partyparticipant);
+      		$sql = "DELETE FROM partyparticipant WHERE partyId=? AND participantId=?;";
+			$result = $this->db->executeUpdate($sql, array($partyId, $partyparticipant));
+		
+			$this->log("Partyparticipant deleted. PartyId: $pId", $participantid, $restaurant);
+
 			return count($result) == 1; 
 		}
 
@@ -454,6 +510,11 @@
             $result = $this->db->executeUpdate($sql, array($logMessage, $user, $res));
         }   
 
+        public function getLog(){
+            $sql = "SELECT * FROM log ORDER BY logDate DESC;";
+            $result = $this->db->executeQuery($sql, array());
+            return $result;
+        }
 
 		// Event
 		// ======================================================

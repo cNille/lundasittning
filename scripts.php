@@ -92,9 +92,14 @@
 		$msg = $_POST['message'];
 		$key = generateRandomString();
 
-		$id = $dbHandler->createParty($partyName, $type, $sittId, $int, $msg, $key);
-		$dbHandler->createPartyCreator($id, $userId);
-		$dbHandler->addPartyParticipant($id, $userId);
+
+		$dbHandler->createParty($partyName, $type, $sittId, $int, $msg, $key, $user[0], $restaurant[0]);
+		$p = $dbHandler->getPartyFromKey($key);
+
+		
+		$id = $p->id;
+		$dbHandler->createPartyCreator($id, $userId, $restaurant[0]);
+		$dbHandler->addPartyParticipant($id, $userId, $restaurant[0]);
 
 		// Send email to Restaurant
    		$party = $dbHandler->getParty($id);
@@ -185,7 +190,7 @@
             $msg = "Save successfull.";
         }
     
-        $dbHandler->updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo);
+        $dbHandler->updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $user[0]);
 
         if($msg != ""){
             $_SESSION['message'] = $msg;
@@ -230,7 +235,7 @@
 		$creator = $dbHandler->getCreator($pId);
 		$isCreator = $creator[0] == $user[0];
 		if($isCreator){
-			$dbHandler->updatePartyInterest($pId, $interest);
+			$dbHandler->updatePartyInterest($pId, $interest, $user[0], $restaurant[0]);
 		}
         $party = $dbHandler->getParty($pId);
 
@@ -246,7 +251,7 @@
 		$creator = $dbHandler->getCreator($pId);
 		$isCreator = $creator[0] == $user[0];
 		if($isCreator){
-			$dbHandler->updatePartyMsg($pId, $msg);
+			$dbHandler->updatePartyMsg($pId, $msg, $user[0], $restaurant[0]);
 		}
         $party = $dbHandler->getParty($pId);
 
@@ -257,23 +262,23 @@
 	}
 
     if($_POST['partyDeleteParticipant']){
-      $_SESSION['message'] = 'Gäst borttagen.';
+      	$_SESSION['message'] = 'Gäst borttagen.';
 
-      // Determine isCreator
-      $uId = $user[0];
+      	// Determine isCreator
+      	$uId = $user[0];
 		  $pId = $_POST['partyid'];
-      $party = $dbHandler->getParty($pId);
+      	$party = $dbHandler->getParty($pId);
 		  $creator = $dbHandler->getCreator($pId);
 		  $isCreator = $creator[0] == $user[0];
       
-      // Get id's to remove
-      $userIds = $_POST['userId'];
+      	// Get id's to remove
+      	$userIds = $_POST['userId'];
     
-      // If has access level
-		  if($isCreator || $myAccessLevel >= 5){
+      	// If has access level
+		if($isCreator || $myAccessLevel >= 5){
         foreach($userIds as $key => $u){
           if($u != $creator[0]){
-            $success = $dbHandler->deletePartyParticipant($pId, $u);
+            $success = $dbHandler->deletePartyParticipant($pId, $u, $uId, $restaurant[0]);
             if(!$success){
               $_SESSION['message'] = 'Deltagare gick ej att ta bort.';
               break;
@@ -293,7 +298,7 @@
 		$sittId = $_POST['sittId'];
 
 		if($myAccessLevel >= 5){
-			$dbHandler->deleteParty($partyId);
+			$dbHandler->deleteParty($partyId, $user[0], $restaurant[0]);
 		}
         $_SESSION['message'] = 'Sällskapet är nu borttagen.';
 
@@ -313,7 +318,7 @@
         		$oldPayStatus = $dbHandler->getParticipantPayedStatus($u, $partyid);
         		$oldReqAccessLevel = $dbHandler->getPayAccessLevel($oldPayStatus);
         		if($myAccessLevel >= $oldReqAccessLevel){
-	                $dbHandler->updateParticipantPayStatus($u, $partyid, $paystatus);
+	                $dbHandler->updateParticipantPayStatus($u, $partyid, $paystatus, $restaurant[0]);
 	            }
             }
         }
@@ -332,9 +337,9 @@
         
         if($sittForeman || $myAccessLevel >= 5){
 
-            $dbHandler->updateAppetiser($sittId, $appetiser);
-            $dbHandler->updateMain($sittId, $main);
-            $dbHandler->updateDesert($sittId, $desert);
+            $dbHandler->updateAppetiser($sittId, $appetiser, $user[0], $restaurant[0]);
+            $dbHandler->updateMain($sittId, $main, $user[0], $restaurant[0]);
+            $dbHandler->updateDesert($sittId, $desert, $user[0], $restaurant[0]);
 
             $_SESSION['message'] = 'Menyn är nu uppdaterad.';
             
@@ -347,18 +352,18 @@
         $_SESSION['message'] = 'Förman är nu tillagd.';
 
 		$sittId = $_POST['sittId'];
-		$user = $_POST['user'];
+		$formanId = $_POST['user'];
 
-		if($myAccessLevel >= 5 && isset($user)){
+		if($myAccessLevel >= 5 && isset($formanId)){
 			$foreman = $dbHandler->getSittingForeman($sittId);
 			$isSittingForeman = false;
 			foreach ($foreman as $key => $f) {
-				if($f[1] == $user){
+				if($f[1] == $formanId){
 					$isSittingForeman = true;
 				}
 			}
 			if (!$isSittingForeman){
-				$dbHandler->setSittingForeman($sittId, $user);
+				$dbHandler->setSittingForeman($sittId, $formanId, $user[0]);
 			}
 		} else {
 			$_SESSION['message'] = 'Vänligen ange en sittningsförman.';
@@ -369,10 +374,10 @@
 	}
 	if($_POST['removeSittingForeman']){
 		$sittId = $_POST['sittId'];
-		$user = $_POST['user'];
+		$formanId = $_POST['user'];
 
 		if($myAccessLevel >= 5){
-			$dbHandler->removeSittingForeman($sittId, $user);
+			$dbHandler->removeSittingForeman($sittId, $formanId, $user[0]);
 		}
 	
         $_SESSION['message'] = 'Förman är nu borttagen.';

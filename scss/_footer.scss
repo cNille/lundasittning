@@ -1,7 +1,7 @@
 
 footer{
     background-color: #333;
-    padding: 100px;
+    padding: 25px;
     box-sizing: border-box;
     color: $white;
     margin-top: 50px;
@@ -9,36 +9,42 @@ footer{
     display: table;
     width: 100%;
 
+    h3{
+        text-align: center;
+    }
+
+    .third-column{
+        position: relative;
+        display: inline-block;
+        width: 33%;
+        vertical-align: top;
+        padding: 0px 10px;
+        box-sizing: border-box;
+        margin-top: 25px;
+
+        @media screen and (max-width: $mobileBreak){
+            width: 100%;
+        }
+        p{
+            max-width: 280px;
+            margin: 5px auto;
+            position: relative;
+            display: block;
+        }
+    }
+
     .logocontainer{
-        width: 200px;
         height: 200px;
         margin: 25px auto;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: 50% 50%;
-        position: relative;
-        display: inline-block;
-        width: 49%;
-        
     }
 
-    h3{
-        text-align: center;
-        
-    }
-
- 
     .infocontainer{
-        max-width: 280px;
-        margin: auto;
-        position: relative;
-        display: inline-block;
-        width:49%;
+    }
 
-        .contactinformation{
-            max-width: 280px;
-            margin: auto;
-        }
+    .contactinformation{
 
         a{
             font-weight: 400;

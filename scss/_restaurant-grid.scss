@@ -7,7 +7,7 @@
 
 
 	a{
-		width: 49%;
+		width: 100%;
 		box-sizing: border-box;
 		height: 250px;
 		position: relative;
@@ -15,6 +15,10 @@
 		padding: 15px;
 		text-decoration: none;
 		color: $black;
+
+		@media screen and (max-width: $mobileBreak){
+			width: 100%;
+		}
 
 		.restaurant{
 			position: relative;

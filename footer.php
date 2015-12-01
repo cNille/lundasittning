@@ -1,19 +1,19 @@
 	
     <footer>
-        <div class="logocontainer" style="background-image: url('<?php echo $nationURL; ?>/uploads/<?php echo $restaurant[12]; ?>');">
+        <div class="logocontainer third-column" style="background-image: url('<?php echo $nationURL; ?>/uploads/<?php echo $restaurant[12]; ?>');">
         </div>
                 
-        <div class="infocontainer">
+        <div class="infocontainer third-column">
             <h3><?php echo $restaurant[0]; ?></h3>
             <p><?php echo $restaurant[10]; ?></p>
-            <div class="contactinformation">
+        </div>
+        <div class="contactinformation third-column">
                 <p><strong>Email: </strong> <?php echo $restaurant[2] ?> </p>
                 <p><strong>Telephone: </strong> <?php echo $restaurant[3]; ?> </p>
                 <p><strong>Adress: </strong> <?php echo $restaurant[6]; ?> </p>
                 <p><strong>Öppettider: </strong> <?php echo $restaurant[5]; ?> </p>
                 <p><strong>Homepage: </strong> <a href="<?php echo $restaurant[4]; ?>"><?php echo $restaurant[4]; ?></a> </p>
             </div>
-        </div>
     </footer>
 
 
@@ -24,7 +24,6 @@
 
 	<div class='shadow'></div>
 	<div class="sidenav">
-		<h1>Menu</h1>
         <?php if ($loggedIn): ?> 
             <div class="fb-loggedin">
                 <img src="https://graph.facebook.com/<?php echo $fbid; ?>/picture" />
@@ -41,15 +40,19 @@
 		<?php if($loggedIn){ ?>
 			<a href="<?php echo $nationURL; ?>/settings.php">Mitt konto</a>
 		<?php } ?>
-		<?php if($myAccessLevel >=5){ ?>
-			<a href="<?php echo $nationURL; ?>/nationsettings.php">Nationsinställningar</a>
-			<a href="<?php echo $nationURL; ?>/users.php">Användare</a>
-		<?php } ?>
+        <?php if($myAccessLevel >=5){ ?>
+            <a href="<?php echo $nationURL; ?>/nationsettings.php">Nationsinställningar</a>
+            <a href="<?php echo $nationURL; ?>/users.php">Användare</a>
+        <?php } ?>
+        <?php if($myAccessLevel >=10){ ?>
+            <a href="<?php echo $nationURL; ?>/log.php">Log</a>
+        <?php } ?>
         <a href="<?php echo $nationURL; ?>/faq.php">F.A.Q</a>
         <a href="<?php echo $siteURL; ?>">Till lundasittning.se</a>
         <?php if ($loggedIn): ?> 
             <a class="fb-logout" href="<?php echo $siteURL; ?>/facebook-login/logout.php">Logga ut</a>
         <?php endif; ?>
+        <div class='side-shadow'></div>
 	</div>
 	</body>
 	<script src="<?php echo $nationURL; ?>/javascript/toClipboard.js"></script>

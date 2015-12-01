@@ -2,7 +2,7 @@
     $nation = $_GET['nation'];
 
 
-	if($_SERVER['HTTP_HOST'] == "lundasittning.se"){
+	if($_SERVER['HTTP_HOST'] == "www.lundasittning.se"){
     	$siteURL = "http://$_SERVER[SERVER_NAME]";
     	$nationURL = "http://$_SERVER[SERVER_NAME]/$nation"; 
 	} else {

@@ -16,13 +16,13 @@
 
 	function addSitting($dbHandler){
 		if(isset($_POST['date']) && !empty($_POST['date'])) {
-			echo $dbHandler->addSitting($_POST['date'], $_POST['preldate'], $_POST['paydate'], $_POST['resName']);
+			echo $dbHandler->addSitting($_POST['date'], $_POST['resName'], $user[0]);
 		}
 	}
 	
 	function removeSitting($dbHandler){
 		if(isset($_POST['id']) && !empty($_POST['id'])) {
-			echo $dbHandler->deleteSitting($_POST['id']);
+			echo $dbHandler->deleteSitting($_POST['id'], $user[0], $restaurant[0]);
 		}
 	}
     

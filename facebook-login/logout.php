@@ -6,7 +6,7 @@ if(isset($_SESSION['LAST_PAGE'])){
   $address = $_SESSION['LAST_PAGE'];
   $_SESSION['LAST_PAGE'] = NULL;
 } else{
-   $address = '../index.php';
+   $address = $siteURL;
 }
 
 

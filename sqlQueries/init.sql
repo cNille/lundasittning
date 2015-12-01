@@ -1,6 +1,6 @@
 -- SQL init queries for setting up database.
 
--- use lundasittning_se;
+use lundasittning_se;
 
 set FOREIGN_KEY_CHECKS = 0;
 
@@ -35,7 +35,7 @@ create table restaurant (
 	deposit 		integer,
 	price   		integer,
 	size   			integer,
-	summary 		tinytext,
+	summary 		text,
 	backgroundimage tinytext,
 	loggoimage 		tinytext,
     active          tinyint(1) DEFAULT 1,
@@ -175,7 +175,7 @@ select 'Create log' as '';
 create table log (
 	id  		    	integer auto_increment,
 	participantId		integer,
-	eventText	    	varchar(50),
+	eventText	    	text,
 	logDate			    datetime,
 	resName		    	varchar(30),
 	primary key(id),
