@@ -170,7 +170,7 @@
     <div class="party-content">
         <h3>Vy för Quratel</h3>
         <h4>Platser anmälda</h4>
-        <form action="<?php $nationURL; ?>/scripts.php" method="POST">
+        <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
             <input type="number" name="interest" value="<?php echo $party->interest; ?>" />
             <input type="hidden" name="partyId" value="<?php echo $party->id; ?>" />
             <input type="submit" name="updatePartyInterest" value="Uppdatera platser" />
