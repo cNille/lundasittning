@@ -93,7 +93,7 @@
 	</div>
 
 
-    <a href="<?php echo $nationURL; ?>/sitting/<?php echo $party->sittId; ?>" class="button primary">Tillbaka till sittningen</a>
+    <a href="<?php echo $nationURL; ?>/sittning/<?php echo $party->sittId; ?>" class="button primary">Tillbaka till sittningen</a>
 
 
 	<?php if($isCreator || $isQuratel) : ?>

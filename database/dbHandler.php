@@ -147,7 +147,8 @@
             $sql = "UPDATE participant SET name=? WHERE id=?;";
             $result = $this->db->executeUpdate($sql, array($name, $participantId));
 
-            $this->log("Name updated to: $name", $participantId, null);
+            // Logs to fucking often... At every page loaded.
+            //$this->log("Name updated to: $name", $participantId, null);
             return $result[0];
         }
         public function updateOther($id, $other) {
