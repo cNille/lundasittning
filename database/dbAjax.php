@@ -56,7 +56,7 @@
                 }
 
                 // Add user to partyguest list.
-                $dbHandler->addPartyParticipant($partyId, $guestId);
+                $dbHandler->addPartyParticipant($partyId, $guestId, $restaurant[0]);
             }
             $party = $dbHandler->getParty($partyId);
             echo $party->key;
