@@ -127,16 +127,14 @@
         var partyId = <?php echo $_GET["partyid"]; ?>;
 		$.ajax({
 			type: 'POST',
-			url: 'db/dbAjax.php',
+			url: SITEURL + '/database/dbAjax.php',
 			data: 'action=addGuestList&partyId=' + partyId + '&guestList=' + guestStr,
 			success: function(partyKey){
-
                 if(partyKey == "notCreator"){
                     alert('Error: Du är inte skapare av detta sällskap.');
                 } else {
                     $("#saveButton").text("Sparat");
                     $("#saveButton").removeClass("primary");
-
                 }
 			}
 		});
