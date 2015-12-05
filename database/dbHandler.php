@@ -133,8 +133,10 @@
             $sql = "INSERT INTO participant (name, other, loginaccount) VALUES (?,?,?)";
             $result = $this->db->executeUpdate($sql, array($name, $other, $loginaccount));
 
+            $pId = $this->db->getLastId();
+
             $this->log("Participant created. Name: $name, Other: $other, Loginaccount: $loginaccount", null, null);
-    		return $this->db->getLastId(); 
+    		return $pId; 
         }
         public function getParticipants($resName) {
             $sql = "SELECT p.id, p.name, p.email, p.telephone, r.resName, r.userType FROM participantlogin as p JOIN restaurantparticipant as r ON p.id=r.participantId WHERE r.resName=? ORDER BY p.name;";
@@ -247,9 +249,11 @@
 		    $sql = "INSERT INTO sitting (sittDate, resName) VALUES (?, ?);";
     		$result = $this->db->executeUpdate($sql, array($sittDate, $restaurant));
 
+    		$sId = $this->db->getLastId();
+
     		$this->log("Sitting added. Date: $sittDate", $participantid, $restaurant);
 
-    		return $this->db->getLastId(); 
+    		return $sId; 
 		}
 		public function deleteSitting($sittId, $participantid, $restaurant){
             $sittId = htmlspecialchars($sittId);
@@ -430,8 +434,10 @@
 		    $sql = "INSERT INTO partycreator (partyId, participantId) VALUES (?, ?);";
     		$result = $this->db->executeUpdate($sql, array($partyId, $participantid));
 
+    		$partyCreatorId = $this->db->getLastId();
     		$this->log("Partycreator created. PartyId: $partyId", $participantid, $restaurant);
-    		return $this->db->getLastId(); 
+
+    		return $partyCreatorId; 
 		}
 
 
@@ -458,8 +464,10 @@
 		    $sql = "INSERT INTO partyparticipant (partyId, participantId, participantPayed) VALUES (?, ?, 'Nej');";
     		$result = $this->db->executeUpdate($sql, array($partyId, $participantId));
 
+    		$partyParticipantId = $this->db->getLastId();
+
     		$this->log("Partyparticipant created. PartyId: $partyId", $participantid, $restaurant);
-    		return $this->db->getLastId(); 
+    		return $partyParticipantId; 
 		}
 		public function isParticipating($partyId, $participantId) {
 			$sql = "SELECT * FROM partyparticipant WHERE partyId=? AND participantId=?";
