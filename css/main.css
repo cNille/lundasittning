@@ -137,7 +137,7 @@ body {
       padding: 25px;
       margin: 15px 0px;
       text-align: center;
-      opacity: 0.7;
+      opacity: 1;
       -webkit-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       -o-transition: all 0.3s ease-in-out;
@@ -153,7 +153,8 @@ body {
           border: 1px solid #eee; }
       body .content .button:hover {
         opacity: 1.0;
-        border: 1px solid #eee; }
+        background: #F2867D;
+        color: #eee; }
     body .content .btn {
       padding: 15px;
       background-color: #e6e6e6;
