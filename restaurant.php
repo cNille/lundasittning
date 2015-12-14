@@ -56,7 +56,7 @@
                 $spotsLeft = $restaurant[9] - $spotsTaken;
 				?>
 					<div class="event-window" id="<?php echo $s[0]; ?>">
-						<a href="<?php echo $nationURL . "/sittning/" .  $s[0]; ?>" class="event-window-link">
+						<a href="<?php echo "$nationURL/sittning/$s[0]"; ?>" class="event-window-link">
 							<div class="width">
 								<div class="event-window-date">
 									<?php echo $date; ?>
