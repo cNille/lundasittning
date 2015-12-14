@@ -8,7 +8,7 @@
 	$dbHandler = new DatabaseHandler();	
 	$n = strtolower($nation);
 	$restaurant = $dbHandler->getRestaurantFromNickname($n); // Variable determines nation
-	
+
 	if($_SESSION['FBID'] && $_SESSION['FBID'] != null){
 		$loggedIn = true;
 		$fbid = $_SESSION['FBID'];
@@ -23,14 +23,21 @@
 	$userExists = $dbHandler->fbidExists($fbid);
 	if($userExists){
 		$user = $dbHandler->getUser($fbid);
+
+    // Add userType if it doesnt exist.
+    $myUserType = $dbHandler->getUserType($user[0], $restaurant[0]);
+    if( $myUserType != "" ){
+      $dbHandler->addUserType('Användare', $user[0], $restaurant[0]);
+    }
 	}
 	if($loggedIn && !$userExists && $fbid != null){
 		$loginId = $dbHandler->createLoginAccount($fbid, $fbEmail);
-    	$dbHandler->createParticipant($fbFullname, "", $loginId);
-	}
-	else if($userExists){
+    $pId = $dbHandler->createParticipant($fbFullname, "", $loginId);
+    $dbHandler->addUserType('Användare', $pId, $restaurant[0]);
+	} else if($userExists){
 		$dbHandler->updateName($fbFullname, $user[0]);
-	}
+	} 
+
 	$dbHandler->disconnect();
 	
 	$_SESSION['LAST_PAGE'] = $_SERVER["HTTP_REFERER"];

@@ -16,14 +16,6 @@ I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar f
 I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar fruitcake. Sweet roll gummies apple pie pie muffin dessert. Pastry bear claw pastry tiramisu. Cheesecake marzipan gummi bears I love.', 'jn','c@shapeapp.se','0708342311','http://www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7');
 
 
-select 'Insert usertype' as '';
-insert into usertype values
-	('SuperAdmin', 10),
-    ('Quratel', 5),
-    ('Sittningsförman', 2),
-    ('Förman', 1),
-    ('Användare', 0);
-
 select 'Insert loginaccount' as '';
 insert into loginaccount (fbid, email, telephone) values
     ('3', 'cnilsson_92@hotmail.com', '0708123456'),
@@ -46,13 +38,6 @@ insert into restaurantparticipant values
     (2, 'Malins nation', 'Sittningsförman'),
     (3, 'Malins nation', 'Quratel');
 
-select 'Insert foodpref' as '';
-insert into foodpref values
-    ('Laktos'),
-    ('Gluten'),
-    ('Vegatarian'),
-    ('Vegan'),
-    ('Nötter');
 
 select 'Insert participantfood' as '';
 insert into participantfood values
@@ -75,10 +60,6 @@ insert into sittingforeman values
     (3, 1),
     (3, 3);
 
-select 'Insert partytype' as '';
-insert into partytype values
-    ('Sluten'),
-    ('Öppen');
 
 select 'Insert party' as '';
 insert into party (name, sittId, partyType, interest, message, urlkey) values
@@ -101,13 +82,6 @@ insert into partycreator values
     (6,3),
     (7,1),
     (8,2);
-
-select 'Insert paystatus' as '';
-insert into paystatus (status, accesslevel) values
-    ('Nej', 1),
-    ('Insamlat', 1),
-    ('Halvt', 5),
-    ('Ja', 5);
 
 
 select 'Insert partyparticipant' as '';

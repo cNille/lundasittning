@@ -183,9 +183,36 @@ create table log (
 	foreign key (resName) references restaurant(name) ON UPDATE CASCADE
 );
 
+start transaction;
+
+select 'Insert usertype' as '';
+insert into usertype values
+	('SuperAdmin', 10),
+    ('Quratel', 5),
+    ('Sittningsförman', 2),
+    ('Förman', 1),
+    ('Användare', 0);
+
+select 'Insert foodpref' as '';
+insert into foodpref values
+    ('Laktos'),
+    ('Gluten'),
+    ('Vegatarian'),
+    ('Vegan'),
+    ('Nötter');
+
+select 'Insert partytype' as '';
+insert into partytype values
+    ('Sluten'),
+    ('Öppen');
+
+select 'Insert paystatus' as '';
+insert into paystatus (status, accesslevel) values
+    ('Nej', 1),
+    ('Insamlat', 1),
+    ('Halvt', 5),
+    ('Ja', 5);
+
+commit;
 
 set FOREIGN_KEY_CHECKS = 1;
-
-
-
-

@@ -1,5 +1,6 @@
 <?php 
 session_start();
+require_once "../loginCheck.php";
 
 if(isset($_SESSION['LAST_PAGE'])){
   $address = $_SESSION['LAST_PAGE'];

@@ -198,13 +198,26 @@
 
 		// restaurantparticipant
 		// ======================================================
+		public function addUserType($usertype, $participantid, $resname) {
+			  $sql = "insert into restaurantparticipant (usertype, participantid, resname) values (?,?,?)";
+    		$result = $this->db->executeupdate($sql, array($usertype, $participantid, $resname));
+    		$this->log("Usertype added to $usertype", $participantid, $resname);
+    		return $result;
+		}
 		public function updateUserType($usertype, $participantid, $resname) {
 			$sql = "update restaurantparticipant set usertype=? where participantid=? and resname=?";
     		$result = $this->db->executeupdate($sql, array($usertype, $participantid, $resname));
-
     		$this->log("Usertype updated to $usertype", $participantid, $resname);
-
     		return $result;
+		}
+		public function getUserType($participantid, $resname) {
+			$sql = "select usertype from restaurantparticipant where participantid=? and resname=?";
+			$result = $this->db->executequery($sql, array(?,?));
+      if( count($result) > 0 ){
+			  return $result[0][0];
+      } else {
+        return "";
+      }
 		}
 
 		// foodpref
