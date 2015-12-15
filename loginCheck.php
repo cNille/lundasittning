@@ -26,7 +26,7 @@
 
     // Add userType if it doesnt exist.
     $myUserType = $dbHandler->getUserType($user[0], $restaurant[0]);
-    if( $myUserType == "" ){
+    if( $myUserType == "" && isset($restaurant) ){
       $dbHandler->addUserType('Användare', $user[0], $restaurant[0]);
     }
 	}
