@@ -212,7 +212,7 @@
 		}
 		public function getUserType($participantid, $resname) {
 			$sql = "select usertype from restaurantparticipant where participantid=? and resname=?";
-			$result = $this->db->executequery($sql, array(?,?));
+			$result = $this->db->executequery($sql, array($participantid, $resname));
       if( count($result) > 0 ){
 			  return $result[0][0];
       } else {
