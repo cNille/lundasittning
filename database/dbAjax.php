@@ -6,21 +6,21 @@
 		$action = $_POST['action'];
 	    
 	    switch($action) {
-	        case 'addSitting' : addSitting($dbHandler);break;
-	        case 'removeSitting' : removeSitting($dbHandler);break;
+	        case 'addSitting' : addSitting($dbHandler, $user);break;
+	        case 'removeSitting' : removeSitting($dbHandler, $user);break;
 	        case 'updateSettings' : updateSettings($dbHandler);break;
 	        case 'addGuestList' : addGuestList($dbHandler, $user);break;
 	    }
 	    $dbHandler.disconnect();
 	}
 
-	function addSitting($dbHandler){
+	function addSitting($dbHandler, $user){
 		if(isset($_POST['date']) && !empty($_POST['date'])) {
 			echo $dbHandler->addSitting($_POST['date'], $_POST['resName'], $user[0]);
 		}
 	}
 	
-	function removeSitting($dbHandler){
+	function removeSitting($dbHandler, $user){
 		if(isset($_POST['id']) && !empty($_POST['id'])) {
 			echo $dbHandler->deleteSitting($_POST['id'], $user[0], $restaurant[0]);
 		}
