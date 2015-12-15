@@ -277,16 +277,18 @@
       	// If has access level
 		if($isCreator || $myAccessLevel >= 5){
         foreach($userIds as $key => $u){
-          if($u != $creator[0]){
+          //if($u != $creator[0]){
             $success = $dbHandler->deletePartyParticipant($pId, $u, $uId, $restaurant[0]);
             if(!$success){
               $_SESSION['message'] = 'Deltagare gick ej att ta bort.';
               break;
             }
+          /*
           } else {
             $_SESSION['message'] = 'Du kan ej ta bort sällskapsskaparen.';
             break;
           }
+          */
         }
 		  }
       header("Location: $nationURL/sallskap/$party->key");
