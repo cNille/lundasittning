@@ -250,7 +250,7 @@
 		$pId = $_POST['partyId'];
 		$creator = $dbHandler->getCreator($pId);
 		$isCreator = $creator[0] == $user[0];
-		if($isCreator){
+		if($isCreator || $myAccessLevel >= 5){
 			$dbHandler->updatePartyMsg($pId, $msg, $user[0], $restaurant[0]);
 		}
         $party = $dbHandler->getParty($pId);

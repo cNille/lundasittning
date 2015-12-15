@@ -49,6 +49,7 @@
             <p><?php echo  $creator[1];?></p>
             <p><?php echo  $creator[2];?></p>
             <p><?php echo  $creator[3];?></p>
+            <h4>Meddelande</h4> 
             <p><?php echo $party->message; ?></p>
 		</div>
 		<div class="right side">

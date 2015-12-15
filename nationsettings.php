@@ -66,7 +66,7 @@
                 </div>
                 <div class="category">
                     Kort beskrivande text för nationen                 
-                    <textarea rows="4" cols="50" name="summary" maxlength="250"><?php echo $restaurant[10]; ?></textarea>
+                    <textarea rows="4" cols="50" name="summary" maxlength="1000"><?php echo $restaurant[10]; ?></textarea>
                 </div>
 
 
