@@ -22,7 +22,7 @@
 
 <div class="content">
 	<div class="title">
-		Sittningar HT15
+		Sittningar VT16
 	</div>
 	<div class="event-grid">
 		<div class="event-window" id="" style="display: none;">
