@@ -96,7 +96,7 @@
 		public function updateEmail($id, $email) {
             $id = htmlspecialchars($id);
             $email = htmlspecialchars($email);
-		    $sql = "UPDATE loginaccount SET email=? WHERE id = ?;";
+		    $sql = "UPDATE participantlogin SET email=? WHERE id = ?;";
     		$result = $this->db->executeUpdate($sql, array($email, $id));
 
             $this->log("Email updated to: $email", $id, null);
@@ -107,7 +107,7 @@
             $id = htmlspecialchars($id);
             $phone = htmlspecialchars($phone);
 
-		    $sql = "UPDATE loginaccount SET telephone=? WHERE id = ?;";
+		    $sql = "UPDATE participantlogin SET telephone=? WHERE id = ?;";
     		$result = $this->db->executeUpdate($sql, array($phone, $id));
 
     		$this->log("Phone updated to: $phone", $id, null);

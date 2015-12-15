@@ -47,8 +47,8 @@ create table restaurant (
 select 'Create loginaccount' as '' ;
 create table loginaccount (
     id              integer auto_increment,
-    fbid            varchar(30) UNIQUE,
-    email           varchar(30),
+    fbid            varchar(50) UNIQUE,
+    email           varchar(50),
     telephone       varchar(15),
     primary key(id)
 );
