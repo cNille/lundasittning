@@ -106,7 +106,7 @@
             <h4>Kvar att betala</h4>
             <p> <?php echo $total-$sum ?> kr (tänk på att summan kan bli lägre efter förmannarabatt). </p>
             <h4>Anmälningslänk</h4> 
-            <p id="toClipboard" onClick="CopyToClipboard();"><?php echo 'http://' .$_SERVER[HTTP_HOST] . '/sittning/' . $party->key;?></p>
+            <p id="toClipboard" onClick="CopyToClipboard();"><?php echo $nationURL . '/sallskap/' . $party->key;?></p>
             <h4>Meddelande</h4> 
             <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
                 <textarea rows="4" cols="50" name="message" maxlength="250"><?php echo $party->message; ?></textarea>
