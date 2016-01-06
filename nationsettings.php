@@ -3,7 +3,7 @@
 	$dbHandler = new DatabaseHandler();
 
  	$access = $dbHandler->getAccessLevel($fbid, $restaurant[0]);
- 	requireAccessLevel(5, $access);
+ 	requireAccessLevel(5, $access, $nationURL);
 	$dbHandler->disconnect();
 
 

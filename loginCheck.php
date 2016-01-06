@@ -44,10 +44,10 @@
 
 
 	// Redirect if the accesslevel is below the required accesslevel.
-	function requireAccessLevel( $reqAccess, $access ){
+	function requireAccessLevel( $reqAccess, $access, $redirect ){
 		$isIndex = basename($_SERVER['PHP_SELF']) == 'index.php';
 		if($access < $reqAccess && !$isIndex){ 
-			echo "<script>window.location = 'index.php';</script>";
+			echo "<script>window.location = '$redirect';</script>";
 		}
 		return $access;
 	}

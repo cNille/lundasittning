@@ -69,7 +69,7 @@
 		if($accessLevel <= $myAccessLevel){
 			foreach ($users as $key => $u) {
 				$userAccessLevel = $dbHandler->getAccessLevelById($u, $restaurant[0]);
-				if($userAccessLevel < $myAccessLevel){
+				if($userAccessLevel < $myAccessLevel || $u == $user[0]){
 					$dbHandler->updateUserType($userType, $u, $restaurant[0]);
 				} else {
           $_SESSION['message'] = "Kan inte ändra användartyp på en användare av samma typ som dig.";

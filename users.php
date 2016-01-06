@@ -5,7 +5,7 @@
  	$access = $dbHandler->getAccessLevel($fbid, $restaurant[0]);
 
     // Requires accesslevel of 5 or else redirects to index.php
- 	requireAccessLevel(5, $access);
+ 	requireAccessLevel(5, $access, $nationURL);
 
  	$users = $dbHandler->getParticipants($restaurant[0]);
  	$userTypes = $dbHandler->getUserTypes($access);

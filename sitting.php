@@ -12,7 +12,7 @@
 	$myParties = $dbHandler->getPartiesByParticipant($user[0]);
     $allSittingUsers = $dbHandler->getPartyParticipantFromSitting($sittId);
 	$foreman = $dbHandler->getSittingForeman($sittId);
-	$resForeman = $dbHandler->getSittingForemanFromRes($resName);
+	$resForeman = $dbHandler->getSittingForemanFromRes($restaurant[0]);
 
     $foodStatistics = array();
     $sittingUsersWithFoodPref = array();
@@ -60,7 +60,7 @@
                 <br /><br />
 				<table>
 					<tr>
-						<th>Anmälda sällskap</th>
+						<th class="masterTooltip" title="Sällskap där minst en har betalat bokningsavgiften">Anmälda sällskap</th>
 						<th></th>
 					</tr>
 					<?php 
@@ -104,7 +104,7 @@
 				<?php if($hasInterestedParties) : ?>
 				<table>
 					<tr>
-						<th>Intresserade sällskap</th>
+						<th class="masterTooltip" title="Sällskap som än inte betalat in bokningsavgift">Intresserade sällskap</th>
 						<th></th>
 					</tr>
 					<?php 

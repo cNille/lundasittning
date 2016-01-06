@@ -61,7 +61,7 @@
 								<h1 class="event-window-date">
 									<?php echo $date; ?>
 								</h1>
-								<div class="event-window-spots">
+								<div class="event-window-spots masterTooltip" title="Antalet platser där sittningsavgiften inte har inkommit">
 									<?php echo spotsLeftTextify($spotsLeft, $restaurant[6]);?>
 								</div>
 								<div class="event-window-button">

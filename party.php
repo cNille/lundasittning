@@ -102,11 +102,11 @@
         <div class="left side">
         <h3>Vy för Sällskapsskaparen</h3>
             <h4>Platser anmälda</h4>
-            <p><?php echo $party->interest; ?> platser (för att uppdatera detta, kontakta quratelet).</p>
+            <p class="masterTooltip" title="För att uppdatera detta, kontakta nationen"><?php echo $party->interest; ?> platser</p>
             <h4>Kvar att betala</h4>
-            <p> <?php echo $total-$sum ?> kr (tänk på att summan kan bli lägre efter förmannarabatt). </p>
+            <p class="masterTooltip" title="Tänk på att summan kan bli lägre efter förmannarabatt"> <?php echo $total-$sum ?> kr</p>
             <h4>Anmälningslänk</h4> 
-            <p id="toClipboard" onClick="CopyToClipboard();"><?php echo $nationURL . '/sallskap/' . $party->key;?></p>
+            <p id="toClipboard" class="masterTooltip" title="Klicka för att kopiera." onClick="CopyToClipboard();" style="font-size: 13px; cursor: pointer"><?php echo $nationURL . '/sallskap/' . $party->key;?></p>
             <h4>Meddelande</h4> 
             <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
                 <textarea rows="4" cols="50" name="message" maxlength="250"><?php echo $party->message; ?></textarea>

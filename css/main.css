@@ -204,6 +204,18 @@ body {
     body .content .primary {
       background-color: #104050;
       color: white; }
+  body .tooltip {
+    display: none;
+    position: absolute;
+    border: 1px solid #333;
+    background-color: #161616;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    font-size: 12px;
+    opacity: 0.9; }
+  body .masterTooltip {
+    cursor: help; }
   body .message {
     position: relative;
     display: block;

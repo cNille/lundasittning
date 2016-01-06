@@ -12,7 +12,33 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100' rel='stylesheet' type='text/css'>
-        <link rel="icon" href="<?php echo $siteURL; ?>/images/lundasittning_logga_blackx32.png" />
+    <link rel="icon" href="<?php echo $siteURL; ?>/images/lundasittning_logga_blackx32.png" />
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+            // Tooltip only Text
+            $('.masterTooltip').hover(function(){
+                    // Hover over code
+                    var title = $(this).attr('title');
+                    $(this).data('tipText', title).removeAttr('title');
+                    $('<p class="tooltip"></p>')
+                    .text(title)
+                    .appendTo('body')
+                    .fadeIn('slow');
+            }, function() {
+                    // Hover out code
+                    $(this).attr('title', $(this).data('tipText'));
+                    $('.tooltip').remove();
+            }).mousemove(function(e) {
+                    var mousex = e.pageX + 20; //Get X coordinates
+                    var mousey = e.pageY + 10; //Get Y coordinates
+                    $('.tooltip')
+                    .css({ top: mousey, left: mousex })
+            });
+    });
+    </script>
+  
+
 	</head>
 	<body style="background-image: url('<?php echo $siteURL; ?>/uploads/<?php echo $restaurant[11]; ?>')">
 		<script>
