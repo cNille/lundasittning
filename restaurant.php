@@ -28,8 +28,8 @@
 		<div class="event-window" id="" style="display: none;">
 			<a href="" class="event-window-link">
 				<div class="width">
-					<div class="event-window-date">
-					</div>
+					<h1 class="event-window-date">
+					</h1>
 					<div class="event-window-spots">
 						Ledig
 					</div>
@@ -58,9 +58,9 @@
 					<div class="event-window" id="<?php echo $s[0]; ?>">
 						<a href="<?php echo "$nationURL/sittning/$s[0]"; ?>" class="event-window-link">
 							<div class="width">
-								<div class="event-window-date">
+								<h1 class="event-window-date">
 									<?php echo $date; ?>
-								</div>
+								</h1>
 								<div class="event-window-spots">
 									<?php echo spotsLeftTextify($spotsLeft, $restaurant[6]);?>
 								</div>

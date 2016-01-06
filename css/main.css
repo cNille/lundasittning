@@ -105,7 +105,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   background-color: #333;
   background-size: cover;
   background-position: 50% 50%;
@@ -113,6 +113,8 @@ body {
   background-attachment: fixed;
   min-height: 100vw;
   min-height: 100vh; }
+  body h1, body h2, body title {
+    font-weight: 100; }
   body .content {
     margin-top: 100px;
     max-width: 712px;
@@ -698,7 +700,9 @@ body {
         margin: auto; }
         body .event-grid .event-window .width .event-window-date {
           margin-top: 20px;
-          font-size: 60px; }
+          font-size: 60px;
+          margin-top: 24px;
+          margin-bottom: 0; }
         body .event-grid .event-window .width .event-window-spots {
           margin-top: 5px; }
         body .event-grid .event-window .width .event-window-button {

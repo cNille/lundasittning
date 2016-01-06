@@ -23,6 +23,7 @@ $("#event-creator-initiate").click(function(){
 		
 		var currentDate = new Date();
 		var monthNumber = currentDate.getMonth();
+		var yearNumber = currentDate.getFullYear();
 		
 		if(arr[0].length < 2){
 			arr[0] = "0" + arr[0];
@@ -32,10 +33,10 @@ $("#event-creator-initiate").click(function(){
 		}
 
 		if(arr[1] < monthNumber){
-			var realDate = "2016-" + arr[1] + "-" + arr[0];
+			var realDate = (yearNumber + 1) + "-" + arr[1] + "-" + arr[0];
 		}
 		else{
-			var realDate = "2015-" + arr[1] + "-" + arr[0];
+			var realDate = yearNumber + "-" + arr[1] + "-" + arr[0];
 		}
 
 		$.ajax({
