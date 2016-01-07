@@ -33,7 +33,10 @@
 	if($loggedIn && !$userExists && $fbid != null){
 		$loginId = $dbHandler->createLoginAccount($fbid, $fbEmail);
     $pId = $dbHandler->createParticipant($fbFullname, "", $loginId);
-    $dbHandler->addUserType('Användare', $pId, $restaurant[0]);
+
+    if(isset($restaurant)){
+      $dbHandler->addUserType('Användare', $pId, $restaurant[0]);
+    }
 	} else if($userExists){
 		$dbHandler->updateName($fbFullname, $user[0]);
 	} 
