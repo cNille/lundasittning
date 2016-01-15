@@ -279,7 +279,7 @@
 		    return count($result) == 1;  
 		} 
 		public function getSittings($active, $restaurant) {
-			$sql = "SELECT id, sittDate, active FROM sitting WHERE active=? AND resName=? AND sittDate >= NOW() ORDER BY sittDate;";
+			$sql = "SELECT id, sittDate, active FROM sitting WHERE active=? AND resName=? AND sittDate >= CURDATE() ORDER BY sittDate;";
 			$result = $this->db->executeQuery($sql, array($active, $restaurant));
 			return $result; 
 		}
