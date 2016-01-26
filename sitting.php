@@ -269,7 +269,7 @@
 	<?php if($myAccessLevel >= 5) : ?>
         <div class="single-sitting">
             <h2>Vy för Quratel</h2>
-                <form action="<?php echo $nationURL; ?>scripts.php" method="POST">
+                <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
                     <h3>Förmän</h3>
                     <select name="user">
                     <?php
