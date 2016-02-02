@@ -462,7 +462,7 @@
 			return $result;
 		}
 		public function getPartyParticipantFromSitting($sittId) {
-			$sql = "SELECT p.name, u.id, u.name, pp.participantPayed, u.other FROM party as p JOIN partyparticipant as pp JOIN participant as u WHERE p.id=pp.partyId AND u.id=pp.participantId AND p.sittId=?";
+			$sql = "SELECT p.name, u.id, u.name, pp.participantPayed, u.other FROM party as p JOIN partyparticipant as pp JOIN participant as u WHERE p.id=pp.partyId AND u.id=pp.participantId AND p.sittId=? AND p.active=1";
 			$result = $this->db->executeQuery($sql, array($sittId));
             return $result;
 		}
