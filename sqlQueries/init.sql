@@ -189,9 +189,10 @@ select 'Insert usertype' as '';
 insert into usertype values
 	('SuperAdmin', 10),
     ('Quratel', 5),
-    ('Sittningsförman', 2),
-    ('Förman', 1),
-    ('Användare', 0);
+    ('Sittningskoordinator', 4),
+    ('Sittningsförman', 3),
+    ('Förman', 2),
+    ('Användare', 1);
 
 select 'Insert foodpref' as '';
 insert into foodpref values

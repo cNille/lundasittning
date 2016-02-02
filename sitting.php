@@ -266,9 +266,9 @@
 			</table>
         </div>
     <?php endif; ?>
-	<?php if($myAccessLevel >= 5) : ?>
+	<?php if($myAccessLevel >= 4) : ?>
         <div class="single-sitting">
-            <h2>Vy för Quratel</h2>
+            <h2>Vy för Sittningskoordinator</h2>
                 <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
                     <h3>Förmän</h3>
                     <select name="user">
