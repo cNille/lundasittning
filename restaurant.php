@@ -9,9 +9,9 @@
 	
     function spotsLeftTextify($spotsLeft, $resSize){
         // För översikt under testning, ta bort sen.
-        return "Platser kvar: " . $spotsLeft;
+        //return "Platser kvar: " . $spotsLeft;
 
-        if($spotsLeft > $resSize * 0.7){
+        if( $resSize - $spotsLeft < 10){
             return "Ledig";
         } else if ($spotsLeft < 5){
             return "Fåtal platser kvar";
@@ -62,7 +62,7 @@
 									<?php echo $date; ?>
 								</h1>
 								<div class="event-window-spots masterTooltip" title="Antalet platser där sittningsavgiften inte har inkommit">
-									<?php echo spotsLeftTextify($spotsLeft, $restaurant[6]);?>
+									<?php echo spotsLeftTextify($spotsLeft, $restaurant[9]);?>
 								</div>
 								<div class="event-window-button">
 									 Se mer

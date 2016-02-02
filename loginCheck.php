@@ -45,7 +45,6 @@
 	
 	$_SESSION['LAST_PAGE'] = $_SERVER["HTTP_REFERER"];
 
-
 	// Redirect if the accesslevel is below the required accesslevel.
 	function requireAccessLevel( $reqAccess, $access, $redirect ){
 		$isIndex = basename($_SERVER['PHP_SELF']) == 'index.php';

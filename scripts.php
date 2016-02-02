@@ -80,6 +80,34 @@
 		return;
 	}
 
+	if($_POST['sendFeedback']){
+		$q = $_POST['question'];
+		$email = $_POST['email'];
+		$name = $_POST['name'];
+
+
+		// Send email to Nille
+		$link = $_SERVER['HTTP_REFERER'];
+		$pos = strrpos($link, '/');
+		$link = substr($link, 0, $pos+1);
+   		$from = "c@shapeapp.se";
+   		$to = "c@shapeapp.se"; 
+		ini_set("SMTP", "send.one.com");
+   		ini_set("sendmail_from", $from);
+
+   	$subject = "Lundasittning, fråga";
+		$msg = "En fråga har inkommit från $name ($email)\r\n";
+		$msg .= "Fråga:\r\n";
+		$msg .= "$q\r\n";
+		$msg = wordwrap($msg,70);
+
+		$headers = "From: $from\r\nReply-To: $to\r\n";
+		mail($to, $subject, $msg, $headers);
+
+		header("Location: $nationURL/faq.php");
+		return;
+	}
+	
 	if($_POST['createInterestParty']){
 		$userId = $_POST['userId'];
 		$dbHandler->updateEmail($userId, $_POST['email']);
@@ -92,6 +120,9 @@
 		$msg = $_POST['message'];
 		$key = generateRandomString();
 
+    if($partyName == "" || $partyName == null){
+      $partyName = "NO NAME";
+    }
 
 		$dbHandler->createParty($partyName, $type, $sittId, $int, $msg, $key, $user[0], $restaurant[0]);
 		$p = $dbHandler->getPartyFromKey($key);

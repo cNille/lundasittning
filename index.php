@@ -17,10 +17,10 @@
 		Välkommen till Lundasittning, din guide för sittningar i Lund!
 	</p>
 	<p class="white" >
-		Här nedan kan du se nationer som är anknutna till vår sida. 
-		Klicka dig in på dem för att kunna se deras sittningar.
+		Tjänsten är fortfarande ny och mycket kvar att växa. Vår förhoppning är att
+    fler nationer ansluter för att ge er en sådan komplett guide som möjligt!
 		<br />
-		// Frallan & Nille
+    Ge oss gärna feedback på hur vi kan förbättra sidan via; c@shapeapp.se eller franzapps@gmail.com
 	</p>
 	<div class="restaurant-grid">
 		
