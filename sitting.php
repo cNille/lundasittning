@@ -54,7 +54,7 @@
 	<div class="single-sitting">
 		<div class="left side">
 				<h3><?php echo date('j/n', strtotime($sitting->date)); ?></h3>
-				<label class="bold">Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
+				<label class="bold masterTooltip" title="Platser vars bokningsavgift ej inkommit">Platser kvar: </label><span><?php echo $spotsLeft; ?></span><br />
 				<label class="bold">Bokningsavgift-deadline: </label><span><?php echo date('j/n - Y', strtotime($sitting->date . "-$restaurant[14] days")); ?></span><br />
 				<label class="bold">Sittningsavgift-deadline: </label><span><?php echo date('j/n - Y', strtotime($sitting->date . "-$restaurant[15] days")); ?></span>
                 <br /><br />

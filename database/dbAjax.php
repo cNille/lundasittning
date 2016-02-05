@@ -9,7 +9,7 @@
 	        case 'addSitting' : addSitting($dbHandler, $user);break;
 	        case 'removeSitting' : removeSitting($dbHandler, $user);break;
 	        case 'updateSettings' : updateSettings($dbHandler);break;
-	        case 'addGuestList' : addGuestList($dbHandler, $user);break;
+	        case 'addGuestList' : addGuestList($dbHandler, $user, $myAccessLevel);break;
 	    }
 	    $dbHandler.disconnect();
 	}
@@ -32,13 +32,13 @@
 		$dbHandler->updateOther($_POST['userid'], $_POST['other']);
 	}
 	
-	function addGuestList($dbHandler, $user){
+	function addGuestList($dbHandler, $user, $accessLevel){
         $partyId = $_POST["partyId"];
         
         $creator = $dbHandler->getCreator($partyId);
         $isCreator = $user[0] == $creator[0];
 
-        if($isCreator){
+        if($isCreator || $accessLevel >= 5){
             $json = $_POST["guestList"];
             $guestList = json_decode($json);
 
