@@ -13,6 +13,8 @@
 
         if( $resSize - $spotsLeft < 10){
             return "Ledig";
+        } else if ($spotsLeft == 0){
+            return "Fullt";
         } else if ($spotsLeft < 5){
             return "Fåtal platser kvar";
         }
