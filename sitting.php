@@ -39,13 +39,17 @@
 
 	// Get spotsleft.
 	$spotsTaken = 0;
-	foreach ($sittingSpotsTaken as $key => $sst) {
-		if($sst[0] == $sittId){
-			$spotsTaken = $sst[1];
-		}
-	}
-
-    $spotsLeft = $restaurant[9] - $spotsTaken;
+  if($sitting->spotsTaken != 0){
+    $spotsTaken = $sitting->spotsTaken;
+  } else {  
+    foreach ($sittingSpotsTaken as $key => $sst) {
+      if($sst[0] == $sittId){
+        $spotsTaken = $sst[1];
+      }
+    }
+  }
+  
+  $spotsLeft = $restaurant[9] - $spotsTaken;
 
  ?>
  <link rel="stylesheet" type="text/css" href="../../css/main.css" />
@@ -280,6 +284,19 @@
                     </select><br />
                     <input type='submit' name="addSittingForeman" value="Lägg till">
                     <input type='submit' name="removeSittingForeman" value="Ta bort">
+                    <input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
+                    <br /><br />
+                </form>
+        </div>
+	<?php endif; ?>
+	<?php if($myAccessLevel >= 5) : ?>
+        <div class="single-sitting">
+            <h2>Vy för Quratel</h2>
+                <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
+                    <h3>Ställ manuellt in antal bokade platser</h3>
+                    <p><i>Ställ in 0 ifall du ej vill ha manuellt inställd antal.</i></p>
+                    <input type="number" name="spotsTaken" value="<?php echo $sitting->spotsTaken; ?>">
+                    <input type='submit' name="updateSpotsTaken" value="Uppdatera">
                     <input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
                     <br /><br />
                 </form>

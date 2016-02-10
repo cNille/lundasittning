@@ -30,6 +30,7 @@ class DataConverter{
 			'desert' => $arr[4],
 			'prelDay' => $arr[5],
 			'payDay' => $arr[6]
+			'spotsTaken' => $arr[7]
 		];
 		return $s;
 	}

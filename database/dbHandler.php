@@ -279,12 +279,12 @@
 		    return count($result) == 1;  
 		} 
 		public function getSittings($active, $restaurant) {
-			$sql = "SELECT id, sittDate, active FROM sitting WHERE active=? AND resName=? AND sittDate >= CURDATE() ORDER BY sittDate;";
+			$sql = "SELECT id, sittDate, active, spotsTaken FROM sitting WHERE active=? AND resName=? AND sittDate >= CURDATE() ORDER BY sittDate;";
 			$result = $this->db->executeQuery($sql, array($active, $restaurant));
 			return $result; 
 		}
 		public function getSittingsSpots($active) {
-			$sql = "SELECT s.id, count(*) as spots FROM sitting as s JOIN party as p JOIN partyparticipant as pp join paystatus as ps WHERE pp.participantPayed = ps.status AND s.active=1 AND s.id=p.sittId AND p.id=pp.partyId AND ps.accesslevel > 1 GROUP BY s.id;";
+			$sql = "SELECT s.id, count(*) as spots, s.spotsTaken FROM sitting as s JOIN party as p JOIN partyparticipant as pp join paystatus as ps WHERE pp.participantPayed = ps.status AND s.active=1 AND s.id=p.sittId AND p.id=pp.partyId AND ps.accesslevel > 1 GROUP BY s.id;";
 //SELECT s.id, count(*) as spots FROM sitting as s JOIN party as p JOIN partyparticipant as pp join paystatus as ps WHERE pp.participantPayed = ps.status AND s.active=1 AND s.id=p.sittId AND p.id=pp.partyId AND ps.accesslevel > 1 GROUP BY s.id;
 
 			$result = $this->db->executeQuery($sql, array($active));
@@ -323,6 +323,14 @@
             $result = $this->db->executeUpdate($sql, array($desert, $sittId));
         }
 
+        public function updateSpotsTaken($sittId, $spotsTaken, $participantid, $restaurant) {
+            $sittId = htmlspecialchars($sittId);
+            $spotsTaken = htmlspecialchars($spotsTaken);
+            $sql = "UPDATE sitting SET spotsTaken=? WHERE id = ?;";
+
+            $this->log("SpotsTaken updated. Sitting: $sittId, SpotsTaken: $appetiser", $participantid, $restaurant);
+            $result = $this->db->executeUpdate($sql, array($spotsTaken, $sittId));
+        }
 
 
 		// Sittingforeman

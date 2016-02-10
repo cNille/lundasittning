@@ -46,14 +46,18 @@
 			foreach($sittings as $row => $s) {
 				$date = date('j/n', strtotime($s[1]));
 
-				$spotsTaken = 0;
-				foreach ($sittingSpotsTaken as $key => $sst) {
-					if($sst[0] == $s[0]){
-						$spotsTaken = $sst[1];
-					}
-				}
+        $spotsTaken = 0;
+        if($s[3] != 0){
+          $spotsTaken= $s[3];
+        } else {
+          foreach ($sittingSpotsTaken as $key => $sst) {
+            if($sst[0] == $s[0]){
+              $spotsTaken = $sst[1];
+            }
+          } 
+        }
 
-                $spotsLeft = $restaurant[9] - $spotsTaken;
+        $spotsLeft = $restaurant[9] - $spotsTaken;
 				?>
 					<div class="event-window" id="<?php echo $s[0]; ?>">
 						<a href="<?php echo "$nationURL/sittning/$s[0]"; ?>" class="event-window-link">

@@ -381,6 +381,21 @@
         }       
     }
 
+    if($_POST['updateSpotsTaken']){
+        $spotsTaken = $_POST['spotsTaken'];
+        $sittId = $_POST['sittId'];        
+        
+        if($myAccessLevel >= 5){
+            $dbHandler->updateSpotsTaken($sittId, $spotsTaken, $user[0], $restaurant[0]);
+
+            $_SESSION['message'] = "Antal bokade platser är nu uppdaterat.";
+            
+            header("Location: $nationURL/sittning/$sittId");
+            return;		
+        }       
+    }
+
+
 	if($_POST['addSittingForeman']){
         $_SESSION['message'] = 'Förman är nu tillagd.';
 
