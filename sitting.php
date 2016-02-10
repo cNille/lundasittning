@@ -150,6 +150,7 @@
 				<?php endif; ?>
 		</div>
 		<div class="right side">
+    <?php if(count($foreman) > 0) : ?>
 			<h4>Förmän</h4>
 			<span>
 			<?php 
@@ -157,6 +158,8 @@
 					echo  $f[0] . '<br />';
 				}
 			?></span>
+    <?php endif; ?>
+    <?php if( $sitting->appetiser != "" && $sitting->main != "" && $sitting->desert ) : ?>
 			<h4>Meny</h4>
 			<label class="mitten">Förrätt</label>
 			<span class="mitten"><?php echo $sitting->appetiser; ?></span>
@@ -164,6 +167,7 @@
 			<span class="mitten"><?php echo $sitting->main; ?></span>
 			<label class="mitten">Efterrätt</label>
 			<span class="mitten"><?php echo $sitting->desert; ?></span>
+    <?php endif; ?>
 		</div>
 	</div>
 
