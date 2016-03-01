@@ -24,7 +24,7 @@ class DataConverter{
 	 function createSittingObject($arr){
 		$s = (object)[ // Init a sitting object.
 			'id' => $arr[0],
-			'sittDate' => $arr[1],
+			'date' => $arr[1],
 			'appetiser' => $arr[2],
 			'main' => $arr[3],
 			'desert' => $arr[4],
