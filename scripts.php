@@ -140,7 +140,7 @@
 		$link = $_SERVER['HTTP_REFERER'];
 		$pos = strrpos($link, '/');
 		$link = substr($link, 0, $pos+1);
-   		$from = "c@shapeapp.se";
+   		$from = "info@lundasittning.se";
    		$to = $restaurant[2]; 
 		ini_set("SMTP", "send.one.com");
    		ini_set("sendmail_from", $from);

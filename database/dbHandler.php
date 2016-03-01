@@ -28,7 +28,7 @@
 		// ======================================================
 
 		public function getRestaurants(){
-			$sql = "SELECT name, nickname, loggoimage FROM restaurant where active=1";
+			$sql = "SELECT name, nickname, loggoimage FROM restaurant where active=1 and hidden=0";
 			$result = $this->db->executeQuery($sql, array());
 			return $result;
 		}
@@ -293,7 +293,7 @@
 		public function getSitting($sittId) {
 			$sql = "SELECT * FROM sitting WHERE id=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
-			return $this->createSittingObject($result[0]);  // Structure: {'id', 'date', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
+			return $this->createSittingObject($result[0]);  // Structure: {'id', 'sittDate', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
 		}
 
         public function updateAppetiser($sittId, $appetiser, $participantid, $restaurant) {

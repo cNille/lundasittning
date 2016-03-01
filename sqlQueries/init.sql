@@ -41,6 +41,7 @@ create table restaurant (
     active          tinyint(1) DEFAULT 1,
     preldate 		integer DEFAULT '14',
     paydate 		integer DEFAULT '10',
+    active          tinyint(1) DEFAULT 1,
 	primary key(name)
 );
 
