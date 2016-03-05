@@ -543,7 +543,7 @@
         }   
 
         public function getLog(){
-            $sql = "SELECT * FROM log ORDER BY logDate DESC;";
+            $sql = "SELECT * FROM log ORDER BY id DESC LIMIT 100 OFFSET 0;";
             $result = $this->db->executeQuery($sql, array());
             return $result;
         }
