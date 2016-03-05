@@ -1,5 +1,6 @@
 <?php 
     require_once 'header.php';
+    include_once("analyticstracking.php");
 
  	$dbHandler = new DatabaseHandler();
     $restaurants = $dbHandler->getRestaurants();

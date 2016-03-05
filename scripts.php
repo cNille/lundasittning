@@ -145,8 +145,8 @@
 		ini_set("SMTP", "send.one.com");
    		ini_set("sendmail_from", $from);
 
-   		$subject = "Sittningsintresseanmälan, $sitting->sittDate";
-		$msg = "En intresseanmälan har lagts till sittningen $sitting->sittDate.\r\n";
+   		$subject = "Sittningsintresseanmälan, $sitting->date";
+		$msg = "En intresseanmälan har lagts till sittningen $sitting->date.\r\n";
 		$msg .= "Anmälan är gjord av $user[1] ($user[3], $user[4]).\r\n\r\n";
 		$msg .= "Vill du veta mer så besök sidan här:\r\n";
 		$msg .= "$nationURL\r\n";
@@ -157,7 +157,7 @@
 
 		// Send email to PartyCreator
    		$to = $user[3]; 
-   		$subject = "Anmälningsbekräftelse, $sitting->sittDate";
+   		$subject = "Anmälningsbekräftelse, $sitting->date";
 		$msg = "Vi har mottagit den intresseanmälan av ett sällskap.\r\n";
 		$msg .= "Nationen kommer att behandla din anmälan och inom kort kontakta dig, har du några frågor kan du skicka maila:$restaurant[2]\r\n\r\n";
 		$msg .= "Med varma hälsningar,\r\n";
