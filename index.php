@@ -21,7 +21,7 @@
 		Tjänsten är fortfarande ny och mycket kvar att växa. Vår förhoppning är att
     fler nationer ansluter för att ge er en sådan komplett guide som möjligt!
 		<br />
-    Ge oss gärna feedback på hur vi kan förbättra sidan via; c@shapeapp.se eller franzapps@gmail.com
+    Ge oss gärna feedback på hur vi kan förbättra sidan via; info@lundasittning.se
 	</p>
 	<div class="restaurant-grid">
 		
