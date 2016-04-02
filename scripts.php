@@ -248,7 +248,7 @@
         ini_set("sendmail_from", $from);
 
       $subject = "Lundasittning, ny restaurang";
-      $msg = "En ny restaurang har skapats av $user[0]. Restaurangens namn är:$ $name ($email)\r\n";
+      $msg = "En ny restaurang har skapats av $user[0]. Restaurangens namn är: $name ($email)\r\n";
       $msg = wordwrap($msg,70);
 
       $headers = "From: $from\r\nReply-To: $to\r\n";
