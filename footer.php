@@ -30,32 +30,43 @@
                 <span>Inloggad som: <?php echo $fbFullname; ?></span>
             </div>
         <?php else : ?>
-            <a class="fb-login" href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
+            <a class="fb-login realitem" href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
                 <img src="<?php echo $siteURL; ?>/images/FB-logga.png" />
                 <span class="login">Logga in</span>
             </a>
         <?php endif; ?>
 
-		<a href="<?php echo $nationURL; ?>/">Sittningar</a>
+		<a class="realitem" href="<?php echo $nationURL; ?>/">Sittningar</a>
 		<?php if($loggedIn){ ?>
-			<a href="<?php echo $nationURL; ?>/settings.php">Mitt konto</a>
+			<a class="realitem" href="<?php echo $nationURL; ?>/settings.php">Mitt konto</a>
 		<?php } ?>
         <?php if($myAccessLevel >=5){ ?>
-            <a href="<?php echo $nationURL; ?>/nationsettings.php">Nationsinställningar</a>
-            <a href="<?php echo $nationURL; ?>/users.php">Användare</a>
-            <a href="<?php echo $nationURL; ?>/overview.php">Överblick</a>
+            <a class="realitem" href="<?php echo $nationURL; ?>/nationsettings.php">Nationsinställningar</a>
+            <a class="realitem" href="<?php echo $nationURL; ?>/users.php">Användare</a>
+            <a class="realitem" href="<?php echo $nationURL; ?>/overview.php">Överblick</a>
         <?php } ?>
         <?php if($myAccessLevel >=10){ ?>
-            <a href="<?php echo $nationURL; ?>/log.php">Log</a>
+            <a class="realitem" href="<?php echo $nationURL; ?>/log.php">Log</a>
         <?php } ?>
-        <a href="<?php echo $nationURL; ?>/faq.php">F.A.Q</a>
-        <a href="<?php echo $siteURL; ?>">Till lundasittning.se</a>
+        <a class="realitem" href="<?php echo $nationURL; ?>/faq.php">F.A.Q</a>
+        <a class="realitem" href="<?php echo $siteURL; ?>">Till lundasittning.se</a>
+        <!-- GOOGLE TRANSLATE STUFF -->
+		<div id="google_translate_element"></div>
+		<!-- END -->
         <?php if ($loggedIn): ?> 
-            <a class="fb-logout" href="<?php echo $siteURL; ?>/facebook-login/logout.php">Logga ut</a>
+            <a class="fb-logout realitem" href="<?php echo $siteURL; ?>/facebook-login/logout.php">Logga ut</a>
         <?php endif; ?>
         <div class='side-shadow'></div>
 	</div>
 	</body>
+	<!-- GOOGLE TRANSLATE STUFF -->
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+		  new google.translate.TranslateElement({pageLanguage: 'sv', includedLanguages: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-74614424-1'}, 'google_translate_element');
+		}
+	</script>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	<!-- END -->
 	<script src="<?php echo $nationURL; ?>/javascript/toClipboard.js"></script>
 	<script src="<?php echo $nationURL; ?>/javascript/removeEvent.js"></script>
 	<script src="<?php echo $nationURL; ?>/javascript/addEvent.js"></script>
