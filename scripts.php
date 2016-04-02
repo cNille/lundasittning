@@ -155,9 +155,9 @@
    		ini_set("sendmail_from", $from);
 
    		$subject = "Intresseanmälan $partyName, $sitting->date";
-		$msg = "En intresseanmälan har lagts till sittningen $sitting->date.\r\n";
+		$msg = "En intresseanmälan har lagts till sittningen $sitting->date.\r\n\r\n";
 		$msg .= "Anmälan är gjord av $user[1] ($user[3], $user[4]).\r\n\r\n";
-		$msg .= "Eventuell fråga: $question.\r\n\r\n";
+		$msg .= "Eventuell fråga: $question\r\n\r\n";
 		$msg .= "Vill du veta mer så besök sidan här:\r\n";
 		$msg .= "$nationURL\r\n";
 		$msg = wordwrap($msg,70);
@@ -250,7 +250,7 @@
         ini_set("sendmail_from", $from);
 
       $subject = "Lundasittning, ny restaurang";
-      $msg = "En ny restaurang har skapats av $user[0]. Restaurangens namn är: $name ($email)\r\n";
+      $msg = "En ny restaurang har skapats av $user[0]. Restaurangens namn är:$ $name ($email)\r\n";
       $msg = wordwrap($msg,70);
 
       $headers = "From: $from\r\nReply-To: $to\r\n";
@@ -480,17 +480,6 @@
 
             $_SESSION['message'] = "Antal bokade platser är nu uppdaterat.";
             
-            header("Location: $nationURL/sittning/$sittId");
-            return;		
-        }       
-    }
-    if($_POST['updateSittingOpen']){
-        $open = $_POST['open'] == 'true' ? 1 : 0;
-        $sittId = $_POST['sittId'];        
-        
-        if($myAccessLevel >= 5){
-            $dbHandler->updateOpen($sittId, $open, $user[0], $restaurant[0]);
-            $_SESSION['message'] = "Anmälan har nu uppdaterats.";
             header("Location: $nationURL/sittning/$sittId");
             return;		
         }       
