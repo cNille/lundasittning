@@ -4,6 +4,7 @@
     width: 90%;
     
     .event-window{
+    	overflow: hidden;
         opacity: 0.9;
         &:hover { opacity: 1.0; }
         background-color: white;
