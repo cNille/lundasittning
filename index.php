@@ -46,6 +46,7 @@
       Vill din studentförening gå med i Lundasittning? Just nu är vår tjänst anpassade till nationer, 
       men gå gärna med så kan vi försöka utforma så att den även passar din förening! 
       <br />
+      <br />
       <?php if($loggedIn) : ?>
         <a class="btn primary" href="<?php echo $siteURL; ?>/registration.php/">
           <span>Registrera studentförening</span>
