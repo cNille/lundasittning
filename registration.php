@@ -21,16 +21,16 @@
 			    Namn på studentförening <input type="text" name="name" value="<?php echo $restaurant[1]; ?>">
 				</div>
 				<div class="category">
-			    Förkortning på namn (2 bokstäver, a-z) <input type="text" name="nickname" value="<?php echo $restaurant[1]; ?>">
+			    Förkortning på namn (2 bokstäver, a-z) <input pattern="[A-Za-z]{2}" type="text" name="nickname" value="<?php echo $restaurant[1]; ?>">
 				</div>
 				<div class="category">
-					E-mail <input type="text" name="email" value="<?php echo $restaurant[2]; ?>">
+					E-mail <input type="email" name="email" value="<?php echo $restaurant[2]; ?>">
 				</div>
 				<div class="category">
-					Telefonnummer <input type="text" name="phone" value="<?php echo $restaurant[3]; ?>">
+					Telefonnummer <input type="tel" name="phone" value="<?php echo $restaurant[3]; ?>">
 				</div>
         <div class="category">
-            Hemsida <input type="text" name="homepage" placeholder="http://..." value="<?php echo $restaurant[4]; ?>">
+            Hemsida <input type="url" name="homepage" placeholder="http://..." value="<?php echo $restaurant[4]; ?>">
         </div>
         <div class="category">
             Öppettider <input type="text" name="hours" value="<?php echo $restaurant[5]; ?>">
@@ -76,9 +76,10 @@
         Lättast att förklara systemet och förstå hur vi kan hjälpa era behov efter kaffe och kaka.
       </p>
       <p>
-        Tveka inte att höra av oss på info@lundasittning.se. 
+        Tveka inte att höra av er till oss på info@lundasittning.se. 
       </p>
 				<input class="primary category" type="submit" value="Skapa studentförening" name="createRestaurant" />
+				<a class="btn formcancel" href="<?php echo $siteURL; ?>">Tillbaka</a>
 			</div>
 			<input type="hidden" name="userId" value="<?php echo $user[0]; ?>" />
 
