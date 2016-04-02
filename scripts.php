@@ -173,6 +173,63 @@
 		return;
 	}
 	
+	
+	if($_POST['createRestaurant']){
+    if($loggedIn){
+      $name = $_POST['name'];
+      $nickname = $_POST['nickname'];
+      $nickname = strtolower($nickname);
+      $email = $_POST['email'];
+      $phone = $_POST['phone'];
+      $homepage = $_POST['homepage'];
+      $hours = $_POST['hours'];
+      $address = $_POST['address'];
+      $deposit = $_POST['deposit'];
+      $price = $_POST['price'];
+      $size = $_POST['size'];
+      $summary = $_POST['summary'];
+
+      $msg = "Save successfull.";
+      if (isset($_FILES['backgroundimage']) && $_FILES['backgroundimage'] != '') {
+          $bgName = "$restaurant[0]_background";
+          $success = uploadImage($_FILES["backgroundimage"], $bgName);
+          if($success != ""){
+              $msg = $success;
+          } else {
+              $bgType = explode(".", $_FILES["backgroundimage"]["name"])[1];
+              $bg = "$bgName.$bgType";
+          }
+      }
+      if ($bg == "") {
+          $bg = $restaurant[11];
+          $msg = "Save successfull.";
+      }
+      if (isset($_FILES['nationloggo']) && $_FILES['nationloggo'] != '') {
+          $loggoName = "$restaurant[0]_loggo";
+          $success = uploadImage($_FILES["nationloggo"], $loggoName);
+          if($success != ""){
+              $msg = $success;
+          } else {
+              $loggoType = explode(".", $_FILES["nationloggo"]["name"])[1];
+              $loggo = "$loggoName.$loggoType";
+          }
+      }
+      if ($loggo == "") {
+          $loggo = $restaurant[12];
+          $msg = "Save successfull.";
+      }
+  
+      $dbHandler->createRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $user[0]);
+
+      $dbHandler->addUserType('Quratel', $user[0], $name);
+
+      if($msg != ""){
+          $_SESSION['message'] = $msg;
+      }
+      header("Location: $siteURL/$nickname");
+      return;
+    }
+	}
 	if($_POST['updateNationSettings']){
         // Only quratel or admin are allowed
         $access = $dbHandler->getAccessLevel($fbid, $restaurant[0]);

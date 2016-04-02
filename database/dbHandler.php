@@ -50,6 +50,29 @@
 			return $result[0][0];
 		}
 
+
+    public function createRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $participantid){
+        $name = htmlspecialchars($name);
+        $nickname = htmlspecialchars($nickname);
+        $email = htmlspecialchars($email);
+        $phone = htmlspecialchars($phone);
+        $homepage = htmlspecialchars($homepage);
+        $hours = htmlspecialchars($hours);
+        $address = htmlspecialchars($address);
+        $deposit = htmlspecialchars($deposit);
+        $price = htmlspecialchars($price);
+        $size = htmlspecialchars($size);
+        $summary = htmlspecialchars($summary);
+        $bg = htmlspecialchars($bg);
+        $loggo = htmlspecialchars($loggo);
+
+        $sql = "INSERT INTO restaurant (name, nickname, email, telephone, homepage, hours, address, deposit, price, size, summary, backgroundimage, loggoimage) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        $result = $this->db->executeUpdate($sql, array( $name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo));
+
+        $this->log("Restaurang created. Restaurant data: $name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo", $participantid, $name);
+
+        return count($result) == 1;
+    }
         public function updateRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $participantid){
             $name = htmlspecialchars($name);
             $nickname = htmlspecialchars($nickname);
