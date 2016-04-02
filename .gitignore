@@ -1,6 +1,6 @@
 .DS_Store
 dbconfig.php
-facebook-login/fbconfig.php
+uploads/
 
 .sass-cache/
 css/main.css.map

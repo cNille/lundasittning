@@ -41,7 +41,7 @@ create table restaurant (
     active          tinyint(1) DEFAULT 1,
     preldate 		integer DEFAULT '14',
     paydate 		integer DEFAULT '10',
-    active          tinyint(1) DEFAULT 1,
+    hidden          tinyint(1) DEFAULT 1,
 	primary key(name)
 );
 
@@ -121,7 +121,7 @@ create table sitting (
 	desert	    		varchar(50),
 	active				tinyint(1) DEFAULT 1,
 	resName				varchar(30),
-  spotsLeft     integer DEFAULT 0,
+  spotsTaken     integer DEFAULT 0,
 	primary key(id),
 	foreign key(resName) references restaurant(name) ON UPDATE CASCADE
 );

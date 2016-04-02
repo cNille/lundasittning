@@ -51,7 +51,7 @@ select {
   select:hover {
     border: 1px solid #4a6b83; }
 
-input[type=email], input[type=password], input[type=text], input[type=tel], input[type=number], textarea {
+input[type=email], input[type=password], input[type=text], input[type=url], input[type=tel], input[type=number], textarea {
   display: block;
   outline: none;
   -webkit-transition: all 0.3s ease-in-out;
@@ -63,7 +63,7 @@ input[type=email], input[type=password], input[type=text], input[type=tel], inpu
   padding: 10px 5%;
   width: 90%;
   max-width: 250px; }
-  input[type=email]:hover, input[type=email]:focus, input[type=password]:hover, input[type=password]:focus, input[type=text]:hover, input[type=text]:focus, input[type=tel]:hover, input[type=tel]:focus, input[type=number]:hover, input[type=number]:focus, textarea:hover, textarea:focus {
+  input[type=email]:hover, input[type=email]:focus, input[type=password]:hover, input[type=password]:focus, input[type=text]:hover, input[type=text]:focus, input[type=url]:hover, input[type=url]:focus, input[type=tel]:hover, input[type=tel]:focus, input[type=number]:hover, input[type=number]:focus, textarea:hover, textarea:focus {
     border: 1px solid #4a6b83; }
 
 table {
