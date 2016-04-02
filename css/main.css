@@ -652,7 +652,6 @@ body {
     margin-right: auto;
     width: 90%; }
     body .event-grid .event-window {
-      overflow: hidden;
       opacity: 0.9;
       background-color: white;
       margin-left: 10px;
