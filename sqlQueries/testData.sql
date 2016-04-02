@@ -5,15 +5,15 @@
 start transaction;
 
 select 'Insert restaurant' as '';
-insert into restaurant(name, price, size, summary, nickname, email, telephone, homepage, hours, address) values
+insert into restaurant(name, price, size, summary, nickname, email, telephone, homepage, hours, address, hidden) values
     ('Nilles nation', 140, 90, 'Cupcake ipsum dolor sit amet candy canes donut toffee. Sweet sugar plum toffee macaroon fruitcake brownie brownie. Wafer I love icing I love pudding I love sesame snaps halvah.
-I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar fruitcake. Sweet roll gummies apple pie pie muffin dessert. Pastry bear claw pastry tiramisu. Cheesecake marzipan gummi bears I love.', 'nn','c@shapeapp.se','0708342311','http://www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7'),
+I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar fruitcake. Sweet roll gummies apple pie pie muffin dessert. Pastry bear claw pastry tiramisu. Cheesecake marzipan gummi bears I love.', 'nn','c@shapeapp.se','0708342311','http://www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7', 0),
     ('Franz nation', 240, 120, 'Cupcake ipsum dolor sit amet candy canes donut toffee. Sweet sugar plum toffee macaroon fruitcake brownie brownie. Wafer I love icing I love pudding I love sesame snaps halvah.
-I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar fruitcake. Sweet roll gummies apple pie pie muffin dessert. Pastry bear claw pastry tiramisu. Cheesecake marzipan gummi bears I love.', 'fn','c@shapeapp.se','0708342311','http://www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7'),
+I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar fruitcake. Sweet roll gummies apple pie pie muffin dessert. Pastry bear claw pastry tiramisu. Cheesecake marzipan gummi bears I love.', 'fn','c@shapeapp.se','0708342311','http://www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7', 0),
     ('Malins nation', 40, 50, 'Cupcake ipsum dolor sit amet candy canes donut toffee. Sweet sugar plum toffee macaroon fruitcake brownie brownie. Wafer I love icing I love pudding I love sesame snaps halvah.
-I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar fruitcake. Sweet roll gummies apple pie pie muffin dessert. Pastry bear claw pastry tiramisu. Cheesecake marzipan gummi bears I love.', 'mn','c@shapeapp.se','0708342311','http://www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7'),
+I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar fruitcake. Sweet roll gummies apple pie pie muffin dessert. Pastry bear claw pastry tiramisu. Cheesecake marzipan gummi bears I love.', 'mn','c@shapeapp.se','0708342311','http://www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7', 0),
     ('Jennifers nation', 40, 50, 'Cupcake ipsum dolor sit amet candy canes donut toffee. Sweet sugar plum toffee macaroon fruitcake brownie brownie. Wafer I love icing I love pudding I love sesame snaps halvah.
-I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar fruitcake. Sweet roll gummies apple pie pie muffin dessert. Pastry bear claw pastry tiramisu. Cheesecake marzipan gummi bears I love.', 'jn','c@shapeapp.se','0708342311','http://www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7');
+I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar fruitcake. Sweet roll gummies apple pie pie muffin dessert. Pastry bear claw pastry tiramisu. Cheesecake marzipan gummi bears I love.', 'jn','c@shapeapp.se','0708342311','http://www.shapeapp.se','Mån - Fre 11:00-13:00', 'Tornavägen 7', 0);
 
 
 select 'Insert loginaccount' as '';
