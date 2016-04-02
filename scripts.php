@@ -86,12 +86,20 @@
 		$name = $_POST['name'];
 
 
-		// Send email to Nille
+		// Send email to SuperAdmins
+    $superheroes = $dbHandler->getSuperAdmins();
+    $to = "";
+    foreach( $superheroes as $key => $super){
+      if($key > 0){
+        $to .= ',';
+      }
+      $to .= $super[2];
+    }
 		$link = $_SERVER['HTTP_REFERER'];
 		$pos = strrpos($link, '/');
 		$link = substr($link, 0, $pos+1);
-   		$from = "c@shapeapp.se";
-   		$to = "c@shapeapp.se"; 
+   	$from = "info@lundasittning.se";
+    
 		ini_set("SMTP", "send.one.com");
    		ini_set("sendmail_from", $from);
 
@@ -220,8 +228,31 @@
       }
   
       $dbHandler->createRestaurant($name, $nickname, $email, $phone, $homepage, $hours, $address, $deposit, $price, $size, $summary, $bg, $loggo, $user[0]);
-
       $dbHandler->addUserType('Quratel', $user[0], $name);
+
+      // Send email to SuperAdmins
+      $superheroes = $dbHandler->getSuperAdmins();
+      $to = "";
+      foreach( $superheroes as $key => $super){
+        if($key > 0){
+          $to .= ',';
+        }
+        $to .= $super[2];
+      }
+      $link = $_SERVER['HTTP_REFERER'];
+      $pos = strrpos($link, '/');
+      $link = substr($link, 0, $pos+1);
+      $from = "info@lundasittning.se";
+      
+      ini_set("SMTP", "send.one.com");
+        ini_set("sendmail_from", $from);
+
+      $subject = "Lundasittning, ny restaurang";
+      $msg = "En ny restaurang har skapats av $user[0]. Restaurangens namn är:$ $name ($email)\r\n";
+      $msg = wordwrap($msg,70);
+
+      $headers = "From: $from\r\nReply-To: $to\r\n";
+      mail($to, $subject, $msg, $headers);
 
       if($msg != ""){
           $_SESSION['message'] = $msg;

@@ -194,6 +194,12 @@
             return $result[0];
         }
 
+        public function getSuperAdmins() {
+            $sql = "SELECT p.id, p.name, p.email FROM participantlogin AS p join restaurantparticipant AS r ON p.id = r.participantId WHERE r.userType='SuperAdmin' GROUP BY p.id;";
+            $result = $this->db->executeQuery($sql, array($fbid));
+            return $result;
+        }
+
 		// UserType
 		// ======================================================
 		public function getAccessLevel($fbid, $resName) {
