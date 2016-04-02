@@ -322,9 +322,16 @@
 		public function getSitting($sittId) {
 			$sql = "SELECT * FROM sitting WHERE id=?";
 			$result = $this->db->executeQuery($sql, array($sittId));
-			return $this->createSittingObject($result[0]);  // Structure: {'id', 'sittDate', 'appetiser', 'main', 'desert', 'prelDay', 'payDay'}
+			return $this->createSittingObject($result[0]);  // Structure: {'id', 'sittDate', 'appetiser', 'main', 'desert', 'prelDay', 'payDay', 'spotsTaken', 'open'}
 		}
 
+        public function updateOpen($sittId, $open, $participantid, $restaurant) {
+            $sittId = htmlspecialchars($sittId);
+            $appetiser = htmlspecialchars($appetiser);
+            $sql = "UPDATE sitting SET open=? WHERE id = ?;";
+            $this->log("Open updated. Sitting: $sittId, Open: $open", $participantid, $restaurant);
+            $result = $this->db->executeUpdate($sql, array($open, $sittId));
+        }
         public function updateAppetiser($sittId, $appetiser, $participantid, $restaurant) {
             $sittId = htmlspecialchars($sittId);
             $appetiser = htmlspecialchars($appetiser);

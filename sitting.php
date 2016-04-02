@@ -171,15 +171,21 @@
 		</div>
 	</div>
 
-	<?php if($loggedIn) : ?>
-        <a class="button primary"  href="<?php echo $nationURL; ?>/interest/<?php echo $sitting->id; ?>">
-            <span>+ Lägg en intresseanmälan</span>
-        </a>
-        <?php else : ?>
-            <a class="button primary"  href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
-                <span>Logga in för att kunna lägga en intresseanmälan</span>
-            </a>
-        <?php endif; ?>
+	<?php if($sitting->open == 1) : ?>
+	  <?php if($loggedIn) : ?>
+      <a class="button primary"  href="<?php echo $nationURL; ?>/interest/<?php echo $sitting->id; ?>">
+        <span>+ Lägg en intresseanmälan</span>
+      </a>
+    <?php else : ?>
+      <a class="button primary"  href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
+        <span>Logga in för att kunna lägga en intresseanmälan</span>
+      </a>
+    <?php endif; ?>
+  <?php else:  ?>
+    <div class="button"  href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
+      <span>Tyvärr är anmälan för denna sittning stängd</span>
+    </div>
+  <?php endif; ?>
 	<?php 
 
 	if($myAccessLevel >= 5 || $isSittingForeman) : ?>
@@ -301,6 +307,14 @@
                     <p><i>Ställ in 0 ifall du ej vill ha manuellt inställd antal.</i></p>
                     <input type="number" name="spotsTaken" value="<?php echo $sitting->spotsTaken; ?>">
                     <input type='submit' name="updateSpotsTaken" value="Uppdatera">
+                    <input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
+                    <br /><br />
+                </form>
+                <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
+                    <h3>Anmälan</h3>
+                    <input type="radio" name="open" value="true" <?php if($sitting->open) echo 'checked';?>>Öppen</input><br />
+                    <input type="radio" name="open" value="false" <?php if(!$sitting->open) echo 'checked';?>>Stängd</input><br />
+                    <input type='submit' name="updateSittingOpen" value="Uppdatera">
                     <input type='hidden' name='sittId' value="<?php echo $sitting->id; ?>">
                     <br /><br />
                 </form>

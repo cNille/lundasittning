@@ -122,6 +122,7 @@ create table sitting (
 	active				tinyint(1) DEFAULT 1,
 	resName				varchar(30),
   spotsTaken     integer DEFAULT 0,
+  open          tinyint(1) DEFAULT 1,
 	primary key(id),
 	foreign key(resName) references restaurant(name) ON UPDATE CASCADE
 );
