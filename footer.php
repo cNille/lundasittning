@@ -43,6 +43,7 @@
         <?php if($myAccessLevel >=5){ ?>
             <a href="<?php echo $nationURL; ?>/nationsettings.php">Nationsinställningar</a>
             <a href="<?php echo $nationURL; ?>/users.php">Användare</a>
+            <a href="<?php echo $nationURL; ?>/overview.php">Överblick</a>
         <?php } ?>
         <?php if($myAccessLevel >=10){ ?>
             <a href="<?php echo $nationURL; ?>/log.php">Log</a>
