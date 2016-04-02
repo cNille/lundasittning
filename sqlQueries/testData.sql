@@ -18,9 +18,9 @@ I love marzipan topping gingerbread bear claw jelly beans danish chocolate bar f
 
 select 'Insert loginaccount' as '';
 insert into loginaccount (fbid, email, telephone) values
-    ('3', 'cnilsson_92@hotmail.com', '0708123456'),
-    ('10204701878293819', 'franz@hotmail.com', '0708123456'),
-    ('10153551242685859', 'cnilsson_92@hotmail.com', '0708123456');
+    ('3', 'christopher.nille.nilsson@gmail.com', '0708123456'),
+    ('10204701878293819', 'franzapps@gmail.com', '0708123456'),
+    ('10153551242685859', 'christopher.nille.nilsson@gmail.com', '0708123456');
 
 select 'Insert participant' as '';
 insert into participant(name, other, loginaccount) values
