@@ -551,6 +551,19 @@
 		// Event
 		// ======================================================
 
-
+		// Overview
+		// ======================================================
+		
+		public function getRestaurantTitles($resName) {
+			$sql = "SELECT sittDate, partyname, COUNT(guestname) AS guests, SUM(payedstatus = 'Ja') AS Ja, SUM(payedstatus = 'Nej') AS Nej, urlkey FROM overview WHERE resName=? GROUP BY urlkey";
+			$result = $this->db->executeQuery($sql, array($resName));
+			return $result;
+		}
+		
+		public function getRestaurantTitleContent($partyname, $resName) {
+			$sql = "SELECT guestname, payedstatus FROM overview WHERE partyname=? AND resName=?";
+			$result = $this->db->executeQuery($sql, array($partyname, $resName));
+			return $result;
+		}
 	}
 ?>
