@@ -126,11 +126,12 @@
 		$sittId = $_POST['sittId'];
 		$int = $_POST['interestedSpots'];
 		$msg = $_POST['message'];
+		$question = $_POST['question'];
 		$key = generateRandomString();
 
-    if($partyName == "" || $partyName == null){
-      $partyName = "NO NAME";
-    }
+		if($partyName == "" || $partyName == null){
+		  $partyName = "NO NAME";
+		}
 
 		$dbHandler->createParty($partyName, $type, $sittId, $int, $msg, $key, $user[0], $restaurant[0]);
 		$p = $dbHandler->getPartyFromKey($key);
@@ -153,9 +154,10 @@
 		ini_set("SMTP", "send.one.com");
    		ini_set("sendmail_from", $from);
 
-   		$subject = "Sittningsintresseanmälan, $sitting->date";
+   		$subject = "Intresseanmälan $partyName, $sitting->date";
 		$msg = "En intresseanmälan har lagts till sittningen $sitting->date.\r\n";
 		$msg .= "Anmälan är gjord av $user[1] ($user[3], $user[4]).\r\n\r\n";
+		$msg .= "Eventuell fråga: $question.\r\n\r\n";
 		$msg .= "Vill du veta mer så besök sidan här:\r\n";
 		$msg .= "$nationURL\r\n";
 		$msg = wordwrap($msg,70);
@@ -165,9 +167,9 @@
 
 		// Send email to PartyCreator
    		$to = $user[3]; 
-   		$subject = "Anmälningsbekräftelse, $sitting->date";
-		$msg = "Vi har mottagit den intresseanmälan av ett sällskap.\r\n";
-		$msg .= "Nationen kommer att behandla din anmälan och inom kort kontakta dig, har du några frågor kan du skicka maila:$restaurant[2]\r\n\r\n";
+   		$subject = "Intresseanmälan, $sitting->date";
+		$msg = "Vi har mottagit din förfrågan.\r\n\r\n";
+		$msg .= "Nationen kommer att bearbeta din anmälan och kontakta dig inom kort. Har du några frågor kan du maila:$restaurant[2]\r\n\r\n";
 		$msg .= "Med varma hälsningar,\r\n";
 		$msg .= "Lundasittning\r\n";
 		$msg = wordwrap($msg,70);
@@ -175,7 +177,7 @@
 		$headers = "From: $from\r\nReply-To: $to\r\n";
 		mail($to, $subject, $msg, $headers);
 
-        $_SESSION['message'] = 'Intresseanmälan lagd. Mail skickat till Nationen med info.';
+        $_SESSION['message'] = 'Intresseanmälan sparad. En bekräftelse har skickats till den angivna emailadressen.';
         
 		header("Location: $nationURL/sallskap/$key");
 		return;
