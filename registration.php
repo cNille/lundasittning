@@ -66,6 +66,18 @@
       <img id="loggoimage" src="uploads/<?php echo $restaurant[12]; ?>" onerror="this.src='../images/reject.png';" />
       </div>
       </div>
+      <p>
+        Lundasittning är ett hobbyprojekt av Franz och Nille. Du och din studentförening får gärna använda vår
+        hemsida helt gratis. Just nu är hemsidan anpassad för nationer. Hör av dig till oss om du har andra tankar 
+        på hur vi kan anpassa den bättre för din förening, vi är alltid glada för feedback!
+      </p>
+      <p>
+        Vi ser gärna att ni hör av er till oss om ni tänker använda tjänsten för er verksamhet. 
+        Lättast att förklara systemet och förstå hur vi kan hjälpa era behov efter kaffe och kaka.
+      </p>
+      <p>
+        Tveka inte att höra av oss på info@lundasittning.se. 
+      </p>
 				<input class="primary category" type="submit" value="Skapa studentförening" name="createRestaurant" />
 			</div>
 			<input type="hidden" name="userId" value="<?php echo $user[0]; ?>" />
