@@ -38,16 +38,16 @@
                 <br /><br /><br />
                 <br /><br /><br />
 				<div class="category">
-			        Smeknamn <input type="text" name="nickname" value="<?php echo $restaurant[1]; ?>">
+			    Förkortning på namn (2 bokstäver, a-z) <input pattern="[A-Za-z]{2}" type="text" name="nickname" value="<?php echo $restaurant[1]; ?>">
 				</div>
 				<div class="category">
-					E-mail <input type="text" name="email" value="<?php echo $restaurant[2]; ?>">
+					E-mail <input type="email" name="email" value="<?php echo $restaurant[2]; ?>">
 				</div>
 				<div class="category">
-					Telefonnummer <input type="text" name="phone" value="<?php echo $restaurant[3]; ?>">
+					Telefonnummer <input type="tel" name="phone" value="<?php echo $restaurant[3]; ?>">
 				</div>
                 <div class="category">
-                    Hemsida <input type="text" name="homepage" placeholder="http://..." value="<?php echo $restaurant[4]; ?>">
+                    Hemsida <input type="url" name="homepage" placeholder="http://..." value="<?php echo $restaurant[4]; ?>">
                 </div>
                 <div class="category">
                     Öppettider <input type="text" name="hours" value="<?php echo $restaurant[5]; ?>">
