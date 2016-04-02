@@ -329,7 +329,10 @@ body {
       padding: 15px 30px;
       margin-bottom: 0;
       padding-bottom: 0; }
-    body .sidenav a {
+    body .sidenav #google_translate_element {
+      margin-left: 4px;
+      margin-top: 10px; }
+    body .sidenav .realitem {
       display: block;
       padding: 15px 30px;
       text-decoration: none;
@@ -341,21 +344,21 @@ body {
       transition: all 0.3s ease-in-out;
       border-bottom: 1px solid #ddd;
       border-top: 1px solid #eee; }
-      body .sidenav a:hover {
+      body .sidenav .realitem:hover {
         background-color: #f2867d;
         color: #eee; }
-      body .sidenav a.fb-login {
+      body .sidenav .realitem.fb-login {
         font-size: 15px;
         font-weight: 700;
         margin-top: 15px; }
-        body .sidenav a.fb-login img {
+        body .sidenav .realitem.fb-login img {
           vertical-align: middle;
           width: 25px;
           height: 25px;
           border-radius: 3px; }
-        body .sidenav a.fb-login span {
+        body .sidenav .realitem.fb-login span {
           margin-left: 10px; }
-      body .sidenav a.fb-logout {
+      body .sidenav .realitem.fb-logout {
         position: absolute;
         bottom: 10px;
         width: 100%;
