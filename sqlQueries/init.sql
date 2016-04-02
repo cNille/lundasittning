@@ -68,6 +68,16 @@ create table participant (
 select 'Create participantlogin view' as '';
 create view participantlogin as SELECT p.id, p.name, l.fbid, l.email, l.telephone, p.other, p.active FROM participant as p JOIN loginaccount as l WHERE p.loginaccount=l.id;
 
+select 'Create overview view' as '';
+create view overview as SELECT s.id AS sittid, p.id AS partyid, s.sittDate, s.resName, p.name AS partyname, p.urlkey as urlkey, participant.name AS guestname, pp.participantpayed AS payedstatus
+					FROM `sitting` AS s, `party` AS p, `partyparticipant` AS pp, `participant` AS participant
+					WHERE pp.partyId = p.id
+					AND p.sittId = s.id
+					AND pp.participantId = participant.id
+					AND s.active = 1
+					AND p.active = 1
+					ORDER BY s.sittDate, p.id;
+
 select 'Create usertype' as '';
 create table usertype (
 	userType		varchar(20),
