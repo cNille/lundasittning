@@ -43,7 +43,7 @@
 			?>
 				<h3 style="outline: none;"><?php echo $t[0]; ?> <?php echo $t[1]; ?>, <?php echo $t[3]; ?>/<?php echo $t[2]; ?> har betalat</h3>
 				<div>
-					<a class="btn" href="http://www.lundasittning.se/kr/sallskap/<?php echo $t[5]?>">Gå till sittning</a>
+					<a class="btn" href="http://www.lundasittning.se/kr/sallskap/<?php echo $t[5]?>">Gå till sällskap</a>
 					<br></br>
 					<table class="fancy">
 						<tr>
