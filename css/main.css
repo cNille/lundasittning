@@ -86,6 +86,11 @@ table {
   table tr.odd {
     background-color: #dfe7ed; }
 
+#mytable thead th {
+  cursor: pointer; }
+  #mytable thead th:hover {
+    background-color: #385062; }
+
 .section {
   position: relative;
   display: block;

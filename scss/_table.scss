@@ -26,3 +26,11 @@ table{
         background-color: $lightBlue;
     }
 }
+
+#mytable thead th {
+  cursor: pointer;
+  &:hover{
+    background-color: darken($blue, 10%);
+  }
+}
+

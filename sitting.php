@@ -254,14 +254,16 @@
             </table>
 
             <h3>Anmälda gäster</h3>
-			<table class="fancy">
+			<table id="mytable" class="fancy">
+        <thead>
 				<tr>
-					<th>#</th>
-					<th>Sällskap</th>
-					<th>Gäster</th>
-					<th>Matpreferens</th>
-					<th>Annat</th>
+					<th id="t_id">#</th>
+					<th id="t_party">Sällskap</th>
+					<th id="t_guest">Gäster</th>
+					<th id="t_food">Matpreferens</th>
+					<th id="t_other">Annat</th>
 				</tr>
+        </thead>
 				<?php 
 					$i = 1;
 					foreach ($sittingUsersWithFoodPref as $key => $g) {

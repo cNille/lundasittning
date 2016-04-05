@@ -10,10 +10,10 @@ if(isset($_SESSION['LAST_PAGE'])){
 }
 
 
-session_unset();
 $_SESSION['FBID'] = NULL;
 $_SESSION['FULLNAME'] = NULL;
 $_SESSION['EMAIL'] =  NULL;
+session_unset();
 
 header("Location: $address"); 
 ?>
