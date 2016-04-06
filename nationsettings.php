@@ -19,7 +19,7 @@
 			<div style="max-width: 280px; margin: auto;">
 				<h3>
 	 		        <?php echo $restaurant[0]; ?>
-                    <input type="hidden" name="name" value="<?php echo $restaurant[0]; ?>" />
+                    <input type="hidden" name="name" value="<?php echo $restaurant[0]; ?>" required />
 				</h3>
 				<div class="category">
                     <h4>Bakgrundsbild</h4>
@@ -38,7 +38,7 @@
                 <br /><br /><br />
                 <br /><br /><br />
 				<div class="category">
-			    Förkortning på namn (2 bokstäver, a-z) <input pattern="[A-Za-z]{2}" type="text" name="nickname" value="<?php echo $restaurant[1]; ?>">
+			    Förkortning på namn (2 bokstäver, a-z) <input pattern="[A-Za-z]{2}" type="text" name="nickname" value="<?php echo $restaurant[1]; ?>" required>
 				</div>
 				<div class="category">
 					E-mail <input type="email" name="email" value="<?php echo $restaurant[2]; ?>">

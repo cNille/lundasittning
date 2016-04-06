@@ -18,34 +18,34 @@
 		<form action="<?php echo $nationURL; ?>/scripts.php" enctype="multipart/form-data" method="POST">
 			<div style="max-width: 280px; margin: auto;">
 				<div class="category">
-			    Namn på studentförening <input type="text" name="name" value="<?php echo $restaurant[1]; ?>">
+			    Namn på studentförening <input type="text" name="name" value="<?php echo $restaurant[1]; ?>" required>
 				</div>
 				<div class="category">
-			    Förkortning på namn (2 bokstäver, a-z) <input pattern="[A-Za-z]{2}" type="text" name="nickname" value="<?php echo $restaurant[1]; ?>">
+			    Förkortning på namn (2 bokstäver, a-z) <input pattern="[A-Za-z]{2}" type="text" name="nickname" value="<?php echo $restaurant[1]; ?>" required>
 				</div>
 				<div class="category">
-					E-mail <input type="email" name="email" value="<?php echo $restaurant[2]; ?>">
+					E-mail <input type="email" name="email" value="<?php echo $restaurant[2]; ?>" required>
 				</div>
 				<div class="category">
-					Telefonnummer <input type="tel" name="phone" value="<?php echo $restaurant[3]; ?>">
+					Telefonnummer <input type="tel" name="phone" value="<?php echo $restaurant[3]; ?>" required>
 				</div>
         <div class="category">
-            Hemsida <input type="url" name="homepage" placeholder="http://..." value="<?php echo $restaurant[4]; ?>">
+            Hemsida <input type="url" name="homepage" placeholder="http://..." value="<?php echo $restaurant[4]; ?>" required>
         </div>
         <div class="category">
-            Öppettider <input type="text" name="hours" value="<?php echo $restaurant[5]; ?>">
+            Öppettider <input type="text" name="hours" value="<?php echo $restaurant[5]; ?>" required>
         </div>
         <div class="category">
-            Adress <input type="text" name="address" value="<?php echo $restaurant[6]; ?>">
+            Adress <input type="text" name="address" value="<?php echo $restaurant[6]; ?>" required>
         </div>
         <div class="category">
-            Bokningsavgift <input type="number" name="deposit" value="<?php echo $restaurant[7]; ?>">
+            Bokningsavgift <input type="number" name="deposit" value="<?php echo $restaurant[7]; ?>" required>
         </div>
         <div class="category">
-            Sittningsavgift <input type="number" name="price" value="<?php echo $restaurant[8]; ?>">
+            Sittningsavgift <input type="number" name="price" value="<?php echo $restaurant[8]; ?>" required>
         </div>
         <div class="category">
-            Max antal gäster per sittning <input type="number" name="size" value="<?php echo $restaurant[9]; ?>">
+            Max antal gäster per sittning <input type="number" name="size" value="<?php echo $restaurant[9]; ?>" required>
         </div>
         <div class="category">
             Kort beskrivande text för nationen                 
