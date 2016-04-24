@@ -24,31 +24,24 @@
   function dateToSemester($timeStamp){
     $year = date('y', strtotime($timeStamp));
     $month = date('n', strtotime($timeStamp));
-    
-    $semester = "";
-    if($month < 7){
-      $semester .= "VT";
-    } else {
-      $semester .= "HT";
-    }
-    $semester .= $year;    
-    return $semester;
+    return ($month < 7 ? "VT" : "HT") . $year;
   }
 
   $sittingGroups = array();
   foreach($sittings as $row => $s) {
-    $new = false;
     $sem = dateToSemester($s[1]);
     
     foreach($sittingGroups as $key => $g){
       if($sittingGroups[$sem] != null){
         array_push($sittingGroups[$sem], $s);
-        $new = true;
       }
     } 
-    if($new == false){
+    if($sittingGroups[$sem] == null){
       $sittingGroups[$sem] = array($s);
     }
+  }
+  if(count($sittingGroups) == 0){
+    $sittingGroups[""] = array();
   }
  ?>
 
