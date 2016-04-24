@@ -21,11 +21,44 @@
         }
         return "Platser kvar: " . $spotsLeft;
     }
-?>
+  function dateToSemester($timeStamp){
+    $year = date('y', strtotime($timeStamp));
+    $month = date('n', strtotime($timeStamp));
+    
+    $semester = "";
+    if($month < 7){
+      $semester .= "VT";
+    } else {
+      $semester .= "HT";
+    }
+    $semester .= $year;    
+    return $semester;
+  }
 
-<div class="content">
+  $sittingGroups = array();
+  foreach($sittings as $row => $s) {
+    $new = false;
+    $sem = dateToSemester($s[1]);
+    
+    foreach($sittingGroups as $key => $g){
+      if($sittingGroups[$sem] != null){
+        array_push($sittingGroups[$sem], $s);
+        $new = true;
+      }
+    } 
+    if($new == false){
+      $sittingGroups[$sem] = array($s);
+    }
+  }
+ ?>
+
+<?php 
+  $first = true;
+  foreach($sittingGroups as $key => $sittingArray) {
+?>
+<div class="<?php if($first){ echo "content"; $first = false;} else{echo "content sittcontent";}?>" >
 	<div class="title">
-		Sittningar VT16
+		Sittningar <?php echo $key;?>
 	</div>
 	<div class="event-grid">
 		<div class="event-window" id="" style="display: none;">
@@ -45,8 +78,8 @@
 				<button class="event-remove-button">X</button>
 			<?php } ?>
 		</div>
-		<?php 
-			foreach($sittings as $row => $s) {
+    <?php
+			foreach($sittingArray as $row => $s) {
 				$date = date('j/n', strtotime($s[1]));
 
         $spotsTaken = 0;
@@ -88,6 +121,7 @@
 		<?php } ?>
 	</div>
 </div>
+    <?php } ?>
 <div style="clear:both;"></div>
 
 

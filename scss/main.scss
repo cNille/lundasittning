@@ -68,6 +68,12 @@ body{
         padding-bottom: 50px;
         min-height: 400px;
 
+        
+        &.sittcontent{
+          margin-top: 0;
+          padding-bottom: 0;
+        }
+
         .title, h2 {
             width: 90%;
             margin: 0 auto;
