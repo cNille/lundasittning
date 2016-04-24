@@ -21,7 +21,7 @@
         }
         return "Platser kvar: " . $spotsLeft;
     }
- ?>
+?>
 
 <div class="content">
 	<div class="title">

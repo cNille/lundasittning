@@ -1,4 +1,8 @@
 $('body').on('click', '.event-remove-button', function() {
+	if (!(confirm("Vill du gå emot PQens vilja och minska intäkterna genom att ta bort detta datum?"))) {
+		return;
+    }
+
 	var temp = removeEvent(this, "event-window");
 
 	$.ajax({
@@ -7,11 +11,10 @@ $('body').on('click', '.event-remove-button', function() {
 		data: 'action=removeSitting&id=' + temp,
 		success: function(data){
 			$('#' + temp).remove();
-			// If you want, alert whatever your PHP script outputs
 		}
 	});
 });
-            	
+        	
 function removeEvent (el, cls) {
     while ((el = el.parentElement) && !el.classList.contains(cls));
     return el.id;
