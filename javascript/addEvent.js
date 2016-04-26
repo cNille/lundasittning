@@ -45,17 +45,17 @@ $("#event-creator-initiate").click(function(){
 			data: 'action=addSitting&date=' + realDate + '&resName=' + RESTAURANT_NAME,
 			success: function(sittId){
 				var sittIdFin = sittId.replace(/[^0-9]/, '');
-				$(".event-window:nth-last-child(2)").removeClass("created show");
-				$(".event-window:nth-last-child(2)").clone().insertBefore("#event-creator");
-				$(".event-window:nth-last-child(2)").addClass("created");
-				$(".event-window:nth-last-child(2)").attr("id",sittIdFin);
-				$(".event-window:nth-last-child(2)").attr("style","block");
-				var temp = $(".event-window:nth-last-child(2)").find(".event-window-link");
+				$(".firsteventgrid .event-window:nth-last-child(2)").removeClass("created show");
+				$(".firsteventgrid .event-window:nth-last-child(2)").clone().insertBefore("#event-creator");
+				$(".firsteventgrid .event-window:nth-last-child(2)").addClass("created");
+				$(".firsteventgrid .event-window:nth-last-child(2)").attr("id",sittIdFin);
+				$(".firsteventgrid .event-window:nth-last-child(2)").attr("style","block");
+				var temp = $(".firsteventgrid .event-window:nth-last-child(2)").find(".event-window-link");
 				temp.attr("href", NATIONURL + '/sittning/' + sittIdFin);
-				$(".event-window:nth-last-child(2)").find(".event-window-date").html(date);
-				$(".event-window:nth-last-child(2)").find(".event-window-spots").html("Platser kvar: " + RESTAURANT_SIZE);
+				$(".firsteventgrid .event-window:nth-last-child(2)").find(".event-window-date").html(date);
+				$(".firsteventgrid .event-window:nth-last-child(2)").find(".event-window-spots").html("Platser kvar: " + RESTAURANT_SIZE);
 				resetCreation();
-				$(".event-window:nth-last-child(2)").addClass("show");
+				$(".firsteventgrid .event-window:nth-last-child(2)").addClass("show");
 			}
 		});
 	});
