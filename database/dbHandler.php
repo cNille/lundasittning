@@ -464,6 +464,16 @@
 
     		return $result[0];		
 		}
+		public function updatePartyPayed($pId, $payed, $participantid, $restaurant){
+        $pId = htmlspecialchars($pId);
+        $payed = htmlspecialchars($payed);
+		    $sql = "UPDATE party SET partyPayed=? WHERE id=?;";
+    		$result = $this->db->executeUpdate($sql, array($payed, $pId));
+
+    		$this->log("Partypayed updated. PartyId: $pId, Paystatus: $interest", $participantid, $restaurant);
+
+    		return $result[0];		
+		}
 		
 		public function deleteParty($pId, $participantid, $restaurant){            
 			$sql = "UPDATE party SET active = 0 WHERE id=?;";
