@@ -24,39 +24,30 @@
   function dateToSemester($timeStamp){
     $year = date('y', strtotime($timeStamp));
     $month = date('n', strtotime($timeStamp));
-    
-    $semester = "";
-    if($month < 7){
-      $semester .= "VT";
-    } else {
-      $semester .= "HT";
-    }
-    $semester .= $year;    
-    return $semester;
+    return ($month < 7 ? "VT" : "HT") . $year;
   }
 
   $sittingGroups = array();
   foreach($sittings as $row => $s) {
-    $new = false;
     $sem = dateToSemester($s[1]);
     
     foreach($sittingGroups as $key => $g){
-      if($sittingGroups[$sem] != null){
+      if($sittingGroups[$sem] != null && !in_array($s, $sittingGroups[$sem])){
         array_push($sittingGroups[$sem], $s);
-        $new = true;
       }
     } 
-    if($new == false){
+    if($sittingGroups[$sem] == null){
       $sittingGroups[$sem] = array($s);
     }
   }
- ?>
+  if(count($sittingGroups) == 0){
+    $sittingGroups[""] = array();
+  }
 
-<?php 
   $first = true;
   foreach($sittingGroups as $key => $sittingArray) {
 ?>
-<div class="<?php if($first){ echo "content"; $first = false;} else{echo "content sittcontent";}?>" >
+<div class="<?php if($first){ echo "content firsteventgrid"; } else{echo "content sittcontent";}?>" >
 	<div class="title">
 		Sittningar <?php echo $key;?>
 	</div>
@@ -114,7 +105,7 @@
 						<?php } ?>
 					</div>
 		<?php } ?>
-		<?php if($myAccessLevel >= 5){ ?>
+		<?php if($myAccessLevel >= 5 && $first){ $first=false;?>
 			<div class="event-window" id="event-creator">
 				<p id="event-creator-initiate"> + </p>
 			</div>
