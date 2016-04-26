@@ -8,6 +8,7 @@ select 'Drop old tables' as '';
 drop table if exists loginaccount;
 drop table if exists participant;
 drop view if exists participantlogin;
+drop view if exists overview;
 drop table if exists usertype;
 drop table if exists foodpref;
 drop table if exists participantfood;
