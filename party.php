@@ -13,6 +13,8 @@
 	
 	$deposit = $restaurant[7];
 	$price = $restaurant[8];
+
+
 	$total = count($partyUsers)*($price+$deposit);
 	foreach ($partyUsers as $key => $g) {
 		$g->foodpref = '';
@@ -30,6 +32,21 @@
 		}
 	}
 	$dbHandler->disconnect();
+
+
+  
+  if($party->partyPayed == 'Halvt'){
+    $total = $party->interest * ($price+$deposit);
+    $sum = $party->interest * $deposit;
+    var_dump($party->interest);
+    var_dump($price);
+    var_dump($deposit);
+    var_dump($total);
+    var_dump($sum);
+  }
+  if($party->partyPayed == 'Ja'){
+    $sum = $total;
+  }
 
 	$isQuratel = $myAccessLevel >= 5;
  ?>
@@ -184,12 +201,9 @@
         </form>
         <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
             <h3>Betalat (hela sällskapet)</h3>
-            <?php
-              foreach ($payStatus as $key => $p) {
-                $checked = $party->partyPayed == $p[0] ? " checked " : "";
-                echo "<input type='radio' name='partypayed' value='$p[0]' $checked>$p[0]</input><br />";
-              }
-            ?>
+            <input type='radio' name='partypayed' value='Nej' <?php if($party->partyPayed == 'Nej'){ echo "checked";} ?>>Nej</input><br />
+            <input type='radio' name='partypayed' value='Halvt' <?php if($party->partyPayed == 'Halvt'){ echo "checked";} ?>>Halvt</input><br />
+            <input type='radio' name='partypayed' value='Ja' <?php if($party->partyPayed == 'Ja'){ echo "checked";} ?>>Ja</input><br />
             <input type='submit' name="updatePartyPayed" value="Uppdatera">
             <input type='hidden' name='partyId' value="<?php echo $party->id; ?>">
             <input type='hidden' name='partyKey' value="<?php echo $party->key; ?>">
