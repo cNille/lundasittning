@@ -1,8 +1,21 @@
 $('body').on('click', '.event-remove-button', function() {
-	if (!(confirm("Vill du gå emot PQens vilja och minska intäkterna genom att ta bort detta datum?"))) {
-		return;
-    }
-
+	// if (!(confirm("Vill du gå emot PQens vilja och minska intäkterna genom att ta bort detta datum?"))) {
+// 		return;
+//     }
+	
+	$('#failsafe').dialog({
+		modal:true,
+		width:450,
+		resizable: false,          
+		buttons: [{
+			text: 'Yes',
+			click: function() {}
+		}, {
+			text: 'No',                
+			click: function() {return;};
+		}]
+	});
+	
 	var temp = removeEvent(this, "event-window");
 
 	$.ajax({

@@ -120,6 +120,7 @@
 			</div>
 		<?php } ?>
 	</div>
+	<div id="failsafe" style="display: none;">Vill du gå emot PQens vilja och minska intäkterna genom att ta bort detta datum?</div>
 </div>
     <?php } ?>
 <div style="clear:both;"></div>
