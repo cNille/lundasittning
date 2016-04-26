@@ -86,7 +86,7 @@
 									$totalSpots += $pps[3];
 								}
 							}
-							if($prelSpots == 0){
+							if($prelSpots == 0 && $p->partyPayed == 'Nej'){
                                 $hasInterestedParties = true;
                             } else {
 								?>
