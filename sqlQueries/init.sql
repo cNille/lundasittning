@@ -137,6 +137,13 @@ create table sittingforeman (
 	foreign key (participantId) references participant(id)
 );
 
+select 'Create paystatus' as '';
+create table paystatus (
+  status          varchar(30),
+  accesslevel     integer,
+  primary key (status)
+);
+
 select 'Create party' as '';
 create table party (
 	id  			integer auto_increment,
@@ -147,9 +154,11 @@ create table party (
 	message     	text,
 	urlkey			varchar(10) NOT NULL,
 	active			tinyint(1) DEFAULT 1,
+	partyPayed			varchar(30),
 	primary key(id),
 	foreign key(partyType) references partytype(partyType) ON UPDATE CASCADE,
-	foreign key(sittId) references sitting(id)
+	foreign key(sittId) references sitting(id),
+  foreign key (partyPayed) references paystatus(status)
 );
 
 select 'Create partytype' as '';
@@ -167,12 +176,6 @@ create table partycreator (
 	foreign key (participantId) references participant(id)
 );
 
-select 'Create paystatus' as '';
-create table paystatus (
-    status          varchar(30),
-    accesslevel     integer,
-    primary key (status)
-);
 
 select 'Create partyparticipant' as '';
 create table partyparticipant (

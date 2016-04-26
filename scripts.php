@@ -445,8 +445,6 @@
 	            }
             }
         }
-
-
         header("Location: $nationURL/sallskap/$partykey");
         return;
     }
@@ -484,6 +482,33 @@
             return;		
         }       
     }
+
+
+    if($_POST['updatePartyPayed']){
+        $payed = $_POST['partypayed'];
+        $partyId = $_POST['partyId'];        
+        $partyKey = $_POST['partyKey'];        
+        
+        if($myAccessLevel >= 5){
+            $dbHandler->updatePartyPayed($partyId, $payed, $user[0], $restaurant[0]);
+            $_SESSION['message'] = "Betalstatus för sällskap uppdaterat.";
+            header("Location: $nationURL/sallskap/$partyKey");
+            return;   
+        }       
+    }
+
+    if($_POST['updateSittingOpen']){
+        $open = $_POST['open'] == 'true' ? 1 : 0;
+        $sittId = $_POST['sittId'];        
+        
+        if($myAccessLevel >= 5){
+            $dbHandler->updateOpen($sittId, $open, $user[0], $restaurant[0]);
+            $_SESSION['message'] = "Anmälan har nu uppdaterats.";
+            header("Location: $nationURL/sittning/$sittId");
+            return;   
+        }       
+    }
+
 
 
 	if($_POST['addSittingForeman']){

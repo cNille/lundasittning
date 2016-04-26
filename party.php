@@ -182,6 +182,19 @@
             <input type="hidden" name="sittId" value="<?php echo $party->sittId; ?>" />
 
         </form>
+        <form action="<?php echo $nationURL; ?>/scripts.php" method="POST">
+            <h3>Betalat (hela sällskapet)</h3>
+            <?php
+              foreach ($payStatus as $key => $p) {
+                $checked = $party->partyPayed == $p[0] ? " checked " : "";
+                echo "<input type='radio' name='partypayed' value='$p[0]' $checked>$p[0]</input><br />";
+              }
+            ?>
+            <input type='submit' name="updatePartyPayed" value="Uppdatera">
+            <input type='hidden' name='partyId' value="<?php echo $party->id; ?>">
+            <input type='hidden' name='partyKey' value="<?php echo $party->key; ?>">
+            <br /><br />
+        </form>
     </div>
 	<?php endif; ?>
 

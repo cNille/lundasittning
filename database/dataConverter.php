@@ -45,7 +45,8 @@ class DataConverter{
 			'interest' => $arr[4],
 			'message' => $arr[5],
 			'key' => $arr[6],
-			'interestOnly' => ($arr[5] == 0 && $arr[6] == 0)
+			'interestOnly' => ($arr[5] == 0 && $arr[6] == 0),
+			'partyPayed' => $arr[8]
 		];
 	}
 
