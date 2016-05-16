@@ -105,11 +105,11 @@
 						<?php } ?>
 					</div>
 		<?php } ?>
-		<?php if($myAccessLevel >= 5 && $first){ $first=false;?>
+		<?php if($myAccessLevel >= 5 && $first){ ?>
 			<div class="event-window" id="event-creator">
 				<p id="event-creator-initiate"> + </p>
 			</div>
-		<?php } ?>
+		<?php }$first=false;?>
 	</div>
 </div>
     <?php } ?>
