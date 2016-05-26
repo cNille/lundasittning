@@ -17,12 +17,14 @@
 
 	$total = count($partyUsers)*($price+$deposit);
 	foreach ($partyUsers as $key => $g) {
+    var_dump($g->other);
 		$g->foodpref = '';
 		$myFoodPref = $dbHandler->getMyFoodpref($g->id);
 		foreach ($myFoodPref as $key => $food) {
 			$g->foodpref = $g->foodpref . $food[0] . '<br />';
 		}
-		$g->foodpref = substr($g->foodpref, 0, -1);
+    // If there is 'other' add it to end of foodpref. Otherwise remove last <br>.
+    $g->foodpref = $g->other ? $g->foodpref . $g->other : substr($g->foodpref, 0, -6);
 		
 		if($g->payed == "Ja"){
 			$sum += $price + $deposit;
@@ -156,11 +158,9 @@
 						<tr>
 							<td><?php echo $i; ?></td>
 							<td><?php echo $g->name; ?></td>
-							<?php if($isCreator || $isQuratel) : ?>
                                 <td><?php echo $g->foodpref; ?></td>
                                 <td><?php echo $g->payed; ?></td>
 								<td><input type='checkbox' class='chbx' name='userId[]' value='<?php echo $g->id; ?>' /></td>
-							<?php endif; ?>
 						</tr>
 						<?php
 						$i++;

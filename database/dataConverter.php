@@ -85,7 +85,8 @@ class DataConverter{
 		$g = (object)[
 			'id' => $arr[0],
 			'name' => $arr[1],
-			'payed' => $arr[2]
+			'payed' => $arr[2],
+			'other' => $arr[3]
 		];
 		return $g;
 	}

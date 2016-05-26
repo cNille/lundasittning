@@ -521,7 +521,7 @@
             return $result;
 		}
 		public function getPartyParticipant($partyId) {
-			$sql = "SELECT p.id, p.name, pp.participantPayed FROM partyparticipant as pp JOIN participant as p ON p.id=pp.participantId WHERE pp.partyId=?";
+			$sql = "SELECT p.id, p.name, pp.participantPayed, p.other FROM partyparticipant as pp JOIN participant as p ON p.id=pp.participantId WHERE pp.partyId=?";
 			$result = $this->db->executeQuery($sql, array($partyId));
 			return $this->createGuestList($result); // Structure: [ {'id', 'name', 'foodpref', payed}, ...]
 		}
