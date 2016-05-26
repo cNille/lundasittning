@@ -17,7 +17,6 @@
 
 	$total = count($partyUsers)*($price+$deposit);
 	foreach ($partyUsers as $key => $g) {
-    var_dump($g->other);
 		$g->foodpref = '';
 		$myFoodPref = $dbHandler->getMyFoodpref($g->id);
 		foreach ($myFoodPref as $key => $food) {
