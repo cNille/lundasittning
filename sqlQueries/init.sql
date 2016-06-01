@@ -195,6 +195,7 @@ create table log (
 	eventText	    	text,
 	logDate			    datetime,
 	resName		    	varchar(30),
+	ipaddress		    varchar(60),
 	primary key(id),
 	foreign key (participantId) references participant(id),
 	foreign key (resName) references restaurant(name) ON UPDATE CASCADE

@@ -584,8 +584,9 @@
 		// Log
 		// ======================================================
         public function log($logMessage, $user, $res){
-            $sql = "INSERT INTO log (eventText, participantId, logdate, resName) VALUES (?,?,NOW(),?);";
-            $result = $this->db->executeUpdate($sql, array($logMessage, $user, $res));
+            $ipAddress = $_SERVER['REMOTE_ADDR']; 
+            $sql = "INSERT INTO log (eventText, participantId, logdate, resName, ipaddress) VALUES (?,?,NOW(),?,?);";
+            $result = $this->db->executeUpdate($sql, array($logMessage, $user, $res, $ipAddress));
         }   
 
         public function getLog(){

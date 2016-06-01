@@ -15,6 +15,7 @@
 	<table class="fancy">
 		<tr>
 			<th>LogId</th>
+			<th>Ip-adress</th>
 			<th>AnvändarId</th>
 			<th>Event</th>
 			<th>Datum</th>
@@ -26,6 +27,7 @@
 				?> 
 				<tr <?php echo (($c = !$c) ? " class='odd'" : ''); ?> >
 					<?php echo "<td>$l[0]</td>"; ?>
+					<?php echo "<td>$l[5]</td>"; ?>
 					<?php echo "<td>$l[1]</td>"; ?>
 					<?php echo "<td>$l[2]</td>"; ?>
 					<?php echo "<td>$l[3]</td>"; ?>
