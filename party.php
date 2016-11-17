@@ -8,7 +8,7 @@
 	$sitting = $dbHandler->getSitting($party->sittId);
 	$partyUsers = $dbHandler->getPartyParticipant($id);
 	$creator = $dbHandler->getCreator($id);
-    $payStatus = $dbHandler->getPayStatus($myAccessLevel);
+  $payStatus = $dbHandler->getPayStatus($myAccessLevel);
 	$isCreator = $creator[0] == $user[0];
 	
 	$deposit = $restaurant[7];
@@ -50,7 +50,8 @@
   }
 
 	$isQuratel = $myAccessLevel >= 5;
- ?>
+  $isOpen = $sitting->open; 
+?>
 <link rel="stylesheet" type="text/css" href="../../css/main.css" />
 
 <div class="content">
@@ -71,26 +72,36 @@
             <p><?php echo $party->message; ?></p>
 		</div>
 		<div class="right side">
-			<?php if(!$isParticipating) : ?>
-				<?php if($loggedIn) : ?>
-					<a class="btn primary" href="<?php echo $nationURL; ?>/partybooking/<?php echo $id; ?>/0">
-						<span>Anmäl dig</span>
-					</a>
-				<?php else : ?>
-					<?php $_SESSION['LAST_PAGE'] = '../' . $party->key; ?>
-					<a class="btn primary" href="<?php echo $nationURL; ?>/facebook-login/fbconfig.php">
-						<span>Anmäl dig via inlogg</span>
-					</a>
-					<a class="btn"  href="<?php echo $nationURL; ?>/partybooking/<?php echo $id; ?>/1">
-						<span>Anmäl dig utan inlogg</span>
-					</a>
-				<?php endif; ?>
-            <?php else : ?>
-                <span class="btn primary" style="cursor: default;">
-                    Du är redan anmäld
-                </span>
+      <?php if($isOpen) : ?>
+        <?php if(!$isParticipating) : ?>
+          <?php if($loggedIn) : ?>
+            <a class="btn primary" href="<?php echo $nationURL; ?>/partybooking/<?php echo $id; ?>/0">
+              <span>Anmäl dig</span>
+            </a>
+          <?php else : ?>
+            <?php $_SESSION['LAST_PAGE'] = '../' . $party->key; ?>
+            <a class="btn primary" href="<?php echo $nationURL; ?>/facebook-login/fbconfig.php">
+              <span>Anmäl dig via inlogg</span>
+            </a>
+            <a class="btn"  href="<?php echo $nationURL; ?>/partybooking/<?php echo $id; ?>/1">
+              <span>Anmäl dig utan inlogg</span>
+            </a>
+          <?php endif; ?>
+        <?php else : ?>
+                  <span class="btn primary" style="cursor: default;">
+                      Du är redan anmäld
+                  </span>
+        <?php endif; ?>
+      <?php elseif($isParticipating) : ?>
+        <span class="btn primary" style="cursor: default;">
+          Du är redan anmäld
+        </span>
+      <?php else : ?>
+        <span class="btn primary" style="cursor: default;">
+          Anmälan är stängd
+        </span>
 			<?php endif; ?>
-			<table>
+      <table>
 				<tr>
 					<th>#</th>
 					<th>Gäster</th>
