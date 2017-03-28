@@ -30,7 +30,7 @@
                 <span>Inloggad som: <?php echo $fbFullname; ?></span>
             </div>
         <?php else : ?>
-            <a class="fb-login realitem" href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
+            <a class="fb-login realitem" href="<?php echo $siteURL; ?>/facebook/login.php">
                 <img src="<?php echo $siteURL; ?>/images/FB-logga.png" />
                 <span class="login">Logga in</span>
             </a>
@@ -54,7 +54,7 @@
 		<div id="google_translate_element"></div>
 		<!-- END -->
         <?php if ($loggedIn): ?> 
-            <a class="fb-logout realitem" href="<?php echo $siteURL; ?>/facebook-login/logout.php">Logga ut</a>
+            <a class="fb-logout realitem" href="<?php echo $siteURL; ?>/facebook/logout.php">Logga ut</a>
         <?php endif; ?>
         <div class='side-shadow'></div>
 	</div>
