@@ -1,5 +1,5 @@
 <?php
-	require_once 'dbconfig.php'; 
+  require_once __DIR__.'/../env/config.php';
 	require_once 'database.php';
 	require_once 'dataConverter.php';
 	
