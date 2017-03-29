@@ -5,3 +5,5 @@ uploads/
 .sass-cache/
 css/main.css.map
 *.swp
+
+env/config.php
