@@ -177,12 +177,12 @@
         <span>+ Lägg en intresseanmälan</span>
       </a>
     <?php else : ?>
-      <a class="button primary"  href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
+      <a class="button primary"  href="<?php echo $siteURL; ?>/facebook/login.php">
         <span>Logga in för att kunna lägga en intresseanmälan</span>
       </a>
     <?php endif; ?>
   <?php else:  ?>
-    <div class="button"  href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
+    <div class="button"  href="<?php echo $siteURL; ?>/facebook/login.php">
       <span>Tyvärr är anmälan för denna sittning stängd</span>
     </div>
   <?php endif; ?>

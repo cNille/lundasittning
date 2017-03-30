@@ -80,7 +80,7 @@
             </a>
           <?php else : ?>
             <?php $_SESSION['LAST_PAGE'] = '../' . $party->key; ?>
-            <a class="btn primary" href="<?php echo $nationURL; ?>/facebook-login/fbconfig.php">
+            <a class="btn primary" href="<?php echo $nationURL; ?>/facebook/login.php">
               <span>Anmäl dig via inlogg</span>
             </a>
             <a class="btn"  href="<?php echo $nationURL; ?>/partybooking/<?php echo $id; ?>/1">

@@ -54,7 +54,7 @@
       <?php else : ?>
         <?php $_SESSION['FB_REDIRECT'] =  $siteURL . '/registration.php' ?>
         <?php $_SESSION['LAST_PAGE'] = '' ?>
-        <a class="btn primary" href="<?php echo $siteURL; ?>/facebook-login/fbconfig.php">
+        <a class="btn primary" href="<?php echo $siteURL; ?>/facebook/login.php">
           <span>Logga in via FB för att registrera studentförening</span>
         </a>
       <?php endif; ?>
